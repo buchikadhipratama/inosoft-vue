@@ -37,3 +37,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+span {
+    font-family: Nunito;
+}
+</style>
