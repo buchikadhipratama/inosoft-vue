@@ -1,4 +1,4 @@
-<template>
+ <template>
     <div class="row m-4 justify-content-center">
         <div class="col-12 p-0">
             <page-title-component :datas="data"/>
@@ -13,13 +13,13 @@
                         <router-link class="nav-link text-muted active" :to="{name: 'CompletedInstruction'}">Completed</router-link>
                     </li>
                     <div class="flex-fill d-flex justify-content-end float-end">
-                        <custom-button btn_class="btn btn-light h-100 fas fa-search m-1 border"/>
-                        <custom-button btn_class="btn btn-light h-100 fas fa-file-export m-1 border" label="Export"/>
+                        <custom-button btn_class="btn btn-light h-100 fas m-1 border" icon_class="fas fa-search"/>
+                        <custom-button btn_class="btn btn-light h-100 fas m-1 border" icon_class="fas fa-file-export" label="Export"/>
                     </div>
                 </ul>
                 <div class="mt-5 mx-3">
                     <table class="table" :class="table_class">
-                        <thead class="table-secondary">
+                        <thead class="table-head text-light">
                             <tr>
                                 <th>
                                     Instruction ID
@@ -101,8 +101,13 @@ export default {
 </script>
 
 <style scoped>
+
+.table-head {
+    background-color: rgb(193, 199, 206);
+}
+
 .nav-item .active {
-    border-bottom: 4px solid pink !important;
+    border-bottom: 4px solid rgb(0, 171, 185) !important;
 }
 
 </style>

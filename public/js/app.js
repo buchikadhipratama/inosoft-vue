@@ -10797,7 +10797,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.nav-item .active[data-v-05e1a0cc] {\n    border-bottom: 4px solid pink !important;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.table-head[data-v-05e1a0cc] {\n    background-color: rgb(193, 199, 206);\n}\n.nav-item .active[data-v-05e1a0cc] {\n    border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29418,14 +29418,15 @@ var render = function () {
             [
               _c("custom-button", {
                 attrs: {
-                  btn_class: "btn btn-light h-100 fas fa-search m-1 border",
+                  btn_class: "btn btn-light h-100 fas m-1 border",
+                  icon_class: "fas fa-search",
                 },
               }),
               _vm._v(" "),
               _c("custom-button", {
                 attrs: {
-                  btn_class:
-                    "btn btn-light h-100 fas fa-file-export m-1 border",
+                  btn_class: "btn btn-light h-100 fas m-1 border",
+                  icon_class: "fas fa-file-export",
                   label: "Export",
                 },
               }),
@@ -29474,7 +29475,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "table-secondary" }, [
+    return _c("thead", { staticClass: "table-head text-light" }, [
       _c("tr", [
         _c("th", [
           _vm._v(
