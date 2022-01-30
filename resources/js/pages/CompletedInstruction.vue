@@ -5,20 +5,22 @@
         </div>
         <div class="col-12 p-0">
             <div class="card border-0 shadow-sm d-flex">
-                <ul class="nav my-2 mx-3 border-0 d-flex">
-                    <li class="nav-item">
-                        <router-link class="nav-link text-muted" :to="{name: 'Home'}">Open</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link text-muted active" :to="{name: 'CompletedInstruction'}">Completed</router-link>
-                    </li>
-                    <div class="flex-fill d-flex justify-content-end float-end">
-                        <custom-button btn_class="btn btn-light h-100 fas m-1 border" icon_class="fas fa-search"/>
-                        <custom-button btn_class="btn btn-light h-100 fas m-1 border" icon_class="fas fa-file-export" label="Export"/>
-                    </div>
-                </ul>
+                <div class="card-header bg-white p-0">
+                    <ul class="nav mx-3 border-0 d-flex">
+                        <li class="nav-item mt-3">
+                            <router-link class="nav-link text-muted" :to="{name: 'Home'}">Open</router-link>
+                        </li>
+                        <li class="nav-item mt-3">
+                            <router-link class="nav-link text-muted active" :to="{name: 'CompletedInstruction'}">Completed</router-link>
+                        </li>
+                        <div class="flex-fill d-flex justify-content-end float-end py-2">
+                            <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-search"/>
+                            <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-file-export" label="Export"/>
+                        </div>
+                    </ul>
+                </div>
                 <div class="mt-5 mx-3">
-                    <table class="table" :class="table_class">
+                    <table class="table">
                         <thead class="table-head text-light">
                             <tr>
                                 <th>

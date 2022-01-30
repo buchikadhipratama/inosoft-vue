@@ -5493,6 +5493,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5674,7 +5676,6 @@ var routes = [{
   component: _pages_ExamplePage1_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]({
-  mode: 'history',
   base: process.env.BASE_URL,
   routes: routes
 });
@@ -29379,64 +29380,69 @@ var render = function () {
     _vm._v(" "),
     _c("div", { staticClass: "col-12 p-0" }, [
       _c("div", { staticClass: "card border-0 shadow-sm d-flex" }, [
-        _c("ul", { staticClass: "nav my-2 mx-3 border-0 d-flex" }, [
-          _c(
-            "li",
-            { staticClass: "nav-item" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "nav-link text-muted",
-                  attrs: { to: { name: "Home" } },
-                },
-                [_vm._v("Open")]
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            { staticClass: "nav-item" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "nav-link text-muted active",
-                  attrs: { to: { name: "CompletedInstruction" } },
-                },
-                [_vm._v("Completed")]
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "flex-fill d-flex justify-content-end float-end" },
-            [
-              _c("custom-button", {
-                attrs: {
-                  btn_class: "btn btn-light h-100 fas m-1 border",
-                  icon_class: "fas fa-search",
-                },
-              }),
-              _vm._v(" "),
-              _c("custom-button", {
-                attrs: {
-                  btn_class: "btn btn-light h-100 fas m-1 border",
-                  icon_class: "fas fa-file-export",
-                  label: "Export",
-                },
-              }),
-            ],
-            1
-          ),
+        _c("div", { staticClass: "card-header bg-white p-0" }, [
+          _c("ul", { staticClass: "nav mx-3 border-0 d-flex" }, [
+            _c(
+              "li",
+              { staticClass: "nav-item mt-3" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-link text-muted",
+                    attrs: { to: { name: "Home" } },
+                  },
+                  [_vm._v("Open")]
+                ),
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "nav-item mt-3" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-link text-muted active",
+                    attrs: { to: { name: "CompletedInstruction" } },
+                  },
+                  [_vm._v("Completed")]
+                ),
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "flex-fill d-flex justify-content-end float-end py-2",
+              },
+              [
+                _c("custom-button", {
+                  attrs: {
+                    btn_class: "btn btn-light h-auto fas m-1 border py-2",
+                    icon_class: "fas fa-search",
+                  },
+                }),
+                _vm._v(" "),
+                _c("custom-button", {
+                  attrs: {
+                    btn_class: "btn btn-light h-auto fas m-1 border py-2",
+                    icon_class: "fas fa-file-export",
+                    label: "Export",
+                  },
+                }),
+              ],
+              1
+            ),
+          ]),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "mt-5 mx-3" }, [
-          _c("table", { staticClass: "table", class: _vm.table_class }, [
+          _c("table", { staticClass: "table" }, [
             _vm._m(0),
             _vm._v(" "),
             _c(
