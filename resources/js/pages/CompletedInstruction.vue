@@ -24,31 +24,94 @@
                         <thead class="table-head text-light">
                             <tr>
                                 <th>
-                                    Instruction ID
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Instruction ID
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
-                                    Link To
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Link To
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-up"></i>
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
-                                    Instruction Type
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Instruction Type
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-up"></i>
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
-                                    Assigned Vendor
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Assigned Vendor
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-up"></i>
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
-                                    Attention Of
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Attention Of
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-up"></i>
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
-                                    Quotation No.
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Quotation No.
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-up"></i>
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
                                     Invoice
                                 </th>
                                 <th>
-                                    Customer PO
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Customer PO
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-up"></i>
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
-                                    Status
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Status
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-up"></i>
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                             </tr>
                         </thead>
@@ -110,6 +173,14 @@ export default {
 
 .nav-item .active {
     border-bottom: 4px solid rgb(0, 171, 185) !important;
+}
+
+.fa-sort-up {
+    position: absolute;
+}
+
+.fa-sort-down {
+    position: absolute;
 }
 
 </style>

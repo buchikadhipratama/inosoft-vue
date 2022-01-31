@@ -5495,6 +5495,69 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -10798,7 +10861,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.table-head[data-v-05e1a0cc] {\n    background-color: rgb(193, 199, 206);\n}\n.nav-item .active[data-v-05e1a0cc] {\n    border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.table-head[data-v-05e1a0cc] {\n    background-color: rgb(193, 199, 206);\n}\n.nav-item .active[data-v-05e1a0cc] {\n    border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.fa-sort-up[data-v-05e1a0cc] {\n    position: absolute;\n}\n.fa-sort-down[data-v-05e1a0cc] {\n    position: absolute;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29484,39 +29547,97 @@ var staticRenderFns = [
     return _c("thead", { staticClass: "table-head text-light" }, [
       _c("tr", [
         _c("th", [
-          _vm._v(
-            "\n                                Instruction ID\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Instruction ID\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
         _vm._v(" "),
         _c("th", [
-          _vm._v(
-            "\n                                Link To\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Link To\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-up" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
         _vm._v(" "),
         _c("th", [
-          _vm._v(
-            "\n                                Instruction Type\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Instruction Type\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-up" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
         _vm._v(" "),
         _c("th", [
-          _vm._v(
-            "\n                                Assigned Vendor\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Assigned Vendor\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-up" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
         _vm._v(" "),
         _c("th", [
-          _vm._v(
-            "\n                                Attention Of\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Attention Of\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-up" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
         _vm._v(" "),
         _c("th", [
-          _vm._v(
-            "\n                                Quotation No.\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Quotation No.\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-up" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
         _vm._v(" "),
         _c("th", [
@@ -29526,15 +29647,35 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("th", [
-          _vm._v(
-            "\n                                Customer PO\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Customer PO\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-up" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
         _vm._v(" "),
         _c("th", [
-          _vm._v(
-            "\n                                Status\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Status\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-up" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
       ]),
     ])
