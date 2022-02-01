@@ -25,66 +25,67 @@
                             <tr>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Instruction ID
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right invisible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
                                     </div>    
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Link To
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-up"></i>
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
                                     </div>    
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Instruction Type
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-up"></i>
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
                                     </div>    
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Assigned Vendor
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-up"></i>
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
                                     </div>    
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Attention Of
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-up"></i>
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
                                     </div>    
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Quotation No.
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-up"></i>
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
                                     </div>    
                                 </th>
@@ -93,23 +94,23 @@
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Customer PO
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-up"></i>
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
                                     </div>    
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Status
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-up"></i>
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
                                     </div>    
                                 </th>
@@ -159,6 +160,14 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+      sortAsc(){
+          console.log("sorting ascending")
+      },
+      sortDesc(){
+          console.log("sorting descending")
+      }
   }
     
     
@@ -175,12 +184,11 @@ export default {
     border-bottom: 4px solid rgb(0, 171, 185) !important;
 }
 
-.fa-sort-up {
-    position: absolute;
+.fa-caret-right {
+    transform: rotateZ(-90deg);
 }
 
-.fa-sort-down {
-    position: absolute;
+.fa-caret-left {
+    transform: rotateZ(-90deg);
 }
-
 </style>
