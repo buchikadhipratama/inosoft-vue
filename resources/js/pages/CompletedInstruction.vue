@@ -1,52 +1,117 @@
-<template>
+ <template>
     <div class="row m-4 justify-content-center">
         <div class="col-12 p-0">
             <page-title-component :datas="data"/>
         </div>
         <div class="col-12 p-0">
             <div class="card border-0 shadow-sm d-flex">
-                <ul class="nav my-2 mx-3 border-0 d-flex">
-                    <li class="nav-item">
-                        <router-link class="nav-link text-muted" :to="{name: 'Home'}">Open</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link text-muted active" :to="{name: 'CompletedInstruction'}">Completed</router-link>
-                    </li>
-                    <div class="flex-fill d-flex justify-content-end float-end">
-                        <custom-button btn_class="btn btn-light h-100 fas fa-search m-1 border"/>
-                        <custom-button btn_class="btn btn-light h-100 fas fa-file-export m-1 border" label="Export"/>
-                    </div>
-                </ul>
+                <div class="card-header bg-white p-0">
+                    <ul class="nav mx-3 border-0 d-flex">
+                        <li class="nav-item mt-3">
+                            <router-link class="nav-link text-muted" :to="{name: 'Home'}">Open</router-link>
+                        </li>
+                        <li class="nav-item mt-3">
+                            <router-link class="nav-link text-muted active" :to="{name: 'CompletedInstruction'}">Completed</router-link>
+                        </li>
+                        <div class="flex-fill d-flex justify-content-end float-end py-2">
+                            <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-search"/>
+                            <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-file-export" label="Export"/>
+                        </div>
+                    </ul>
+                </div>
                 <div class="mt-5 mx-3">
-                    <table class="table" :class="table_class">
-                        <thead class="table-secondary">
+                    <table class="table">
+                        <thead class="table-head text-light">
                             <tr>
                                 <th>
-                                    Instruction ID
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Instruction ID
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
-                                    Link To
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Link To
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-up"></i>
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
-                                    Instruction Type
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Instruction Type
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-up"></i>
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
-                                    Assigned Vendor
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Assigned Vendor
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-up"></i>
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
-                                    Attention Of
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Attention Of
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-up"></i>
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
-                                    Quotation No.
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Quotation No.
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-up"></i>
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
                                     Invoice
                                 </th>
                                 <th>
-                                    Customer PO
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Customer PO
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-up"></i>
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
-                                    Status
+                                    <div class="d-inline-flex">
+                                    <span>
+                                        Status
+                                    </span>
+                                    <div class="p-1">
+                                        <i class="fas fa-sort-up"></i>
+                                        <i class="fas fa-sort-down"></i>
+                                    </div>
+                                    </div>    
                                 </th>
                             </tr>
                         </thead>
@@ -101,8 +166,21 @@ export default {
 </script>
 
 <style scoped>
+
+.table-head {
+    background-color: rgb(193, 199, 206);
+}
+
 .nav-item .active {
-    border-bottom: 4px solid pink !important;
+    border-bottom: 4px solid rgb(0, 171, 185) !important;
+}
+
+.fa-sort-up {
+    position: absolute;
+}
+
+.fa-sort-down {
+    position: absolute;
 }
 
 </style>

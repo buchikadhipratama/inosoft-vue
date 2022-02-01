@@ -5493,6 +5493,71 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5674,7 +5739,6 @@ var routes = [{
   component: _pages_ExamplePage1_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]({
-  mode: 'history',
   base: process.env.BASE_URL,
   routes: routes
 });
@@ -10797,7 +10861,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.nav-item .active[data-v-05e1a0cc] {\n    border-bottom: 4px solid pink !important;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.table-head[data-v-05e1a0cc] {\n    background-color: rgb(193, 199, 206);\n}\n.nav-item .active[data-v-05e1a0cc] {\n    border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.fa-sort-up[data-v-05e1a0cc] {\n    position: absolute;\n}\n.fa-sort-down[data-v-05e1a0cc] {\n    position: absolute;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29379,63 +29443,69 @@ var render = function () {
     _vm._v(" "),
     _c("div", { staticClass: "col-12 p-0" }, [
       _c("div", { staticClass: "card border-0 shadow-sm d-flex" }, [
-        _c("ul", { staticClass: "nav my-2 mx-3 border-0 d-flex" }, [
-          _c(
-            "li",
-            { staticClass: "nav-item" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "nav-link text-muted",
-                  attrs: { to: { name: "Home" } },
-                },
-                [_vm._v("Open")]
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            { staticClass: "nav-item" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "nav-link text-muted active",
-                  attrs: { to: { name: "CompletedInstruction" } },
-                },
-                [_vm._v("Completed")]
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "flex-fill d-flex justify-content-end float-end" },
-            [
-              _c("custom-button", {
-                attrs: {
-                  btn_class: "btn btn-light h-100 fas fa-search m-1 border",
-                },
-              }),
-              _vm._v(" "),
-              _c("custom-button", {
-                attrs: {
-                  btn_class:
-                    "btn btn-light h-100 fas fa-file-export m-1 border",
-                  label: "Export",
-                },
-              }),
-            ],
-            1
-          ),
+        _c("div", { staticClass: "card-header bg-white p-0" }, [
+          _c("ul", { staticClass: "nav mx-3 border-0 d-flex" }, [
+            _c(
+              "li",
+              { staticClass: "nav-item mt-3" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-link text-muted",
+                    attrs: { to: { name: "Home" } },
+                  },
+                  [_vm._v("Open")]
+                ),
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "nav-item mt-3" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-link text-muted active",
+                    attrs: { to: { name: "CompletedInstruction" } },
+                  },
+                  [_vm._v("Completed")]
+                ),
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "flex-fill d-flex justify-content-end float-end py-2",
+              },
+              [
+                _c("custom-button", {
+                  attrs: {
+                    btn_class: "btn btn-light h-auto fas m-1 border py-2",
+                    icon_class: "fas fa-search",
+                  },
+                }),
+                _vm._v(" "),
+                _c("custom-button", {
+                  attrs: {
+                    btn_class: "btn btn-light h-auto fas m-1 border py-2",
+                    icon_class: "fas fa-file-export",
+                    label: "Export",
+                  },
+                }),
+              ],
+              1
+            ),
+          ]),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "mt-5 mx-3" }, [
-          _c("table", { staticClass: "table", class: _vm.table_class }, [
+          _c("table", { staticClass: "table" }, [
             _vm._m(0),
             _vm._v(" "),
             _c(
@@ -29474,42 +29544,100 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "table-secondary" }, [
+    return _c("thead", { staticClass: "table-head text-light" }, [
       _c("tr", [
         _c("th", [
-          _vm._v(
-            "\n                                Instruction ID\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Instruction ID\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
         _vm._v(" "),
         _c("th", [
-          _vm._v(
-            "\n                                Link To\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Link To\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-up" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
         _vm._v(" "),
         _c("th", [
-          _vm._v(
-            "\n                                Instruction Type\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Instruction Type\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-up" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
         _vm._v(" "),
         _c("th", [
-          _vm._v(
-            "\n                                Assigned Vendor\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Assigned Vendor\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-up" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
         _vm._v(" "),
         _c("th", [
-          _vm._v(
-            "\n                                Attention Of\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Attention Of\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-up" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
         _vm._v(" "),
         _c("th", [
-          _vm._v(
-            "\n                                Quotation No.\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Quotation No.\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-up" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
         _vm._v(" "),
         _c("th", [
@@ -29519,15 +29647,35 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("th", [
-          _vm._v(
-            "\n                                Customer PO\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Customer PO\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-up" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
         _vm._v(" "),
         _c("th", [
-          _vm._v(
-            "\n                                Status\n                            "
-          ),
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                    Status\n                                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-1" }, [
+              _c("i", { staticClass: "fas fa-sort-up" }),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-sort-down" }),
+            ]),
+          ]),
         ]),
       ]),
     ])
