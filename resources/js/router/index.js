@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../pages/Home.vue'
 import CompletedInstruction from '../pages/CompletedInstruction.vue'
 import ExamplePage1 from '../pages/ExamplePage1.vue'
+import CreateInstruction from "../pages/CreateInstruction.vue";
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,11 @@ const routes = [
     path: '/1',
     name: 'CompletedInstruction',
     component: CompletedInstruction
+  },
+  {
+      path: '/create-instruction',
+      name: 'CreateInstruction',
+      component: CreateInstruction
   },
   {
     path: '/example-page1',
