@@ -5418,8 +5418,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _components_sub_components_CustomButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/sub-components/CustomButton.vue */ "./resources/js/components/sub-components/CustomButton.vue");
 /* harmony import */ var _components_sub_components_PageTitleComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/sub-components/PageTitleComponent.vue */ "./resources/js/components/sub-components/PageTitleComponent.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -5559,6 +5566,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5585,7 +5612,10 @@ __webpack_require__.r(__webpack_exports__);
     sortDesc: function sortDesc() {
       console.log("sorting descending");
     }
-  }
+  },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
+    instructions: 'thirdPartyInstruction/getInstructions'
+  }))
 });
 
 /***/ }),
@@ -5960,15 +5990,160 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _modules_third_party_instruction_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/third-party-instruction/index.js */ "./resources/js/store/modules/third-party-instruction/index.js");
 
 
-vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
-  modules: {},
+
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
+  modules: {
+    thirdPartyInstruction: _modules_third_party_instruction_index_js__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   strict: true
 }));
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/third-party-instruction/actions.js":
+/*!***********************************************************************!*\
+  !*** ./resources/js/store/modules/third-party-instruction/actions.js ***!
+  \***********************************************************************/
+/***/ (() => {
+
+
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/third-party-instruction/const.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/store/modules/third-party-instruction/const.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default_state": () => (/* binding */ default_state)
+/* harmony export */ });
+var getDefaultState = function getDefaultState() {
+  return {
+    instructions: [{
+      id: "SI-2022-0002",
+      link: "-",
+      type: "SI",
+      vendor: "Amarit & Associates Co Ltd",
+      attention: "Rigsite Transportation",
+      quotation: "MITME-AGL-001",
+      invoice: 1,
+      customerPo: "PO003",
+      status: "Completed"
+    }, {
+      id: "SI-2022-0001 R01",
+      link: "INSP-2020-0001",
+      type: "SI",
+      vendor: "Amarit & Associates Co Ltd",
+      attention: "Rigprep Transportation from Agility Kizad",
+      quotation: "MITME-AGL-001",
+      invoice: 1,
+      customerPo: "PO01",
+      status: "Canceled"
+    }, {
+      id: "SI-2021-0116 R01",
+      link: "-",
+      type: "SI",
+      vendor: "ALMANSOORI INSPECTION SERVICE COMPANY LLC",
+      attention: "ALMANSOORI INSPECTION SERVICE COMPANY LLC",
+      quotation: "MITME-AGL-001 (Appendix 1)",
+      invoice: 1,
+      customerPo: "",
+      status: "Completed"
+    }]
+  };
+};
+
+var default_state = getDefaultState();
+
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/third-party-instruction/getters.js":
+/*!***********************************************************************!*\
+  !*** ./resources/js/store/modules/third-party-instruction/getters.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getInstructions": () => (/* binding */ getInstructions)
+/* harmony export */ });
+var getInstructions = function getInstructions(state) {
+  return state.instructions;
+};
+
+
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/third-party-instruction/index.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/store/modules/third-party-instruction/index.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/store/modules/third-party-instruction/state.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actions */ "./resources/js/store/modules/third-party-instruction/actions.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_actions__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getters */ "./resources/js/store/modules/third-party-instruction/getters.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/js/store/modules/third-party-instruction/mutations.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_mutations__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+var namespaced = true;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  namespaced: namespaced,
+  state: _state__WEBPACK_IMPORTED_MODULE_0__.state,
+  actions: _actions__WEBPACK_IMPORTED_MODULE_1__,
+  getters: _getters__WEBPACK_IMPORTED_MODULE_2__,
+  mutations: _mutations__WEBPACK_IMPORTED_MODULE_3__
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/third-party-instruction/mutations.js":
+/*!*************************************************************************!*\
+  !*** ./resources/js/store/modules/third-party-instruction/mutations.js ***!
+  \*************************************************************************/
+/***/ (() => {
+
+
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/third-party-instruction/state.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/store/modules/third-party-instruction/state.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "state": () => (/* binding */ state)
+/* harmony export */ });
+/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./const */ "./resources/js/store/modules/third-party-instruction/const.js");
+
+var state = JSON.parse(JSON.stringify(_const__WEBPACK_IMPORTED_MODULE_0__.default_state));
+
 
 /***/ }),
 
@@ -11064,7 +11239,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.table-head[data-v-05e1a0cc] {\n    background-color: rgb(193, 199, 206);\n}\n.nav-item .active[data-v-05e1a0cc] {\n    border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.fa-caret-right[data-v-05e1a0cc] {\n    transform: rotateZ(-90deg);\n}\n.fa-caret-left[data-v-05e1a0cc] {\n    transform: rotateZ(-90deg);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.table-head[data-v-05e1a0cc] {\n    background-color: rgb(193, 199, 206);\n}\ntbody[data-v-05e1a0cc] {\n    border-top: none !important;\n}\n.nav-item .active[data-v-05e1a0cc] {\n    border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.fa-caret-right[data-v-05e1a0cc] {\n    transform: rotateZ(-90deg);\n}\n.fa-caret-left[data-v-05e1a0cc] {\n    transform: rotateZ(-90deg);\n}\n.instruction-badge[data-v-05e1a0cc] {\n    width: 6rem;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30032,11 +30207,7 @@ var render = function () {
                   ]),
                 ]),
                 _vm._v(" "),
-                _c("th", [
-                  _vm._v(
-                    "\n                                Invoice\n                            "
-                  ),
-                ]),
+                _vm._m(0),
                 _vm._v(" "),
                 _c("th", [
                   _c("div", { staticClass: "d-inline-flex" }, [
@@ -30104,23 +30275,79 @@ var render = function () {
               "tbody",
               _vm._l(_vm.instructions, function (instruction, index) {
                 return _c("tr", { key: index }, [
-                  _c("td", [_vm._v("instruction.id")]),
+                  _c("td", [_vm._v(_vm._s(instruction.id))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v("instruction.link")]),
+                  _c("td", [_vm._v(_vm._s(instruction.link))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v("instruction.type")]),
+                  _c("td", { staticClass: "text-center" }, [
+                    instruction.type == "LI"
+                      ? _c("i", { staticClass: "fas fa-truck" })
+                      : _c("i", { staticClass: "fas fa-dolly" }),
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(instruction.type)
+                    ),
+                  ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v("instruction.vendor")]),
+                  _c("td", [_vm._v(_vm._s(instruction.vendor))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v("instruction.attention")]),
+                  _c("td", [_vm._v(_vm._s(instruction.attention))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v("instruction.quotation")]),
+                  _c("td", [_vm._v(_vm._s(instruction.quotation))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v("instruction.invoice")]),
+                  _c("td", { staticClass: "text-center" }, [
+                    _c(
+                      "span",
+                      { staticClass: "badge bg-secondary rounded-circle" },
+                      [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(instruction.invoice) +
+                            "\n                                "
+                        ),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    instruction.invoice != ""
+                      ? _c("i", { staticClass: "fas fa-chevron-down" })
+                      : _vm._e(),
+                  ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v("instruction.customerPO")]),
+                  _c("td", [_vm._v(_vm._s(instruction.customerPo))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v("instruction.status")]),
+                  _c("td", [
+                    instruction.status == "Completed"
+                      ? _c(
+                          "span",
+                          {
+                            staticClass:
+                              "badge bg-success rounded-pill instruction-badge",
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(instruction.status) +
+                                "\n                                "
+                            ),
+                          ]
+                        )
+                      : instruction.status == "Canceled"
+                      ? _c(
+                          "span",
+                          {
+                            staticClass:
+                              "badge bg-secondary rounded-pill instruction-badge",
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(instruction.status) +
+                                "\n                                "
+                            ),
+                          ]
+                        )
+                      : _vm._e(),
+                  ]),
                 ])
               }),
               0
@@ -30131,7 +30358,22 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("th", [
+      _c("div", { staticClass: "d-inline-flex align-items-center" }, [
+        _c("span", [
+          _vm._v(
+            "\n                                        Invoice\n                                    "
+          ),
+        ]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
