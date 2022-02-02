@@ -25,124 +25,145 @@
                             <tr>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Instruction ID
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right invisible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
-                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Link To
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-up"></i>
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
-                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Instruction Type
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-up"></i>
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
-                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Assigned Vendor
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-up"></i>
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
-                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Attention Of
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-up"></i>
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
-                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Quotation No.
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-up"></i>
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
-                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
-                                    Invoice
+                                    <div class="d-inline-flex align-items-center">
+                                        <span>
+                                            Invoice
+                                        </span>
+                                    </div>
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Customer PO
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-up"></i>
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
-                                    </div>
+                                    </div>    
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
-                                    <span>
+                                    <span class="d-flex align-items-center">
                                         Status
                                     </span>
-                                    <div class="p-1">
-                                        <i class="fas fa-sort-up"></i>
-                                        <i class="fas fa-sort-down"></i>
+                                    <div class="px-2 d-flex flex-column">
+                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
+                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
                                     </div>
-                                    </div>
+                                    </div>    
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="(instruction, index) in instructions" :key="index">
-                                <td>instruction.id</td>
-                                <td>instruction.link</td>
-                                <td>instruction.type</td>
-                                <td>instruction.vendor</td>
-                                <td>instruction.attention</td>
-                                <td>instruction.quotation</td>
-                                <td>instruction.invoice</td>
-                                <td>instruction.customerPO</td>
-                                <td>instruction.status</td>
+                                <td>{{instruction.id}}</td>
+                                <td>{{instruction.link}}</td>
+                                <td class="text-center">
+                                    <i class="fas fa-truck" v-if="instruction.type == 'LI'"></i>
+                                    <i class="fas fa-dolly" v-else></i>
+                                    {{instruction.type}}</td>
+                                <td>{{instruction.vendor}}</td>
+                                <td>{{instruction.attention}}</td>
+                                <td>{{instruction.quotation}}</td>
+                                <td class="text-center">
+                                    <span class="badge bg-secondary rounded-circle">
+                                        {{instruction.invoice}}
+                                    </span>
+                                    <i v-if="instruction.invoice != ''" class="fas fa-chevron-down"></i>
+                                </td>
+                                <td>{{instruction.customerPo}}</td>
+                                <td>
+                                    <span v-if="instruction.status == 'Completed'" class="badge bg-success rounded-pill instruction-badge">
+                                        {{instruction.status}}
+                                    </span>
+                                    <span v-else-if="instruction.status == 'Canceled'" class="badge bg-secondary rounded-pill instruction-badge">
+                                        {{instruction.status}}
+                                    </span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-
+                
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 import CustomButton from '../components/sub-components/CustomButton.vue'
 import PageTitleComponent from '../components/sub-components/PageTitleComponent.vue'
 
 export default {
     name: "CompletedInstruction",
-    components: {
+    components: { 
         PageTitleComponent,
         CustomButton
     },
@@ -159,9 +180,22 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+      sortAsc(){
+          console.log("sorting ascending")
+      },
+      sortDesc(){
+          console.log("sorting descending")
+      }
+  },
+  computed: {
+      ...mapGetters({
+          instructions: 'thirdPartyInstruction/getInstructions'
+      })
   }
-
-
+    
+    
 }
 </script>
 
@@ -171,16 +205,23 @@ export default {
     background-color: rgb(193, 199, 206);
 }
 
+tbody {
+    border-top: none !important;
+}
+
 .nav-item .active {
     border-bottom: 4px solid rgb(0, 171, 185) !important;
 }
 
-.fa-sort-up {
-    position: absolute;
+.fa-caret-right {
+    transform: rotateZ(-90deg);
 }
 
-.fa-sort-down {
-    position: absolute;
+.fa-caret-left {
+    transform: rotateZ(-90deg);
 }
 
+.instruction-badge {
+    width: 6rem;
+}
 </style>
