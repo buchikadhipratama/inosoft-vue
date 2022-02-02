@@ -31,7 +31,7 @@
                                     <div class="p-1">
                                         <i class="fas fa-sort-down"></i>
                                     </div>
-                                    </div>    
+                                    </div>
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
@@ -42,7 +42,7 @@
                                         <i class="fas fa-sort-up"></i>
                                         <i class="fas fa-sort-down"></i>
                                     </div>
-                                    </div>    
+                                    </div>
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
@@ -53,7 +53,7 @@
                                         <i class="fas fa-sort-up"></i>
                                         <i class="fas fa-sort-down"></i>
                                     </div>
-                                    </div>    
+                                    </div>
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
@@ -64,7 +64,7 @@
                                         <i class="fas fa-sort-up"></i>
                                         <i class="fas fa-sort-down"></i>
                                     </div>
-                                    </div>    
+                                    </div>
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
@@ -75,7 +75,7 @@
                                         <i class="fas fa-sort-up"></i>
                                         <i class="fas fa-sort-down"></i>
                                     </div>
-                                    </div>    
+                                    </div>
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
@@ -86,7 +86,7 @@
                                         <i class="fas fa-sort-up"></i>
                                         <i class="fas fa-sort-down"></i>
                                     </div>
-                                    </div>    
+                                    </div>
                                 </th>
                                 <th>
                                     Invoice
@@ -100,7 +100,7 @@
                                         <i class="fas fa-sort-up"></i>
                                         <i class="fas fa-sort-down"></i>
                                     </div>
-                                    </div>    
+                                    </div>
                                 </th>
                                 <th>
                                     <div class="d-inline-flex">
@@ -111,7 +111,7 @@
                                         <i class="fas fa-sort-up"></i>
                                         <i class="fas fa-sort-down"></i>
                                     </div>
-                                    </div>    
+                                    </div>
                                 </th>
                             </tr>
                         </thead>
@@ -130,7 +130,6 @@
                         </tbody>
                     </table>
                 </div>
-                
             </div>
         </div>
     </div>
@@ -142,7 +141,7 @@ import PageTitleComponent from '../components/sub-components/PageTitleComponent.
 
 export default {
     name: "CompletedInstruction",
-    components: { 
+    components: {
         PageTitleComponent,
         CustomButton
     },
@@ -160,8 +159,8 @@ export default {
       ]
     }
   }
-    
-    
+
+
 }
 </script>
 
