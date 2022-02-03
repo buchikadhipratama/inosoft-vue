@@ -26,9 +26,10 @@
             </div>
             <div>
               <div class="float-end">
-                <router-link :to="{name: 'CreateInstruction'}">
+                <custom-dropdown />
+                <!-- <router-link :to="{name: 'CreateInstruction'}">
                   <custom-button btn_class="btn btn-info h-auto fas m-3 py-2" icon_class="fas fa-plus" label="Create 3rd Party Instruction" />
-                </router-link>
+                </router-link> -->
               </div>
               <div class="mx-3">
                 <table class="table">
@@ -151,6 +152,7 @@
 
 <script>
 import CustomButton from "../components/sub-components/CustomButton.vue";
+import CustomDropdown from "../components/sub-components/CustomDropdown.vue";
 import HeaderComponent from "../components/sub-components/HeaderComponent.vue";
 import PageTitleComponent from "../components/sub-components/PageTitleComponent.vue";
 import SidebarComponent from "../components/sub-components/SidebarComponent.vue";
@@ -162,6 +164,7 @@ export default {
     CustomButton,
     HeaderComponent,
     SidebarComponent,
+    CustomDropdown,
   },
   data() {
     return {
