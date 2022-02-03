@@ -28,9 +28,13 @@
                                     <span class="d-flex align-items-center">
                                         Instruction ID
                                     </span>
-                                    <div class="px-2 d-flex flex-column">
-                                        <i class="fas fa-caret-right invisible" @click="sortAsc()"></i>
-                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
+                                    <div class="px-2">
+                                        <i v-if="sortDirection === 'desc'" class="fas fa-sort-up pointer" @click="sort('asc', 'id')"></i>
+                                        <i v-else-if="sortDirection === 'asc'" class="fas fa-sort-down pointer" @click="sort('desc', 'id')"></i>
+                                        <div v-else class="d-flex flex-column">
+                                            <i class="fas fa-caret-right pointer" @click="sort('asc', 'id')"></i>
+                                            <i class="fas fa-caret-left pointer" @click="sort('desc', 'id')"></i>
+                                        </div>
                                     </div>
                                     </div>    
                                 </th>
@@ -40,8 +44,8 @@
                                         Link To
                                     </span>
                                     <div class="px-2 d-flex flex-column">
-                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
-                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
+                                        <i class="fas fa-caret-right pointer" @click="sort('asc', 'link')"></i>
+                                        <i class="fas fa-caret-left pointer" @click="sort('desc', 'link')"></i>
                                     </div>
                                     </div>    
                                 </th>
@@ -51,8 +55,8 @@
                                         Instruction Type
                                     </span>
                                     <div class="px-2 d-flex flex-column">
-                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
-                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
+                                        <i class="fas fa-caret-right pointer" @click="sort('asc', 'type')"></i>
+                                        <i class="fas fa-caret-left pointer" @click="sort('desc', 'type')"></i>
                                     </div>
                                     </div>    
                                 </th>
@@ -62,8 +66,8 @@
                                         Assigned Vendor
                                     </span>
                                     <div class="px-2 d-flex flex-column">
-                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
-                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
+                                        <i class="fas fa-caret-right pointer" @click="sort('asc', 'vendor')"></i>
+                                        <i class="fas fa-caret-left pointer" @click="sort('desc', 'vendor')"></i>
                                     </div>
                                     </div>    
                                 </th>
@@ -73,8 +77,8 @@
                                         Attention Of
                                     </span>
                                     <div class="px-2 d-flex flex-column">
-                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
-                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
+                                        <i class="fas fa-caret-right pointer" @click="sort('asc', 'attention')"></i>
+                                        <i class="fas fa-caret-left pointer" @click="sort('desc', 'attention')"></i>
                                     </div>
                                     </div>    
                                 </th>
@@ -84,8 +88,8 @@
                                         Quotation No.
                                     </span>
                                     <div class="px-2 d-flex flex-column">
-                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
-                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
+                                        <i class="fas fa-caret-right pointer" @click="sort('asc', 'quotation')"></i>
+                                        <i class="fas fa-caret-left pointer" @click="sort('desc', 'quotation')"></i>
                                     </div>
                                     </div>    
                                 </th>
@@ -102,8 +106,8 @@
                                         Customer PO
                                     </span>
                                     <div class="px-2 d-flex flex-column">
-                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
-                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
+                                        <i class="fas fa-caret-right pointer" @click="sort('asc', 'customerPo')"></i>
+                                        <i class="fas fa-caret-left pointer" @click="sort('desc', 'customerPo')"></i>
                                     </div>
                                     </div>    
                                 </th>
@@ -113,8 +117,8 @@
                                         Status
                                     </span>
                                     <div class="px-2 d-flex flex-column">
-                                        <i class="fas fa-caret-right visible" @click="sortAsc()"></i>
-                                        <i class="fas fa-caret-left visible" @click="sortDesc()"></i>
+                                        <i class="fas fa-caret-right pointer" @click="sort('asc', 'status')"></i>
+                                        <i class="fas fa-caret-left pointer" @click="sort('desc', 'status')"></i>
                                     </div>
                                     </div>    
                                 </th>
@@ -135,7 +139,7 @@
                                     <span class="badge bg-secondary rounded-circle">
                                         {{instruction.invoice}}
                                     </span>
-                                    <i v-if="instruction.invoice != ''" class="fas fa-chevron-down"></i>
+                                    <i v-if="instruction.invoice != ''" class="fas fa-chevron-down pointer"></i>
                                 </td>
                                 <td>{{instruction.customerPo}}</td>
                                 <td>
@@ -178,25 +182,29 @@ export default {
           name: "3rd Party Instruction",
           to: "Home"
         }
-      ]
+      ],
+      sortDirection: 'asc',
     }
   },
   methods: {
-      sortAsc(){
-          console.log("sorting ascending")
-      },
-      sortDesc(){
-          console.log("sorting descending")
+      sort(direction, data){
+          if(data === 'id' && direction === 'asc'){
+              this.sortDirection = 'asc'
+          }else if(data === 'id' && direction === 'desc'){
+              this.sortDirection = 'desc'
+          }else{
+              this.sortDirection = false
+          }
+          const payload = {direction, data}
+          this.$store.dispatch('thirdPartyInstruction/sort', payload)
       }
   },
   computed: {
       ...mapGetters({
           instructions: 'thirdPartyInstruction/getInstructions'
       })
+    }
   }
-    
-    
-}
 </script>
 
 <style scoped>
@@ -215,13 +223,19 @@ tbody {
 
 .fa-caret-right {
     transform: rotateZ(-90deg);
+    
 }
 
 .fa-caret-left {
     transform: rotateZ(-90deg);
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 .instruction-badge {
     width: 6rem;
 }
+
 </style>
