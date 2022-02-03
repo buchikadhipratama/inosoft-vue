@@ -183,7 +183,7 @@ export default {
           to: "Home"
         }
       ],
-      sortDirection: 'asc',
+      sortDirection: 'asc'
     }
   },
   methods: {
