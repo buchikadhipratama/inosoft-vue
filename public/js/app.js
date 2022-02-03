@@ -24549,7 +24549,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.table-head[data-v-05e1a0cc] {\n    background-color: rgb(193, 199, 206);\n}\ntbody[data-v-05e1a0cc] {\n    border-top: none !important;\n}\n.nav-item .active[data-v-05e1a0cc] {\n    border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.fa-caret-right[data-v-05e1a0cc] {\n    transform: rotateZ(-90deg);\n}\n.fa-caret-left[data-v-05e1a0cc] {\n    transform: rotateZ(-90deg);\n}\n.pointer[data-v-05e1a0cc] {\n    cursor: pointer;\n}\n.instruction-badge[data-v-05e1a0cc] {\n    width: 6rem;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.table-head[data-v-05e1a0cc] {\n    background-color: rgb(193, 199, 206);\n}\ntbody[data-v-05e1a0cc] {\n    border-top: none !important;\n}\n.nav-item .active[data-v-05e1a0cc] {\n    border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.fa-caret-right[data-v-05e1a0cc] {\n    transform: rotateZ(-90deg);\n}\n.fa-caret-left[data-v-05e1a0cc] {\n    transform: rotateZ(-90deg);\n}\n.pointer[data-v-05e1a0cc] {\n    cursor: pointer;\n}\n.instruction-badge[data-v-05e1a0cc] {\n    width: 6rem;\n}\n.inventory-badge[data-v-05e1a0cc] {\n    background-color: rgb(0, 171, 185);\n}\n.badge-completed[data-v-05e1a0cc] {\n    background-color: rgb(0, 176, 111);\n}\n.badge-canceled[data-v-05e1a0cc] {\n    background-color: rgb(193, 199, 206);\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -44983,7 +44983,7 @@ var render = function () {
                   _c("td", { staticClass: "text-center" }, [
                     instruction.type == "LI"
                       ? _c("i", { staticClass: "fas fa-truck" })
-                      : _c("i", { staticClass: "fas fa-dolly" }),
+                      : _c("i", { staticClass: "fas fa-wrench" }),
                     _vm._v(
                       "\n                                " +
                         _vm._s(instruction.type)
@@ -44999,7 +44999,7 @@ var render = function () {
                   _c("td", { staticClass: "text-center" }, [
                     _c(
                       "span",
-                      { staticClass: "badge bg-secondary rounded-circle" },
+                      { staticClass: "badge inventory-badge rounded-circle" },
                       [
                         _vm._v(
                           "\n                                    " +
@@ -45022,7 +45022,7 @@ var render = function () {
                           "span",
                           {
                             staticClass:
-                              "badge bg-success rounded-pill instruction-badge",
+                              "badge badge-completed rounded-pill instruction-badge",
                           },
                           [
                             _vm._v(
@@ -45037,7 +45037,7 @@ var render = function () {
                           "span",
                           {
                             staticClass:
-                              "badge bg-secondary rounded-pill instruction-badge",
+                              "badge badge-canceled rounded-pill instruction-badge",
                           },
                           [
                             _vm._v(
