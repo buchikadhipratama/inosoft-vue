@@ -130,23 +130,23 @@
                                 <td>{{instruction.link}}</td>
                                 <td class="text-center">
                                     <i class="fas fa-truck" v-if="instruction.type == 'LI'"></i>
-                                    <i class="fas fa-dolly" v-else></i>
+                                    <i class="fas fa-wrench" v-else></i>
                                     {{instruction.type}}</td>
                                 <td>{{instruction.vendor}}</td>
                                 <td>{{instruction.attention}}</td>
                                 <td>{{instruction.quotation}}</td>
                                 <td class="text-center">
-                                    <span class="badge bg-secondary rounded-circle">
+                                    <span class="badge inventory-badge rounded-circle">
                                         {{instruction.invoice}}
                                     </span>
                                     <i v-if="instruction.invoice != ''" class="fas fa-chevron-down pointer"></i>
                                 </td>
                                 <td>{{instruction.customerPo}}</td>
                                 <td>
-                                    <span v-if="instruction.status == 'Completed'" class="badge bg-success rounded-pill instruction-badge">
+                                    <span v-if="instruction.status == 'Completed'" class="badge badge-completed rounded-pill instruction-badge">
                                         {{instruction.status}}
                                     </span>
-                                    <span v-else-if="instruction.status == 'Canceled'" class="badge bg-secondary rounded-pill instruction-badge">
+                                    <span v-else-if="instruction.status == 'Canceled'" class="badge badge-canceled rounded-pill instruction-badge">
                                         {{instruction.status}}
                                     </span>
                                 </td>
@@ -236,6 +236,19 @@ tbody {
 
 .instruction-badge {
     width: 6rem;
+}
+
+.inventory-badge {
+    background-color: rgb(0, 171, 185);
+}
+
+.badge-completed {
+    background-color: rgb(0, 176, 111);
+}
+
+
+.badge-canceled {
+    background-color: rgb(193, 199, 206);
 }
 
 </style>
