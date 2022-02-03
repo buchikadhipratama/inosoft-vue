@@ -9,16 +9,18 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
 
 </head>
-    <body class="antialiased">
-       <div id="app">
-            <app/>
-       </div> 
-       <script src="{{asset('js/app.js')}}"></script>
-    </body>
+
+<body class="antialiased">
+    <div id="app">
+        <app />
+    </div>
+    <script src="{{asset('js/app.js')}}"></script>
+</body>
+
 </html>
