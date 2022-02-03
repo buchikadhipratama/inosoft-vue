@@ -2,16 +2,17 @@
   <div>
     <header-component />
     <div class="row">
-      <div class="col-1">
+      <div class="col">
         <sidebar-component />
       </div>
-      <div class="col-11 p-2">
+
+      <div class="col-10 p-2 justify-content-start">
         <page-title-component :datas="data" />
 
-        <div class="col-12 ">
-          <div class="card border-0 shadow-sm d-flex">
+        <div class="col-12 justify-content-start">
+          <div class="card border-0 shadow-sm ">
             <div class="card-header bg-white p-0">
-              <ul class="nav mx-3 border-0 d-flex">
+              <ul class="nav mx-3 border-0 ">
                 <li class="nav-item mt-3">
                   <router-link class="nav-link text-muted active" :to="{name: 'Home'}">Open</router-link>
                 </li>
@@ -127,7 +128,7 @@
                       </th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <!-- <tbody>
                     <tr v-for="(instruction, index) in instructions" :key="index">
                       <td>instruction.id</td>
                       <td>instruction.link</td>
@@ -139,7 +140,7 @@
                       <td>instruction.customerPO</td>
                       <td>instruction.status</td>
                     </tr>
-                  </tbody>
+                  </tbody> -->
                 </table>
               </div>
             </div>

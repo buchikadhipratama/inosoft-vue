@@ -1,50 +1,31 @@
 <template>
   <div>
-    <header class="p-3 bg-dark text-white">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
+    <header class="bg-dark text-white">
+      <nav class="navbar">
+        <div class="row m-2">
+          <a class="navbar-brand" href="#">
+            <img src="/inosoft-logo.png" alt="/public/inosoft-logo.png" width="100" height="30">
           </a>
-
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-          </ul>
-
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-            <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-          </form>
-
-          <div class="text-end">
-            <custom-button type="button" class="btn btn-outline-light me-2">Login</custom-button>
-            <custom-button type="button" class="btn btn-warning">Sign-up</custom-button>
-          </div>
         </div>
-      </div>
+      </nav>
     </header>
   </div>
 </template>
 
 <script>
-import CustomButton from './CustomButton.vue';
+import CustomButton from "./CustomButton.vue";
 
 export default {
-    name : "HeaderComponent",
-    props: {
-        title: {
-            type: String,
-            default: 'Header'
-        }
+  name: "HeaderComponent",
+  props: {
+    title: {
+      type: String,
+      default: "Header",
     },
-    components: {
-        CustomButton
-    }
-}
+  },
+  components: {
+    CustomButton,
+  },
+};
 </script>
 
