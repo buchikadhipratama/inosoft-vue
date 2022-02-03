@@ -1,18 +1,17 @@
 <template>
   <div>
     <header-component />
-    <div class="row">
+    <div class="row ">
       <div class="col">
         <sidebar-component />
       </div>
-
-      <div class="col-10 p-2 justify-content-start">
+      <div class="col-11 p-0">
         <page-title-component :datas="data" />
 
-        <div class="col-12 justify-content-start">
-          <div class="card border-0 shadow-sm ">
+        <div class="col-12 p-0">
+          <div class="card border-0 shadow-sm d-flex">
             <div class="card-header bg-white p-0">
-              <ul class="nav mx-3 border-0 ">
+              <ul class="nav mx-3 border-0 d-flex">
                 <li class="nav-item mt-3">
                   <router-link class="nav-link text-muted active" :to="{name: 'Home'}">Open</router-link>
                 </li>
