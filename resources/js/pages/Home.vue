@@ -1,14 +1,14 @@
 <template>
   <div>
     <header-component />
-    <div class="row">
-      <div class="col-1">
+    <div class="row ">
+      <div class="col">
         <sidebar-component />
       </div>
-      <div class="col-11 p-2">
+      <div class="col-11 p-0">
         <page-title-component :datas="data" />
 
-        <div class="col-12 ">
+        <div class="col-12 p-0">
           <div class="card border-0 shadow-sm d-flex">
             <div class="card-header bg-white p-0">
               <ul class="nav mx-3 border-0 d-flex">
@@ -127,7 +127,7 @@
                       </th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <!-- <tbody>
                     <tr v-for="(instruction, index) in instructions" :key="index">
                       <td>instruction.id</td>
                       <td>instruction.link</td>
@@ -139,7 +139,7 @@
                       <td>instruction.customerPO</td>
                       <td>instruction.status</td>
                     </tr>
-                  </tbody>
+                  </tbody> -->
                 </table>
               </div>
             </div>
