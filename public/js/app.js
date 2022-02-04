@@ -19005,6 +19005,86 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -44908,15 +44988,15 @@ var render = function () {
       _c("header-component"),
       _vm._v(" "),
       _c("div", { staticClass: "row " }, [
-        _c("div", { staticClass: "col" }, [_c("sidebar-component")], 1),
+        _c("div", { staticClass: "col-1 p-0" }, [_c("sidebar-component")], 1),
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "col-11 p-0" },
+          { staticClass: "col-11 p-3" },
           [
             _c("page-title-component", { attrs: { datas: _vm.data } }),
             _vm._v(" "),
-            _c("div", { staticClass: "col-12 p-0" }, [
+            _c("div", { staticClass: "p-0 mx-3" }, [
               _c("div", { staticClass: "card border-0 shadow-sm d-flex" }, [
                 _c("div", { staticClass: "card-header bg-white p-0" }, [
                   _c("ul", { staticClass: "nav mx-3 border-0 d-flex" }, [
@@ -45500,7 +45580,157 @@ var render = function () {
                     ),
                   ]),
                   _vm._v(" "),
-                  _vm._m(0),
+                  _c("div", { staticClass: "row mx-0 my-3" }, [
+                    _c("div", { staticClass: "col-lg-2" }),
+                    _vm._v(" "),
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("div", { staticClass: "h4 bold" }, [
+                        _vm._v("Cost Detail"),
+                      ]),
+                      _vm._v(" "),
+                      _c("table", { staticClass: "table" }, [
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _c("tbody", [
+                          _c("tr", [
+                            _vm._m(3),
+                            _vm._v(" "),
+                            _vm._m(4),
+                            _vm._v(" "),
+                            _vm._m(5),
+                            _vm._v(" "),
+                            _vm._m(6),
+                            _vm._v(" "),
+                            _vm._m(7),
+                            _vm._v(" "),
+                            _vm._m(8),
+                            _vm._v(" "),
+                            _vm._m(9),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("0.00")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("0.00")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("0.00")]),
+                            _vm._v(" "),
+                            _vm._m(10),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              [
+                                _c("custom-button", {
+                                  attrs: {
+                                    btn_class: "btn btn-secondary h-auto",
+                                    icon_class: "fas fa-minus",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", { staticClass: "white-border" }, [
+                            _vm._m(11),
+                            _vm._v(" "),
+                            _vm._m(12),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "align-right" }, [
+                              _vm._v("0.00"),
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "align-right" }, [
+                              _vm._v("0.00"),
+                            ]),
+                            _vm._v(" "),
+                            _vm._m(13),
+                            _vm._v(" "),
+                            _c("td", { attrs: { rowspan: "2" } }),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: "icon-center",
+                                attrs: { rowspan: "2" },
+                              },
+                              [
+                                _c("custom-button", {
+                                  attrs: {
+                                    btn_class: "btn btn-info h-auto",
+                                    icon_class: "fas fa-plus",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(14),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row mx-0 my-3" }, [
+                        _c(
+                          "div",
+                          { staticClass: "col-6" },
+                          [
+                            _c("div", { staticClass: "h4" }, [
+                              _vm._v("Attachment"),
+                            ]),
+                            _vm._v(" "),
+                            _c("custom-button", {
+                              attrs: {
+                                btn_class: "btn btn-info text-light fas py-2",
+                                icon_class: "fas fa-plus",
+                                label: "Add Attachments",
+                              },
+                            }),
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _vm._m(15),
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(16),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row mx-0 my-3" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-grid gap-2 d-md-flex justify-content-md-end",
+                          },
+                          [
+                            _c("custom-button", {
+                              staticClass: "icon-center",
+                              attrs: { btn_class: "btn py-2", label: "Cancel" },
+                            }),
+                            _vm._v(" "),
+                            _c("custom-button", {
+                              staticClass: "icon-center",
+                              attrs: {
+                                btn_class: "btn border fas py-2",
+                                label: "Save As Draft",
+                              },
+                            }),
+                            _vm._v(" "),
+                            _c("custom-button", {
+                              staticClass: "icon-center",
+                              attrs: {
+                                btn_class: "btn btn-info text-light fas py-2",
+                                label: "Submit",
+                              },
+                            }),
+                          ],
+                          1
+                        ),
+                      ]),
+                    ]),
+                  ]),
                 ]),
               ]),
             ]),
@@ -45517,235 +45747,400 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mx-0 my-3" }, [
-      _c("div", { staticClass: "col-lg-2" }),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "col-lg-8",
-          staticStyle: {
-            "padding-right": "20px",
-            "border-right": "1px solid #ccc",
-          },
+    return _c(
+      "div",
+      {
+        staticClass: "col-lg-8",
+        staticStyle: {
+          "padding-right": "20px",
+          "border-right": "1px solid #ccc",
         },
-        [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-3" }, [
-              _c("label", [_vm._v("Assigned Vendor")]),
-              _vm._v(" "),
-              _c("select", { staticClass: "form-control" }, [
-                _c("option", { attrs: { selected: "", disabled: "" } }, [
-                  _vm._v("Enter Vendor"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "canon" } }, [
-                  _vm._v("Dummy 1"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "sony" } }, [_vm._v("Dummy 2")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "nikon" } }, [
-                  _vm._v("Dummy 3"),
-                ]),
-              ]),
-            ]),
+      },
+      [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-3" }, [
+            _c("label", [_vm._v("Assigned Vendor")]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-3" }, [
-              _c("label", { attrs: { for: "attention" } }, [
-                _vm._v("Attention Of"),
+            _c("select", { staticClass: "form-control" }, [
+              _c("option", { attrs: { selected: "", disabled: "" } }, [
+                _vm._v("Enter Vendor"),
               ]),
               _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  id: "attention",
-                  type: "text",
-                  placeholder: "Enter Attention Of",
-                },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-3" }, [
-              _c("label", { attrs: { for: "quotation" } }, [
-                _vm._v("Quotation Of"),
-              ]),
+              _c("option", { attrs: { value: "canon" } }, [_vm._v("Dummy 1")]),
               _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  id: "quotation",
-                  type: "text",
-                  placeholder: "Enter Quotation Of",
-                },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-3" }, [
-              _c("label", [_vm._v("Invoice To")]),
+              _c("option", { attrs: { value: "sony" } }, [_vm._v("Dummy 2")]),
               _vm._v(" "),
-              _c("select", { staticClass: "form-control" }, [
-                _c("option", { attrs: { selected: "", disabled: "" } }, [
-                  _vm._v("Select an Option"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "canon" } }, [
-                  _vm._v("Dummy 1"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "sony" } }, [_vm._v("Dummy 2")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "nikon" } }, [
-                  _vm._v("Dummy 3"),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-12" }, [
-              _c("label", [_vm._v("Vendor Address")]),
-              _vm._v(" "),
-              _c("select", { staticClass: "form-control" }, [
-                _c("option", { attrs: { selected: "", disabled: "" } }, [
-                  _vm._v("Enter Vendor Address"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "canon" } }, [
-                  _vm._v("Dummy 1"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "sony" } }, [_vm._v("Dummy 2")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "nikon" } }, [
-                  _vm._v("Dummy 3"),
-                ]),
-              ]),
+              _c("option", { attrs: { value: "nikon" } }, [_vm._v("Dummy 3")]),
             ]),
           ]),
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-2" }, [
-        _c("div", { staticClass: "col-12" }, [
-          _c("label", [_vm._v("Customer - Contract")]),
           _vm._v(" "),
-          _c("select", { staticClass: "form-control" }, [
-            _c("option", { attrs: { selected: "", disabled: "" } }, [
-              _vm._v("Select Customer"),
+          _c("div", { staticClass: "col-3" }, [
+            _c("label", { attrs: { for: "attention" } }, [
+              _vm._v("Attention Of"),
             ]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "canon" } }, [_vm._v("Dummy 1")]),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                id: "attention",
+                type: "text",
+                placeholder: "Enter Attention Of",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-3" }, [
+            _c("label", { attrs: { for: "quotation" } }, [
+              _vm._v("Quotation Of"),
+            ]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "sony" } }, [_vm._v("Dummy 2")]),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                id: "quotation",
+                type: "text",
+                placeholder: "Enter Quotation Of",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-3" }, [
+            _c("label", [_vm._v("Invoice To")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "nikon" } }, [_vm._v("Dummy 3")]),
+            _c("select", { staticClass: "form-control" }, [
+              _c("option", { attrs: { selected: "", disabled: "" } }, [
+                _vm._v("Select an Option"),
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "canon" } }, [_vm._v("Dummy 1")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "sony" } }, [_vm._v("Dummy 2")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "nikon" } }, [_vm._v("Dummy 3")]),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12" }, [
+            _c("label", [_vm._v("Vendor Address")]),
+            _vm._v(" "),
+            _c("select", { staticClass: "form-control" }, [
+              _c("option", { attrs: { selected: "", disabled: "" } }, [
+                _vm._v("Enter Vendor Address"),
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "canon" } }, [_vm._v("Dummy 1")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "sony" } }, [_vm._v("Dummy 2")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "nikon" } }, [_vm._v("Dummy 3")]),
+            ]),
           ]),
         ]),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("label", [_vm._v("Customer - Contract")]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-12" }, [
-          _c("label", { attrs: { for: "po" } }, [_vm._v("Customer PO No.")]),
+        _c("select", { staticClass: "form-control" }, [
+          _c("option", { attrs: { selected: "", disabled: "" } }, [
+            _vm._v("Select Customer"),
+          ]),
           _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: { id: "po", type: "text", placeholder: "Enter Customer PO" },
-          }),
+          _c("option", { attrs: { value: "canon" } }, [_vm._v("Dummy 1")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "sony" } }, [_vm._v("Dummy 2")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "nikon" } }, [_vm._v("Dummy 3")]),
         ]),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("div", { staticClass: "h4 bold" }, [_vm._v("Cost Detail")]),
+      _c("div", { staticClass: "col-12" }, [
+        _c("label", { attrs: { for: "po" } }, [_vm._v("Customer PO No.")]),
         _vm._v(" "),
-        _c("table", { staticClass: "table" }, [
-          _c("thead", { staticClass: "table-head text-light" }, [
-            _c("tr", [
-              _c("th", [
-                _c("div", { staticClass: "d-inline-flex" }, [
-                  _vm._v(
-                    "\n                          Description\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("th", [
-                _c("div", { staticClass: "d-inline-flex" }, [
-                  _vm._v(
-                    "\n                          QTY\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("th", [
-                _c("div", { staticClass: "d-inline-flex" }, [
-                  _vm._v(
-                    "\n                          UOM\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("th", [
-                _c("div", { staticClass: "d-inline-flex" }, [
-                  _vm._v(
-                    "\n                          Unit Price\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("th", [
-                _c("div", { staticClass: "d-inline-flex" }, [
-                  _vm._v(
-                    "\n                          Discount (%)\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("th", [
-                _c("div", { staticClass: "d-inline-flex" }, [
-                  _vm._v(
-                    "\n                          GST/VAT(%)\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("th", [
-                _c("div", { staticClass: "d-inline-flex" }, [
-                  _vm._v(
-                    "\n                          Currency\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("th", [
-                _c("div", { staticClass: "d-inline-flex" }, [
-                  _vm._v(
-                    "\n                          VAT Amount\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("th", [
-                _c("div", { staticClass: "d-inline-flex" }, [
-                  _vm._v(
-                    "\n                          Sub Total\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("th", [
-                _c("div", { staticClass: "d-inline-flex" }, [
-                  _vm._v(
-                    "\n                          Total\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("th", [
-                _c("div", { staticClass: "d-inline-flex" }, [
-                  _vm._v(
-                    "\n                          Charge To\n                        "
-                  ),
-                ]),
-              ]),
-            ]),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { id: "po", type: "text", placeholder: "Enter Customer PO" },
+        }),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "table-head text-light" }, [
+      _c("tr", [
+        _c("th", [
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _vm._v(
+              "\n                                    Description\n                                "
+            ),
           ]),
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _vm._v(
+              "\n                                    QTY\n                                "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _vm._v(
+              "\n                                    UOM\n                                "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _vm._v(
+              "\n                                    Unit Price\n                                "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _vm._v(
+              "\n                                    Discount (%)\n                                "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _vm._v(
+              "\n                                    GST/VAT(%)\n                                "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _vm._v(
+              "\n                                    Currency\n                                "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _vm._v(
+              "\n                                    VAT Amount\n                                "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _vm._v(
+              "\n                                    Sub Total\n                                "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _vm._v(
+              "\n                                    Total\n                                "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _c("div", { staticClass: "d-inline-flex" }, [
+            _vm._v(
+              "\n                                    Charge To\n                                "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("th", [_c("div", { staticClass: "d-inline-flex" })]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { id: "desc", type: "text", placeholder: "Enter Description" },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { id: "qty", type: "text", placeholder: "Enter" },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("select", { staticClass: "form-control" }, [
+        _c("option", { attrs: { selected: "" } }, [_vm._v("SHP")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "canon" } }, [_vm._v("Dummy 1")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "sony" } }, [_vm._v("Dummy 2")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "nikon" } }, [_vm._v("Dummy 3")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          id: "unitPrice",
+          type: "text",
+          placeholder: "Enter Unit Price",
+        },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { id: "disc", type: "text", placeholder: "0" },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { id: "gst", type: "text", placeholder: "0" },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("select", { staticClass: "form-control" }, [
+        _c("option", { attrs: { selected: "", disabled: "" } }),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "canon" } }, [_vm._v("Dummy 1")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "sony" } }, [_vm._v("Dummy 2")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "nikon" } }, [_vm._v("Dummy 3")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("select", { staticClass: "form-control" }, [
+        _c("option", { attrs: { selected: "", disabled: "" } }),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "canon" } }, [_vm._v("Dummy 1")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "sony" } }, [_vm._v("Dummy 2")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "nikon" } }, [_vm._v("Dummy 3")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "td",
+      { staticClass: "align-right", attrs: { colspan: "6", rowspan: "2" } },
+      [_vm._v("Exchange Rate "), _c("b", [_vm._v("1 USD = 3.6725 AED")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("b", [_vm._v("AED")]), _vm._v(" (Total)")])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "align-right" }, [_c("b", [_vm._v("0.00")])])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", { staticClass: "white-border" }, [
+      _c("td", [_c("b", [_vm._v("USD")]), _vm._v(" (Total)")]),
+      _vm._v(" "),
+      _c("td", { staticClass: "align-right" }, [_vm._v("0.00")]),
+      _vm._v(" "),
+      _c("td", { staticClass: "align-right" }, [_vm._v("475.00")]),
+      _vm._v(" "),
+      _c("td", { staticClass: "align-right" }, [_c("b", [_vm._v("475.00")])]),
+      _vm._v(" "),
+      _c("td"),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6" }, [
+      _c("div", { staticClass: "h4" }, [_vm._v("Notes")]),
+      _vm._v(" "),
+      _c("textarea", { staticClass: "form-control", attrs: { id: "notes" } }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mx-0 my-3 -align-right" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c("div", { staticClass: "h6" }, [_vm._v("Link To")]),
+        _vm._v(" "),
+        _c("select", { staticClass: "form-control" }, [
+          _c("option", { attrs: { selected: "", disabled: "" } }, [
+            _vm._v("Select Item"),
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "canon" } }, [_vm._v("Dummy 1")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "sony" } }, [_vm._v("Dummy 2")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "nikon" } }, [_vm._v("Dummy 3")]),
         ]),
       ]),
     ])

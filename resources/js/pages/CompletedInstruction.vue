@@ -2,13 +2,13 @@
   <div>
     <header-component />
     <div class="row ">
-      <div class="col">
+      <div class="col-1 p-0">
         <sidebar-component />
       </div>
-      <div class="col-11 p-0">
+      <div class="col-11 p-3">
         <page-title-component :datas="data" />
 
-        <div class="col-12 p-0">
+        <div class="p-0 mx-3">
           <div class="card border-0 shadow-sm d-flex">
             <div class="card-header bg-white p-0">
               <ul class="nav mx-3 border-0 d-flex">
