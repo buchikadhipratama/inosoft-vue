@@ -45456,7 +45456,7 @@ var render = function () {
       _c("header-component"),
       _vm._v(" "),
       _c("div", { staticClass: "row " }, [
-        _c("div", { staticClass: "col" }, [_c("sidebar-component")], 1),
+        _c("div", { staticClass: "col-1" }, [_c("sidebar-component")], 1),
         _vm._v(" "),
         _c(
           "div",
@@ -45811,7 +45811,7 @@ var render = function () {
       _c("header-component"),
       _vm._v(" "),
       _c("div", { staticClass: "row " }, [
-        _c("div", { staticClass: "col" }, [_c("sidebar-component")], 1),
+        _c("div", { staticClass: "col-1" }, [_c("sidebar-component")], 1),
         _vm._v(" "),
         _c(
           "div",
