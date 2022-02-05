@@ -18784,6 +18784,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -18806,7 +18807,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         name: "3rd Party Instruction",
         to: "Home"
       }],
-      sortDirection: "asc"
+      sortDirection: "asc",
+      showSearch: false,
+      searchClass: 'fas fa-search',
+      search: ''
     };
   },
   methods: {
@@ -18824,11 +18828,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         data: data
       };
       this.$store.dispatch("thirdPartyInstruction/sort", payload);
+    },
+    searchData: function searchData() {
+      if (this.showSearch === false) {
+        this.showSearch = true;
+        this.searchClass = 'fas fa-times';
+      } else {
+        this.showSearch = false;
+        this.searchClass = 'fas fa-search';
+      }
     }
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)({
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)({
     instructions: "thirdPartyInstruction/getInstructions"
-  }))
+  })), {}, {
+    filteredData: function filteredData() {
+      var search = this.search.toLowerCase();
+      return this.instructions.filter(function (instruction) {
+        var id = instruction.id.toString().toLowerCase();
+        var link = instruction.link.toString().toLowerCase();
+        var type = instruction.type.toString().toLowerCase();
+        var vendor = instruction.vendor.toString().toLowerCase();
+        var attention = instruction.attention.toString().toLowerCase();
+        var quotation = instruction.quotation.toString().toLowerCase();
+        var customerPo = instruction.customerPo.toString().toLowerCase();
+        var status = instruction.status.toString().toLowerCase();
+        return id.includes(search) || link.includes(search) || type.includes(search) || vendor.includes(search) || attention.includes(search) || quotation.includes(search) || customerPo.includes(search) || status.includes(search);
+      });
+    }
+  })
 });
 
 /***/ }),
@@ -45036,21 +45064,49 @@ var render = function () {
                       "div",
                       {
                         staticClass:
-                          "flex-fill d-flex justify-content-end float-end py-2",
+                          "flex-fill d-flex justify-content-end align-items-center float-end py-2",
                       },
                       [
+                        _vm.showSearch
+                          ? _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.search,
+                                  expression: "search",
+                                },
+                              ],
+                              staticClass:
+                                "form-control w-25 h-75 mx-1 bg-light",
+                              attrs: { type: "text", placeholder: "Search" },
+                              domProps: { value: _vm.search },
+                              on: {
+                                input: function ($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.search = $event.target.value
+                                },
+                              },
+                            })
+                          : _vm._e(),
+                        _vm._v(" "),
                         _c("custom-button", {
                           attrs: {
-                            btn_class:
-                              "btn btn-light h-auto fas m-1 border py-2",
-                            icon_class: "fas fa-search",
+                            btn_class: "btn btn-light h-auto m-1 border py-1",
+                            icon_class: _vm.searchClass,
+                          },
+                          on: {
+                            btnClick: function ($event) {
+                              return _vm.searchData()
+                            },
                           },
                         }),
                         _vm._v(" "),
                         _c("custom-button", {
                           attrs: {
-                            btn_class:
-                              "btn btn-light h-auto fas m-1 border py-2",
+                            btn_class: "btn btn-light h-auto m-1 border py-1",
                             icon_class: "fas fa-file-export",
                             label: "Export",
                           },
@@ -45397,7 +45453,7 @@ var render = function () {
                     _vm._v(" "),
                     _c(
                       "tbody",
-                      _vm._l(_vm.instructions, function (instruction, index) {
+                      _vm._l(_vm.filteredData, function (instruction, index) {
                         return _c("tr", { key: index }, [
                           _c("td", [_vm._v(_vm._s(instruction.id))]),
                           _vm._v(" "),

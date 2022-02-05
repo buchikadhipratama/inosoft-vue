@@ -18,9 +18,10 @@
                 <li class="nav-item mt-3">
                   <router-link class="nav-link text-muted active" :to="{name: 'CompletedInstruction'}">Completed</router-link>
                 </li>
-                <div class="flex-fill d-flex justify-content-end float-end py-2">
-                  <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-search" />
-                  <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-file-export" label="Export" />
+                <div class="flex-fill d-flex justify-content-end align-items-center float-end py-2">
+                  <input type="text" class="form-control w-25 h-75 mx-1 bg-light" placeholder="Search" v-if="showSearch" v-model="search">
+                  <custom-button btn_class="btn btn-light h-auto m-1 border py-1" :icon_class="searchClass" @btnClick="searchData()"/>
+                  <custom-button btn_class="btn btn-light h-auto m-1 border py-1" icon_class="fas fa-file-export" label="Export" />
                 </div>
               </ul>
             </div>
@@ -130,7 +131,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(instruction, index) in instructions" :key="index">
+                  <tr v-for="(instruction, index) in filteredData" :key="index">
                     <td>{{instruction.id}}</td>
                     <td>{{instruction.link}}</td>
                     <td class="text-center">
@@ -195,6 +196,9 @@ export default {
         },
       ],
       sortDirection: "asc",
+      showSearch: false,
+      searchClass: 'fas fa-search',
+      search: ''
     };
   },
   methods: {
@@ -209,11 +213,35 @@ export default {
       const payload = { direction, data };
       this.$store.dispatch("thirdPartyInstruction/sort", payload);
     },
+    searchData(){
+      if(this.showSearch === false){
+        this.showSearch = true
+        this.searchClass = 'fas fa-times'
+      }else{
+        this.showSearch = false
+        this.searchClass = 'fas fa-search'
+      }
+    }
   },
   computed: {
     ...mapGetters({
       instructions: "thirdPartyInstruction/getInstructions",
     }),
+    filteredData(){
+      const search = this.search.toLowerCase()
+      return this.instructions.filter(instruction => {
+          const id = instruction.id.toString().toLowerCase()
+          const link = instruction.link.toString().toLowerCase()
+          const type = instruction.type.toString().toLowerCase()
+          const vendor = instruction.vendor.toString().toLowerCase()
+          const attention = instruction.attention.toString().toLowerCase()
+          const quotation = instruction.quotation.toString().toLowerCase()
+          const customerPo = instruction.customerPo.toString().toLowerCase()
+          const status = instruction.status.toString().toLowerCase()
+
+          return id.includes(search) || link.includes(search) || type.includes(search) || vendor.includes(search) || attention.includes(search) || quotation.includes(search) || customerPo.includes(search) || status.includes(search)
+      })
+    }
   },
 };
 </script>
