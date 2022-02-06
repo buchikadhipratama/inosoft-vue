@@ -44893,7 +44893,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "mx-3" }, [
     _c("div", [_c("h2", [_vm._v(_vm._s(_vm.title))])]),
     _vm._v(" "),
     _c("div", [_c("bread-crumb", { attrs: { datas: _vm.datas } })], 1),
@@ -45495,6 +45495,12 @@ var render = function () {
                             instruction.invoice != ""
                               ? _c("i", {
                                   staticClass: "fas fa-chevron-down pointer",
+                                  attrs: {
+                                    "data-bs-toggle": "popover",
+                                    title: "Popover title",
+                                    "data-bs-content":
+                                      "And here's some amazing content. It's very engaging. Right?",
+                                  },
                                 })
                               : _vm._e(),
                           ]),

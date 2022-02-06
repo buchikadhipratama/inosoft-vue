@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mx-3">
         <div>
             <h2>{{title}}</h2>
         </div>

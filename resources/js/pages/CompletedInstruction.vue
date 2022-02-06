@@ -146,7 +146,7 @@
                       <span class="badge inventory-badge rounded-circle">
                         {{instruction.invoice}}
                       </span>
-                      <i v-if="instruction.invoice != ''" class="fas fa-chevron-down pointer"></i>
+                      <i v-if="instruction.invoice != ''" class="fas fa-chevron-down pointer" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?"></i>                      
                     </td>
                     <td>{{instruction.customerPo}}</td>
                     <td>
