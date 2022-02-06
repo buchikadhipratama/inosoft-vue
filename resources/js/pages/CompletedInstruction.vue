@@ -35,11 +35,11 @@
                           Instruction ID
                         </span>
                         <div class="px-2">
-                          <i v-if="sortDirection === 'desc'" class="fas fa-sort-up pointer" @click="sort('asc', 'id')"></i>
-                          <i v-else-if="sortDirection === 'asc'" class="fas fa-sort-down pointer" @click="sort('desc', 'id')"></i>
+                          <font-awesome-icon icon="fa-caret-up" transform="up-3" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-3" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')"/>                        
                           <div v-else class="d-flex flex-column">
-                            <i class="fas fa-caret-right pointer" @click="sort('asc', 'id')"></i>
-                            <i class="fas fa-caret-left pointer" @click="sort('desc', 'id')"></i>
+                            <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'id')"/>
+                            <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'id')"/>
                           </div>
                         </div>
                       </div>
@@ -49,9 +49,13 @@
                         <span class="d-flex align-items-center">
                           Link To
                         </span>
-                        <div class="px-2 d-flex flex-column">
-                          <i class="fas fa-caret-right pointer" @click="sort('asc', 'link')"></i>
-                          <i class="fas fa-caret-left pointer" @click="sort('desc', 'link')"></i>
+                        <div class="px-2">
+                          <font-awesome-icon icon="fa-caret-up" transform="up-2" v-if="sortData.direction === 'desc' && sortData.type === 'link'" class="pointer" @click="sort('asc', 'link')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-2" v-else-if="sortData.direction === 'asc' && sortData.type === 'link'" class="pointer" @click="sort('desc', 'link')"/>                        
+                          <div v-else class="d-flex flex-column">
+                            <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'link')"/>
+                            <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'link')"/>
+                          </div>
                         </div>
                       </div>
                     </th>
@@ -60,9 +64,13 @@
                         <span class="d-flex align-items-center">
                           Instruction Type
                         </span>
-                        <div class="px-2 d-flex flex-column">
-                          <i class="fas fa-caret-right pointer" @click="sort('asc', 'type')"></i>
-                          <i class="fas fa-caret-left pointer" @click="sort('desc', 'type')"></i>
+                        <div class="px-2">
+                          <font-awesome-icon icon="fa-caret-up" transform="up-2" v-if="sortData.direction === 'desc' && sortData.type === 'type'" class="pointer" @click="sort('asc', 'type')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-2" v-else-if="sortData.direction === 'asc' && sortData.type === 'type'" class="pointer" @click="sort('desc', 'type')"/>                        
+                          <div v-else class="d-flex flex-column">
+                            <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'type')"/>
+                            <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'type')"/>
+                          </div>
                         </div>
                       </div>
                     </th>
@@ -71,9 +79,13 @@
                         <span class="d-flex align-items-center">
                           Assigned Vendor
                         </span>
-                        <div class="px-2 d-flex flex-column">
-                          <i class="fas fa-caret-right pointer" @click="sort('asc', 'vendor')"></i>
-                          <i class="fas fa-caret-left pointer" @click="sort('desc', 'vendor')"></i>
+                        <div class="px-2">
+                          <font-awesome-icon icon="fa-caret-up" transform="up-2" v-if="sortData.direction === 'desc' && sortData.type === 'vendor'" class="pointer" @click="sort('asc', 'vendor')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-2" v-else-if="sortData.direction === 'asc' && sortData.type === 'vendor'" class="pointer" @click="sort('desc', 'vendor')"/>                        
+                          <div v-else class="d-flex flex-column">
+                            <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'vendor')"/>
+                            <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'vendor')"/>
+                          </div>
                         </div>
                       </div>
                     </th>
@@ -82,9 +94,13 @@
                         <span class="d-flex align-items-center">
                           Attention Of
                         </span>
-                        <div class="px-2 d-flex flex-column">
-                          <i class="fas fa-caret-right pointer" @click="sort('asc', 'attention')"></i>
-                          <i class="fas fa-caret-left pointer" @click="sort('desc', 'attention')"></i>
+                        <div class="px-2">
+                          <font-awesome-icon icon="fa-caret-up" transform="up-2" v-if="sortData.direction === 'desc' && sortData.type === 'attention'" class="pointer" @click="sort('asc', 'attention')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-2" v-else-if="sortData.direction === 'asc' && sortData.type === 'attention'" class="pointer" @click="sort('desc', 'attention')"/>                        
+                          <div v-else class="d-flex flex-column">
+                            <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'attention')"/>
+                            <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'attention')"/>
+                          </div>
                         </div>
                       </div>
                     </th>
@@ -93,9 +109,13 @@
                         <span class="d-flex align-items-center">
                           Quotation No.
                         </span>
-                        <div class="px-2 d-flex flex-column">
-                          <i class="fas fa-caret-right pointer" @click="sort('asc', 'quotation')"></i>
-                          <i class="fas fa-caret-left pointer" @click="sort('desc', 'quotation')"></i>
+                        <div class="px-2">
+                          <font-awesome-icon icon="fa-caret-up" transform="up-2" v-if="sortData.direction === 'desc' && sortData.type === 'quotation'" class="pointer" @click="sort('asc', 'quotation')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-2" v-else-if="sortData.direction === 'asc' && sortData.type === 'quotation'" class="pointer" @click="sort('desc', 'quotation')"/>                        
+                          <div v-else class="d-flex flex-column">
+                            <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'quotation')"/>
+                            <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'quotation')"/>
+                          </div>
                         </div>
                       </div>
                     </th>
@@ -111,9 +131,13 @@
                         <span class="d-flex align-items-center">
                           Customer PO
                         </span>
-                        <div class="px-2 d-flex flex-column">
-                          <i class="fas fa-caret-right pointer" @click="sort('asc', 'customerPo')"></i>
-                          <i class="fas fa-caret-left pointer" @click="sort('desc', 'customerPo')"></i>
+                        <div class="px-2">
+                          <font-awesome-icon icon="fa-caret-up" transform="up-2" v-if="sortData.direction === 'desc' && sortData.type === 'customerPo'" class="pointer" @click="sort('asc', 'customerPo')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-2" v-else-if="sortData.direction === 'asc' && sortData.type === 'customerPo'" class="pointer" @click="sort('desc', 'customerPo')"/>                        
+                          <div v-else class="d-flex flex-column">
+                            <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'customerPo')"/>
+                            <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'customerPo')"/>
+                          </div>
                         </div>
                       </div>
                     </th>
@@ -122,9 +146,13 @@
                         <span class="d-flex align-items-center">
                           Status
                         </span>
-                        <div class="px-2 d-flex flex-column">
-                          <i class="fas fa-caret-right pointer" @click="sort('asc', 'status')"></i>
-                          <i class="fas fa-caret-left pointer" @click="sort('desc', 'status')"></i>
+                        <div class="px-2">
+                          <font-awesome-icon icon="fa-caret-up" transform="up-2" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-2" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')"/>                        
+                          <div v-else class="d-flex flex-column">
+                            <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'id')"/>
+                            <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'id')"/>
+                          </div>
                         </div>
                       </div>
                     </th>
@@ -174,6 +202,7 @@ import CustomButton from "../components/sub-components/CustomButton.vue";
 import PageTitleComponent from "../components/sub-components/PageTitleComponent.vue";
 import SidebarComponent from "../components/sub-components/SidebarComponent.vue";
 import HeaderComponent from "../components/sub-components/HeaderComponent.vue";
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 export default {
   name: "CompletedInstruction",
@@ -182,6 +211,7 @@ export default {
     CustomButton,
     SidebarComponent,
     HeaderComponent,
+    FontAwesomeIcon
   },
   data() {
     return {
@@ -195,7 +225,10 @@ export default {
           to: "Home",
         },
       ],
-      sortDirection: "asc",
+      sortData: {
+        direction: 'asc',
+        type: 'id'
+      },
       showSearch: false,
       searchClass: 'fas fa-search',
       search: ''
@@ -203,13 +236,8 @@ export default {
   },
   methods: {
     sort(direction, data) {
-      if (data === "id" && direction === "asc") {
-        this.sortDirection = "asc";
-      } else if (data === "id" && direction === "desc") {
-        this.sortDirection = "desc";
-      } else {
-        this.sortDirection = false;
-      }
+      this.sortData.direction = direction;
+      this.sortData.type = data;
       const payload = { direction, data };
       this.$store.dispatch("thirdPartyInstruction/sort", payload);
     },
