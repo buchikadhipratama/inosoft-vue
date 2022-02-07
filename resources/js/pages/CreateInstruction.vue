@@ -224,7 +224,6 @@
                           </div>
                       </div>
                   </div>
-
               </div>
             </div>
           </div>
@@ -281,5 +280,10 @@ export default {
 }
 .table-head {
   background-color: rgb(193, 199, 206);
+}
+
+.icon-center{
+    text-align: center;
+    vertical-align: middle;
 }
 </style>
