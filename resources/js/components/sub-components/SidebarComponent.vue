@@ -1,12 +1,25 @@
 <template>
   <div class="border-end bg-secondary" id="sidebar-wrapper">
-    <div class="list-group list-group-flush">
-      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
-      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
-      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
-      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
-    </div>
+    <ul class="nav nav-pills flex-column mb-auto text-center" style="color:white; text-decoration: none;">
+      <li class="border-bottom p-3">
+        <font-awesome-icon icon="fa-gauge" size="xl" />
+      </li>
+      <li class="border-bottom p-3">
+        <font-awesome-icon icon="fa-compass" size="xl" />
+      </li>
+      <li class="border-bottom p-3">
+        <font-awesome-icon icon="fa-helmet-safety" size="xl" />
+      </li>
+      <li class="border-bottom p-3">
+        <font-awesome-icon icon="fa-coins" size="xl" />
+      </li>
+      <li class="border-bottom p-3">
+        <font-awesome-icon icon="fa-cubes" size="xl" />
+      </li>
+      <li class="border-bottom p-3">
+        <font-awesome-icon icon="fa-gears" size="xl" />
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -27,6 +40,7 @@ export default {
 #sidebar-wrapper {
   height: 100vh;
   position: fixed;
+  width: 6%;
 }
 </style>
 

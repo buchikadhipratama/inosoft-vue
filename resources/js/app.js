@@ -11,12 +11,15 @@ import App from './App.vue';
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 /* import specific icons */
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faGear, faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { faGauge } from '@fortawesome/free-solid-svg-icons';
 import { faCompass } from '@fortawesome/free-solid-svg-icons';
-// import { faUserHel } from '@fortawesome/free-solid-svg-icons';
+import { faHelmetSafety } from '@fortawesome/free-solid-svg-icons';
+import { faCoins } from '@fortawesome/free-solid-svg-icons';
+import { faCubes } from '@fortawesome/free-solid-svg-icons';
+import { faGears } from '@fortawesome/free-solid-svg-icons';
 
 /* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -27,7 +30,10 @@ library.add(faCaretUp)
 library.add(faCaretDown)
 library.add(faGauge)
 library.add(faCompass)
-// library.add(faUserHelmetSafety)
+library.add(faHelmetSafety)
+library.add(faCoins)
+library.add(faCubes)
+library.add(faGears)
 
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)

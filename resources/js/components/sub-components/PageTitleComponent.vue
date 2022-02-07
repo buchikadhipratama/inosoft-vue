@@ -1,10 +1,7 @@
 <template>
-  <div class="mx-3">
+  <div class="mx-3 mt-3">
     <div>
       <h2>{{title}}</h2>
-    </div>
-    <div>
-      <bread-crumb :datas="datas" />
     </div>
     <div>
       <bread-crumb :datas="datas" />
