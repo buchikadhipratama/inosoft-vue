@@ -170,11 +170,16 @@
                     <td>{{instruction.vendor}}</td>
                     <td>{{instruction.attention}}</td>
                     <td>{{instruction.quotation}}</td>
-                    <td class="text-center">
-                      <span class="badge inventory-badge rounded-circle">
-                        {{instruction.invoice}}
+                    <td class="text-center d-flex">
+                      <span class="badge inventory-badge rounded-circle h-100 w-50">
+                        {{instruction.invoice.length}}
                       </span>
-                      <i v-if="instruction.invoice != ''" class="fas fa-chevron-down pointer" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?"></i>                      
+                      <div class="dropdown ms-1">
+                        <i v-if="instruction.invoice != ''" class="fas fa-chevron-down pointer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>   
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                          <li v-for="(invoice, index) in instruction.invoice" :key="'invoice' + index"><a class="dropdown-item" href="#">{{instruction.invoice[index]}}</a></li>
+                        </ul>
+                      </div>                    
                     </td>
                     <td>{{instruction.customerPo}}</td>
                     <td>

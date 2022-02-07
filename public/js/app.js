@@ -18814,6 +18814,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -19620,7 +19625,7 @@ var getDefaultState = function getDefaultState() {
       vendor: "Amarit & Associates Co Ltd",
       attention: "Rigsite Transportation",
       quotation: "MITME-AGL-001",
-      invoice: 1,
+      invoice: ['Invoice1', 'Invoice2', 'Invoice3'],
       customerPo: "PO003",
       status: "Completed"
     }, {
@@ -19630,7 +19635,7 @@ var getDefaultState = function getDefaultState() {
       vendor: "Amarit & Associates Co Ltd",
       attention: "Rigprep Transportation from Agility Kizad",
       quotation: "MITME-AGL-001",
-      invoice: 1,
+      invoice: ['Invoice1'],
       customerPo: "PO01",
       status: "Canceled"
     }, {
@@ -19640,7 +19645,7 @@ var getDefaultState = function getDefaultState() {
       vendor: "ALMANSOORI INSPECTION SERVICE COMPANY LLC",
       attention: "ALMANSOORI INSPECTION SERVICE COMPANY LLC",
       quotation: "MITME-AGL-001 (Appendix 1)",
-      invoice: 1,
+      invoice: ['Invoice1', 'Invoice2'],
       customerPo: "",
       status: "Completed"
     }]
@@ -45859,33 +45864,69 @@ var render = function () {
                           _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(instruction.quotation))]),
                           _vm._v(" "),
-                          _c("td", { staticClass: "text-center" }, [
+                          _c("td", { staticClass: "text-center d-flex" }, [
                             _c(
                               "span",
                               {
                                 staticClass:
-                                  "badge inventory-badge rounded-circle",
+                                  "badge inventory-badge rounded-circle h-100 w-50",
                               },
                               [
                                 _vm._v(
                                   "\n                      " +
-                                    _vm._s(instruction.invoice) +
+                                    _vm._s(instruction.invoice.length) +
                                     "\n                    "
                                 ),
                               ]
                             ),
                             _vm._v(" "),
-                            instruction.invoice != ""
-                              ? _c("i", {
-                                  staticClass: "fas fa-chevron-down pointer",
+                            _c("div", { staticClass: "dropdown ms-1" }, [
+                              instruction.invoice != ""
+                                ? _c("i", {
+                                    staticClass: "fas fa-chevron-down pointer",
+                                    attrs: {
+                                      type: "button",
+                                      id: "dropdownMenuButton1",
+                                      "data-bs-toggle": "dropdown",
+                                      "aria-expanded": "false",
+                                    },
+                                  })
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _c(
+                                "ul",
+                                {
+                                  staticClass: "dropdown-menu",
                                   attrs: {
-                                    "data-bs-toggle": "popover",
-                                    title: "Popover title",
-                                    "data-bs-content":
-                                      "And here's some amazing content. It's very engaging. Right?",
+                                    "aria-labelledby": "dropdownMenuButton1",
                                   },
-                                })
-                              : _vm._e(),
+                                },
+                                _vm._l(
+                                  instruction.invoice,
+                                  function (invoice, index) {
+                                    return _c(
+                                      "li",
+                                      { key: "invoice" + index },
+                                      [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass: "dropdown-item",
+                                            attrs: { href: "#" },
+                                          },
+                                          [
+                                            _vm._v(
+                                              _vm._s(instruction.invoice[index])
+                                            ),
+                                          ]
+                                        ),
+                                      ]
+                                    )
+                                  }
+                                ),
+                                0
+                              ),
+                            ]),
                           ]),
                           _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(instruction.customerPo))]),
