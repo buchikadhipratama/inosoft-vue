@@ -26,11 +26,11 @@ const routes = [
       name: 'CreateInstruction',
       component: CreateInstruction
   },
-    {
-        path: '/det',
-        name: 'DetailInstruction',
-        component: DetailInstruction
-    },
+  {
+      path: '/det',
+      name: 'DetailInstruction',
+      component: DetailInstruction
+  },
   {
     path: '/example-page1',
     name: 'ExamplePage1',
