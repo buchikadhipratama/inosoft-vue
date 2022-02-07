@@ -4,6 +4,7 @@ import Home from '../pages/Home.vue'
 import CompletedInstruction from '../pages/CompletedInstruction.vue'
 import ExamplePage1 from '../pages/ExamplePage1.vue'
 import CreateInstruction from "../pages/CreateInstruction.vue";
+import DetailInstruction from "../pages/DetailInstruction";
 
 Vue.use(VueRouter)
 
@@ -27,7 +28,12 @@ const routes = [
     path: '/example-page1',
     name: 'ExamplePage1',
     component: ExamplePage1
-  }
+  },
+    {
+        path: '/det',
+        name: 'DetailInstruction',
+        component: DetailInstruction
+    }
 ]
 
 const router = new VueRouter({
