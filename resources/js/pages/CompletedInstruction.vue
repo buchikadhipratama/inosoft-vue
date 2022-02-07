@@ -3,14 +3,11 @@
 
 <header-component />
 <div class="d-flex">
-  
-
-  <div class="p-0 sidebar">
-    
+  <div class="p-0 sidebar"> 
     <sidebar-component />
   </div>
-  <div class="ms-5 ps-5">
-    <div class="row ">
+  <div class="ms-5 ps-5 w-100">
+    <div class="row">
       <div class="col-12 p-3">
         <page-title-component :datas="data" />
 

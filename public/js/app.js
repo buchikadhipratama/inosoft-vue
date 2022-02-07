@@ -18836,9 +18836,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 
 
@@ -45814,8 +45811,8 @@ var render = function () {
       _c("div", { staticClass: "d-flex" }, [
         _c("div", { staticClass: "p-0 sidebar" }, [_c("sidebar-component")], 1),
         _vm._v(" "),
-        _c("div", { staticClass: "ms-5 ps-5" }, [
-          _c("div", { staticClass: "row " }, [
+        _c("div", { staticClass: "ms-5 ps-5 w-100" }, [
+          _c("div", { staticClass: "row" }, [
             _c(
               "div",
               { staticClass: "col-12 p-3" },
