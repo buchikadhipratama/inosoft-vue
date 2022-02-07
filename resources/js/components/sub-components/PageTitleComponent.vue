@@ -6,9 +6,6 @@
     <div>
       <bread-crumb :datas="datas" />
     </div>
-    <div>
-      <bread-crumb :datas="datas" />
-    </div>
   </div>
 </template>
 
