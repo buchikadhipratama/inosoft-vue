@@ -202,14 +202,31 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="p-2"><b>Vendor Invoice</b></div>
-                    <div class="align-right">
-                        <custom-button btn_class="btn btn-info h-auto fas m-3 py-2 text-light align-right" icon_class="fas fa-plus" label="Add Vendor Invoice"/>
+                    <div class="top-p">
+                        <div class="grid-container1">
+                            <div class="item grid-item3">
+                                <b>Vendor Invoice</b>
+                            </div>
+                            <div class="item grid-item4">
+                                <custom-button btn_class="btn btn-info fas py-2 text-light" icon_class="fas fa-plus" label="Add Vendor Invoice"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="mt-5 mx-3 border">
+                    <div class="header">
+                        <span class="text-light">For Internal Only</span>
+                    </div>
                     <div class="grid-container">
-                        <div> </div>
+                        <div class="item grid-item5">
+                            Attachments <br>
+                            <custom-button btn_class="btn btn-info fas py-2 text-light" icon_class="fas fa-plus" label="Add Attachments"/>
+                        </div>
+                        <div class="item grid-item5 border-dot">
+                            Internal Note <br>
+                            <custom-button btn_class="btn btn-info fas py-2 text-light" icon_class="fas fa-plus" label="Add Internal Note"/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -250,9 +267,22 @@ table {
     margin-bottom: 0rem;
 }
 
+.header {
+    padding: 10px;
+    text-align: left;
+    background: #373b3e;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
 .fa-trash {
     color: red;
     text-align: right;
+}
+
+.top-p {
+    padding-top: 10px;
 }
 
 .font-20 {
@@ -292,14 +322,19 @@ table {
     border: #a0aec0 1px;
 }
 
-.align-right {
-    text-align: right;
+.border-dot {
+    border-left: #a0aec0 2px solid;
+    border-left-style: dashed;
 }
 
 .grid-container {
     display: grid;
     grid-gap: 1px;
     margin: 20px;
+}
+
+.grid-container1 {
+    display: grid;
 }
 
 .grid-item {
@@ -320,6 +355,24 @@ table {
     padding-top: 20px;
     padding-right: 30px;
     font-size: 12px;
+}
+
+.grid-item3 {
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.grid-item4 {
+    text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.grid-item5 {
+    text-align: left;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .item {
