@@ -18537,13 +18537,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PageTitleComponent",
   props: {
     title: {
       type: String,
-      "default": '3rd Party Instruction'
+      "default": "3rd Party Instruction"
     },
     datas: {
       type: Array,
@@ -18571,6 +18574,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _CustomButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CustomButton.vue */ "./resources/js/components/sub-components/CustomButton.vue");
+/* harmony import */ var _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/vue-fontawesome */ "./node_modules/@fortawesome/vue-fontawesome/index.es.js");
 //
 //
 //
@@ -18584,10 +18588,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "SidebarComponent",
   components: {
-    "custom-button": _CustomButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    "custom-button": _CustomButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    FontAwesomeIcon: _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon
   }
 });
 
@@ -19419,6 +19425,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+
+ // import { faUserHel } from '@fortawesome/free-solid-svg-icons';
+
 /* import font awesome icon component */
 
 
@@ -19427,6 +19436,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_3__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faUserSecret);
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_3__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faCaretUp);
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_3__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faCaretDown);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_3__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faGauge);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_3__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faCompass); // library.add(faUserHelmetSafety)
+
 /* add font awesome icon component */
 
 vue__WEBPACK_IMPORTED_MODULE_6__["default"].component('font-awesome-icon', _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_4__.FontAwesomeIcon);
@@ -44883,14 +44895,12 @@ var render = function () {
                 "router-link",
                 {
                   staticClass: "dropdown-item",
-                  attrs: { to: { name: "ServiceInstruction" } },
+                  attrs: { to: { name: "CreateInstruction" } },
                 },
                 [
                   _c("custom-button", {
                     attrs: {
                       btn_class: "btn",
-                      "data-bs-toggle": "dropdown",
-                      "aria-expanded": "false",
                       icon_class: "fas fa-wrench",
                       label: " Service Instruction",
                     },
@@ -45009,6 +45019,8 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "mx-3" }, [
     _c("div", [_c("h2", [_vm._v(_vm._s(_vm.title))])]),
+    _vm._v(" "),
+    _c("div", [_c("bread-crumb", { attrs: { datas: _vm.datas } })], 1),
     _vm._v(" "),
     _c("div", [_c("bread-crumb", { attrs: { datas: _vm.datas } })], 1),
   ])
@@ -46194,7 +46206,7 @@ var render = function () {
       _c("header-component"),
       _vm._v(" "),
       _c("div", { staticClass: "row " }, [
-        _c("div", { staticClass: "col" }, [_c("sidebar-component")], 1),
+        _c("div", { staticClass: "col-1" }, [_c("sidebar-component")], 1),
         _vm._v(" "),
         _c(
           "div",
@@ -46863,7 +46875,7 @@ var render = function () {
     [
       _c("header-component"),
       _vm._v(" "),
-      _c("div", { staticClass: "row " }, [
+      _c("div", { staticClass: "row align-items-start" }, [
         _c("div", { staticClass: "col" }, [_c("sidebar-component")], 1),
         _vm._v(" "),
         _c(

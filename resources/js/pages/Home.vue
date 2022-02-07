@@ -1,7 +1,7 @@
 <template>
   <div>
     <header-component />
-    <div class="row ">
+    <div class="row align-items-start">
       <div class="col">
         <sidebar-component />
       </div>

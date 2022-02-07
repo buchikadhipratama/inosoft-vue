@@ -12,11 +12,13 @@
 
 <script>
 import CustomButton from "./CustomButton.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
   name: "SidebarComponent",
   components: {
     "custom-button": CustomButton,
+    FontAwesomeIcon,
   },
 };
 </script>
