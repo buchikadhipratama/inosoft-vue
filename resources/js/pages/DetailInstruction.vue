@@ -1,13 +1,350 @@
 <template>
+    <div class="row m-4 justify-content-center">
+        <div class="col-12 p-0">
+            <page-title-component :datas="data"/>
+        </div>
+        <div class="col-12 p-0">
+            <div class="card border-0 shadow-sm d-flex">
+                <div class="card-header bg-white p-0">
+                    <ul class="nav mx-3 border-0 d-flex">
+                        <li class="nav-item mt-3">
+                            <router-link class="nav-link text-muted" :to="{name: 'Home'}">Open</router-link>
+                        </li>
+                        <li class="nav-item mt-3">
+                            <router-link class="nav-link text-muted" :to="{name: 'CompletedInstruction'}">Completed</router-link>
+                        </li>
+                        <div class="flex-fill d-flex justify-content-end float-end py-2">
+                            <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-search"/>
+                            <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-file-export" label="Export"/>
+                        </div>
+                    </ul>
+                </div>
+                <div class="mt-5 mx-3 border">
+                    <div class="grid-container">
+                        <div class="grid-item item">Type</div>
+                        <div class="grid-item item">SI No.</div>
+                        <div class="grid-item item">Transfer No</div>
+                        <div class="grid-item item">Customer</div>
+                        <div class="grid-item item">Customer PO</div>
+                        <div class="grid-item item">Status</div>
 
+                        <div class="grid-item1 item1">Service Instruction</div>
+                        <div class="grid-item1 item1">SI-2022-0001</div>
+                        <div class="grid-item1 item1">
+                        <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-link" label="INSP-2020-0001"/>
+                        </div>
+                        <div class="grid-item1 item1">ADNOC - Hail & Ghasha</div>
+                        <div class="grid-item1 item1">PO01</div>
+                        <div class="grid-item1 item1">
+                            <span class="badge bg-secondary rounded-pill instruction-badge">
+                                In Progress
+                            </span>
+                        </div>
+
+                        <div class="grid-item2 item2">Auttention Of</div>
+                        <div class="grid-item2 item2">Assigned Vendor</div>
+                        <div class="grid-item2 item2">Vendor Quotation No.</div>
+                        <div class="grid-item2 item3">Vendro Address</div>
+
+                        <div class="grid-item1 item4">Rigrep Transportation</div>
+                        <div class="grid-item1 item4">Amarit & Associates Logisitics Co Ltd</div>
+                        <div class="grid-item1 item4">MITME-ADL-001</div>
+                        <div class="grid-item1 item5">1 SOI PRIDI PHANOMYONG 28 (THANIPATTANA) SUKHUMVIT 71 ROAD, KWAENG KLONGTON NUA, KHET WATTANA,</div>
+                    </div>
+                </div>
+                <div class="mt-5 mx-3 p-4">
+                    <h5><b>Cost Detail</b></h5>
+                    <div class="border">
+                        <table class="table">
+                            <thead class="table-head text-light">
+                                <tr>
+                                    <th>
+                                        <div class="d-inline-flex align-items-center">
+                                            <span>
+                                                Description
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="align-right">
+                                            <span>
+                                                Qty
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="d-inline-flex align-items-center">
+                                            <span>
+                                                UOM
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="align-right">
+                                            <span>
+                                                Unit Price
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="align-right">
+                                            <span>
+                                                Discount (%)
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="align-right tab1">
+                                            <span>
+                                                GST/VAT (%)
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="d-inline-flex align-items-center">
+                                            <span>
+                                                Currency
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="align-right">
+                                            <span>
+                                                GST/VAT Amount
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="align-right">
+                                            <span>
+                                                Sub Total
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="align-right">
+                                            <span>
+                                                Total
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="d-inline-flex align-items-center">
+                                            <span>
+                                                Charge To
+                                            </span>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Rigprep Transportation</td>
+                                    <td class="align-right">5</td>
+                                    <td>SHP</td>
+                                    <td class="align-right">100.00</td>
+                                    <td class="align-right">5</td>
+                                    <td class="align-right">
+                                        0
+                                        <i class="fas fa-arrow-right"></i>
+                                    </td>
+                                    <td>USD</td>
+                                    <td class="align-right">0.00</td>
+                                    <td class="align-right">475.00</td>
+                                    <td class="align-right">475.00</td>
+                                    <td>MITME</td>
+                                </tr>
+
+                                <tr class="white-border">
+                                    <td class="align-right" colspan="6">Exchange Rate <b>1 USD = 3.6725 AED</b></td>
+                                    <td><b>AED</b> (Total)</td>
+                                    <td class="align-right">0.00</td>
+                                    <td class="align-right">1,744.44</td>
+                                    <td class="align-right"><b>1,744.44</b></td>
+                                    <td></td>
+                                </tr>
+
+                                <tr class="white-border">
+                                    <td class="align-right" colspan="6"></td>
+                                    <td><b>USD</b> (Total)</td>
+                                    <td class="align-right">0.00</td>
+                                    <td class="align-right">475.00</td>
+                                    <td class="align-right"><b>475.00</b></td>
+                                    <td></td>
+                                </tr>
+
+                                <tr class="white-border">
+                                    <td class="font-20" colspan="5">Attachment</td>
+                                    <td class="font-20">Notes</td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <span class="color-used">
+                                            <i class="icon-center fas fa-paperclip fa-sm"></i>
+                                            Certificate.jpg
+                                        </span>
+                                        <br>
+                                        by Winata Admin on 11/jan/22 09:47 AM
+                                    </td>
+                                    <td>
+                                        <i class="fas fa-trash fa-sm "></i>
+                                    </td>
+                                    <td class="white-border" colspan="3"></td>
+                                    <td class="white-border">Rigprep Transportation</td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <custom-button btn_class="btn btn-info h-auto fas m-3 py-2 text-light" icon_class="fas fa-plus" label="Add Attachments"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="p-2"><b>Vendor Invoice</b></div>
+                    <div class="align-right">
+                        <custom-button btn_class="btn btn-info h-auto fas m-3 py-2 text-light align-right" icon_class="fas fa-plus" label="Add Vendor Invoice"/>
+                    </div>
+                </div>
+                <div class="mt-5 mx-3 border">
+                    <div class="grid-container">
+                        <div> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
+import PageTitleComponent from "../components/sub-components/PageTitleComponent";
+import CustomButton from "../components/sub-components/CustomButton";
+
 export default {
-    name: "DetailInstruction"
+    name: "DetailInstruction",
+    components: {
+        PageTitleComponent,
+        CustomButton
+    },
+    data() {
+        return {
+            data: [
+                {
+                    name: "Vendor Management",
+                    to: "Home"
+                },
+                {
+                    name: "3rd Party Instruction",
+                    to: "Home"
+                }
+            ]
+        }
+    }
 }
 </script>
 
 <style scoped>
 
+table {
+    margin-bottom: 0rem;
+}
+
+.fa-trash {
+    color: red;
+    text-align: right;
+}
+
+.font-20 {
+    font-size: 20px;
+}
+
+.color-used {
+    color: #0baccc;
+}
+
+.icon-center {
+    text-align: center;
+    vertical-align: middle
+}
+
+.white-border {
+    border-bottom: white
+}
+
+.gray-border {
+    border-bottom: #dee2e6
+}
+
+.tab1 {
+    padding-right: 15px;
+}
+
+.table-head {
+    background-color: rgb(193, 199, 206);
+}
+
+.nav-item .active {
+    border-bottom: 4px solid rgb(0, 171, 185) !important;
+}
+
+.border {
+    border: #a0aec0 1px;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.grid-container {
+    display: grid;
+    grid-gap: 1px;
+    margin: 20px;
+}
+
+.grid-item {
+    text-align: left;
+    padding-right: 30px;
+    font-size: 12px;
+}
+
+.grid-item1 {
+    text-align: left;
+    padding-right: 30px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.grid-item2 {
+    text-align: left;
+    padding-top: 20px;
+    padding-right: 30px;
+    font-size: 12px;
+}
+
+.item {
+    grid-row: 1;
+}
+
+.item1 {
+    grid-row: 2;
+}
+
+.item2 {
+    grid-row: 3;
+}
+
+.item3 {
+    grid-column: 4 / span 3;
+    grid-row: 3;
+}
+
+.item4 {
+    grid-row: 4;
+}
+
+.item5 {
+    grid-column: 4 / span 3;
+    grid-row: 4;
+}
 </style>
