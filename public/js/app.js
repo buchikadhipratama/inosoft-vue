@@ -24861,7 +24861,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.table-head[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\ntbody[data-v-05e1a0cc] {\n  border-top: none !important;\n}\n.nav-item .active[data-v-05e1a0cc] {\n  border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.fa-caret-right[data-v-05e1a0cc] {\n  transform: rotateZ(-90deg);\n}\n.fa-caret-left[data-v-05e1a0cc] {\n  transform: rotateZ(-90deg);\n}\n.pointer[data-v-05e1a0cc] {\n  cursor: pointer;\n}\n.instruction-badge[data-v-05e1a0cc] {\n  width: 6rem;\n}\n.inventory-badge[data-v-05e1a0cc] {\n  background-color: rgb(0, 171, 185);\n}\n.badge-completed[data-v-05e1a0cc] {\n  background-color: rgb(0, 176, 111);\n}\n.badge-canceled[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nth[data-v-05e1a0cc] {\n  padding: 0.25rem;\n}\n.table-head[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\ntbody[data-v-05e1a0cc] {\n  border-top: none !important;\n}\n.nav-item .active[data-v-05e1a0cc] {\n  border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.pointer[data-v-05e1a0cc] {\n  cursor: pointer;\n}\n.instruction-badge[data-v-05e1a0cc] {\n  width: 6rem;\n}\n.inventory-badge[data-v-05e1a0cc] {\n  background-color: rgb(0, 171, 185);\n}\n.badge-completed[data-v-05e1a0cc] {\n  background-color: rgb(0, 176, 111);\n}\n.badge-canceled[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -45157,7 +45157,10 @@ var render = function () {
                           _c("div", { staticClass: "d-inline-flex" }, [
                             _c(
                               "span",
-                              { staticClass: "d-flex align-items-center" },
+                              {
+                                staticClass:
+                                  "d-flex align-items-center my-1 my-1",
+                              },
                               [
                                 _vm._v(
                                   "\n                        Instruction ID\n                      "
@@ -45175,7 +45178,7 @@ var render = function () {
                                       staticClass: "pointer",
                                       attrs: {
                                         icon: "fa-caret-up",
-                                        transform: "up-3",
+                                        transform: "down-3",
                                       },
                                       on: {
                                         click: function ($event) {
@@ -45186,7 +45189,7 @@ var render = function () {
                                   : _vm.sortData.direction === "asc" &&
                                     _vm.sortData.type === "id"
                                   ? _c("font-awesome-icon", {
-                                      staticClass: "pointer",
+                                      staticClass: "pointer mt-2",
                                       attrs: {
                                         icon: "fa-caret-down",
                                         transform: "down-3",
@@ -45239,7 +45242,7 @@ var render = function () {
                           _c("div", { staticClass: "d-inline-flex" }, [
                             _c(
                               "span",
-                              { staticClass: "d-flex align-items-center" },
+                              { staticClass: "d-flex align-items-center my-1" },
                               [
                                 _vm._v(
                                   "\n                        Link To\n                      "
@@ -45257,7 +45260,7 @@ var render = function () {
                                       staticClass: "pointer",
                                       attrs: {
                                         icon: "fa-caret-up",
-                                        transform: "up-2",
+                                        transform: "down-3",
                                       },
                                       on: {
                                         click: function ($event) {
@@ -45268,10 +45271,10 @@ var render = function () {
                                   : _vm.sortData.direction === "asc" &&
                                     _vm.sortData.type === "link"
                                   ? _c("font-awesome-icon", {
-                                      staticClass: "pointer",
+                                      staticClass: "pointer mt-2",
                                       attrs: {
                                         icon: "fa-caret-down",
-                                        transform: "down-2",
+                                        transform: "down-3",
                                       },
                                       on: {
                                         click: function ($event) {
@@ -45321,7 +45324,7 @@ var render = function () {
                           _c("div", { staticClass: "d-inline-flex" }, [
                             _c(
                               "span",
-                              { staticClass: "d-flex align-items-center" },
+                              { staticClass: "d-flex align-items-center my-1" },
                               [
                                 _vm._v(
                                   "\n                        Instruction Type\n                      "
@@ -45339,7 +45342,7 @@ var render = function () {
                                       staticClass: "pointer",
                                       attrs: {
                                         icon: "fa-caret-up",
-                                        transform: "up-2",
+                                        transform: "down-3",
                                       },
                                       on: {
                                         click: function ($event) {
@@ -45350,10 +45353,10 @@ var render = function () {
                                   : _vm.sortData.direction === "asc" &&
                                     _vm.sortData.type === "type"
                                   ? _c("font-awesome-icon", {
-                                      staticClass: "pointer",
+                                      staticClass: "pointer mt-2",
                                       attrs: {
                                         icon: "fa-caret-down",
-                                        transform: "down-2",
+                                        transform: "down-3",
                                       },
                                       on: {
                                         click: function ($event) {
@@ -45403,7 +45406,7 @@ var render = function () {
                           _c("div", { staticClass: "d-inline-flex" }, [
                             _c(
                               "span",
-                              { staticClass: "d-flex align-items-center" },
+                              { staticClass: "d-flex align-items-center my-1" },
                               [
                                 _vm._v(
                                   "\n                        Assigned Vendor\n                      "
@@ -45421,7 +45424,7 @@ var render = function () {
                                       staticClass: "pointer",
                                       attrs: {
                                         icon: "fa-caret-up",
-                                        transform: "up-2",
+                                        transform: "down-3",
                                       },
                                       on: {
                                         click: function ($event) {
@@ -45432,10 +45435,10 @@ var render = function () {
                                   : _vm.sortData.direction === "asc" &&
                                     _vm.sortData.type === "vendor"
                                   ? _c("font-awesome-icon", {
-                                      staticClass: "pointer",
+                                      staticClass: "pointer mt-2",
                                       attrs: {
                                         icon: "fa-caret-down",
-                                        transform: "down-2",
+                                        transform: "down-3",
                                       },
                                       on: {
                                         click: function ($event) {
@@ -45485,7 +45488,7 @@ var render = function () {
                           _c("div", { staticClass: "d-inline-flex" }, [
                             _c(
                               "span",
-                              { staticClass: "d-flex align-items-center" },
+                              { staticClass: "d-flex align-items-center my-1" },
                               [
                                 _vm._v(
                                   "\n                        Attention Of\n                      "
@@ -45503,7 +45506,7 @@ var render = function () {
                                       staticClass: "pointer",
                                       attrs: {
                                         icon: "fa-caret-up",
-                                        transform: "up-2",
+                                        transform: "down-3",
                                       },
                                       on: {
                                         click: function ($event) {
@@ -45514,10 +45517,10 @@ var render = function () {
                                   : _vm.sortData.direction === "asc" &&
                                     _vm.sortData.type === "attention"
                                   ? _c("font-awesome-icon", {
-                                      staticClass: "pointer",
+                                      staticClass: "pointer mt-2",
                                       attrs: {
                                         icon: "fa-caret-down",
-                                        transform: "down-2",
+                                        transform: "down-3",
                                       },
                                       on: {
                                         click: function ($event) {
@@ -45573,7 +45576,7 @@ var render = function () {
                           _c("div", { staticClass: "d-inline-flex" }, [
                             _c(
                               "span",
-                              { staticClass: "d-flex align-items-center" },
+                              { staticClass: "d-flex align-items-center my-1" },
                               [
                                 _vm._v(
                                   "\n                        Quotation No.\n                      "
@@ -45591,7 +45594,7 @@ var render = function () {
                                       staticClass: "pointer",
                                       attrs: {
                                         icon: "fa-caret-up",
-                                        transform: "up-2",
+                                        transform: "down-3",
                                       },
                                       on: {
                                         click: function ($event) {
@@ -45602,10 +45605,10 @@ var render = function () {
                                   : _vm.sortData.direction === "asc" &&
                                     _vm.sortData.type === "quotation"
                                   ? _c("font-awesome-icon", {
-                                      staticClass: "pointer",
+                                      staticClass: "pointer mt-2",
                                       attrs: {
                                         icon: "fa-caret-down",
-                                        transform: "down-2",
+                                        transform: "down-3",
                                       },
                                       on: {
                                         click: function ($event) {
@@ -45663,7 +45666,7 @@ var render = function () {
                           _c("div", { staticClass: "d-inline-flex" }, [
                             _c(
                               "span",
-                              { staticClass: "d-flex align-items-center" },
+                              { staticClass: "d-flex align-items-center my-1" },
                               [
                                 _vm._v(
                                   "\n                        Customer PO\n                      "
@@ -45681,7 +45684,7 @@ var render = function () {
                                       staticClass: "pointer",
                                       attrs: {
                                         icon: "fa-caret-up",
-                                        transform: "up-2",
+                                        transform: "down-3",
                                       },
                                       on: {
                                         click: function ($event) {
@@ -45692,10 +45695,10 @@ var render = function () {
                                   : _vm.sortData.direction === "asc" &&
                                     _vm.sortData.type === "customerPo"
                                   ? _c("font-awesome-icon", {
-                                      staticClass: "pointer",
+                                      staticClass: "pointer mt-2",
                                       attrs: {
                                         icon: "fa-caret-down",
-                                        transform: "down-2",
+                                        transform: "down-3",
                                       },
                                       on: {
                                         click: function ($event) {
@@ -45751,7 +45754,7 @@ var render = function () {
                           _c("div", { staticClass: "d-inline-flex" }, [
                             _c(
                               "span",
-                              { staticClass: "d-flex align-items-center" },
+                              { staticClass: "d-flex align-items-center my-1" },
                               [
                                 _vm._v(
                                   "\n                        Status\n                      "
@@ -45764,30 +45767,30 @@ var render = function () {
                               { staticClass: "px-2" },
                               [
                                 _vm.sortData.direction === "desc" &&
-                                _vm.sortData.type === "id"
+                                _vm.sortData.type === "status"
                                   ? _c("font-awesome-icon", {
                                       staticClass: "pointer",
                                       attrs: {
                                         icon: "fa-caret-up",
-                                        transform: "up-2",
+                                        transform: "down-3",
                                       },
                                       on: {
                                         click: function ($event) {
-                                          return _vm.sort("asc", "id")
+                                          return _vm.sort("asc", "status")
                                         },
                                       },
                                     })
                                   : _vm.sortData.direction === "asc" &&
-                                    _vm.sortData.type === "id"
+                                    _vm.sortData.type === "status"
                                   ? _c("font-awesome-icon", {
-                                      staticClass: "pointer",
+                                      staticClass: "pointer mt-2",
                                       attrs: {
                                         icon: "fa-caret-down",
-                                        transform: "down-2",
+                                        transform: "down-3",
                                       },
                                       on: {
                                         click: function ($event) {
-                                          return _vm.sort("desc", "id")
+                                          return _vm.sort("desc", "status")
                                         },
                                       },
                                     })
@@ -45803,7 +45806,7 @@ var render = function () {
                                           },
                                           on: {
                                             click: function ($event) {
-                                              return _vm.sort("asc", "id")
+                                              return _vm.sort("asc", "status")
                                             },
                                           },
                                         }),
@@ -45816,7 +45819,7 @@ var render = function () {
                                           },
                                           on: {
                                             click: function ($event) {
-                                              return _vm.sort("desc", "id")
+                                              return _vm.sort("desc", "status")
                                             },
                                           },
                                         }),
@@ -45942,7 +45945,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("th", [
-      _c("div", { staticClass: "d-inline-flex align-items-center" }, [
+      _c("div", { staticClass: "d-inline-flex align-items-center my-1" }, [
         _c("span", [
           _vm._v("\n                        Invoice\n                      "),
         ]),

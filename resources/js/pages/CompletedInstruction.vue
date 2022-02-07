@@ -31,12 +31,12 @@
                   <tr>
                     <th>
                       <div class="d-inline-flex">
-                        <span class="d-flex align-items-center">
+                        <span class="d-flex align-items-center my-1 my-1">
                           Instruction ID
                         </span>
                         <div class="px-2">
-                          <font-awesome-icon icon="fa-caret-up" transform="up-3" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')"/>
-                          <font-awesome-icon icon="fa-caret-down" transform="down-3" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')"/>                        
+                          <font-awesome-icon icon="fa-caret-up" transform="down-3" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-3" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer mt-2" @click="sort('desc', 'id')"/>                        
                           <div v-else class="d-flex flex-column">
                             <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'id')"/>
                             <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'id')"/>
@@ -46,12 +46,12 @@
                     </th>
                     <th>
                       <div class="d-inline-flex">
-                        <span class="d-flex align-items-center">
+                        <span class="d-flex align-items-center my-1">
                           Link To
                         </span>
                         <div class="px-2">
-                          <font-awesome-icon icon="fa-caret-up" transform="up-2" v-if="sortData.direction === 'desc' && sortData.type === 'link'" class="pointer" @click="sort('asc', 'link')"/>
-                          <font-awesome-icon icon="fa-caret-down" transform="down-2" v-else-if="sortData.direction === 'asc' && sortData.type === 'link'" class="pointer" @click="sort('desc', 'link')"/>                        
+                          <font-awesome-icon icon="fa-caret-up" transform="down-3" v-if="sortData.direction === 'desc' && sortData.type === 'link'" class="pointer" @click="sort('asc', 'link')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-3" v-else-if="sortData.direction === 'asc' && sortData.type === 'link'" class="pointer mt-2" @click="sort('desc', 'link')"/>                        
                           <div v-else class="d-flex flex-column">
                             <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'link')"/>
                             <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'link')"/>
@@ -61,12 +61,12 @@
                     </th>
                     <th>
                       <div class="d-inline-flex">
-                        <span class="d-flex align-items-center">
+                        <span class="d-flex align-items-center my-1">
                           Instruction Type
                         </span>
                         <div class="px-2">
-                          <font-awesome-icon icon="fa-caret-up" transform="up-2" v-if="sortData.direction === 'desc' && sortData.type === 'type'" class="pointer" @click="sort('asc', 'type')"/>
-                          <font-awesome-icon icon="fa-caret-down" transform="down-2" v-else-if="sortData.direction === 'asc' && sortData.type === 'type'" class="pointer" @click="sort('desc', 'type')"/>                        
+                          <font-awesome-icon icon="fa-caret-up" transform="down-3" v-if="sortData.direction === 'desc' && sortData.type === 'type'" class="pointer" @click="sort('asc', 'type')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-3" v-else-if="sortData.direction === 'asc' && sortData.type === 'type'" class="pointer mt-2" @click="sort('desc', 'type')"/>                        
                           <div v-else class="d-flex flex-column">
                             <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'type')"/>
                             <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'type')"/>
@@ -76,12 +76,12 @@
                     </th>
                     <th>
                       <div class="d-inline-flex">
-                        <span class="d-flex align-items-center">
+                        <span class="d-flex align-items-center my-1">
                           Assigned Vendor
                         </span>
                         <div class="px-2">
-                          <font-awesome-icon icon="fa-caret-up" transform="up-2" v-if="sortData.direction === 'desc' && sortData.type === 'vendor'" class="pointer" @click="sort('asc', 'vendor')"/>
-                          <font-awesome-icon icon="fa-caret-down" transform="down-2" v-else-if="sortData.direction === 'asc' && sortData.type === 'vendor'" class="pointer" @click="sort('desc', 'vendor')"/>                        
+                          <font-awesome-icon icon="fa-caret-up" transform="down-3" v-if="sortData.direction === 'desc' && sortData.type === 'vendor'" class="pointer" @click="sort('asc', 'vendor')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-3" v-else-if="sortData.direction === 'asc' && sortData.type === 'vendor'" class="pointer mt-2" @click="sort('desc', 'vendor')"/>                        
                           <div v-else class="d-flex flex-column">
                             <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'vendor')"/>
                             <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'vendor')"/>
@@ -91,12 +91,12 @@
                     </th>
                     <th>
                       <div class="d-inline-flex">
-                        <span class="d-flex align-items-center">
+                        <span class="d-flex align-items-center my-1">
                           Attention Of
                         </span>
                         <div class="px-2">
-                          <font-awesome-icon icon="fa-caret-up" transform="up-2" v-if="sortData.direction === 'desc' && sortData.type === 'attention'" class="pointer" @click="sort('asc', 'attention')"/>
-                          <font-awesome-icon icon="fa-caret-down" transform="down-2" v-else-if="sortData.direction === 'asc' && sortData.type === 'attention'" class="pointer" @click="sort('desc', 'attention')"/>                        
+                          <font-awesome-icon icon="fa-caret-up" transform="down-3" v-if="sortData.direction === 'desc' && sortData.type === 'attention'" class="pointer" @click="sort('asc', 'attention')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-3" v-else-if="sortData.direction === 'asc' && sortData.type === 'attention'" class="pointer mt-2" @click="sort('desc', 'attention')"/>                        
                           <div v-else class="d-flex flex-column">
                             <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'attention')"/>
                             <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'attention')"/>
@@ -106,12 +106,12 @@
                     </th>
                     <th>
                       <div class="d-inline-flex">
-                        <span class="d-flex align-items-center">
+                        <span class="d-flex align-items-center my-1">
                           Quotation No.
                         </span>
                         <div class="px-2">
-                          <font-awesome-icon icon="fa-caret-up" transform="up-2" v-if="sortData.direction === 'desc' && sortData.type === 'quotation'" class="pointer" @click="sort('asc', 'quotation')"/>
-                          <font-awesome-icon icon="fa-caret-down" transform="down-2" v-else-if="sortData.direction === 'asc' && sortData.type === 'quotation'" class="pointer" @click="sort('desc', 'quotation')"/>                        
+                          <font-awesome-icon icon="fa-caret-up" transform="down-3" v-if="sortData.direction === 'desc' && sortData.type === 'quotation'" class="pointer" @click="sort('asc', 'quotation')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-3" v-else-if="sortData.direction === 'asc' && sortData.type === 'quotation'" class="pointer mt-2" @click="sort('desc', 'quotation')"/>                        
                           <div v-else class="d-flex flex-column">
                             <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'quotation')"/>
                             <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'quotation')"/>
@@ -120,7 +120,7 @@
                       </div>
                     </th>
                     <th>
-                      <div class="d-inline-flex align-items-center">
+                      <div class="d-inline-flex align-items-center my-1">
                         <span>
                           Invoice
                         </span>
@@ -128,12 +128,12 @@
                     </th>
                     <th>
                       <div class="d-inline-flex">
-                        <span class="d-flex align-items-center">
+                        <span class="d-flex align-items-center my-1">
                           Customer PO
                         </span>
                         <div class="px-2">
-                          <font-awesome-icon icon="fa-caret-up" transform="up-2" v-if="sortData.direction === 'desc' && sortData.type === 'customerPo'" class="pointer" @click="sort('asc', 'customerPo')"/>
-                          <font-awesome-icon icon="fa-caret-down" transform="down-2" v-else-if="sortData.direction === 'asc' && sortData.type === 'customerPo'" class="pointer" @click="sort('desc', 'customerPo')"/>                        
+                          <font-awesome-icon icon="fa-caret-up" transform="down-3" v-if="sortData.direction === 'desc' && sortData.type === 'customerPo'" class="pointer" @click="sort('asc', 'customerPo')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-3" v-else-if="sortData.direction === 'asc' && sortData.type === 'customerPo'" class="pointer mt-2" @click="sort('desc', 'customerPo')"/>                        
                           <div v-else class="d-flex flex-column">
                             <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'customerPo')"/>
                             <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'customerPo')"/>
@@ -143,15 +143,15 @@
                     </th>
                     <th>
                       <div class="d-inline-flex">
-                        <span class="d-flex align-items-center">
+                        <span class="d-flex align-items-center my-1">
                           Status
                         </span>
                         <div class="px-2">
-                          <font-awesome-icon icon="fa-caret-up" transform="up-2" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')"/>
-                          <font-awesome-icon icon="fa-caret-down" transform="down-2" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')"/>                        
+                          <font-awesome-icon icon="fa-caret-up" transform="down-3" v-if="sortData.direction === 'desc' && sortData.type === 'status'" class="pointer" @click="sort('asc', 'status')"/>
+                          <font-awesome-icon icon="fa-caret-down" transform="down-3" v-else-if="sortData.direction === 'asc' && sortData.type === 'status'" class="pointer mt-2" @click="sort('desc', 'status')"/>                        
                           <div v-else class="d-flex flex-column">
-                            <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'id')"/>
-                            <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'id')"/>
+                            <font-awesome-icon icon="fa-caret-up" transform="down-5" class="pointer" @click="sort('asc', 'status')"/>
+                            <font-awesome-icon icon="fa-caret-down" transform="up-5" class="pointer" @click="sort('desc', 'status')"/>
                           </div>
                         </div>
                       </div>
@@ -275,6 +275,11 @@ export default {
 </script>
 
 <style scoped>
+
+th {
+  padding: 0.25rem;
+}
+
 .table-head {
   background-color: rgb(193, 199, 206);
 }
@@ -285,14 +290,6 @@ tbody {
 
 .nav-item .active {
   border-bottom: 4px solid rgb(0, 171, 185) !important;
-}
-
-.fa-caret-right {
-  transform: rotateZ(-90deg);
-}
-
-.fa-caret-left {
-  transform: rotateZ(-90deg);
 }
 
 .pointer {
