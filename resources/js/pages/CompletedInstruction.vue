@@ -1,11 +1,17 @@
  <template>
-  <div>
-    <header-component />
+ <div>
+
+<header-component />
+<div class="d-flex">
+  
+
+  <div class="p-0 sidebar">
+    
+    <sidebar-component />
+  </div>
+  <div class="ms-5 ps-5">
     <div class="row ">
-      <div class="col-1 p-0">
-        <sidebar-component />
-      </div>
-      <div class="col-11 p-3">
+      <div class="col-12 p-3">
         <page-title-component :datas="data" />
 
         <div class="p-0 mx-3">
@@ -199,6 +205,8 @@
       </div>
     </div>
   </div>
+</div>
+</div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="border-end bg-dark" id="sidebar-wrapper">
+  <div class="border-end bg-secondary" id="sidebar-wrapper">
     <div class="list-group list-group-flush">
       <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
       <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
@@ -20,4 +20,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#sidebar-wrapper {
+  height: 100vh;
+  position: fixed;
+}
+</style>
 
