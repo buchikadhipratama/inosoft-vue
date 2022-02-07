@@ -18543,7 +18543,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     title: {
       type: String,
-      "default": '3rd Party Instruction'
+      "default": "3rd Party Instruction"
     },
     datas: {
       type: Array,
@@ -18571,6 +18571,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _CustomButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CustomButton.vue */ "./resources/js/components/sub-components/CustomButton.vue");
+/* harmony import */ var _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/vue-fontawesome */ "./node_modules/@fortawesome/vue-fontawesome/index.es.js");
+//
 //
 //
 //
@@ -18621,10 +18623,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "SidebarComponent",
   components: {
-    "custom-button": _CustomButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    "custom-button": _CustomButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    FontAwesomeIcon: _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon
   }
 });
 
@@ -19385,12 +19389,22 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /* import specific icons */
 
 
+
+
+
+ // import { faUserHel } from '@fortawesome/free-solid-svg-icons';
+
 /* import font awesome icon component */
 
 
 /* add icons to the library */
 
 _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_3__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faUserSecret);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_3__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faCaretUp);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_3__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faCaretDown);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_3__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faGauge);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_3__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faCompass); // library.add(faUserHelmetSafety)
+
 /* add font awesome icon component */
 
 vue__WEBPACK_IMPORTED_MODULE_6__["default"].component('font-awesome-icon', _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_4__.FontAwesomeIcon);
@@ -24838,7 +24852,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.sidebar[data-v-2c6240f2] {\n  background: lightgrey;\n  float: left;\n  position: absolute;\n  height: 100%;\n  border-right: 100%;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.sidebar[data-v-2c6240f2] {\n  background: lightgrey;\n  float: left;\n  position: absolute;\n  height: 100vh;\n  border-right: 100%;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -44847,14 +44861,12 @@ var render = function () {
                 "router-link",
                 {
                   staticClass: "dropdown-item",
-                  attrs: { to: { name: "ServiceInstruction" } },
+                  attrs: { to: { name: "CreateInstruction" } },
                 },
                 [
                   _c("custom-button", {
                     attrs: {
                       btn_class: "btn",
-                      "data-bs-toggle": "dropdown",
-                      "aria-expanded": "false",
                       icon_class: "fas fa-wrench",
                       label: " Service Instruction",
                     },
@@ -44972,7 +44984,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", [_c("h2", [_vm._v(_vm._s(_vm.title))])]),
+    _c("div", { staticClass: "mt-4" }, [_c("h2", [_vm._v(_vm._s(_vm.title))])]),
     _vm._v(" "),
     _c("div", [_c("bread-crumb", { attrs: { datas: _vm.datas } })], 1),
   ])
@@ -45001,74 +45013,51 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "nav",
     {
-      staticClass: "sidebar d-flex flex-column flex-shrink-0 bg-light",
+      staticClass: "sidebar d-flex flex-column bg-dark",
       staticStyle: { width: "4.5rem" },
     },
     [
       _c(
         "ul",
         {
-          staticClass:
-            "nav nav-pills nav-flush flex-column mb-auto text-center",
+          staticClass: "nav nav-pills flex-column mb-auto text-center",
+          staticStyle: { color: "white", "text-decoration": "none" },
         },
         [
           _c(
             "li",
-            { staticClass: "border-bottom" },
+            { staticClass: "border-bottom p-3" },
             [
-              _c(
-                "router-link",
-                { attrs: { to: { name: "CreateInstruction" } } },
-                [
-                  _c("custom-button", {
-                    attrs: {
-                      btn_class: "btn h-auto fas m-3 py-2",
-                      icon_class: "fas fa-plus",
-                    },
-                  }),
-                ],
-                1
-              ),
+              _c("font-awesome-icon", {
+                attrs: { icon: "fa-gauge", size: "xl" },
+              }),
             ],
             1
           ),
           _vm._v(" "),
           _c(
             "li",
-            { staticClass: "border-bottom" },
+            { staticClass: "border-bottom p-3" },
             [
-              _c(
-                "router-link",
-                { attrs: { to: { name: "CreateInstruction" } } },
-                [
-                  _c("custom-button", {
-                    attrs: {
-                      btn_class: "btn h-auto fas m-3 py-2",
-                      icon_class: "fas fa-plus",
-                    },
-                  }),
-                ],
-                1
-              ),
+              _c("font-awesome-icon", {
+                attrs: { icon: "fa-compass", size: "xl" },
+              }),
             ],
             1
           ),
           _vm._v(" "),
           _c(
             "li",
-            { staticClass: "border-bottom" },
+            { staticClass: "border-bottom p-3" },
             [
               _c(
                 "router-link",
                 { attrs: { to: { name: "CreateInstruction" } } },
                 [
-                  _c("custom-button", {
-                    attrs: {
-                      btn_class: "btn h-auto fas m-3 py-2",
-                      icon_class: "fas fa-plus",
-                    },
+                  _c("font-awesome-icon", {
+                    attrs: { icon: "fa-gauge", size: "xl" },
                   }),
                 ],
                 1
@@ -45099,54 +45088,10 @@ var render = function () {
           ),
         ]
       ),
-      _vm._v(" "),
-      _vm._m(0),
     ]
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "dropdown border-top" }, [
-      _c(
-        "ul",
-        {
-          staticClass: "dropdown-menu text-small shadow",
-          attrs: { "aria-labelledby": "dropdownUser3" },
-        },
-        [
-          _c("li", [
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("New project..."),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Settings"),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Profile"),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("li", [_c("hr", { staticClass: "dropdown-divider" })]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Sign out"),
-            ]),
-          ]),
-        ]
-      ),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -46392,8 +46337,8 @@ var render = function () {
     [
       _c("header-component"),
       _vm._v(" "),
-      _c("div", { staticClass: "row " }, [
-        _c("div", { staticClass: "col-1" }, [_c("sidebar-component")], 1),
+      _c("div", { staticClass: "row align-items-start" }, [
+        _c("div", { staticClass: "col" }, [_c("sidebar-component")], 1),
         _vm._v(" "),
         _c(
           "div",
