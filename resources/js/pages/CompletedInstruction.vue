@@ -21,11 +21,14 @@
                 <div class="flex-fill d-flex justify-content-end align-items-center float-end py-2">
                   <input type="text" class="form-control w-25 h-75 mx-1 bg-light" placeholder="Search" v-if="showSearch" v-model="search">
                   <custom-button btn_class="btn btn-light h-auto m-1 border py-1" :icon_class="searchClass" @btnClick="searchData()" />
-                  <custom-button btn_class="btn btn-light h-auto m-1 border py-1" icon_class="fas fa-file-export" label="Export" />
+                  <export-excel class="btn btn-light h-auto m-1 border py-1" :data="instructions" worksheet="Completed Instruction" name="Completed_Instruction.xls">
+                    <i class="fas fa-file-export"></i>
+                    Export
+                  </export-excel>
                 </div>
               </ul>
             </div>
-            <div class="mt-5 mx-3">
+            <div class="mx-3 mt-5 pt-3">
               <table class="table">
                 <thead class="table-head text-light">
                   <tr>
@@ -208,6 +211,7 @@ import PageTitleComponent from "../components/sub-components/PageTitleComponent.
 import SidebarComponent from "../components/sub-components/SidebarComponent.vue";
 import HeaderComponent from "../components/sub-components/HeaderComponent.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import ExportExcel from "vue-excel-export/VueComment.vue";
 
 export default {
   name: "CompletedInstruction",
@@ -217,6 +221,7 @@ export default {
     SidebarComponent,
     HeaderComponent,
     FontAwesomeIcon,
+    ExportExcel,
   },
   data() {
     return {
