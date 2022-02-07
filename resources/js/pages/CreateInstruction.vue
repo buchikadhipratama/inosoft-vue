@@ -80,70 +80,150 @@
                   </div>
                 </div>
 
-                <div class="card-body">
-                  <div class="h4 bold">Cost Detail</div>
-                  <table class="table">
-                    <thead class="table-head text-light">
-                      <tr>
-                        <th>
-                          <div class="d-inline-flex">
-                            Description
+                  <div class="card-body">
+                      <div class="h4 bold">Cost Detail</div>
+                      <table class="table">
+                          <thead class="table-head text-light">
+                          <tr>
+                              <th>
+                                  <div class="d-inline-flex">
+                                      Description
+                                  </div>
+                              </th>
+                              <th>
+                                  <div class="d-inline-flex">
+                                      QTY
+                                  </div>
+                              </th>
+                              <th>
+                                  <div class="d-inline-flex">
+                                      UOM
+                                  </div>
+                              </th>
+                              <th>
+                                  <div class="d-inline-flex">
+                                      Unit Price
+                                  </div>
+                              </th>
+                              <th>
+                                  <div class="d-inline-flex">
+                                      Discount (%)
+                                  </div>
+                              </th>
+                              <th>
+                                  <div class="d-inline-flex">
+                                      GST/VAT(%)
+                                  </div>
+                              </th>
+                              <th>
+                                  <div class="d-inline-flex">
+                                      Currency
+                                  </div>
+                              </th>
+                              <th>
+                                  <div class="d-inline-flex">
+                                      VAT Amount
+                                  </div>
+                              </th>
+                              <th>
+                                  <div class="d-inline-flex">
+                                      Sub Total
+                                  </div>
+                              </th>
+                              <th>
+                                  <div class="d-inline-flex">
+                                      Total
+                                  </div>
+                              </th>
+                              <th>
+                                  <div class="d-inline-flex">
+                                      Charge To
+                                  </div>
+                              </th>
+                              <th>
+                                  <div class="d-inline-flex">
+                                  </div></th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                              <td><input id="desc" class="form-control" type="text" placeholder="Enter Description"></td>
+                              <td><input id="qty" class="form-control" type="text" placeholder="Enter"></td>
+                              <td><select class="form-control">
+                                  <option selected>SHP</option>
+                                  <option value="canon">Dummy 1</option>
+                                  <option value="sony">Dummy 2</option>
+                                  <option value="nikon">Dummy 3</option>
+                              </select></td>
+                              <td><input id="unitPrice" class="form-control" type="text" placeholder="Enter Unit Price"></td>
+                              <td><input id="disc" class="form-control" type="text" placeholder="0"></td>
+                              <td><input id="gst" class="form-control" type="text" placeholder="0"></td>
+                              <td><select class="form-control">
+                                  <option selected disabled></option>
+                                  <option value="canon">Dummy 1</option>
+                                  <option value="sony">Dummy 2</option>
+                                  <option value="nikon">Dummy 3</option>
+                              </select></td>
+                              <td>0.00</td>
+                              <td>0.00</td>
+                              <td>0.00</td>
+                              <td><select class="form-control">
+                                  <option selected disabled></option>
+                                  <option value="canon">Dummy 1</option>
+                                  <option value="sony">Dummy 2</option>
+                                  <option value="nikon">Dummy 3</option>
+                              </select></td>
+                              <td><custom-button btn_class="btn btn-secondary h-auto" icon_class="fas fa-minus"/></td>
+                          </tr>
+
+                          <tr class="white-border">
+                              <td class="align-right" colspan="6" rowspan="2">Exchange Rate <b>1 USD = 3.6725 AED</b></td>
+                              <td><b>AED</b> (Total)</td>
+                              <td class="align-right">0.00</td>
+                              <td class="align-right">0.00</td>
+                              <td class="align-right"><b>0.00</b></td>
+                              <td rowspan="2"></td>
+                              <td rowspan="2" class="icon-center"><custom-button btn_class="btn btn-info h-auto" icon_class="fas fa-plus"/></td>
+                          </tr>
+
+                          <tr class="white-border">
+                              <td><b>USD</b> (Total)</td>
+                              <td class="align-right">0.00</td>
+                              <td class="align-right">475.00</td>
+                              <td class="align-right"><b>475.00</b></td>
+                              <td></td>
+                          </tr>
+                          </tbody>
+                      </table>
+                      <div class="row mx-0 my-3">
+                          <div class="col-6">
+                              <div class="h4">Attachment</div>
+                              <custom-button btn_class="btn btn-info text-light fas py-2" icon_class="fas fa-plus" label="Add Attachments"/>
                           </div>
-                        </th>
-                        <th>
-                          <div class="d-inline-flex">
-                            QTY
+                          <div class="col-6">
+                              <div class="h4">Notes</div>
+                              <textarea id="notes" class="form-control" ></textarea>
                           </div>
-                        </th>
-                        <th>
-                          <div class="d-inline-flex">
-                            UOM
+                      </div>
+                      <div class="row mx-0 my-3 -align-right">
+                          <div class="col-6">
+                              <div class="h6">Link To</div>
+                              <select class="form-control">
+                                  <option selected disabled>Select Item</option>
+                                  <option value="canon">Dummy 1</option>
+                                  <option value="sony">Dummy 2</option>
+                                  <option value="nikon">Dummy 3</option>
+                              </select>
                           </div>
-                        </th>
-                        <th>
-                          <div class="d-inline-flex">
-                            Unit Price
+                      </div>
+                      <div class="row mx-0 my-3">
+                          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                              <custom-button class="icon-center" btn_class="btn py-2" label="Cancel"/>
+                              <custom-button class="icon-center" btn_class="btn border fas py-2" label="Save As Draft"/>
+                              <custom-button class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
                           </div>
-                        </th>
-                        <th>
-                          <div class="d-inline-flex">
-                            Discount (%)
-                          </div>
-                        </th>
-                        <th>
-                          <div class="d-inline-flex">
-                            GST/VAT(%)
-                          </div>
-                        </th>
-                        <th>
-                          <div class="d-inline-flex">
-                            Currency
-                          </div>
-                        </th>
-                        <th>
-                          <div class="d-inline-flex">
-                            VAT Amount
-                          </div>
-                        </th>
-                        <th>
-                          <div class="d-inline-flex">
-                            Sub Total
-                          </div>
-                        </th>
-                        <th>
-                          <div class="d-inline-flex">
-                            Total
-                          </div>
-                        </th>
-                        <th>
-                          <div class="d-inline-flex">
-                            Charge To
-                          </div>
-                        </th>
-                      </tr>
-                    </thead>
-                  </table>
-                </div>
+                      </div>
+                  </div>
 
               </div>
             </div>
