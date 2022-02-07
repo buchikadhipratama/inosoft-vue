@@ -20,7 +20,7 @@ use App\Http\Controllers\VendorController;
 
 Route::get('/', [VendorController::class, 'index']);
 Route::get('/add', [VendorController::class, 'create']);
-Route::get('/add', [VendorController::class, 'store']);
+Route::post('/add', [VendorController::class, 'store']);
 Route::get('/edit/{id}', [VendorController::class, 'edit']);
-Route::get('/edit/{id}', [VendorController::class, 'update']);
-Route::get('/{id}', [VendorController::class, 'destroy']);
+Route::post('/edit/{id}', [VendorController::class, 'update']);
+Route::delete('/{id}', [VendorController::class, 'destroy']);
