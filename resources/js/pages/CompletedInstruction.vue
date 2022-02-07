@@ -38,6 +38,7 @@
                 </div>
               </ul>
             </div>
+            <div class="mx-3 mt-5 pt-3">
               <table class="table">
                 <thead class="table-head text-light">
                   <tr>
@@ -206,12 +207,13 @@
                 </tbody>
               </table>
             </div>
+              
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 </template>
 
