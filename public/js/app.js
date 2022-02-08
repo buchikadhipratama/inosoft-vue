@@ -25132,7 +25132,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nth[data-v-05e1a0cc] {\n  padding: 0.25rem;\n}\n.table-head[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\ntbody[data-v-05e1a0cc] {\n  border-top: none !important;\n}\n.nav-item .active[data-v-05e1a0cc] {\n  border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.pointer[data-v-05e1a0cc] {\n  cursor: pointer;\n}\n.instruction-badge[data-v-05e1a0cc] {\n  width: 6rem;\n}\n.inventory-badge[data-v-05e1a0cc] {\n  background-color: rgb(0, 171, 185);\n}\n.badge-completed[data-v-05e1a0cc] {\n  background-color: rgb(0, 176, 111);\n}\n.badge-canceled[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nth[data-v-05e1a0cc] {\n  padding: 0.25rem;\n}\n.table-head[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\ntbody[data-v-05e1a0cc] {\n  border-top: none !important;\n}\n.nav-item .active[data-v-05e1a0cc] {\n  border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.pointer[data-v-05e1a0cc] {\n  cursor: pointer;\n}\n.instruction-badge[data-v-05e1a0cc] {\n  width: 6rem;\n}\n.inventory-badge[data-v-05e1a0cc] {\n  background-color: rgb(0, 171, 185);\n  height: 100%;\n  width: 45%;\n}\n.badge-completed[data-v-05e1a0cc] {\n  background-color: rgb(0, 176, 111);\n}\n.badge-canceled[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -46807,7 +46807,7 @@ var render = function () {
                                       "span",
                                       {
                                         staticClass:
-                                          "badge inventory-badge rounded-circle h-100 w-50",
+                                          "badge inventory-badge rounded-circle",
                                       },
                                       [
                                         _vm._v(
