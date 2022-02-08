@@ -18842,8 +18842,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 
 
@@ -19524,14 +19522,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _pages_Home_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/Home.vue */ "./resources/js/pages/Home.vue");
 /* harmony import */ var _pages_CompletedInstruction_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pages/CompletedInstruction.vue */ "./resources/js/pages/CompletedInstruction.vue");
-/* harmony import */ var _pages_ExamplePage1_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../pages/ExamplePage1.vue */ "./resources/js/pages/ExamplePage1.vue");
-/* harmony import */ var _pages_CreateInstruction_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/CreateInstruction.vue */ "./resources/js/pages/CreateInstruction.vue");
-/* harmony import */ var _pages_ServiceInstruction_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../pages/ServiceInstruction.vue */ "./resources/js/pages/ServiceInstruction.vue");
-/* harmony import */ var _pages_LogisticInstruction_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../pages/LogisticInstruction.vue */ "./resources/js/pages/LogisticInstruction.vue");
+/* harmony import */ var _pages_CreateInstruction_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../pages/CreateInstruction.vue */ "./resources/js/pages/CreateInstruction.vue");
+/* harmony import */ var _pages_ServiceInstruction_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/ServiceInstruction.vue */ "./resources/js/pages/ServiceInstruction.vue");
+/* harmony import */ var _pages_LogisticInstruction_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../pages/LogisticInstruction.vue */ "./resources/js/pages/LogisticInstruction.vue");
 /* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 
 
@@ -19540,8 +19537,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-vue__WEBPACK_IMPORTED_MODULE_6__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_7__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_5__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]);
 var routes = [{
   path: '/',
   name: 'Home',
@@ -19553,21 +19549,17 @@ var routes = [{
 }, {
   path: '/create-instruction',
   name: 'CreateInstruction',
-  component: _pages_CreateInstruction_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
-}, {
-  path: '/example-page1',
-  name: 'ExamplePage1',
-  component: _pages_ExamplePage1_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  component: _pages_CreateInstruction_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
   path: '/service-instruction',
   name: 'ServiceInstruction',
-  component: _pages_ServiceInstruction_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+  component: _pages_ServiceInstruction_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
 }, {
   path: '/logistic-instruction',
   name: 'LogisticInstruction',
-  component: _pages_LogisticInstruction_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+  component: _pages_LogisticInstruction_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
 }];
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_7__["default"]({
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]({
   // mode: history,
   base: process.env.BASE_URL,
   routes: routes
@@ -44745,43 +44737,6 @@ component.options.__file = "resources/js/pages/CreateInstruction.vue"
 
 /***/ }),
 
-/***/ "./resources/js/pages/ExamplePage1.vue":
-/*!*********************************************!*\
-  !*** ./resources/js/pages/ExamplePage1.vue ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _ExamplePage1_vue_vue_type_template_id_51c60e41___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExamplePage1.vue?vue&type=template&id=51c60e41& */ "./resources/js/pages/ExamplePage1.vue?vue&type=template&id=51c60e41&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-var script = {}
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
-  _ExamplePage1_vue_vue_type_template_id_51c60e41___WEBPACK_IMPORTED_MODULE_0__.render,
-  _ExamplePage1_vue_vue_type_template_id_51c60e41___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/pages/ExamplePage1.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
 /***/ "./resources/js/pages/Home.vue":
 /*!*************************************!*\
   !*** ./resources/js/pages/Home.vue ***!
@@ -45343,23 +45298,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateInstruction_vue_vue_type_template_id_7c6a2eb9_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateInstruction_vue_vue_type_template_id_7c6a2eb9_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CreateInstruction.vue?vue&type=template&id=7c6a2eb9&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/CreateInstruction.vue?vue&type=template&id=7c6a2eb9&scoped=true&");
-
-
-/***/ }),
-
-/***/ "./resources/js/pages/ExamplePage1.vue?vue&type=template&id=51c60e41&":
-/*!****************************************************************************!*\
-  !*** ./resources/js/pages/ExamplePage1.vue?vue&type=template&id=51c60e41& ***!
-  \****************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExamplePage1_vue_vue_type_template_id_51c60e41___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExamplePage1_vue_vue_type_template_id_51c60e41___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
-/* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExamplePage1_vue_vue_type_template_id_51c60e41___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExamplePage1.vue?vue&type=template&id=51c60e41& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/ExamplePage1.vue?vue&type=template&id=51c60e41&");
 
 
 /***/ }),
@@ -46016,7 +45954,7 @@ var render = function () {
                               [
                                 _c("i", { staticClass: "fas fa-file-export" }),
                                 _vm._v(
-                                  "\n                    Export\n                  "
+                                  "\n                       Export\n                     "
                                 ),
                               ]
                             ),
@@ -46040,7 +45978,7 @@ var render = function () {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                          Instruction ID\n                        "
+                                      "\n                             Instruction ID\n                           "
                                     ),
                                   ]
                                 ),
@@ -46125,7 +46063,7 @@ var render = function () {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                          Link To\n                        "
+                                      "\n                             Link To\n                           "
                                     ),
                                   ]
                                 ),
@@ -46213,7 +46151,7 @@ var render = function () {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                          Instruction Type\n                        "
+                                      "\n                             Instruction Type\n                           "
                                     ),
                                   ]
                                 ),
@@ -46301,7 +46239,7 @@ var render = function () {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                          Assigned Vendor\n                        "
+                                      "\n                             Assigned Vendor\n                           "
                                     ),
                                   ]
                                 ),
@@ -46392,7 +46330,7 @@ var render = function () {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                          Attention Of\n                        "
+                                      "\n                             Attention Of\n                           "
                                     ),
                                   ]
                                 ),
@@ -46489,7 +46427,7 @@ var render = function () {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                          Quotation No.\n                        "
+                                      "\n                             Quotation No.\n                           "
                                     ),
                                   ]
                                 ),
@@ -46588,7 +46526,7 @@ var render = function () {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                          Customer PO\n                        "
+                                      "\n                             Customer PO\n                           "
                                     ),
                                   ]
                                 ),
@@ -46685,7 +46623,7 @@ var render = function () {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                          Status\n                        "
+                                      "\n                             Status\n                           "
                                     ),
                                   ]
                                 ),
@@ -46783,9 +46721,9 @@ var render = function () {
                                     ? _c("i", { staticClass: "fas fa-truck" })
                                     : _c("i", { staticClass: "fas fa-wrench" }),
                                   _vm._v(
-                                    "\n                      " +
+                                    "\n                         " +
                                       _vm._s(instruction.type) +
-                                      "\n                    "
+                                      "\n                       "
                                   ),
                                 ]),
                                 _vm._v(" "),
@@ -46811,9 +46749,9 @@ var render = function () {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                        " +
+                                          "\n                           " +
                                             _vm._s(instruction.invoice.length) +
-                                            "\n                      "
+                                            "\n                         "
                                         ),
                                       ]
                                     ),
@@ -46893,9 +46831,9 @@ var render = function () {
                                         },
                                         [
                                           _vm._v(
-                                            "\n                        " +
+                                            "\n                           " +
                                               _vm._s(instruction.status) +
-                                              "\n                      "
+                                              "\n                         "
                                           ),
                                         ]
                                       )
@@ -46908,9 +46846,9 @@ var render = function () {
                                         },
                                         [
                                           _vm._v(
-                                            "\n                        " +
+                                            "\n                           " +
                                               _vm._s(instruction.status) +
-                                              "\n                      "
+                                              "\n                         "
                                           ),
                                         ]
                                       )
@@ -46944,7 +46882,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "d-inline-flex align-items-center my-1" }, [
         _c("span", [
           _vm._v(
-            "\n                          Invoice\n                        "
+            "\n                             Invoice\n                           "
           ),
         ]),
       ]),
@@ -47587,38 +47525,6 @@ var staticRenderFns = [
         ]),
       ]),
     ])
-  },
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/ExamplePage1.vue?vue&type=template&id=51c60e41&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/ExamplePage1.vue?vue&type=template&id=51c60e41& ***!
-  \*******************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function () {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Halaman Contoh 1")])])
   },
 ]
 render._withStripped = true
