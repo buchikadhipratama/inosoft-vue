@@ -122,17 +122,17 @@
                                         Currency
                                     </div>
                                 </th>
-                                <th width="10%">
+                                <th width="8%" class="text-right">
                                     <div class="d-inline-flex">
                                         VAT Amount
                                     </div>
                                 </th>
-                                <th width="10%">
+                                <th width="8%" class="text-right">
                                     <div class="d-inline-flex">
                                         Sub Total
                                     </div>
                                 </th>
-                                <th>
+                                <th width="8%" class="text-right">
                                     <div class="d-inline-flex">
                                         Total
                                     </div>
@@ -148,26 +148,25 @@
                         <tbody>
                             <tr>
                                 <td><input id="desc" class="form-control" type="text" placeholder="Enter Description"></td>
-                                <td><input id="qty" class="form-control" type="text" placeholder="Enter"></td>
+                                <td><input id="qty" class="form-control" type="number" v-model="qty" placeholder="Enter"></td>
                                 <td><select class="form-control">
                                     <option selected>SHP</option>
                                     <option value="canon">Dummy 1</option>
                                     <option value="sony">Dummy 2</option>
                                     <option value="nikon">Dummy 3</option>
                                 </select></td>
-                                <td><input id="unitPrice" class="form-control" type="text" placeholder="Enter Unit Price"></td>
-                                <td><input id="disc" class="form-control" type="text" placeholder="0"></td>
-                                <td><input id="gst" class="form-control" type="text" placeholder="0"></td>
+                                <td><input id="unitPrice" class="form-control" type="text" v-model="unitPrice" placeholder="Enter Unit Price"></td>
+                                <td><input id="discount" class="form-control" type="number" v-model="discount" placeholder="0"></td>
+                                <td><input id="gst" class="form-control" type="number" placeholder="0"></td>
                                 <td class="icon-center"><i class="fas fa-arrow-right"></i></td>
-                                <td><select class="form-control">
+                                <td><select class="form-control" id="currency" v-model="currency" >
                                     <option selected disabled></option>
-                                    <option value="canon">Dummy 1</option>
-                                    <option value="sony">Dummy 2</option>
-                                    <option value="nikon">Dummy 3</option>
+                                    <option value="AED">AED</option>
+                                    <option value="USD">USD</option>
                                 </select></td>
-                                <td>0.00</td>
-                                <td>0.00</td>
-                                <td>0.00</td>
+                                <td class="text-right text-middle">0.00</td>
+                                <td class="text-right text-middle" v-model="amount">{{getTotal}}</td>
+                                <td class="text-right text-middle" v-model="amount">{{getTotal}}</td>
                                 <td><select class="form-control">
                                     <option selected disabled>Select an Option</option>
                                     <option value="canon">Dummy 1</option>
@@ -180,18 +179,34 @@
                             <tr class="white-border">
                                 <td class="align-right" colspan="7" rowspan="2">Exchange Rate <b>1 USD = 3.6725 AED</b></td>
                                 <td><b>AED</b> (Total)</td>
-                                <td class="align-right">0.00</td>
-                                <td class="align-right">0.00</td>
-                                <td class="align-right"><b>0.00</b></td>
+                                <td class="text-right">0.00</td>
+                                <td>
+                                    <p class="text-right" v-if="currency==='AED'">{{getTotal}}</p>
+                                    <p class="text-right" v-else-if="currency==='USD'">{{currencyResult}}</p>
+                                    <p class="text-right" v-else>0.00</p>
+                                </td>
+                                <td>
+                                    <p class="text-right" v-if="currency==='AED'">{{getTotal}}</p>
+                                    <p class="text-right" v-else-if="currency==='USD'">{{currencyResult}}</p>
+                                    <p class="text-right" v-else>0.00</p>
+                                </td>
                                 <td rowspan="2"></td>
                                 <td rowspan="2" class="icon-center"><custom-button btn_class="btn btn-info h-auto" icon_class="fas fa-plus"/></td>
                             </tr>
 
                             <tr class="white-border">
                                 <td><b>USD</b> (Total)</td>
-                                <td class="align-right">0.00</td>
-                                <td class="align-right">475.00</td>
-                                <td class="align-right"><b>475.00</b></td>
+                                <td class="text-right">0.00</td>
+                                <td>
+                                    <p class="text-right" v-if="currency==='USD'">{{getTotal}}</p>
+                                    <p class="text-right" v-else-if="currency==='AED'">{{currencyResult}}</p>
+                                    <p class="text-right" v-else>0.00</p>
+                                </td>
+                                <td>
+                                    <p class="text-right" v-if="currency==='USD'">{{getTotal}}</p>
+                                    <p class="text-right" v-else-if="currency==='AED'">{{currencyResult}}</p>
+                                    <p class="text-right" v-else>0.00</p>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -244,37 +259,71 @@ import HeaderComponent from "../components/sub-components/HeaderComponent.vue";
 import SidebarComponent from "../components/sub-components/SidebarComponent.vue";
 
 export default {
-  name: "CreateInstruction",
-  components: {
-    PageTitleComponent,
-    CustomButton,
-    CustomDropdown,
-    HeaderComponent,
-    SidebarComponent,
-  },
-  data() {
-    return {
-      data: [
-        {
-          name: "Vendor Management",
-          to: "Home",
-        },
-        {
-          name: "3rd Party Instruction",
-          to: "Home",
-        },
-      ],
-    };
-  },
-  methods: {
-    sortAsc() {
-      console.log("sorting ascending");
+    name: "CreateInstruction",
+    components: {
+        PageTitleComponent,
+        CustomButton,
+        CustomDropdown,
+        HeaderComponent,
+        SidebarComponent,
     },
-    sortDesc() {
-      console.log("sorting descending");
+    data() {
+        return {
+            data: [
+                {
+                  name: "Vendor Management",
+                  to: "Home",
+                },
+                {
+                  name: "3rd Party Instruction",
+                  to: "Home",
+                },
+            ],
+            qty: 0,
+            unitPrice: 0,
+            discount: 0,
+            currency: "",
+            amount: 0,
+            rate: "",
+        };
     },
-  },
+    methods: {
+        sortAsc() {
+          console.log("sorting ascending");
+        },
+        sortDesc() {
+          console.log("sorting descending");
+        },
+        currencyResult() {
+            fetch(
+                `https://v6.exchangerate-api.com/v6/${"9809b1cec3fb53ce2b3f3f6a"}/latest/${this.currency}`
+            )
+            .then((res) => res.json())
+            .then((data) => {
+                this.data = data;
+                this.rate = data.conversion_rates[this.currency];
+                this.amountTwo = this.amount * this.rate.toFixed(2);
+            });
+        },
+    },
+    computed:{
+        getTotal(){
+            const discount = ((this.qty * (this.unitPrice))*this.discount/100)
+            return ((this.qty * (this.unitPrice)) - discount).toFixed(2)
+        }
+    }
+    // computation(){
+    //     var qty = document.getElementById(qty).value;
+    //     var unitPrice = document.getElementById(unitPrice).value;
+    //     var discount = document.getElementById(discount).value;
+    //     discount = ((qty * (unitPrice * 0.1))*discount/100);
+    //     var total = ((qty * (unitPrice * 0.1)) - discount).toFixed(2);
+    //     total =total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    //     document.getElementById('total').innerHTML = total;
+    // }
 };
+
+
 </script>
 
 <style scoped>
@@ -291,6 +340,13 @@ tbody {
 
 .icon-center{
     text-align: center;
+    vertical-align: middle;
+}
+.text-right{
+    text-align: right;
+}
+
+.text-middle{
     vertical-align: middle;
 }
 .space-bottom{
