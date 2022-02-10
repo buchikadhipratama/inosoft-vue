@@ -42,8 +42,8 @@ export default {
 </script>
 
 <style scoped>
-#header {
-  position: fixed;
+header {
+  position: absolute;
 }
 </style>
 

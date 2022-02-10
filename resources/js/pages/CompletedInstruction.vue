@@ -1,6 +1,8 @@
 <template>
  <div>
-  <header-component />
+   <div class="header">
+     <header-component />
+   </div>
     <div class="d-flex">
       <div class="p-0 sidebar"> 
         <sidebar-component />
@@ -174,15 +176,17 @@
                         <td>{{instruction.vendor}}</td>
                         <td>{{instruction.attention}}</td>
                         <td>{{instruction.quotation}}</td>
-                        <td class="text-center d-flex">
-                          <span class="badge inventory-badge rounded-circle">
-                            {{instruction.invoice.length}}
-                          </span>
-                          <div class="dropdown ms-1">
-                            <i v-if="instruction.invoice != ''" class="fas fa-chevron-down pointer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                              <li v-for="(invoice, index) in instruction.invoice" :key="'invoice' + index"><a class="dropdown-item" href="#">{{instruction.invoice[index]}}</a></li>
-                            </ul>
+                        <td class="">
+                          <div class="d-flex text-center">
+                            <span class="badge inventory-badge rounded-circle">
+                              {{instruction.invoice.length}}
+                            </span>
+                            <div class="dropdown ms-1">
+                              <i v-if="instruction.invoice != ''" class="fas fa-chevron-down pointer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li v-for="(invoice, index) in instruction.invoice" :key="'invoice' + index"><a class="dropdown-item" href="#">{{instruction.invoice[index]}}</a></li>
+                              </ul>
+                            </div>
                           </div>
                         </td>
                         <td>{{instruction.customerPo}}</td>
@@ -333,5 +337,9 @@ tbody {
 
 .badge-canceled {
   background-color: rgb(193, 199, 206);
+}
+
+.header {
+  position: relative;
 }
 </style>
