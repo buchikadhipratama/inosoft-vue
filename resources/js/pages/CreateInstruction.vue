@@ -19,67 +19,67 @@
                             <custom-button btn_class="rounded-pill h-auto border fas m-2 py-2 px-4" label="draft" />
                         </div>
                     </div>
-                    <div class="row mx-0 my-3">
-                        <!-- baris kosong -->
-                        <div class="col-lg-2" />
-                        <!-- baris tengah -->
-                        <div class="col-lg-8" style="padding-right:20px; border-right: 1px solid #ccc;">
-                            <div class="row">
-                                <div class="col-3">
-                                    <label>Assigned Vendor</label>
-                                    <select class="form-control">
-                                        <option selected disabled>Enter Vendor</option>
-                                        <option value="canon">Dummy 1</option>
-                                        <option value="sony">Dummy 2</option>
-                                        <option value="nikon">Dummy 3</option>
-                                    </select>
-                                </div>
+                    <form>
+                        <div class="row mx-0 my-3">
+                            <!-- baris kosong -->
+                            <div class="col-lg-2" />
+                            <!-- baris tengah -->
+                            <div class="col-lg-8" style="padding-right:20px; border-right: 1px solid #ccc;">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label>Assigned Vendor</label>
+                                        <select class="form-select">
+                                            <option selected disabled>Enter Vendor</option>
+                                            <option value="Co Ltd">Amarit & Asociates Co ltd</option>
+                                            <option value="Logistic">Amarit & Asociates Logistic Co ltd</option>
+                                            <option value="Alphatrans">Alphatrans Pte Ltd</option>
+                                        </select>
+                                    </div>
 
-                                <div class="col-3">
-                                    <label for="attention">Attention Of</label>
-                                    <input id="attention" class="form-control" type="text" placeholder="Enter Attention Of">
-                                </div>
-                                <div class="col-3">
-                                    <label for="quotation">Quotation Of</label>
-                                    <input id="quotation" class="form-control" type="text" placeholder="Enter Quotation Of">
-                                </div>
-                                <div class="col-3">
-                                    <label>Invoice To</label>
-                                    <select class="form-control">
-                                        <option selected disabled>Select an Option</option>
-                                        <option value="canon">Dummy 1</option>
-                                        <option value="sony">Dummy 2</option>
-                                        <option value="nikon">Dummy 3</option>
-                                    </select>
-                                </div>
+                                    <div class="col-3">
+                                        <label for="attention">Attention Of</label>
+                                        <input id="attention" class="form-control" type="text" placeholder="Enter Attention Of">
+                                    </div>
+                                    <div class="col-3">
+                                        <label for="quotation">Quotation Of</label>
+                                        <input id="quotation" class="form-control" type="text" placeholder="Enter Quotation Of">
+                                    </div>
+                                    <div class="col-3">
+                                        <label>Invoice To</label>
+                                        <select class="form-select">
+                                            <option selected disabled>Select an Option</option>
+                                            <option value="LLS">Marubeni-Itochu Tubulars Middle East Pipes L.L.S (MITME)</option>
+                                            <option value="PLC">Marubeni-Itochu Tubulars Europe Plc (MITME)</option>
+                                        </select>
+                                    </div>
 
+                                    <div class="col-12">
+                                        <label>Vendor Address</label>
+                                        <select class="form-select">
+                                            <option selected disabled>Enter Vendor Address</option>
+                                            <option value="address">Sesetan, Denpasar, Bali, Indonesia</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
                                 <div class="col-12">
-                                    <label>Vendor Address</label>
-                                    <select class="form-control">
-                                        <option selected disabled>Enter Vendor Address</option>
-                                        <option value="canon">Dummy 1</option>
-                                        <option value="sony">Dummy 2</option>
-                                        <option value="nikon">Dummy 3</option>
+                                    <label>Customer - Contract</label>
+                                    <select class="form-select">
+                                        <option selected disabled>Select Customer</option>
+                                        <option value="Hail & Ghasha">Hail & Ghasha</option>
+                                        <option value="OFFSHORE">OFFSHORE</option>
+                                        <option value="ONSHORE">ONSHORE</option>
+                                        <option value="Sour Gas">Sour Gas</option>
                                     </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="po">Customer PO No.</label>
+                                    <input id="po" class="form-control" type="text" placeholder="Enter Customer PO">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-2">
-                            <div class="col-12">
-                                <label>Customer - Contract</label>
-                                <select class="form-control">
-                                    <option selected disabled>Select Customer</option>
-                                    <option value="canon">Dummy 1</option>
-                                    <option value="sony">Dummy 2</option>
-                                    <option value="nikon">Dummy 3</option>
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <label for="po">Customer PO No.</label>
-                                <input id="po" class="form-control" type="text" placeholder="Enter Customer PO">
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="card-body bg-white p-0">
                     <div class="h4 bold mx-3 pt-3">Cost Detail</div>
@@ -96,7 +96,7 @@
                                         QTY
                                     </div>
                                 </th>
-                                <th width="6%">
+                                <th width="8%">
                                     <div class="d-inline-flex">
                                         UOM
                                     </div>
@@ -137,7 +137,7 @@
                                         Total
                                     </div>
                                 </th>
-                                <th width="12%">
+                                <th width="14%">
                                     <div class="d-inline-flex">
                                         Charge To
                                     </div>
@@ -149,17 +149,14 @@
                             <tr>
                                 <td><input id="desc" class="form-control" type="text" placeholder="Enter Description"></td>
                                 <td><input id="qty" class="form-control" type="number" v-model="qty" placeholder="Enter"></td>
-                                <td><select class="form-control">
+                                <td><select class="form-select">
                                     <option selected>SHP</option>
-                                    <option value="canon">Dummy 1</option>
-                                    <option value="sony">Dummy 2</option>
-                                    <option value="nikon">Dummy 3</option>
                                 </select></td>
                                 <td><input id="unitPrice" class="form-control" type="text" v-model="unitPrice" placeholder="Enter Unit Price"></td>
                                 <td><input id="discount" class="form-control" type="number" v-model="discount" placeholder="0"></td>
                                 <td><input id="gst" class="form-control" type="number" placeholder="0"></td>
                                 <td class="icon-center"><i class="fas fa-arrow-right"></i></td>
-                                <td><select class="form-control" id="currency" v-model="currency" >
+                                <td><select class="form-select" id="currency" v-model="currency" >
                                     <option selected disabled></option>
                                     <option value="AED">AED</option>
                                     <option value="USD">USD</option>
@@ -167,11 +164,10 @@
                                 <td class="text-right text-middle">0.00</td>
                                 <td class="text-right text-middle" v-model="amount">{{getTotal}}</td>
                                 <td class="text-right text-middle" v-model="amount">{{getTotal}}</td>
-                                <td><select class="form-control">
+                                <td><select class="form-select">
                                     <option selected disabled>Select an Option</option>
-                                    <option value="canon">Dummy 1</option>
-                                    <option value="sony">Dummy 2</option>
-                                    <option value="nikon">Dummy 3</option>
+                                    <option value="MITME">MITME</option>
+                                    <option value="Customer">Customer</option>
                                 </select></td>
                                 <td><custom-button btn_class="btn btn-secondary h-auto" icon_class="fas fa-minus"/></td>
                             </tr>
@@ -228,11 +224,11 @@
             <div class="row mx-0 my-3 -align-right">
                 <div class="col-6">
                     <div class="h6">Link To</div>
-                        <select class="form-control">
-                          <option selected disabled>Select Item</option>
-                          <option value="canon">Dummy 1</option>
-                          <option value="sony">Dummy 2</option>
-                          <option value="nikon">Dummy 3</option>
+                        <select class="form-select">
+                            <option selected disabled>Select Item</option>
+                            <option value="0001">INSP-2020-0001</option>
+                            <option value="0002">INSP-2020-0002</option>
+                            <option value="0003">INSP-2020-0003</option>
                         </select>
                     </div>
             </div>
