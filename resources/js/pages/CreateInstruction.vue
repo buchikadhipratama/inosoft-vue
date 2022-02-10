@@ -283,7 +283,7 @@ export default {
             unitPrice: 0,
             discount: 0,
             currency: "",
-            amount: 0,
+            amount: 1,
             rate: "",
         };
     },
@@ -294,23 +294,24 @@ export default {
         sortDesc() {
           console.log("sorting descending");
         },
-        currencyResult() {
-            fetch(
-                `https://v6.exchangerate-api.com/v6/${"9809b1cec3fb53ce2b3f3f6a"}/latest/${this.currency}`
-            )
-            .then((res) => res.json())
-            .then((data) => {
-                this.data = data;
-                this.rate = data.conversion_rates[this.currency];
-                this.amountTwo = this.amount * this.rate.toFixed(2);
-            });
-        },
     },
     computed:{
         getTotal(){
             const discount = ((this.qty * (this.unitPrice))*this.discount/100)
             return ((this.qty * (this.unitPrice)) - discount).toFixed(2)
-        }
+        },
+        currencyResult() {
+            // fetch(
+            //     `https://v6.exchangerate-api.com/v6/${"9809b1cec3fb53ce2b3f3f6a"}/latest/${this.currency}`
+            // )
+            //     .then((res) => res.json())
+            //     .then((data) => {
+            //         this.data = data;
+            //         this.rate = data.conversion_rates[this.currency];
+            //     });
+            return (this.getTotal * 3.6725).toFixed(2);
+
+        },
     }
     // computation(){
     //     var qty = document.getElementById(qty).value;
