@@ -1,8 +1,6 @@
 <template>
  <div>
-   <div class="header">
-     <header-component />
-   </div>
+    <header-component />
     <div class="d-flex">
       <div class="p-0 sidebar"> 
         <sidebar-component />
@@ -339,7 +337,4 @@ tbody {
   background-color: rgb(193, 199, 206);
 }
 
-.header {
-  position: relative;
-}
 </style>
