@@ -154,16 +154,16 @@
                                 </select></td>
                                 <td><input id="unitPrice" class="form-control" type="text" v-model="unitPrice" placeholder="Enter Unit Price"></td>
                                 <td><input id="discount" class="form-control" type="number" v-model="discount" placeholder="0"></td>
-                                <td><input id="gst" class="form-control" type="number" placeholder="0"></td>
+                                <td><input id="gst" class="form-control" type="number" v-model="GST" placeholder="0"></td>
                                 <td class="icon-center"><i class="fas fa-arrow-right"></i></td>
                                 <td><select class="form-select" id="currency" v-model="currency" >
                                     <option selected disabled></option>
                                     <option value="AED">AED</option>
                                     <option value="USD">USD</option>
                                 </select></td>
-                                <td class="text-right text-middle">0.00</td>
-                                <td class="text-right text-middle" v-model="amount">{{getTotal}}</td>
-                                <td class="text-right text-middle" v-model="amount">{{getTotal}}</td>
+                                <td class="text-right text-middle">{{getVAT}}</td>
+                                <td class="text-right text-middle">{{getSubTotal}}</td>
+                                <td class="text-right text-middle">{{getTotal}}</td>
                                 <td><select class="form-select">
                                     <option selected disabled>Select an Option</option>
                                     <option value="MITME">MITME</option>
@@ -175,7 +175,11 @@
                             <tr class="white-border">
                                 <td class="align-right" colspan="7" rowspan="2">Exchange Rate <b>1 USD = 3.6725 AED</b></td>
                                 <td><b>AED</b> (Total)</td>
-                                <td class="text-right">0.00</td>
+                                <td class="text-right">
+                                    <p class="text-right" v-if="currency==='AED'">{{getVAT}}</p>
+                                    <p class="text-right" v-else-if="currency==='USD'">{{currencyVAT}}</p>
+                                    <p class="text-right" v-else>0.00</p>
+                                </td>
                                 <td>
                                     <p class="text-right" v-if="currency==='AED'">{{getTotal}}</p>
                                     <p class="text-right" v-else-if="currency==='USD'">{{currencyResult}}</p>
@@ -192,7 +196,11 @@
 
                             <tr class="white-border">
                                 <td><b>USD</b> (Total)</td>
-                                <td class="text-right">0.00</td>
+                                <td class="text-right">
+                                    <p class="text-right" v-if="currency==='USD'">{{getVAT}}</p>
+                                    <p class="text-right" v-else-if="currency==='AED'">{{currencyVAT}}</p>
+                                    <p class="text-right" v-else>0.00</p>
+                                </td>
                                 <td>
                                     <p class="text-right" v-if="currency==='USD'">{{getTotal}}</p>
                                     <p class="text-right" v-else-if="currency==='AED'">{{currencyResult}}</p>
@@ -209,11 +217,17 @@
                 </div>
             </div>
           <div class="row mx-0 space-bottom">
-              <div class="col-6">
+              <div class="col-5">
                   <div class="h4">Attachment</div>
-                  <custom-button btn_class="btn btn-info text-light fas py-2" icon_class="fas fa-plus" label="Add Attachments"/>
+                  <p v-if="attachment"></p>
+                  <label class="btn btn-info text-light">
+                      <i class="fa fa-plus"></i> Add Attachment
+                      <input type="file" style="display: none;">
+                  </label>
+<!--                  <custom-button btn_class="btn btn-info text-light fas py-2" icon_class="fas fa-plus" label="Add Attachments"/>-->
+<!--                  <input class="btn btn-info text-light fas py-2" type="file" @change="onFileSelected">-->
               </div>
-              <div class="col-6">
+              <div class="col-7">
                   <div class="h4">Notes</div>
                   <textarea id="notes" class="form-control" ></textarea>
               </div>
@@ -221,16 +235,25 @@
         </div>
 
         <div class="card space-bottom">
-            <div class="row mx-0 my-3 -align-right">
-                <div class="col-6">
-                    <div class="h6">Link To</div>
-                        <select class="form-select">
-                            <option selected disabled>Select Item</option>
-                            <option value="0001">INSP-2020-0001</option>
-                            <option value="0002">INSP-2020-0002</option>
-                            <option value="0003">INSP-2020-0003</option>
-                        </select>
-                    </div>
+            <div class="row mx-0 my-3">
+                <div class="h6">Link To</div>
+                <div class="col-lg-6">
+                    <select class="form-select" v-model="linked">
+                        <option selected disabled>Select Item</option>
+                        <option value="0001">INSP-2020-0001</option>
+                        <option value="0002">INSP-2020-0002</option>
+                        <option value="0003">INSP-2020-0003</option>
+                    </select>
+                </div>
+                <div class="col-lg-6">
+                    <p v-if="linked==='0001'">
+                        <custom-button btn_class="btn btn-danger text-light fas py-2" label="Remove Link" v-model="removeLink"/>
+                    </p>
+                    <p v-else-if="linked==='Select Item'"></p>
+                    <p v-else>
+                        <custom-button btn_class="btn btn-danger text-light fas py-2" label="Remove Link" v-model="removeLink"/>
+                    </p>
+                </div>
             </div>
         </div>
         <div class="card space-bottom">
@@ -279,22 +302,32 @@ export default {
             unitPrice: 0,
             discount: 0,
             currency: "",
-            amount: 1,
+            amount: 0,
             rate: "",
+            attachment: "",
+            linked: "Select Item",
+            removeLink: "",
+            GST: 0,
         };
     },
     methods: {
-        sortAsc() {
-          console.log("sorting ascending");
-        },
-        sortDesc() {
-          console.log("sorting descending");
-        },
+        onFileSelected(event){
+            console.log(event)
+        }
     },
     computed:{
         getTotal(){
             const discount = ((this.qty * (this.unitPrice))*this.discount/100)
+            const gst = ((((this.qty * (this.unitPrice)) - discount)*this.GST)/100)
+            return (((this.qty * (this.unitPrice)) - discount)+gst).toFixed(2)
+        },
+        getSubTotal(){
+            const discount = ((this.qty * (this.unitPrice))*this.discount/100)
             return ((this.qty * (this.unitPrice)) - discount).toFixed(2)
+        },
+        getVAT(){
+            const discount = ((this.qty * (this.unitPrice))*this.discount/100)
+            return ((((this.qty * (this.unitPrice)) - discount)*this.GST)/100).toFixed(2)
         },
         currencyResult() {
             // fetch(
@@ -308,6 +341,9 @@ export default {
             return (this.getTotal * 3.6725).toFixed(2);
 
         },
+        currencyVAT(){
+            return (this.getVAT * 3.6725).toFixed(2);
+        }
     }
     // computation(){
     //     var qty = document.getElementById(qty).value;
