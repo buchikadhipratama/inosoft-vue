@@ -7,17 +7,22 @@
             <div class="card border-0 shadow-sm d-flex">
                 <div class="card-header bg-white p-0">
                     <ul class="nav mx-3 border-0 d-flex">
-                        <li class="nav-item mt-3">
-                            <router-link class="nav-link text-muted" :to="{name: 'Home'}">Open</router-link>
-                        </li>
-                        <li class="nav-item mt-3">
-                            <router-link class="nav-link text-muted" :to="{name: 'CompletedInstruction'}">Completed</router-link>
-                        </li>
                         <div class="flex-fill d-flex justify-content-end float-end py-2">
-                            <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-search"/>
-                            <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-file-export" label="Export"/>
+                            <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fa-solid fa-paper-plane" label=" Send Email"/>
+                            <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-file-export" label=" Export"/>
                         </div>
                     </ul>
+                </div>
+                <div class="mt-5 mx-3">
+                    <div class="grid-container1">
+                        <div class="item grid-item3">
+                            <custom-button btn_class="btn h-auto fas m-1 py-2" icon_class="fas fa-angle-left" label="Back"/>
+                        </div>
+                        <div class="item grid-item4 d-grid gap-2 d-md-flex justify-content-md-end">
+                            <custom-button btn_class="btn fas py-2" icon_class="fas fa-ban" label="Terminate"/>
+                            <custom-button btn_class="btn fas py-2" icon_class="fas fa-pen" label="Modify"/>
+                        </div>
+                    </div>
                 </div>
                 <div class="mt-5 mx-3 border">
                     <div class="grid-container">
@@ -215,19 +220,27 @@
                 </div>
 
                 <div class="mt-5 mx-3 border">
-                    <div class="header">
-                        <span class="text-light">For Internal Only</span>
-                    </div>
-                    <div class="grid-container">
-                        <div class="item grid-item5">
-                            Attachments <br>
-                            <custom-button btn_class="btn btn-info fas py-2 text-light" icon_class="fas fa-plus" label="Add Attachments"/>
-                        </div>
-                        <div class="item grid-item5 border-dot">
-                            Internal Note <br>
-                            <custom-button btn_class="btn btn-info fas py-2 text-light" icon_class="fas fa-plus" label="Add Internal Note"/>
-                        </div>
-                    </div>
+                    <table class="table">
+                        <thead class="header">
+                            <tr>
+                                <th colspan="2">
+                                    For Internal Only
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Attachments <br>
+                                    <custom-button btn_class="btn btn-info fas py-2 text-light" icon_class="fas fa-plus" label="Add Attachments"/>
+                                </td>
+                                <td class="border-dot">
+                                    Internal Note <br>
+                                    <custom-button btn_class="btn btn-info fas py-2 text-light" icon_class="fas fa-plus" label="Add Internal Note"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -265,6 +278,10 @@ export default {
 
 table {
     margin-bottom: 0rem;
+}
+
+.align-right{
+    text-align: right;
 }
 
 .header {
