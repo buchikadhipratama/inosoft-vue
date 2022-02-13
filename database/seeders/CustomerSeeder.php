@@ -14,6 +14,8 @@ class CustomerSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('customer')->insert(['name' => 'Hail & Gasha']);
+        DB::collection('customer')->delete();
+
+        DB::collection('customer')->insert([['id' => 1, 'name' => 'Hail & Gasha'], ['id' => 2, 'name' => 'OFFSHORE'], ['id' => 3, 'name' => 'ONSHORE'], ['id' => 4, 'name' => 'Sour Gas']]);
     }
 }
