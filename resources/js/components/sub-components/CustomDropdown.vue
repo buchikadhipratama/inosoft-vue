@@ -8,7 +8,7 @@
         </router-link>
       </li>
       <li>
-        <router-link :to="{name: 'CreateInstruction'}" class="dropdown-item">
+        <router-link :to="{name: 'ServiceInstruction'}" class="dropdown-item">
           <custom-button btn_class="btn" icon_class="fas fa-wrench" label=" Service Instruction" />
         </router-link>
 
