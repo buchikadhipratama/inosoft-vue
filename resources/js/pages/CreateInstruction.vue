@@ -232,16 +232,35 @@
                                 </div>
                             </div>
                             <div class="row mx-0 space-bottom">
-                                <div class="col-5">
+                                <div class="col-4">
                                     <div class="h4">Attachment</div>
-                                    <p v-if="attachment"></p>
+                                    <div v-for="(file, index) in files" :key="index" class="card mb-3">
+                                        <div class="row icon-center">
+                                            <div class="col-2">
+                                                <div class="text-info">
+                                                    <div class="fas fa-paperclip"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-8 ">
+                                                <div class="text-info h5 mb-0 text-left">{{file.name}}</div>
+                                                <div class="text-black pt-0 text-left">blabla</div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="text-danger">
+                                                    <div type="button" class="fas fa-trash"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <label class="btn btn-info text-light">
                                         <i class="fa fa-plus"></i> Add Attachment
-                                        <input type="file" style="display: none;">
+                                        <input type="file" name="attachment[]" @change="onFileChange" multiple style="display: none;">
                                     </label>
+
                                     <!--                  <custom-button btn_class="btn btn-info text-light fas py-2" icon_class="fas fa-plus" label="Add Attachments"/>-->
                                     <!--                  <input class="btn btn-info text-light fas py-2" type="file" @change="onFileSelected">-->
                                 </div>
+                                <div class="col-1"/>
                                 <div class="col-7">
                                     <div class="h4">Notes</div>
                                     <textarea id="notes" class="form-control" ></textarea>
@@ -321,7 +340,7 @@ export default {
             currency: "",
             amount: 0,
             rate: "",
-            attachment: "",
+            files: [],
             linked: "Select Item",
             removeLink: "",
             GST: 0,
@@ -330,7 +349,11 @@ export default {
     methods: {
         onFileSelected(event){
             console.log(event)
-        }
+        },
+        onFileChange(e) {
+            this.files = e.target.files;
+            console.log(this.files);
+        },
     },
     computed:{
         getTotal(){
@@ -391,11 +414,15 @@ tbody {
 .icon-center{
     text-align: center;
     vertical-align: middle;
+    justify-content: center;
+    align-items: center;
 }
 .text-right{
     text-align: right;
 }
-
+.text-left{
+    text-align: left;
+}
 .text-middle{
     vertical-align: middle;
 }
