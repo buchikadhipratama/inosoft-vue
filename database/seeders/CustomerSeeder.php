@@ -16,6 +16,13 @@ class CustomerSeeder extends Seeder
     {
         DB::collection('customer')->delete();
 
-        DB::collection('customer')->insert([['id' => 1, 'name' => 'Hail & Gasha'], ['id' => 2, 'name' => 'OFFSHORE'], ['id' => 3, 'name' => 'ONSHORE'], ['id' => 4, 'name' => 'Sour Gas']]);
+        DB::collection('customer')->insert(
+            [
+                ['id' => 1, 'name' => 'Hail & Gasha'], 
+                ['id' => 2, 'name' => 'OFFSHORE'], 
+                ['id' => 3, 'name' => 'ONSHORE'], 
+                ['id' => 4, 'name' => 'Sour Gas']
+            ]
+        );
     }
 }
