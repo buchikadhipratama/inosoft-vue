@@ -19225,6 +19225,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_sub_components_PageTitleComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/sub-components/PageTitleComponent.vue */ "./resources/js/components/sub-components/PageTitleComponent.vue");
 /* harmony import */ var _components_sub_components_SidebarComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/sub-components/SidebarComponent.vue */ "./resources/js/components/sub-components/SidebarComponent.vue");
 /* harmony import */ var _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/vue-fontawesome */ "./node_modules/@fortawesome/vue-fontawesome/index.es.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue_excel_export_VueComment_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-excel-export/VueComment.vue */ "./node_modules/vue-excel-export/VueComment.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -19378,6 +19386,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 
@@ -19392,7 +19455,8 @@ __webpack_require__.r(__webpack_exports__);
     HeaderComponent: _components_sub_components_HeaderComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     SidebarComponent: _components_sub_components_SidebarComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     CustomDropdown: _components_sub_components_CustomDropdown_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    FontAwesomeIcon: _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_5__.FontAwesomeIcon
+    FontAwesomeIcon: _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_5__.FontAwesomeIcon,
+    ExportExcel: vue_excel_export_VueComment_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   data: function data() {
     return {
@@ -19404,7 +19468,12 @@ __webpack_require__.r(__webpack_exports__);
         to: "Home"
       }],
       showSearch: false,
-      searchClass: "fas fa-search"
+      searchClass: "fas fa-search",
+      search: "",
+      sortData: {
+        direction: "",
+        type: ""
+      }
     };
   },
   methods: {
@@ -19416,8 +19485,35 @@ __webpack_require__.r(__webpack_exports__);
         this.showSearch = false;
         this.searchClass = "fas fa-search";
       }
+    },
+    sort: function sort(direction, data) {
+      this.sortData.direction = direction;
+      this.sortData.type = data;
+      var payload = {
+        direction: direction,
+        data: data
+      };
+      this.$store.dispatch("home/sort", payload);
     }
-  }
+  },
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)({
+    dashboards: "home/getDashboards"
+  })), {}, {
+    filteredData: function filteredData() {
+      var search = this.search.toLowerCase();
+      return this.dashboards.filter(function (dashboard) {
+        var id = dashboard.id.toString().toLowerCase();
+        var link = dashboard.link.toString().toLowerCase();
+        var type = dashboard.type.toString().toLowerCase();
+        var vendor = dashboard.vendor.toString().toLowerCase();
+        var attention = dashboard.attention.toString().toLowerCase();
+        var quotation = dashboard.quotation.toString().toLowerCase();
+        var customerPO = dashboard.customerPO.toString().toLowerCase();
+        var status = dashboard.status.toString().toLowerCase();
+        return id.includes(search) || link.includes(search) || type.includes(search) || vendor.includes(search) || attention.includes(search) || quotation.includes(search) || customerPO.includes(search) || status.includes(search);
+      });
+    }
+  })
 });
 
 /***/ }),
@@ -19602,19 +19698,289 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _modules_third_party_instruction_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/third-party-instruction/index.js */ "./resources/js/store/modules/third-party-instruction/index.js");
+/* harmony import */ var _modules_home_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/home/index.js */ "./resources/js/store/modules/home/index.js");
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
+
+vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_3__["default"]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_3__["default"].Store({
   modules: {
+    home: _modules_home_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
     thirdPartyInstruction: _modules_third_party_instruction_index_js__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   strict: true
 }));
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/home/actions.js":
+/*!****************************************************!*\
+  !*** ./resources/js/store/modules/home/actions.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "sort": () => (/* binding */ sort)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var sort = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(context, payload) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            context.commit('SORT', payload);
+
+          case 1:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function sort(_x, _x2) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/home/const.js":
+/*!**************************************************!*\
+  !*** ./resources/js/store/modules/home/const.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default_state": () => (/* binding */ default_state)
+/* harmony export */ });
+var getDefaultState = function getDefaultState() {
+  return {
+    dashboards: [{
+      id: "LI-2021-0199 R02",
+      link: "",
+      type: "LI",
+      vendor: "AGILITY (ABU DHABI) PJSC",
+      attention: "Priyesh Thattarath",
+      quotation: "MITME-AGL-01 (Appendix 1)",
+      customerPO: "",
+      status: "In Progress"
+    }, {
+      id: "LI-2021-0203",
+      link: "MR-2021-0134",
+      type: "LI",
+      vendor: "AGILITY (ABU DHABI) PJSC",
+      attention: "Priyesh Thattarath",
+      quotation: "MITME-AGL-01 (Appendix 1)",
+      customerPO: "",
+      status: "In Progress"
+    }, {
+      id: "LI-2021-0213",
+      link: "RRIN-2021-0054",
+      type: "LI",
+      vendor: "AGILITY (ABU DHABI) PJSC",
+      attention: "Priyesh Thattarath",
+      quotation: "MITME-AGL-01 (Appendix 1)",
+      customerPO: "",
+      status: "In Progress"
+    }, {
+      id: "LI-2021-0218",
+      link: "",
+      type: "LI",
+      vendor: "AGILITY (ABU DHABI) PJSC",
+      attention: "Priyesh Thattarath",
+      quotation: "MITME-AGL-01 (Appendix 1)",
+      customerPO: "",
+      status: "In Progress"
+    }, {
+      id: "LI-2021-0219",
+      link: "TRF-2021-0021",
+      type: "LI",
+      vendor: "AGILITY (ABU DHABI) PJSC",
+      attention: "Priyesh Thattarath",
+      quotation: "MITME-AGL-01 (Appendix 1)",
+      customerPO: "",
+      status: "In Progress"
+    }, {
+      id: "LI-2021-0241",
+      link: "RRIN-2021-0062",
+      type: "LI",
+      vendor: "AGILITY (ABU DHABI) PJSC",
+      attention: "Priyesh Thattarath",
+      quotation: "MITME-AGL-01 (Appendix 1)",
+      customerPO: "",
+      status: "In Progress"
+    }, {
+      id: "LI-2021-0263",
+      link: "",
+      type: "LI",
+      vendor: "AGILITY (ABU DHABI) PJSC",
+      attention: "Priyesh Thattarath",
+      quotation: "MITME-AGL-01 (Appendix 1)",
+      customerPO: "",
+      status: "In Progress"
+    }, {
+      id: "LI-2021-0265 R01",
+      link: "MR-2021-0171",
+      type: "LI",
+      vendor: "AGILITY (ABU DHABI) PJSC",
+      attention: "Priyesh Thattarath",
+      quotation: "MITME-AGL-01 (Appendix 1)",
+      customerPO: "",
+      status: "In Progress"
+    }, {
+      id: "LI-2021-0266 R01",
+      link: "MR-2021-0172",
+      type: "LI",
+      vendor: "AGILITY (ABU DHABI) PJSC",
+      attention: "Priyesh Thattarath",
+      quotation: "MITME-AGL-01 (Appendix 1)",
+      customerPO: "",
+      status: "In Progress"
+    }, {
+      id: "LI-2021-0267 R01",
+      link: "MR-2021-0173",
+      type: "LI",
+      vendor: "AGILITY (ABU DHABI) PJSC",
+      attention: "Priyesh Thattarath",
+      quotation: "MITME-AGL-01 (Appendix 1)",
+      customerPO: "",
+      status: "In Progress"
+    }, {
+      id: "LI-2021-0268 R01",
+      link: "",
+      type: "LI",
+      vendor: "AGILITY (ABU DHABI) PJSC",
+      attention: "Priyesh Thattarath",
+      quotation: "MITME-AGL-01 (Appendix 1)",
+      customerPO: "",
+      status: "In Progress"
+    }, {
+      id: "LI-2021-0269",
+      link: "",
+      type: "LI",
+      vendor: "AGILITY (ABU DHABI) PJSC",
+      attention: "Priyesh Thattarath",
+      quotation: "MITME-AGL-01 (Appendix 1)",
+      customerPO: "",
+      status: "In Progress"
+    }]
+  };
+};
+
+var default_state = getDefaultState();
+
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/home/getters.js":
+/*!****************************************************!*\
+  !*** ./resources/js/store/modules/home/getters.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getDashboards": () => (/* binding */ getDashboards)
+/* harmony export */ });
+var getDashboards = function getDashboards(state) {
+  return state.dashboards;
+};
+
+
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/home/index.js":
+/*!**************************************************!*\
+  !*** ./resources/js/store/modules/home/index.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/store/modules/home/state.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actions */ "./resources/js/store/modules/home/actions.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getters */ "./resources/js/store/modules/home/getters.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/js/store/modules/home/mutations.js");
+
+
+
+
+var namespaced = true;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  namespaced: namespaced,
+  state: _state__WEBPACK_IMPORTED_MODULE_0__.state,
+  actions: _actions__WEBPACK_IMPORTED_MODULE_1__,
+  getters: _getters__WEBPACK_IMPORTED_MODULE_2__,
+  mutations: _mutations__WEBPACK_IMPORTED_MODULE_3__
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/home/mutations.js":
+/*!******************************************************!*\
+  !*** ./resources/js/store/modules/home/mutations.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SORT": () => (/* binding */ SORT)
+/* harmony export */ });
+var SORT = function SORT(state, payload) {
+  var sorted = state.dashboards.sort(function (a, b) {
+    if (payload.direction === 'asc') {
+      return a[payload.data] > b[payload.data];
+    }
+
+    return a[payload.data] < b[payload.data];
+  });
+  state.dashboards = sorted;
+};
+
+
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/home/state.js":
+/*!**************************************************!*\
+  !*** ./resources/js/store/modules/home/state.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "state": () => (/* binding */ state)
+/* harmony export */ });
+/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./const */ "./resources/js/store/modules/home/const.js");
+
+var state = JSON.parse(JSON.stringify(_const__WEBPACK_IMPORTED_MODULE_0__.default_state));
+
 
 /***/ }),
 
@@ -25171,7 +25537,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.table-head[data-v-b3c5cf30] {\n  background-color: rgb(193, 199, 206);\n}\n.nav-item .active[data-v-b3c5cf30] {\n  border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.fa-sort-up[data-v-b3c5cf30] {\n  position: absolute;\n}\n.fa-sort-down[data-v-b3c5cf30] {\n  position: absolute;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.table-head[data-v-b3c5cf30] {\n  background-color: rgb(193, 199, 206);\n}\n.nav-item .active[data-v-b3c5cf30] {\n  border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.fa-sort-up[data-v-b3c5cf30] {\n  position: absolute;\n}\n.fa-sort-down[data-v-b3c5cf30] {\n  position: absolute;\n}\n.pointer[data-v-b3c5cf30] {\n  cursor: pointer;\n}\n.badge-completed[data-v-b3c5cf30] {\n  background-color: rgb(0, 176, 111);\n}\n.badge-progress[data-v-b3c5cf30] {\n  background-color: rgb(112, 114, 117);\n}\n.badge-canceled[data-v-b3c5cf30] {\n  background-color: rgb(193, 199, 206);\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -47653,11 +48019,28 @@ var render = function () {
                           [
                             _vm.showSearch
                               ? _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.search,
+                                      expression: "search",
+                                    },
+                                  ],
                                   staticClass:
                                     "form-control w-25 h-auto mx-1 bg-light",
                                   attrs: {
                                     type: "text",
                                     placeholder: "Search...",
+                                  },
+                                  domProps: { value: _vm.search },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.search = $event.target.value
+                                    },
                                   },
                                 })
                               : _vm._e(),
@@ -47675,14 +48058,23 @@ var render = function () {
                               },
                             }),
                             _vm._v(" "),
-                            _c("custom-button", {
-                              attrs: {
-                                btn_class:
+                            _c(
+                              "export-excel",
+                              {
+                                staticClass:
                                   "btn btn-light h-auto fas m-1 border py-2",
-                                icon_class: "fas fa-file-export",
-                                label: "Export",
+                                attrs: {
+                                  data: _vm.dashboards,
+                                  worksheet: "Dashboard",
+                                  name: "Dashboard.xls",
+                                },
                               },
-                            }),
+                              [
+                                _c("i", { staticClass: "fas fa-file-export" }, [
+                                  _vm._v("Export"),
+                                ]),
+                              ]
+                            ),
                           ],
                           1
                         ),
@@ -47697,7 +48089,720 @@ var render = function () {
                         1
                       ),
                       _vm._v(" "),
-                      _vm._m(0),
+                      _c("div", { staticClass: "mx-3" }, [
+                        _c("table", { staticClass: "table" }, [
+                          _c(
+                            "thead",
+                            { staticClass: "table-head text-light" },
+                            [
+                              _c("tr", [
+                                _c("th", [
+                                  _c("div", { staticClass: "d-inline-flex" }, [
+                                    _c("span", [
+                                      _vm._v(
+                                        "\n                              Instruction ID\n                            "
+                                      ),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "px-2" },
+                                      [
+                                        _vm.sortData.direction === "desc" &&
+                                        _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-up" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("asc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _vm.sortData.direction === "asc" &&
+                                            _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-down" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("desc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  " d-flex flex-column mt-1",
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-up pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "asc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                                _vm._v(" "),
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-down pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "desc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                              ]
+                                            ),
+                                      ],
+                                      1
+                                    ),
+                                  ]),
+                                ]),
+                                _vm._v(" "),
+                                _c("th", [
+                                  _c("div", { staticClass: "d-inline-flex" }, [
+                                    _c("span", [
+                                      _vm._v(
+                                        "\n                              Link To\n                            "
+                                      ),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "px-2" },
+                                      [
+                                        _vm.sortData.direction === "desc" &&
+                                        _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-up" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("asc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _vm.sortData.direction === "asc" &&
+                                            _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-down" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("desc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  " d-flex flex-column mt-1",
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-up pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "asc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                                _vm._v(" "),
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-down pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "desc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                              ]
+                                            ),
+                                      ],
+                                      1
+                                    ),
+                                  ]),
+                                ]),
+                                _vm._v(" "),
+                                _c("th", [
+                                  _c("div", { staticClass: "d-inline-flex" }, [
+                                    _c("span", [
+                                      _vm._v(
+                                        "\n                              Instruction Type\n                            "
+                                      ),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "px-2" },
+                                      [
+                                        _vm.sortData.direction === "desc" &&
+                                        _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-up" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("asc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _vm.sortData.direction === "asc" &&
+                                            _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-down" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("desc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  " d-flex flex-column mt-1",
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-up pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "asc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                                _vm._v(" "),
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-down pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "desc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                              ]
+                                            ),
+                                      ],
+                                      1
+                                    ),
+                                  ]),
+                                ]),
+                                _vm._v(" "),
+                                _c("th", [
+                                  _c("div", { staticClass: "d-inline-flex" }, [
+                                    _c("span", [
+                                      _vm._v(
+                                        "\n                              Assigned Vendor\n                            "
+                                      ),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "px-2" },
+                                      [
+                                        _vm.sortData.direction === "desc" &&
+                                        _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-up" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("asc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _vm.sortData.direction === "asc" &&
+                                            _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-down" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("desc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  " d-flex flex-column mt-1",
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-up pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "asc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                                _vm._v(" "),
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-down pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "desc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                              ]
+                                            ),
+                                      ],
+                                      1
+                                    ),
+                                  ]),
+                                ]),
+                                _vm._v(" "),
+                                _c("th", [
+                                  _c("div", { staticClass: "d-inline-flex" }, [
+                                    _c("span", [
+                                      _vm._v(
+                                        "\n                              Attention Of\n                            "
+                                      ),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "px-2" },
+                                      [
+                                        _vm.sortData.direction === "desc" &&
+                                        _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-up" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("asc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _vm.sortData.direction === "asc" &&
+                                            _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-down" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("desc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  " d-flex flex-column mt-1",
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-up pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "asc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                                _vm._v(" "),
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-down pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "desc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                              ]
+                                            ),
+                                      ],
+                                      1
+                                    ),
+                                  ]),
+                                ]),
+                                _vm._v(" "),
+                                _c("th", [
+                                  _c("div", { staticClass: "d-inline-flex" }, [
+                                    _c("span", [
+                                      _vm._v(
+                                        "\n                              Quotation No.\n                            "
+                                      ),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "px-2" },
+                                      [
+                                        _vm.sortData.direction === "desc" &&
+                                        _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-up" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("asc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _vm.sortData.direction === "asc" &&
+                                            _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-down" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("desc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  " d-flex flex-column mt-1",
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-up pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "asc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                                _vm._v(" "),
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-down pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "desc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                              ]
+                                            ),
+                                      ],
+                                      1
+                                    ),
+                                  ]),
+                                ]),
+                                _vm._v(" "),
+                                _c("th", [
+                                  _c("div", { staticClass: "d-inline-flex" }, [
+                                    _c("span", [
+                                      _vm._v(
+                                        "\n                              Customer PO\n                            "
+                                      ),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "px-2" },
+                                      [
+                                        _vm.sortData.direction === "desc" &&
+                                        _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-up" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("asc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _vm.sortData.direction === "asc" &&
+                                            _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-down" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("desc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  " d-flex flex-column mt-1",
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-up pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "asc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                                _vm._v(" "),
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-down pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "desc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                              ]
+                                            ),
+                                      ],
+                                      1
+                                    ),
+                                  ]),
+                                ]),
+                                _vm._v(" "),
+                                _c("th", [
+                                  _c("div", { staticClass: "d-inline-flex" }, [
+                                    _c("span", [
+                                      _vm._v(
+                                        "\n                              Status\n                            "
+                                      ),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "px-2" },
+                                      [
+                                        _vm.sortData.direction === "desc" &&
+                                        _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-up" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("asc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _vm.sortData.direction === "asc" &&
+                                            _vm.sortData.type === "id"
+                                          ? _c("font-awesome-icon", {
+                                              staticClass: "pointer",
+                                              attrs: { icon: "fa-caret-down" },
+                                              on: {
+                                                click: function ($event) {
+                                                  return _vm.sort("desc", "id")
+                                                },
+                                              },
+                                            })
+                                          : _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  " d-flex flex-column mt-1",
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-up pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "asc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                                _vm._v(" "),
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-sort-down pointer",
+                                                  on: {
+                                                    click: function ($event) {
+                                                      return _vm.sort(
+                                                        "desc",
+                                                        "id"
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                              ]
+                                            ),
+                                      ],
+                                      1
+                                    ),
+                                  ]),
+                                ]),
+                              ]),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tbody",
+                            _vm._l(
+                              _vm.filteredData,
+                              function (dashboard, index) {
+                                return _c("tr", { key: index }, [
+                                  _c("td", [_vm._v(_vm._s(dashboard.id))]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "text-left" }, [
+                                    dashboard.link == ""
+                                      ? _c("span", [
+                                          _vm._v(
+                                            "\n                            -\n                          "
+                                          ),
+                                        ])
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _c("span", [
+                                      _vm._v(
+                                        "\n                            " +
+                                          _vm._s(dashboard.link) +
+                                          "\n                          "
+                                      ),
+                                    ]),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "text-center" }, [
+                                    dashboard.type == "LI"
+                                      ? _c("i", { staticClass: "fas fa-truck" })
+                                      : _c("i", {
+                                          staticClass: "fas fa-wrench",
+                                        }),
+                                    _vm._v(
+                                      "\n                          " +
+                                        _vm._s(dashboard.type) +
+                                        "\n                        "
+                                    ),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(dashboard.vendor))]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(_vm._s(dashboard.attention)),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(_vm._s(dashboard.quotation)),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(_vm._s(dashboard.customerPO)),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    dashboard.status == "Completed"
+                                      ? _c(
+                                          "span",
+                                          {
+                                            staticClass:
+                                              "badge badge-completed rounded-pill instruction-badge",
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                            " +
+                                                _vm._s(dashboard.status) +
+                                                "\n                          "
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    dashboard.status == "In Progress"
+                                      ? _c(
+                                          "span",
+                                          {
+                                            staticClass:
+                                              "badge badge-progress rounded-pill instruction-badge",
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                            " +
+                                                _vm._s(dashboard.status) +
+                                                "\n                          "
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    dashboard.status == "Completed"
+                                      ? _c(
+                                          "span",
+                                          {
+                                            staticClass:
+                                              "badge badge-completed rounded-pill instruction-badge",
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                            " +
+                                                _vm._s(dashboard.status) +
+                                                "\n                          "
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                  ]),
+                                ])
+                              }
+                            ),
+                            0
+                          ),
+                        ]),
+                      ]),
                     ]),
                   ]),
                 ]),
@@ -47711,152 +48816,7 @@ var render = function () {
     1
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mx-3" }, [
-      _c("table", { staticClass: "table" }, [
-        _c("thead", { staticClass: "table-head text-light" }, [
-          _c("tr", [
-            _c("th", [
-              _c("div", { staticClass: "d-inline-flex" }, [
-                _c("span", [
-                  _vm._v(
-                    "\n                              Instruction ID\n                            "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-1" }, [
-                  _c("i", { staticClass: "fas fa-sort-down" }),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("th", [
-              _c("div", { staticClass: "d-inline-flex" }, [
-                _c("span", [
-                  _vm._v(
-                    "\n                              Link To\n                            "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-1" }, [
-                  _c("i", { staticClass: "fas fa-sort-up" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-sort-down" }),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("th", [
-              _c("div", { staticClass: "d-inline-flex" }, [
-                _c("span", [
-                  _vm._v(
-                    "\n                              Instruction Type\n                            "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-1" }, [
-                  _c("i", { staticClass: "fas fa-sort-up" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-sort-down" }),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("th", [
-              _c("div", { staticClass: "d-inline-flex" }, [
-                _c("span", [
-                  _vm._v(
-                    "\n                              Assigned Vendor\n                            "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-1" }, [
-                  _c("i", { staticClass: "fas fa-sort-up" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-sort-down" }),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("th", [
-              _c("div", { staticClass: "d-inline-flex" }, [
-                _c("span", [
-                  _vm._v(
-                    "\n                              Attention Of\n                            "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-1" }, [
-                  _c("i", { staticClass: "fas fa-sort-up" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-sort-down" }),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("th", [
-              _c("div", { staticClass: "d-inline-flex" }, [
-                _c("span", [
-                  _vm._v(
-                    "\n                              Quotation No.\n                            "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-1" }, [
-                  _c("i", { staticClass: "fas fa-sort-up" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-sort-down" }),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("th", [
-              _vm._v(
-                "\n                          Invoice\n                        "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("th", [
-              _c("div", { staticClass: "d-inline-flex" }, [
-                _c("span", [
-                  _vm._v(
-                    "\n                              Customer PO\n                            "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-1" }, [
-                  _c("i", { staticClass: "fas fa-sort-up" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-sort-down" }),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("th", [
-              _c("div", { staticClass: "d-inline-flex" }, [
-                _c("span", [
-                  _vm._v(
-                    "\n                              Status\n                            "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "p-1" }, [
-                  _c("i", { staticClass: "fas fa-sort-up" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-sort-down" }),
-                ]),
-              ]),
-            ]),
-          ]),
-        ]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -1,6 +1,6 @@
 const getDefaultState = () => {
     return {
-        dashboard: [
+        dashboards: [
             {
                 id: "LI-2021-0199 R02",
                 link: "",
@@ -8,7 +8,8 @@ const getDefaultState = () => {
                 vendor: "AGILITY (ABU DHABI) PJSC",
                 attention: "Priyesh Thattarath",
                 quotation: "MITME-AGL-01 (Appendix 1)",
-                Status: "In Progress",
+                customerPO: "",
+                status: "In Progress",
             },
             {
                 id: "LI-2021-0203",
@@ -17,7 +18,8 @@ const getDefaultState = () => {
                 vendor: "AGILITY (ABU DHABI) PJSC",
                 attention: "Priyesh Thattarath",
                 quotation: "MITME-AGL-01 (Appendix 1)",
-                Status: "In Progress",
+                customerPO: "",
+                status: "In Progress",
             },
             {
                 id: "LI-2021-0213",
@@ -26,7 +28,8 @@ const getDefaultState = () => {
                 vendor: "AGILITY (ABU DHABI) PJSC",
                 attention: "Priyesh Thattarath",
                 quotation: "MITME-AGL-01 (Appendix 1)",
-                Status: "In Progress",
+                customerPO: "",
+                status: "In Progress",
             },
             {
                 id: "LI-2021-0218",
@@ -35,7 +38,8 @@ const getDefaultState = () => {
                 vendor: "AGILITY (ABU DHABI) PJSC",
                 attention: "Priyesh Thattarath",
                 quotation: "MITME-AGL-01 (Appendix 1)",
-                Status: "In Progress",
+                customerPO: "",
+                status: "In Progress",
             },
             {
                 id: "LI-2021-0219",
@@ -44,7 +48,8 @@ const getDefaultState = () => {
                 vendor: "AGILITY (ABU DHABI) PJSC",
                 attention: "Priyesh Thattarath",
                 quotation: "MITME-AGL-01 (Appendix 1)",
-                Status: "In Progress",
+                customerPO: "",
+                status: "In Progress",
             },
             {
                 id: "LI-2021-0241",
@@ -53,7 +58,8 @@ const getDefaultState = () => {
                 vendor: "AGILITY (ABU DHABI) PJSC",
                 attention: "Priyesh Thattarath",
                 quotation: "MITME-AGL-01 (Appendix 1)",
-                Status: "In Progress",
+                customerPO: "",
+                status: "In Progress",
             },
             {
                 id: "LI-2021-0263",
@@ -62,7 +68,8 @@ const getDefaultState = () => {
                 vendor: "AGILITY (ABU DHABI) PJSC",
                 attention: "Priyesh Thattarath",
                 quotation: "MITME-AGL-01 (Appendix 1)",
-                Status: "In Progress",
+                customerPO: "",
+                status: "In Progress",
             },
             {
                 id: "LI-2021-0265 R01",
@@ -71,7 +78,8 @@ const getDefaultState = () => {
                 vendor: "AGILITY (ABU DHABI) PJSC",
                 attention: "Priyesh Thattarath",
                 quotation: "MITME-AGL-01 (Appendix 1)",
-                Status: "In Progress",
+                customerPO: "",
+                status: "In Progress",
             },
             {
                 id: "LI-2021-0266 R01",
@@ -80,7 +88,8 @@ const getDefaultState = () => {
                 vendor: "AGILITY (ABU DHABI) PJSC",
                 attention: "Priyesh Thattarath",
                 quotation: "MITME-AGL-01 (Appendix 1)",
-                Status: "In Progress",
+                customerPO: "",
+                status: "In Progress",
             },
             {
                 id: "LI-2021-0267 R01",
@@ -89,7 +98,8 @@ const getDefaultState = () => {
                 vendor: "AGILITY (ABU DHABI) PJSC",
                 attention: "Priyesh Thattarath",
                 quotation: "MITME-AGL-01 (Appendix 1)",
-                Status: "In Progress",
+                customerPO: "",
+                status: "In Progress",
             },
             {
                 id: "LI-2021-0268 R01",
@@ -98,7 +108,8 @@ const getDefaultState = () => {
                 vendor: "AGILITY (ABU DHABI) PJSC",
                 attention: "Priyesh Thattarath",
                 quotation: "MITME-AGL-01 (Appendix 1)",
-                Status: "In Progress",
+                customerPO: "",
+                status: "In Progress",
             },
             {
                 id: "LI-2021-0269",
@@ -107,8 +118,15 @@ const getDefaultState = () => {
                 vendor: "AGILITY (ABU DHABI) PJSC",
                 attention: "Priyesh Thattarath",
                 quotation: "MITME-AGL-01 (Appendix 1)",
-                Status: "In Progress",
+                customerPO: "",
+                status: "In Progress",
             },
         ]
-    }
-}
+    };
+};
+
+const default_state = getDefaultState();
+
+export {
+    default_state
+};

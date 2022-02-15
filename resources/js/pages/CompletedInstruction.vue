@@ -20,7 +20,7 @@
                       <router-link class="nav-link text-muted active" :to="{name: 'CompletedInstruction'}">Completed</router-link>
                     </li>
                     <div class="flex-fill d-flex justify-content-end align-items-center float-end py-2">
-                      <input type="text" class="form-control w-25 h-75 mx-1 bg-light" placeholder="Search" v-if="showSearch" v-model="search">
+                      <input type="text" class="form-control w-25 h-75 mx-1 bg-light" placeholder="Search"  v-if="showSearch" v-model="search">
                       <custom-button btn_class="btn btn-light h-auto m-1 border py-1" :icon_class="searchClass" @btnClick="searchData()" />
                       <export-excel class="btn btn-light h-auto m-1 border py-1" :data="instructions" worksheet="Completed Instruction" name="Completed_Instruction.xls">
                         <i class="fas fa-file-export"></i>
