@@ -238,20 +238,6 @@
                             <div class="row mx-0 space-bottom">
                                 <div class="col-4">
                                     <div class="h4">Attachment</div>
-<!--                                    <table>-->
-<!--                                        <tbody>-->
-<!--                                            <tr v-for="(file, index) in files" :key="index">-->
-<!--                                                <td>-->
-<!--                                                    <div class="text-info h5 mb-0 text-left">{{file.name}}</div>-->
-<!--                                                </td>-->
-<!--                                                <td class="text-center">-->
-<!--                                                    <button class="btn btn-danger rounded-2 mx-2 w-25" @click="deleteTask(index)">-->
-<!--                                                        <i class="fas fa-trash" ></i>-->
-<!--                                                    </button>-->
-<!--                                                </td>-->
-<!--                                            </tr>-->
-<!--                                        </tbody>-->
-<!--                                    </table>-->
                                     <div v-for="(file, index) in files" :key="index" class="card mb-3">
                                         <div class="row icon-center">
                                             <div class="col-2">
@@ -264,15 +250,13 @@
                                                 <div class="text-black pt-0 text-left">by Admin on {{currentDateTime()}}</div>
                                             </div>
                                             <div class="col-2">
-                                                <div class="text-danger">
-                                                    <div type="button" @click="deleteTask(index)" class="fas fa-trash"/>
-                                                </div>
+                                                <button @click="deleteTask(index)" class="text-danger btn fas fa-trash"/>
                                             </div>
                                         </div>
                                     </div>
                                     <label class="btn btn-info text-light">
                                         <i class="fa fa-plus"></i> Add Attachment
-                                        <input type="file" name="attachment[]" @change="onFileChange" multiple style="display: none;">
+                                        <input type="file" name="files[]" @change="onFileChange" multiple style="display: none;">
                                     </label>
 
                                     <!--                  <custom-button btn_class="btn btn-info text-light fas py-2" icon_class="fas fa-plus" label="Add Attachments"/>-->
@@ -291,19 +275,16 @@
                                 <div class="h6">Link To</div>
                                 <div class="col-lg-6">
                                     <select class="form-select" v-model="linked">
-                                        <option selected disabled>Select Item</option>
+                                        <option selected>Select Item</option>
                                         <option value="0001">INSP-2020-0001</option>
                                         <option value="0002">INSP-2020-0002</option>
                                         <option value="0003">INSP-2020-0003</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-6">
-                                    <p v-if="linked==='0001'">
-                                        <custom-button btn_class="btn btn-danger text-light fas py-2" label="Remove Link" v-model="removeLink"/>
-                                    </p>
-                                    <p v-else-if="linked==='Select Item'"></p>
+                                    <p v-if="linked==='Select Item'"></p>
                                     <p v-else>
-                                        <custom-button btn_class="btn btn-danger text-light fas py-2" label="Remove Link" v-model="removeLink"/>
+                                        <custom-button btn_class="btn btn-danger text-light fas py-2" label="Remove Link"/>
                                     </p>
                                 </div>
                             </div>
@@ -360,7 +341,6 @@ export default {
             rate: "",
             files: [],
             linked: "Select Item",
-            removeLink: "",
             GST: 0,
         };
     },
@@ -384,6 +364,7 @@ export default {
             }
         },
         deleteTask(index) {
+            this.files = Array.prototype.slice.call(this.files)
             this.files.splice(index, 1);
         },
     },
@@ -460,8 +441,5 @@ tbody {
 }
 .space-bottom{
     margin-bottom: 1%;
-}
-.line-through {
-    text-decoration: line-through;
 }
 </style>

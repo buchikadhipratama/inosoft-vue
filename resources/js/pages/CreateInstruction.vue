@@ -275,7 +275,7 @@
                                 <div class="h6">Link To</div>
                                 <div class="col-lg-6">
                                     <select class="form-select" v-model="linked">
-                                        <option selected disabled>Select Item</option>
+                                        <option selected>Select Item</option>
                                         <option value="0001">INSP-2020-0001</option>
                                         <option value="0002">INSP-2020-0002</option>
                                         <option value="0003">INSP-2020-0003</option>
@@ -364,6 +364,7 @@ export default {
             }
         },
         deleteTask(index) {
+            this.files = Array.prototype.slice.call(this.files)
             this.files.splice(index, 1);
         },
     },

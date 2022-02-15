@@ -13,25 +13,29 @@
                             <div class="card mx-3 my-3">
                                 <div class="card-header bg-white p-0">
                                     <div class="row">
-                                        <div class="col-lg-11">
-                                            <div class="btn-group" role="group">
-                                                <custom-button btn_class="btn btn-white h-auto border fas m-2 py-2" data-bs-toggle="dropdown" aria-expanded="false" icon_class="fas fa-truck" label="Logistic Instruction" />
-                                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                    <li>
-                                                        <router-link :to="{name: 'LogisticInstruction'}" class="dropdown">
-                                                            <custom-button btn_class="btn" icon_class="fas fa-truck" label=" Logistic Instruction" />
-                                                        </router-link>
-                                                    </li>
-                                                    <li>
-                                                        <router-link :to="{name: 'ServiceInstruction'}" class="dropdown">
-                                                            <custom-button btn_class="btn" icon_class="fas fa-wrench" label="Service Instruction" />
-                                                        </router-link>
-                                                    </li>
-                                                </ul>
+                                        <div class="col-12 row">
+                                            <div class="col-lg-11">
+                                                <div class="btn-group" role="group">
+                                                    <custom-button btn_class="btn btn-white h-auto border fas m-2 py-2" data-bs-toggle="dropdown" aria-expanded="false" icon_class="fas fa-truck" label="Logistic Instruction" />
+                                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                        <li>
+                                                            <router-link :to="{name: 'LogisticInstruction'}" class="dropdown">
+                                                                <custom-button btn_class="btn" icon_class="fas fa-truck" label=" Logistic Instruction" />
+                                                            </router-link>
+                                                        </li>
+                                                        <li>
+                                                            <router-link :to="{name: 'ServiceInstruction'}" class="dropdown">
+                                                                <custom-button btn_class="btn" icon_class="fas fa-wrench" label="Service Instruction" />
+                                                            </router-link>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-1">
-                                            <custom-button btn_class="rounded-pill h-auto border fas m-2 py-2 px-4" label="draft" />
+                                            <div class="col-lg-1 icon-center mt-2">
+                                                <span class="badge text-black border rounded-pill instruction-badge" style="display: inline-block; width: 100px">
+                                                    Draft
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                     <form>
@@ -232,16 +236,33 @@
                                 </div>
                             </div>
                             <div class="row mx-0 space-bottom">
-                                <div class="col-5">
+                                <div class="col-4">
                                     <div class="h4">Attachment</div>
-                                    <p v-if="attachment"></p>
+                                    <div v-for="(file, index) in files" :key="index" class="card mb-3">
+                                        <div class="row icon-center">
+                                            <div class="col-2">
+                                                <div class="text-info">
+                                                    <div class="fas fa-paperclip"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-8 ">
+                                                <div class="text-info h5 mb-0 text-left">{{file.name}}</div>
+                                                <div class="text-black pt-0 text-left">by Admin on {{currentDateTime()}}</div>
+                                            </div>
+                                            <div class="col-2">
+                                                <button @click="deleteTask(index)" class="text-danger btn fas fa-trash"/>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <label class="btn btn-info text-light">
                                         <i class="fa fa-plus"></i> Add Attachment
-                                        <input type="file" style="display: none;">
+                                        <input type="file" name="files[]" @change="onFileChange" multiple style="display: none;">
                                     </label>
+
                                     <!--                  <custom-button btn_class="btn btn-info text-light fas py-2" icon_class="fas fa-plus" label="Add Attachments"/>-->
                                     <!--                  <input class="btn btn-info text-light fas py-2" type="file" @change="onFileSelected">-->
                                 </div>
+                                <div class="col-1"/>
                                 <div class="col-7">
                                     <div class="h4">Notes</div>
                                     <textarea id="notes" class="form-control" ></textarea>
@@ -254,19 +275,16 @@
                                 <div class="h6">Link To</div>
                                 <div class="col-lg-6">
                                     <select class="form-select" v-model="linked">
-                                        <option selected disabled>Select Item</option>
+                                        <option selected>Select Item</option>
                                         <option value="0001">INSP-2020-0001</option>
                                         <option value="0002">INSP-2020-0002</option>
                                         <option value="0003">INSP-2020-0003</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-6">
-                                    <p v-if="linked==='0001'">
-                                        <custom-button btn_class="btn btn-danger text-light fas py-2" label="Remove Link" v-model="removeLink"/>
-                                    </p>
-                                    <p v-else-if="linked==='Select Item'"></p>
+                                    <p v-if="linked==='Select Item'"></p>
                                     <p v-else>
-                                        <custom-button btn_class="btn btn-danger text-light fas py-2" label="Remove Link" v-model="removeLink"/>
+                                        <custom-button btn_class="btn btn-danger text-light fas py-2" label="Remove Link"/>
                                     </p>
                                 </div>
                             </div>
@@ -321,16 +339,34 @@ export default {
             currency: "",
             amount: 0,
             rate: "",
-            attachment: "",
+            files: [],
             linked: "Select Item",
-            removeLink: "",
             GST: 0,
         };
     },
     methods: {
         onFileSelected(event){
             console.log(event)
-        }
+        },
+        onFileChange(e) {
+            this.files = e.target.files;
+            console.log(this.files);
+        },
+        currentDateTime(){
+            const current = new Date();
+            const date = current.getDate()+'/'+(current.getMonth()+1)+'/'+current.getFullYear();
+            const time = current.getHours()+":"+current.getMinutes();
+            if (current.getHours()>=12){
+                return date+" "+time+" PM";
+            }
+            else {
+                return date+" "+time+" AM";
+            }
+        },
+        deleteTask(index) {
+            this.files = Array.prototype.slice.call(this.files)
+            this.files.splice(index, 1);
+        },
     },
     computed:{
         getTotal(){
@@ -391,11 +427,15 @@ tbody {
 .icon-center{
     text-align: center;
     vertical-align: middle;
+    justify-content: center;
+    align-items: center;
 }
 .text-right{
     text-align: right;
 }
-
+.text-left{
+    text-align: left;
+}
 .text-middle{
     vertical-align: middle;
 }
