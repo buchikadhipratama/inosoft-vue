@@ -13,25 +13,29 @@
                             <div class="card mx-3 my-3">
                                 <div class="card-header bg-white p-0">
                                     <div class="row">
-                                        <div class="col-lg-11">
-                                            <div class="btn-group" role="group">
-                                                <custom-button btn_class="btn btn-white h-auto border fas m-2 py-2" data-bs-toggle="dropdown" aria-expanded="false" icon_class="fas fa-wrench" label="Service Instruction" />
-                                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                    <li>
-                                                        <router-link :to="{name: 'LogisticInstruction'}" class="dropdown">
-                                                            <custom-button btn_class="btn" icon_class="fas fa-truck" label=" Logistic Instruction" />
-                                                        </router-link>
-                                                    </li>
-                                                    <li>
-                                                        <router-link :to="{name: 'ServiceInstruction'}" class="dropdown">
-                                                            <custom-button btn_class="btn" icon_class="fas fa-wrench" label="Service Instruction" />
-                                                        </router-link>
-                                                    </li>
-                                                </ul>
+                                        <div class="col-12 row">
+                                            <div class="col-lg-11">
+                                                <div class="btn-group" role="group">
+                                                    <custom-button btn_class="btn btn-white h-auto border fas m-2 py-2" data-bs-toggle="dropdown" aria-expanded="false" icon_class="fas fa-wrench" label="Service Instruction" />
+                                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                        <li>
+                                                            <router-link :to="{name: 'LogisticInstruction'}" class="dropdown">
+                                                                <custom-button btn_class="btn" icon_class="fas fa-truck" label=" Logistic Instruction" />
+                                                            </router-link>
+                                                        </li>
+                                                        <li>
+                                                            <router-link :to="{name: 'ServiceInstruction'}" class="dropdown">
+                                                                <custom-button btn_class="btn" icon_class="fas fa-wrench" label="Service Instruction" />
+                                                            </router-link>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-1">
-                                            <custom-button btn_class="rounded-pill h-auto border fas m-2 py-2 px-4" label="draft" />
+                                            <div class="col-lg-1 icon-center mt-2">
+                                                <span class="badge text-black border rounded-pill instruction-badge" style="display: inline-block; width: 100px">
+                                                    Draft
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                     <form>
@@ -232,16 +236,49 @@
                                 </div>
                             </div>
                             <div class="row mx-0 space-bottom">
-                                <div class="col-5">
+                                <div class="col-4">
                                     <div class="h4">Attachment</div>
-                                    <p v-if="attachment"></p>
+<!--                                    <table>-->
+<!--                                        <tbody>-->
+<!--                                            <tr v-for="(file, index) in files" :key="index">-->
+<!--                                                <td>-->
+<!--                                                    <div class="text-info h5 mb-0 text-left">{{file.name}}</div>-->
+<!--                                                </td>-->
+<!--                                                <td class="text-center">-->
+<!--                                                    <button class="btn btn-danger rounded-2 mx-2 w-25" @click="deleteTask(index)">-->
+<!--                                                        <i class="fas fa-trash" ></i>-->
+<!--                                                    </button>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
+<!--                                        </tbody>-->
+<!--                                    </table>-->
+                                    <div v-for="(file, index) in files" :key="index" class="card mb-3">
+                                        <div class="row icon-center">
+                                            <div class="col-2">
+                                                <div class="text-info">
+                                                    <div class="fas fa-paperclip"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-8 ">
+                                                <div class="text-info h5 mb-0 text-left">{{file.name}}</div>
+                                                <div class="text-black pt-0 text-left">by Admin on {{currentDateTime()}}</div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="text-danger">
+                                                    <div type="button" @click="deleteTask(index)" class="fas fa-trash"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <label class="btn btn-info text-light">
                                         <i class="fa fa-plus"></i> Add Attachment
-                                        <input type="file" style="display: none;">
+                                        <input type="file" name="attachment[]" @change="onFileChange" multiple style="display: none;">
                                     </label>
+
                                     <!--                  <custom-button btn_class="btn btn-info text-light fas py-2" icon_class="fas fa-plus" label="Add Attachments"/>-->
                                     <!--                  <input class="btn btn-info text-light fas py-2" type="file" @change="onFileSelected">-->
                                 </div>
+                                <div class="col-1"/>
                                 <div class="col-7">
                                     <div class="h4">Notes</div>
                                     <textarea id="notes" class="form-control" ></textarea>
@@ -321,7 +358,7 @@ export default {
             currency: "",
             amount: 0,
             rate: "",
-            attachment: "",
+            files: [],
             linked: "Select Item",
             removeLink: "",
             GST: 0,
@@ -330,7 +367,25 @@ export default {
     methods: {
         onFileSelected(event){
             console.log(event)
-        }
+        },
+        onFileChange(e) {
+            this.files = e.target.files;
+            console.log(this.files);
+        },
+        currentDateTime(){
+            const current = new Date();
+            const date = current.getDate()+'/'+(current.getMonth()+1)+'/'+current.getFullYear();
+            const time = current.getHours()+":"+current.getMinutes();
+            if (current.getHours()>=12){
+                return date+" "+time+" PM";
+            }
+            else {
+                return date+" "+time+" AM";
+            }
+        },
+        deleteTask(index) {
+            this.files.splice(index, 1);
+        },
     },
     computed:{
         getTotal(){
@@ -391,15 +446,22 @@ tbody {
 .icon-center{
     text-align: center;
     vertical-align: middle;
+    justify-content: center;
+    align-items: center;
 }
 .text-right{
     text-align: right;
 }
-
+.text-left{
+    text-align: left;
+}
 .text-middle{
     vertical-align: middle;
 }
 .space-bottom{
     margin-bottom: 1%;
+}
+.line-through {
+    text-decoration: line-through;
 }
 </style>
