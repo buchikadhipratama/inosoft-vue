@@ -4,42 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vendor;
+use App\Service\VendorService;
+use PDF;
 
 class VendorController extends Controller
 {
-    public function create()
-    {
-        return view('create');
-    }
+    // public function create()
+    // {
+    //     return view('CreateInstruction');
+    // }
 
     public function store(Request $request)
     {
-        $vendor = new Vendor();
-        $vendor->assign_vendor = $request->get('assign_vendor');  
-        $vendor->attention = $request->get('attention');
-        $vendor->quotation = $request->get('quotation');
-        $vendor->invoice = $request->get('invoice');
-        $vendor->customer_contract = $request->get('customer_contract');  
-        $vendor->vendor_address = $request->get('vendor_address');    
-        $vendor->customer_po = $request->get('customer_po');
-        $vendor->description = $request->get('description');  
-        $vendor->qty = $request->get('qty');  
-        $vendor->uom = $request->get('uom');  
-        $vendor->unit_price = $request->get('unit_price');  
-        $vendor->discount = $request->get('discount');  
-        $vendor->gst_vat = $request->get('gst_vat');  
-        $vendor->currency = $request->get('currency');  
-        $vendor->change = $request->get('change');
-        $vendor->attachment = $request->get('attachment');  
-        $vendor->notes = $request->get('notes');  
-        $vendor->link_to = $request->get('link_to');            
-        $vendor->save();
-        return redirect('vendor')->with('success', 'service instruction has been successfully added');
+        $vendorData = $request->all();
+
+        $response = (new VendorService)-> createVendorFromArray($vendorData);
+
+        if ($response['error']) {
+            return response()->json(['status'=>500, 'message'=>'something wrong with the server'],500);
+        }
+
+        return response()->json(['status'=>201, 'message'=>'create success'],201);
+
     }
 
     public function index()
     {
-        $vendors=Vendor::all();
+        $response = (new VendorService)->getAllVendor();
+
+        // return response()->json(['status'=>200, 'message'=>$response],200);
+
         return view('welcome');
     }
 
@@ -49,35 +43,68 @@ class VendorController extends Controller
         return view('edit',compact('vendor','id'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $vendor = Vendor::find($id);
-        $vendor->assign_vendor = $request->get('assign_vendor');  
-        $vendor->attention = $request->get('attention');
-        $vendor->quotation = $request->get('quotation');
-        $vendor->invoice = $request->get('invoice');
-        $vendor->customer_contract = $request->get('customer_contract');  
-        $vendor->vendor_address = $request->get('vendor_address');    
-        $vendor->customer_po = $request->get('customer_po');
-        $vendor->description = $request->get('description');  
-        $vendor->qty = $request->get('qty');  
-        $vendor->uom = $request->get('uom');  
-        $vendor->unit_price = $request->get('unit_price');  
-        $vendor->discount = $request->get('discount');  
-        $vendor->gst_vat = $request->get('gst_vat');  
-        $vendor->currency = $request->get('currency');  
-        $vendor->change = $request->get('change');
-        $vendor->attachment = $request->get('attachment');  
-        $vendor->notes = $request->get('notes');  
-        $vendor->link_to = $request->get('link_to');            
-        $vendor->save();
-        return redirect('vendor')->with('success', 'service instruction has been successfully updated');
+        $vendorData = $request->all();
+
+        // $validator = Validator::make($vendorData,[
+        //     'id' => 'required'
+        // ]);
+
+        // if(!$validator->validate()){
+        //     return response()->json(['status'=>400, 'message'=>$validator->errors()],400);
+        // }
+
+        $response = (new VendorService)-> updateVendorFromArray($vendorData);
+
+        if ($response['error']) {
+            return response()->json(['status'=>500, 'message'=>'something wrong with the server'],500);
+        }
+
+        return response()->json(['status'=>200, 'message'=>'update success'],200);
     }
 
-    public function destroy($id)
+    // public function destroy(Request $request)
+    // {
+    //     $vendorData = $request->id;
+
+    //     $response = (new VendorService)-> deleteVendorbyId($vendorData);
+
+    //     if ($response['error']) {
+    //         return response()->json(['status'=>500, 'message'=>'something wrong with the server'],500);
+    //     }
+
+    //     return response()->json(['status'=>200, 'message'=>'delete success'],200);
+    // }
+
+    public function completed()
     {
-        $vendor = Vendor::find($id);
-        $vendor->delete();
-        return redirect('vendor')->with('success','data has been  deleted');
+        $response = (new VendorService)->getCompleted();
+
+        return response()->json(['status'=>200, 'message'=>$response],200);
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $vendorData = $request->all();
+
+        $response = (new VendorService)-> changeVendorStatus($vendorData);
+
+        if ($response['error']) {
+            return response()->json(['status'=>500, 'message'=>'something wrong with the server'],500);
+        }
+
+        return response()->json(['status'=>200, 'message'=>'change status to completed'],200);
+    }
+
+
+    public function exportPDF(Request $request)
+    {
+        $vendorData = Vendor::find($request['id']);
+        $pdf = PDF::loadView('pdf', compact('vendor'));
+        $pdf = PDF::loadView('A4', 'potrait');
+        return $pdf->stream('pdf');
     }
 }
+
+
