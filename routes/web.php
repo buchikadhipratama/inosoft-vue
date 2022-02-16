@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VendorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::any('/{any}', function () {
-    return view('welcome');
-});
+Route::get('/', [VendorController::class, 'index']);
+Route::get('/add', [VendorController::class, 'create']);
+Route::post('/add', [VendorController::class, 'store']);
+Route::get('/edit/{id}', [VendorController::class, 'edit']);
+Route::post('/edit/{id}', [VendorController::class, 'update']);
+Route::delete('/{id}', [VendorController::class, 'destroy']);
