@@ -11,15 +11,22 @@ const sort = async (context, payload) => {
 //       .catch((err) => console.error(err));
 //   }
 
-const fetchAllInstruction = async (context) => {
+const fetchOpenInstruction = async (context) => {
     return axios.get('api/')
     .then(({data}) => {
-      context.commit("SETINSTRUCTION", data);
+      context.commit("SETOPENINSTRUCTION", data);
     })
-    .catch((err) => console.error(err));
+}
+
+const fetchCompletedInstruction = async (context) => {
+  return axios.get('api/1')
+  .then(({data}) => {
+    context.commit("SETCOMPLETEDINSTRUCTION", data)
+  })
 }
 
 export {
     sort,
-    fetchAllInstruction
+    fetchOpenInstruction,
+    fetchCompletedInstruction
 }

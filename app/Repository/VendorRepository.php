@@ -88,7 +88,7 @@ class VendorRepository{
     {
         return Vendor::where(function ($query) {
             $query->where('status', 2)
-                ->orwhere('status', 3);
+                ->orwhere('status', 0);
          })->get(); //0 untuk saat ini artinya completed
     }
 

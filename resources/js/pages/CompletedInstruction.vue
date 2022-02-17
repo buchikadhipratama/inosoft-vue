@@ -189,11 +189,11 @@
                         </td>
                         <td>{{instruction.customer_po}}</td>
                         <td>
-                          <span v-if="instruction.status == '1'" class="badge badge-completed rounded-pill instruction-badge">
-                            In Progress
-                          </span>
-                          <span v-else-if="instruction.status == '2'" class="badge badge-canceled rounded-pill instruction-badge">
+                          <span v-if="instruction.status == '2'" class="badge badge-completed rounded-pill instruction-badge">
                             Completed
+                          </span>
+                          <span v-else-if="instruction.status == '0'" class="badge badge-canceled rounded-pill instruction-badge">
+                            Canceled
                           </span>
                         </td>
                       </tr>
@@ -251,7 +251,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchAllInstruction: 'thirdPartyInstruction/fetchAllInstruction'
+      fetchCompletedInstruction: 'thirdPartyInstruction/fetchCompletedInstruction'
       }),
     sort(direction, data) {
       this.sortData.direction = direction;
@@ -271,7 +271,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      instructions: "thirdPartyInstruction/getInstructions",
+      instructions: "thirdPartyInstruction/getCompletedInstruction",
     }),
     filteredData() {
       const search = this.search.toLowerCase();
@@ -299,7 +299,7 @@ export default {
     }
   },
   created() {
-    this.fetchAllInstruction();
+    this.fetchCompletedInstruction();
   }
 }
 

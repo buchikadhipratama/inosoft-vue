@@ -18876,7 +18876,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)({
-    fetchAllInstruction: 'thirdPartyInstruction/fetchAllInstruction'
+    fetchCompletedInstruction: 'thirdPartyInstruction/fetchCompletedInstruction'
   })), {}, {
     sort: function sort(direction, data) {
       this.sortData.direction = direction;
@@ -18898,7 +18898,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)({
-    instructions: "thirdPartyInstruction/getInstructions"
+    instructions: "thirdPartyInstruction/getCompletedInstruction"
   })), {}, {
     filteredData: function filteredData() {
       var search = this.search.toLowerCase();
@@ -18916,7 +18916,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   created: function created() {
-    this.fetchAllInstruction();
+    this.fetchCompletedInstruction();
   }
 });
 
@@ -19886,7 +19886,8 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_2_
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "sort": () => (/* binding */ sort),
-/* harmony export */   "fetchAllInstruction": () => (/* binding */ fetchAllInstruction)
+/* harmony export */   "fetchOpenInstruction": () => (/* binding */ fetchOpenInstruction),
+/* harmony export */   "fetchCompletedInstruction": () => (/* binding */ fetchCompletedInstruction)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -19925,7 +19926,7 @@ var sort = /*#__PURE__*/function () {
 //   }
 
 
-var fetchAllInstruction = /*#__PURE__*/function () {
+var fetchOpenInstruction = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(context) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
       while (1) {
@@ -19933,9 +19934,7 @@ var fetchAllInstruction = /*#__PURE__*/function () {
           case 0:
             return _context2.abrupt("return", axios.get('api/').then(function (_ref3) {
               var data = _ref3.data;
-              context.commit("SETINSTRUCTION", data);
-            })["catch"](function (err) {
-              return console.error(err);
+              context.commit("SETOPENINSTRUCTION", data);
             }));
 
           case 1:
@@ -19946,8 +19945,32 @@ var fetchAllInstruction = /*#__PURE__*/function () {
     }, _callee2);
   }));
 
-  return function fetchAllInstruction(_x3) {
+  return function fetchOpenInstruction(_x3) {
     return _ref2.apply(this, arguments);
+  };
+}();
+
+var fetchCompletedInstruction = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(context) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            return _context3.abrupt("return", axios.get('api/1').then(function (_ref5) {
+              var data = _ref5.data;
+              context.commit("SETCOMPLETEDINSTRUCTION", data);
+            }));
+
+          case 1:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
+
+  return function fetchCompletedInstruction(_x4) {
+    return _ref4.apply(this, arguments);
   };
 }();
 
@@ -19964,10 +19987,18 @@ var fetchAllInstruction = /*#__PURE__*/function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getInstructions": () => (/* binding */ getInstructions)
+/* harmony export */   "getOpenInstruction": () => (/* binding */ getOpenInstruction),
+/* harmony export */   "getCompletedInstruction": () => (/* binding */ getCompletedInstruction)
 /* harmony export */ });
-var getInstructions = function getInstructions(state) {
-  return state.instructions;
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/store/modules/third-party-instruction/state.js");
+
+
+var getOpenInstruction = function getOpenInstruction(state) {
+  return state.open_instructions;
+};
+
+var getCompletedInstruction = function getCompletedInstruction(data) {
+  return _state__WEBPACK_IMPORTED_MODULE_0__.state.completed_instruction;
 };
 
 
@@ -20014,7 +20045,8 @@ var namespaced = true;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SORT": () => (/* binding */ SORT),
-/* harmony export */   "SETINSTRUCTION": () => (/* binding */ SETINSTRUCTION)
+/* harmony export */   "SETOPENINSTRUCTION": () => (/* binding */ SETOPENINSTRUCTION),
+/* harmony export */   "SETCOMPLETEDINSTRUCTION": () => (/* binding */ SETCOMPLETEDINSTRUCTION)
 /* harmony export */ });
 var SORT = function SORT(state, payload) {
   var sorted = state.instructions.message.sort(function (a, b) {
@@ -20027,8 +20059,12 @@ var SORT = function SORT(state, payload) {
   state.instructions.message = sorted;
 };
 
-var SETINSTRUCTION = function SETINSTRUCTION(state, data) {
-  state.instructions = data;
+var SETOPENINSTRUCTION = function SETOPENINSTRUCTION(state, data) {
+  state.open_instructions = data;
+};
+
+var SETCOMPLETEDINSTRUCTION = function SETCOMPLETEDINSTRUCTION(state, data) {
+  state.completed_instruction = data;
 };
 
 
@@ -20046,9 +20082,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "state": () => (/* binding */ state)
 /* harmony export */ });
-var state = JSON.parse(JSON.stringify({
-  instructions: []
-}));
+var state = {
+  open_instructions: [],
+  completed_instruction: []
+};
 
 
 /***/ }),
@@ -47230,7 +47267,7 @@ var render = function () {
                               ]),
                               _vm._v(" "),
                               _c("td", [
-                                instruction.status == "1"
+                                instruction.status == "2"
                                   ? _c(
                                       "span",
                                       {
@@ -47239,11 +47276,11 @@ var render = function () {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                           In Progress\n                         "
+                                          "\n                           Completed\n                         "
                                         ),
                                       ]
                                     )
-                                  : instruction.status == "2"
+                                  : instruction.status == "0"
                                   ? _c(
                                       "span",
                                       {
@@ -47252,7 +47289,7 @@ var render = function () {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                           Completed\n                         "
+                                          "\n                           Canceled\n                         "
                                         ),
                                       ]
                                     )

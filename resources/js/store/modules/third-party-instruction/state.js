@@ -1,7 +1,8 @@
 
-const state = JSON.parse(JSON.stringify({
-    instructions: []
-}));
+const state = {
+    open_instructions: [],
+    completed_instruction: []
+}
 
 export {
     state

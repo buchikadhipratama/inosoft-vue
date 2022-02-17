@@ -9,11 +9,16 @@ const SORT = (state, payload) => {
     state.instructions.message = sorted
 }
 
-const SETINSTRUCTION = (state, data) => {
-    state.instructions = data;
+const SETOPENINSTRUCTION = (state, data) => {
+    state.open_instructions = data;
+}
+
+const SETCOMPLETEDINSTRUCTION = (state, data) => {
+    state.completed_instruction = data;
 }
 
 export {
     SORT,
-    SETINSTRUCTION
+    SETOPENINSTRUCTION,
+    SETCOMPLETEDINSTRUCTION
 }
