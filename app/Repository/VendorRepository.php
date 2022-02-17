@@ -38,7 +38,8 @@ class VendorRepository{
 
     public function getAll()
     {
-        return Vendor::where('status', 1)->get();
+        return Vendor::where('status',1)->get(); //1 artinya status in progress
+
     }
 
     public function updateVendorFromArray(array $vendor)
@@ -71,18 +72,6 @@ class VendorRepository{
         }
     }
 
-    // public function deleteById(string $vendorId)
-    // {
-    //     try {
-    //         $vendor = Vendor::find($vendorId);
-    //         if($vendor){
-    //             $vendor->delete(    );
-    //         }
-    //         return 0;
-    //     } catch (\Throwable $th) {
-    //         return 1;
-    //     }
-    // }
 
     public function getAllCompleted()
     {
