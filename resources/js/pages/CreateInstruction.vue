@@ -120,7 +120,7 @@
                                                     UOM
                                                 </div>
                                             </th>
-                                            <th width="11%">
+                                            <th width="12%">
                                                 <div class="d-inline-flex">
                                                     Unit Price
                                                 </div>
@@ -245,7 +245,7 @@
                                                     <div class="fas fa-paperclip"/>
                                                 </div>
                                             </div>
-                                            <div class="col-8 ">
+                                            <div class="col-8">
                                                 <div class="text-info h5 mb-0 text-left">{{file.name}}</div>
                                                 <div class="text-black pt-0 text-left">by Admin on {{currentDateTime()}}</div>
                                             </div>
@@ -265,7 +265,7 @@
                                 <div class="col-1"/>
                                 <div class="col-7">
                                     <div class="h4">Notes</div>
-                                    <textarea id="notes" class="form-control" ></textarea>
+                                    <textarea id="notes" v-model="notes" class="form-control" ></textarea>
                                 </div>
                             </div>
                         </div>
@@ -345,12 +345,14 @@ export default {
             poNo: "",
 
             qty: 0,
-            unitPrice: 0,
+            unitPrice: "",
             discount: 0,
             currency: "",
             amount: 0,
             rate: "",
+
             files: [],
+            notes: "",
             linked: "Select Item",
             GST: 0,
         };
