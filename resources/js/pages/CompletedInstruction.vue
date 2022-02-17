@@ -136,7 +136,7 @@
                     <td class="text-center">
                       <i class="fas fa-truck" v-if="item.assign_vendor == 'LI'"></i>
                       <i class="fas fa-wrench" v-else></i>
-                      {{item.assign_vendor}}
+                      {{item.type}}
                     </td>
                     <td>{{item.assign_vendor}}</td>
                     <td>{{item.attention}}</td>
@@ -187,6 +187,7 @@ import CustomButton from "../components/sub-components/CustomButton.vue";
 import PageTitleComponent from "../components/sub-components/PageTitleComponent.vue";
 import SidebarComponent from "../components/sub-components/SidebarComponent.vue";
 import HeaderComponent from "../components/sub-components/HeaderComponent.vue";
+import { mapState } from 'vuex';
 
 export default {
   name: "CompletedInstruction",
@@ -198,7 +199,7 @@ export default {
   },
   data() {
     return {
-      vendors :{},
+      // vendors :{},
       data: [
         {
           name: "Vendor Management",
@@ -225,18 +226,22 @@ export default {
       this.$store.dispatch("thirdPartyInstruction/sort", payload);
     },
 
-    loadData(){
-      axios.get('api/completed').then(({data})=>(this.vendors = data));
-    },
-  },
-  created(){
-    this.loadData();
+  //   loadData(){
+  //     axios.get('api/completed').then(({data})=>(this.vendors = data));
+  //   },
+  // },
+  // created(){
+  //   this.loadData();
   },
   computed: {
     ...mapGetters({
       instructions: "thirdPartyInstruction/getInstructions",
     }),
+    ...mapState('vendors', ['vendors'])
   },
+  created(){
+    this.$store.dispatch('vendors/getCompleted');
+  }
 };
 </script>
 
