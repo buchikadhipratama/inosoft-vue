@@ -18903,8 +18903,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     filteredData: function filteredData() {
       var search = this.search.toLowerCase();
       return this.instructions.message.filter(function (instruction) {
-        var id = instruction._id.toString().toLowerCase();
-
+        var id = instruction.instruction_id.toString().toLowerCase();
         var link = instruction.link_to.toString().toLowerCase();
         var type = instruction.type.toString().toLowerCase();
         var vendor = instruction.assign_vendor.toString().toLowerCase();
@@ -19916,7 +19915,15 @@ var sort = /*#__PURE__*/function () {
   return function sort(_x, _x2) {
     return _ref.apply(this, arguments);
   };
-}();
+}(); // const fetchAllInstruction = async (context) => {
+//     return fetch("http://127.0.0.1:8000/api/")
+//       .then((response) => response.json())
+//       .then((data) => {
+//         context.commit("SETINSTRUCTION", data);
+//       })
+//       .catch((err) => console.error(err));
+//   }
+
 
 var fetchAllInstruction = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(context) {
@@ -19924,9 +19931,8 @@ var fetchAllInstruction = /*#__PURE__*/function () {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            return _context2.abrupt("return", fetch("http://127.0.0.1:8000/api/").then(function (response) {
-              return response.json();
-            }).then(function (data) {
+            return _context2.abrupt("return", axios.get('api/').then(function (_ref3) {
+              var data = _ref3.data;
               context.commit("SETINSTRUCTION", data);
             })["catch"](function (err) {
               return console.error(err);

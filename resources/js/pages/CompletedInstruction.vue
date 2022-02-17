@@ -276,7 +276,7 @@ export default {
     filteredData() {
       const search = this.search.toLowerCase();
       return this.instructions.message.filter((instruction) => {
-        const id = instruction._id.toString().toLowerCase();
+        const id = instruction.instruction_id.toString().toLowerCase();
         const link = instruction.link_to.toString().toLowerCase();
         const type = instruction.type.toString().toLowerCase();
         const vendor = instruction.assign_vendor.toString().toLowerCase();
