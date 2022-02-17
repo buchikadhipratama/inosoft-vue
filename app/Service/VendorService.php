@@ -70,4 +70,18 @@ class VendorService{
             ];
         }
     }
+
+    public function cancelation(array $cancel)
+    {
+        $error = (new VendorRepository)-> cancelation($cancel);
+        if ($error){
+            return [
+                'error' => 1
+            ];
+        }else{
+            return [
+                'error' => 0
+            ];
+        }
+    }
 }

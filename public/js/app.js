@@ -18861,6 +18861,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
+      // vendors :{},
       data: [{
         name: "Vendor Management",
         to: "Home"
@@ -19460,6 +19461,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
+      // vendors :{},
       data: [{
         name: "Vendor Management",
         to: "Home"
@@ -19698,19 +19700,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _modules_third_party_instruction_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/third-party-instruction/index.js */ "./resources/js/store/modules/third-party-instruction/index.js");
-/* harmony import */ var _modules_home_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/home/index.js */ "./resources/js/store/modules/home/index.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _modules_vendors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/vendors */ "./resources/js/store/modules/vendors.js");
+/* harmony import */ var _modules_third_party_instruction_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/third-party-instruction/index.js */ "./resources/js/store/modules/third-party-instruction/index.js");
+/* harmony import */ var _modules_home_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/home/index.js */ "./resources/js/store/modules/home/index.js");
 
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_3__["default"]);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_3__["default"].Store({
+
+vue__WEBPACK_IMPORTED_MODULE_3__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_4__["default"]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_4__["default"].Store({
   modules: {
-    home: _modules_home_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
-    thirdPartyInstruction: _modules_third_party_instruction_index_js__WEBPACK_IMPORTED_MODULE_0__["default"]
+    home: _modules_home_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+    thirdPartyInstruction: _modules_third_party_instruction_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+    vendors: _modules_vendors__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   strict: true
 }));
@@ -20170,6 +20175,53 @@ __webpack_require__.r(__webpack_exports__);
 
 var state = JSON.parse(JSON.stringify(_const__WEBPACK_IMPORTED_MODULE_0__.default_state));
 
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/vendors.js":
+/*!***********************************************!*\
+  !*** ./resources/js/store/modules/vendors.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+var vendors = {
+  namespaced: true,
+  state: {
+    vendors: {}
+  },
+  mutations: {
+    SET_POSTS: function SET_POSTS(state, data) {
+      state.vendors = data;
+    }
+  },
+  actions: {
+    loadData: function loadData(_ref) {
+      var commit = _ref.commit;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get('api/').then(function (res) {
+        return commit('SET_POSTS', res.data);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    getCompleted: function getCompleted(_ref2) {
+      var commit = _ref2.commit;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get('api/completed').then(function (res) {
+        return commit('SET_POSTS', res.data);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    }
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (vendors);
 
 /***/ }),
 

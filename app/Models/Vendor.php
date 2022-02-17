@@ -28,6 +28,8 @@ class Vendor extends Eloquent
         'change',
         'attachment',
         'notes',
-        'link_to'
+        'link_to',
+        'cancel_description',
+        'cancel_attachment'
     ];
 }

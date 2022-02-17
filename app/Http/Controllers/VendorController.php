@@ -9,10 +9,6 @@ use PDF;
 
 class VendorController extends Controller
 {
-    // public function create()
-    // {
-    //     return view('CreateInstruction');
-    // }
 
     public function store(Request $request)
     {
@@ -24,7 +20,7 @@ class VendorController extends Controller
             return response()->json(['status'=>500, 'message'=>'something wrong with the server'],500);
         }
 
-        return response()->json(['status'=>201, 'message'=>'create success'],201);
+        return $response;
 
     }
 
@@ -32,9 +28,7 @@ class VendorController extends Controller
     {
         $response = (new VendorService)->getAllVendor();
 
-        // return response()->json(['status'=>200, 'message'=>$response],200);
-
-        return view('welcome');
+        return $response;
     }
 
     public function edit($id)
@@ -47,41 +41,20 @@ class VendorController extends Controller
     {
         $vendorData = $request->all();
 
-        // $validator = Validator::make($vendorData,[
-        //     'id' => 'required'
-        // ]);
-
-        // if(!$validator->validate()){
-        //     return response()->json(['status'=>400, 'message'=>$validator->errors()],400);
-        // }
-
         $response = (new VendorService)-> updateVendorFromArray($vendorData);
 
         if ($response['error']) {
             return response()->json(['status'=>500, 'message'=>'something wrong with the server'],500);
         }
 
-        return response()->json(['status'=>200, 'message'=>'update success'],200);
+        return $response;
     }
-
-    // public function destroy(Request $request)
-    // {
-    //     $vendorData = $request->id;
-
-    //     $response = (new VendorService)-> deleteVendorbyId($vendorData);
-
-    //     if ($response['error']) {
-    //         return response()->json(['status'=>500, 'message'=>'something wrong with the server'],500);
-    //     }
-
-    //     return response()->json(['status'=>200, 'message'=>'delete success'],200);
-    // }
 
     public function completed()
     {
         $response = (new VendorService)->getCompleted();
 
-        return response()->json(['status'=>200, 'message'=>$response],200);
+        return $response;
     }
 
     public function changeStatus(Request $request)
@@ -94,7 +67,7 @@ class VendorController extends Controller
             return response()->json(['status'=>500, 'message'=>'something wrong with the server'],500);
         }
 
-        return response()->json(['status'=>200, 'message'=>'change status to completed'],200);
+        return $response;
     }
 
 
@@ -104,6 +77,20 @@ class VendorController extends Controller
         $pdf = PDF::loadView('pdf', compact('vendor'));
         $pdf = PDF::loadView('A4', 'potrait');
         return $pdf->stream('pdf');
+    }
+
+    public function cancel(Request $request)
+    {
+        $cancelationData = $request->all();
+
+        $response = (new VendorService)-> cancelation($cancelationData);
+
+        if ($response['error']) {
+            return response()->json(['status'=>500, 'message'=>'something wrong with the server'],500);
+        }
+
+        return $response;
+
     }
 }
 
