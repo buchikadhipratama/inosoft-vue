@@ -18875,7 +18875,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       search: ""
     };
   },
-  methods: {
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)({
+    fetchAllInstruction: 'thirdPartyInstruction/fetchAllInstruction'
+  })), {}, {
     sort: function sort(direction, data) {
       this.sortData.direction = direction;
       this.sortData.type = data;
@@ -18894,25 +18896,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.searchClass = "fas fa-search";
       }
     }
-  },
+  }),
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)({
     instructions: "thirdPartyInstruction/getInstructions"
   })), {}, {
     filteredData: function filteredData() {
       var search = this.search.toLowerCase();
-      return this.instructions.filter(function (instruction) {
-        var id = instruction.id.toString().toLowerCase();
-        var link = instruction.link.toString().toLowerCase();
+      return this.instructions.message.filter(function (instruction) {
+        var id = instruction._id.toString().toLowerCase();
+
+        var link = instruction.link_to.toString().toLowerCase();
         var type = instruction.type.toString().toLowerCase();
-        var vendor = instruction.vendor.toString().toLowerCase();
+        var vendor = instruction.assign_vendor.toString().toLowerCase();
         var attention = instruction.attention.toString().toLowerCase();
         var quotation = instruction.quotation.toString().toLowerCase();
-        var customerPo = instruction.customerPo.toString().toLowerCase();
+        var customerPo = instruction.customer_po.toString().toLowerCase();
         var status = instruction.status.toString().toLowerCase();
         return id.includes(search) || link.includes(search) || type.includes(search) || vendor.includes(search) || attention.includes(search) || quotation.includes(search) || customerPo.includes(search) || status.includes(search);
       });
     }
-  })
+  }),
+  created: function created() {
+    this.fetchAllInstruction();
+  }
 });
 
 /***/ }),
@@ -19880,7 +19886,8 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_2_
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "sort": () => (/* binding */ sort)
+/* harmony export */   "sort": () => (/* binding */ sort),
+/* harmony export */   "fetchAllInstruction": () => (/* binding */ fetchAllInstruction)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -19911,58 +19918,33 @@ var sort = /*#__PURE__*/function () {
   };
 }();
 
+var fetchAllInstruction = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(context) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            return _context2.abrupt("return", fetch("http://127.0.0.1:8000/api/").then(function (response) {
+              return response.json();
+            }).then(function (data) {
+              context.commit("SETINSTRUCTION", data);
+            })["catch"](function (err) {
+              return console.error(err);
+            }));
 
+          case 1:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
 
-/***/ }),
-
-/***/ "./resources/js/store/modules/third-party-instruction/const.js":
-/*!*********************************************************************!*\
-  !*** ./resources/js/store/modules/third-party-instruction/const.js ***!
-  \*********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default_state": () => (/* binding */ default_state)
-/* harmony export */ });
-var getDefaultState = function getDefaultState() {
-  return {
-    instructions: [{
-      id: "SI-2022-0002",
-      link: "-",
-      type: "SI",
-      vendor: "Amarit & Associates Co Ltd",
-      attention: "Rigsite Transportation",
-      quotation: "MITME-AGL-001",
-      invoice: ['Invoice1', 'Invoice2', 'Invoice3'],
-      customerPo: "PO003",
-      status: "Completed"
-    }, {
-      id: "SI-2022-0001 R01",
-      link: "INSP-2020-0001",
-      type: "SI",
-      vendor: "Amarit & Associates Co Ltd",
-      attention: "Rigprep Transportation from Agility Kizad",
-      quotation: "MITME-AGL-001",
-      invoice: ['Invoice1'],
-      customerPo: "PO01",
-      status: "Canceled"
-    }, {
-      id: "SI-2021-0116 R01",
-      link: "-",
-      type: "SI",
-      vendor: "ALMANSOORI INSPECTION SERVICE COMPANY LLC",
-      attention: "ALMANSOORI INSPECTION SERVICE COMPANY LLC",
-      quotation: "MITME-AGL-001 (Appendix 1)",
-      invoice: ['Invoice1', 'Invoice2'],
-      customerPo: "",
-      status: "Completed"
-    }]
+  return function fetchAllInstruction(_x3) {
+    return _ref2.apply(this, arguments);
   };
-};
+}();
 
-var default_state = getDefaultState();
 
 
 /***/ }),
@@ -20025,17 +20007,22 @@ var namespaced = true;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SORT": () => (/* binding */ SORT)
+/* harmony export */   "SORT": () => (/* binding */ SORT),
+/* harmony export */   "SETINSTRUCTION": () => (/* binding */ SETINSTRUCTION)
 /* harmony export */ });
 var SORT = function SORT(state, payload) {
-  var sorted = state.instructions.sort(function (a, b) {
+  var sorted = state.instructions.message.sort(function (a, b) {
     if (payload.direction === 'asc') {
       return a[payload.data] > b[payload.data];
     }
 
     return a[payload.data] < b[payload.data];
   });
-  state.instructions = sorted;
+  state.instructions.message = sorted;
+};
+
+var SETINSTRUCTION = function SETINSTRUCTION(state, data) {
+  state.instructions = data;
 };
 
 
@@ -20053,9 +20040,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "state": () => (/* binding */ state)
 /* harmony export */ });
-/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./const */ "./resources/js/store/modules/third-party-instruction/const.js");
-
-var state = JSON.parse(JSON.stringify(_const__WEBPACK_IMPORTED_MODULE_0__.default_state));
+var state = JSON.parse(JSON.stringify({
+  instructions: []
+}));
 
 
 /***/ }),
@@ -46361,7 +46348,7 @@ var render = function () {
                                 staticClass:
                                   "btn btn-light h-auto m-1 border py-1",
                                 attrs: {
-                                  data: _vm.instructions,
+                                  data: _vm.instructions.message,
                                   worksheet: "Completed Instruction",
                                   name: "Completed_Instruction.xls",
                                 },
@@ -47123,159 +47110,150 @@ var render = function () {
                         _vm._v(" "),
                         _c(
                           "tbody",
-                          _vm._l(
-                            _vm.filteredData,
-                            function (instruction, index) {
-                              return _c("tr", { key: index }, [
-                                _c("td", [_vm._v(_vm._s(instruction.id))]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(instruction.link))]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  instruction.type == "LI"
-                                    ? _c("i", { staticClass: "fas fa-truck" })
-                                    : _c("i", { staticClass: "fas fa-wrench" }),
-                                  _vm._v(
-                                    "\n                         " +
-                                      _vm._s(instruction.type) +
-                                      "\n                       "
-                                  ),
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(instruction.vendor))]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(_vm._s(instruction.attention)),
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(_vm._s(instruction.quotation)),
-                                ]),
-                                _vm._v(" "),
-                                _c("td", {}, [
-                                  _c(
-                                    "div",
-                                    { staticClass: "d-flex text-center" },
-                                    [
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass:
-                                            "badge inventory-badge rounded-circle",
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                             " +
-                                              _vm._s(
-                                                instruction.invoice.length
-                                              ) +
-                                              "\n                           "
-                                          ),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "dropdown ms-1" },
-                                        [
-                                          instruction.invoice != ""
-                                            ? _c("i", {
-                                                staticClass:
-                                                  "fas fa-chevron-down pointer",
-                                                attrs: {
-                                                  type: "button",
-                                                  id: "dropdownMenuButton1",
-                                                  "data-bs-toggle": "dropdown",
-                                                  "aria-expanded": "false",
-                                                },
-                                              })
-                                            : _vm._e(),
-                                          _vm._v(" "),
-                                          _c(
-                                            "ul",
-                                            {
-                                              staticClass: "dropdown-menu",
+                          _vm._l(_vm.filteredData, function (instruction) {
+                            return _c("tr", { key: instruction._id }, [
+                              _c("td", [
+                                _vm._v(_vm._s(instruction.instruction_id)),
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(instruction.link_to))]),
+                              _vm._v(" "),
+                              _c("td", { staticClass: "text-center" }, [
+                                instruction.type == "LI"
+                                  ? _c("i", { staticClass: "fas fa-truck" })
+                                  : _c("i", { staticClass: "fas fa-wrench" }),
+                                _vm._v(
+                                  "\n                         " +
+                                    _vm._s(instruction.type) +
+                                    "\n                       "
+                                ),
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(instruction.assign_vendor)),
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(instruction.attention))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(instruction.quotation))]),
+                              _vm._v(" "),
+                              _c("td", {}, [
+                                _c(
+                                  "div",
+                                  { staticClass: "d-flex text-center" },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "badge inventory-badge rounded-circle",
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                             " +
+                                            _vm._s(instruction.invoice.length) +
+                                            "\n                           "
+                                        ),
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "dropdown ms-1" },
+                                      [
+                                        instruction.invoice != ""
+                                          ? _c("i", {
+                                              staticClass:
+                                                "fas fa-chevron-down pointer",
                                               attrs: {
-                                                "aria-labelledby":
-                                                  "dropdownMenuButton1",
+                                                type: "button",
+                                                id: "dropdownMenuButton1",
+                                                "data-bs-toggle": "dropdown",
+                                                "aria-expanded": "false",
                                               },
+                                            })
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _c(
+                                          "ul",
+                                          {
+                                            staticClass: "dropdown-menu",
+                                            attrs: {
+                                              "aria-labelledby":
+                                                "dropdownMenuButton1",
                                             },
-                                            _vm._l(
-                                              instruction.invoice,
-                                              function (invoice, index) {
-                                                return _c(
-                                                  "li",
-                                                  { key: "invoice" + index },
-                                                  [
-                                                    _c(
-                                                      "a",
-                                                      {
-                                                        staticClass:
-                                                          "dropdown-item",
-                                                        attrs: { href: "#" },
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(
-                                                            instruction.invoice[
-                                                              index
-                                                            ]
-                                                          )
-                                                        ),
-                                                      ]
-                                                    ),
-                                                  ]
-                                                )
-                                              }
-                                            ),
-                                            0
+                                          },
+                                          _vm._l(
+                                            instruction.invoice,
+                                            function (invoice, index) {
+                                              return _c(
+                                                "li",
+                                                { key: "invoice" + index },
+                                                [
+                                                  _c(
+                                                    "a",
+                                                    {
+                                                      staticClass:
+                                                        "dropdown-item",
+                                                      attrs: { href: "#" },
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          instruction.invoice[
+                                                            index
+                                                          ]
+                                                        )
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              )
+                                            }
                                           ),
-                                        ]
-                                      ),
-                                    ]
-                                  ),
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(_vm._s(instruction.customerPo)),
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  instruction.status == "Completed"
-                                    ? _c(
-                                        "span",
-                                        {
-                                          staticClass:
-                                            "badge badge-completed rounded-pill instruction-badge",
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                           " +
-                                              _vm._s(instruction.status) +
-                                              "\n                         "
-                                          ),
-                                        ]
-                                      )
-                                    : instruction.status == "Canceled"
-                                    ? _c(
-                                        "span",
-                                        {
-                                          staticClass:
-                                            "badge badge-canceled rounded-pill instruction-badge",
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                           " +
-                                              _vm._s(instruction.status) +
-                                              "\n                         "
-                                          ),
-                                        ]
-                                      )
-                                    : _vm._e(),
-                                ]),
-                              ])
-                            }
-                          ),
+                                          0
+                                        ),
+                                      ]
+                                    ),
+                                  ]
+                                ),
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(instruction.customer_po)),
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                instruction.status == "1"
+                                  ? _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "badge badge-completed rounded-pill instruction-badge",
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                           In Progress\n                         "
+                                        ),
+                                      ]
+                                    )
+                                  : instruction.status == "2"
+                                  ? _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "badge badge-canceled rounded-pill instruction-badge",
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                           Completed\n                         "
+                                        ),
+                                      ]
+                                    )
+                                  : _vm._e(),
+                              ]),
+                            ])
+                          }),
                           0
                         ),
                       ]),

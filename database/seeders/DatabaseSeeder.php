@@ -81,5 +81,33 @@ class DatabaseSeeder extends Seeder
 
         DB::collection('recipients')->insert(
             ['recipient' => 'thiar@inosoft.com']);
+
+        DB::collection('vendors')->insert(
+            [
+                [
+                    'instruction_id' => 'SI-2021-0001',
+                    'assign_vendor' => 'Amarit & Associates Co Ltd',
+                    'attention' => 'Rigprep Transportation',
+                    'quotation' => 'MITME-ADL-001',
+                    'invoice' => ['Invoice1', 'Invoice2'],
+                    'customer_contract' => 'Hail & Gasha',
+                    'vendor_address' => 'Soi Pridi',
+                    'customer_po' => 'PO01',
+                    'description' => 'Rigprep Transportation',
+                    'qty' => 5,
+                    'uom' => 'SHP', 
+                    'unit_price' => 100,
+                    'discount' => 5,
+                    'gst_vat' => 0,
+                    'currency' => 'USD',
+                    'charge' => 'MITME',
+                    'attachment' => 'Attacthement 1',
+                    'notes' => 'Rigprep Transportation',
+                    'link_to' => 'INSP-2020-0001',
+                    'status' => 1,
+                    'type' => 'SI'
+                ]
+            ]
+        );
     }
 }

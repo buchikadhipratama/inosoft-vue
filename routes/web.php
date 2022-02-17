@@ -8,6 +8,6 @@ use App\Http\Controllers\ItemController;
 //     return view('welcome');
 // });
 
-Route::get('/{any}', function () {
+Route::get('/', function () {
     return view('welcome');
 });

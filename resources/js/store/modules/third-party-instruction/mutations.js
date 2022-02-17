@@ -1,14 +1,19 @@
 const SORT = (state, payload) => {
-    const sorted = state.instructions.sort((a, b) => {
+    const sorted = state.instructions.message.sort((a, b) => {
         if(payload.direction === 'asc'){
             return a[payload.data] > b[payload.data]
         }
         return a[payload.data] < b[payload.data]
     })
 
-    state.instructions = sorted
+    state.instructions.message = sorted
+}
+
+const SETINSTRUCTION = (state, data) => {
+    state.instructions = data;
 }
 
 export {
-    SORT
+    SORT,
+    SETINSTRUCTION
 }

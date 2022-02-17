@@ -1,6 +1,7 @@
-import { default_state } from "./const";
 
-const state = JSON.parse(JSON.stringify(default_state));
+const state = JSON.parse(JSON.stringify({
+    instructions: []
+}));
 
 export {
     state

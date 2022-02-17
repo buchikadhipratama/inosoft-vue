@@ -38,7 +38,7 @@ class VendorRepository{
 
     public function getAll()
     {
-        return Vendor::where('status', 1)->get();
+        return Vendor::where('status', 1)->get() ?? [];
     }
 
     public function updateVendorFromArray(array $vendor)

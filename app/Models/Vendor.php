@@ -11,6 +11,7 @@ class Vendor extends Eloquent
     protected $collection = 'vendors';
 
     protected $fillable = [
+        'instruction_id',
         'assign_vendor',
         'attention',
         'quotation',
@@ -28,6 +29,8 @@ class Vendor extends Eloquent
         'change',
         'attachment',
         'notes',
-        'link_to'
+        'link_to',
+        'status',
+        'type'
     ];
 }

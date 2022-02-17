@@ -7,7 +7,7 @@ use App\Repository\VendorRepository;
 class VendorService{
     public function createVendorFromArray(array $vendor)
     {
-        $error = (new VendorRepository)-> createVendorFromArray($vendor);
+        $error = (new VendorRepository)->createVendorFromArray($vendor);
         if ($error){
             return [
                 'error' => 1

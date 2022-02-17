@@ -32,9 +32,9 @@ class VendorController extends Controller
     {
         $response = (new VendorService)->getAllVendor();
 
-        // return response()->json(['status'=>200, 'message'=>$response],200);
+        return response()->json(['status'=>200, 'message'=>$response],200);
 
-        return view('welcome');
+        // return view('welcome');
     }
 
     public function edit($id)
