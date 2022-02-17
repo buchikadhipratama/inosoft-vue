@@ -105,6 +105,20 @@ class VendorController extends Controller
         $pdf = PDF::loadView('A4', 'potrait');
         return $pdf->stream('pdf');
     }
+
+    public function cancel(Request $request)
+    {
+        $cancelationData = $request->all();
+
+        $response = (new VendorService)-> cancelation($cancelationData);
+
+        if ($response['error']) {
+            return response()->json(['status'=>500, 'message'=>'something wrong with the server'],500);
+        }
+
+        return response()->json(['status'=>201, 'message'=>'cancel success'],201);
+
+    }
 }
 
 

@@ -104,4 +104,19 @@ class VendorRepository{
             return 1;
         }
     }
+
+    public function cancelation(array $cancel)
+    {
+        try {
+            $cancelaion = Vendor::find($cancel['id']);
+            $cancelaion->cancel_description = $cancel['cancel_description'];  
+            $cancelaion->cancel_attachment = $cancel['cancel_attachment'];
+            $cancelaion->status = 3;           
+            $cancelaion->save();
+
+            return 0;
+        } catch (\Throwable $th) {
+            return 1;
+        }
+    }
 }
