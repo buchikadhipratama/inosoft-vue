@@ -127,19 +127,20 @@
                       </th>
                     </tr>
                   </thead>
-                  <!-- <tbody>
-                    <tr v-for="(instruction, index) in instructions" :key="index">
-                      <td>instruction.id</td>
-                      <td>instruction.link</td>
-                      <td>instruction.type</td>
-                      <td>instruction.vendor</td>
-                      <td>instruction.attention</td>
-                      <td>instruction.quotation</td>
-                      <td>instruction.invoice</td>
-                      <td>instruction.customerPO</td>
-                      <td>instruction.status</td>
+                  <tbody>
+                    <tr v-for="item in vendors" :key="item.message">
+                      <!-- <td>{{ item.message }}</td> -->
+                      <td>{{item._id}}</td>
+                      <td>{{item.link_to}}</td>
+                      <td>{{item.assign_vendor}}</td>
+                      <td>{{item.assign_vendor}}</td>
+                      <td>{{item.attention}}</td>
+                      <td>{{item.quotation}}</td>
+                      <td>{{item.invoice}}</td>
+                      <td>{{item.customer_po}}</td>
+                      <td>{{item.status}}</td>
                     </tr>
-                  </tbody> -->
+                  </tbody>
                 </table>
               </div>
             </div>
@@ -168,6 +169,7 @@ export default {
   },
   data() {
     return {
+      vendors :{},
       data: [
         {
           name: "Vendor Management",
@@ -180,6 +182,14 @@ export default {
       ],
     };
   },
+  methods: {
+    loadData(){
+      axios.get('api/').then(({data})=>(this.vendors = data));
+    },
+  },
+  created(){
+    this.loadData();
+  }
 };
 </script>
 
