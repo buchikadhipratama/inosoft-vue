@@ -130,33 +130,47 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(instruction, index) in instructions" :key="index">
-                    <td>{{instruction.id}}</td>
-                    <td>{{instruction.link}}</td>
+                  <tr v-for="item in vendors" :key="item.message">
+                    <td>{{item._id}}</td>
+                    <td>{{item.link_to}}</td>
                     <td class="text-center">
-                      <i class="fas fa-truck" v-if="instruction.type == 'LI'"></i>
+                      <i class="fas fa-truck" v-if="item.assign_vendor == 'LI'"></i>
                       <i class="fas fa-wrench" v-else></i>
-                      {{instruction.type}}
+                      {{item.assign_vendor}}
                     </td>
-                    <td>{{instruction.vendor}}</td>
-                    <td>{{instruction.attention}}</td>
-                    <td>{{instruction.quotation}}</td>
+                    <td>{{item.assign_vendor}}</td>
+                    <td>{{item.attention}}</td>
+                    <td>{{item.quotation}}</td>
                     <td class="text-center">
                       <span class="badge inventory-badge rounded-circle">
-                        {{instruction.invoice}}
+                        {{item.invoice}}
                       </span>
-                      <i v-if="instruction.invoice != ''" class="fas fa-chevron-down pointer"></i>
+                      <i v-if="item.invoice != ''" class="fas fa-chevron-down pointer"></i>
                     </td>
-                    <td>{{instruction.customerPo}}</td>
+                    <td>{{item.customer_po}}</td>
                     <td>
-                      <span v-if="instruction.status == 'Completed'" class="badge badge-completed rounded-pill instruction-badge">
-                        {{instruction.status}}
+                      <span v-if="item.status == '2'" class="badge badge-completed rounded-pill instruction-badge">
+                        {{item.status}}
                       </span>
-                      <span v-else-if="instruction.status == 'Canceled'" class="badge badge-canceled rounded-pill instruction-badge">
-                        {{instruction.status}}
+                      <span v-else-if="item.status == '3'" class="badge badge-canceled rounded-pill instruction-badge">
+                        {{item.status}}
                       </span>
                     </td>
                   </tr>
+                  <!-- <tr v-for="item in vendors" :key="item.message">
+                      <td>{{item._id}}</td>
+                      <td>{{item.link_to}}</td>
+                      <td class="text-center">
+                        <i class="fas fa-truck" v-if="item.assign_vendor == 'LI'"></i>
+                        <i class="fas fa-wrench" v-else></i>
+                        {{item.assign_vendor}}</td>
+                      <td>{{item.assign_vendor}}</td>
+                      <td>{{item.attention}}</td>
+                      <td>{{item.quotation}}</td>
+                      <td>{{item.invoice}}</td>
+                      <td>{{item.customer_po}}</td>
+                      <td>{{item.status}}</td>
+                    </tr> -->
                 </tbody>
               </table>
             </div>
@@ -184,6 +198,7 @@ export default {
   },
   data() {
     return {
+      vendors :{},
       data: [
         {
           name: "Vendor Management",
@@ -209,6 +224,13 @@ export default {
       const payload = { direction, data };
       this.$store.dispatch("thirdPartyInstruction/sort", payload);
     },
+
+    loadData(){
+      axios.get('api/completed').then(({data})=>(this.vendors = data));
+    },
+  },
+  created(){
+    this.loadData();
   },
   computed: {
     ...mapGetters({
