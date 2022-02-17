@@ -8,7 +8,7 @@ const getDefaultState = () => {
                 vendor: "Amarit & Associates Co Ltd",
                 attention: "Rigsite Transportation",
                 quotation: "MITME-AGL-001",
-                invoice: 1,
+                invoice: ['Invoice1', 'Invoice2', 'Invoice3'],
                 customerPo: "PO003",
                 status: "Completed"
             },
@@ -19,7 +19,7 @@ const getDefaultState = () => {
                 vendor: "Amarit & Associates Co Ltd",
                 attention: "Rigprep Transportation from Agility Kizad",
                 quotation: "MITME-AGL-001",
-                invoice: 1,
+                invoice: ['Invoice1'],
                 customerPo: "PO01",
                 status: "Canceled"
             },
@@ -30,7 +30,7 @@ const getDefaultState = () => {
                 vendor: "ALMANSOORI INSPECTION SERVICE COMPANY LLC",
                 attention: "ALMANSOORI INSPECTION SERVICE COMPANY LLC",
                 quotation: "MITME-AGL-001 (Appendix 1)",
-                invoice: 1,
+                invoice: ['Invoice1', 'Invoice2'],
                 customerPo: "",
                 status: "Completed"
             },

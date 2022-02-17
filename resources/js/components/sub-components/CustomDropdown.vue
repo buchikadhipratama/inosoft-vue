@@ -9,7 +9,7 @@
       </li>
       <li>
         <router-link :to="{name: 'ServiceInstruction'}" class="dropdown-item">
-          <custom-button btn_class="btn" data-bs-toggle="dropdown" aria-expanded="false" icon_class="fas fa-wrench" label=" Service Instruction" />
+          <custom-button btn_class="btn" icon_class="fas fa-wrench" label=" Service Instruction" />
         </router-link>
 
       </li>
