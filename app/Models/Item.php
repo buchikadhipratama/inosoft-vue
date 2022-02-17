@@ -2,11 +2,32 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Item extends Model
+class Item extends Eloquent
 {
-    use HasFactory;
+    protected $connection = 'mongodb';
+    protected $collection = 'items';
+
+    protected $fillable = [
+        'assign_vendor',
+        'attention',
+        'quotation',
+        'invoice',
+        'customer_contract',
+        'vendor_address',
+        'customer_po',
+        'description',
+        'qty',
+        'uom',
+        'unit_price',
+        'discount',
+        'gst_vat',
+        'currency',
+        'change',
+        'attachment',
+        'notes',
+        'link_to'
+    ];
 }
