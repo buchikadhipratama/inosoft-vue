@@ -16,7 +16,7 @@
                                         <div class="col-12 row">
                                             <div class="col-lg-11">
                                                 <div class="btn-group" role="group">
-                                                    <custom-button btn_class="btn btn-white h-auto border fas m-2 py-2" data-bs-toggle="dropdown" aria-expanded="false" icon_class="fas fa-wrench" label="Service Instruction" />
+                                                    <custom-button btn_class="btn btn-white h-auto border fas m-2 py-2" v-model="instruction" data-bs-toggle="dropdown" aria-expanded="false" icon_class="fas fa-wrench" label="Service Instruction" />
                                                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                                         <li>
                                                             <router-link :to="{name: 'LogisticInstruction'}" class="dropdown">
@@ -47,7 +47,7 @@
                                                 <div class="row">
                                                     <div class="col-3">
                                                         <label>Assigned Vendor</label>
-                                                        <select class="form-select">
+                                                        <select class="form-select" v-model="vendor">
                                                             <option selected disabled>Enter Vendor</option>
                                                             <option value="Co Ltd">Amarit & Asociates Co ltd</option>
                                                             <option value="Logistic">Amarit & Asociates Logistic Co ltd</option>
@@ -57,15 +57,15 @@
 
                                                     <div class="col-3">
                                                         <label for="attention">Attention Of</label>
-                                                        <input id="attention" class="form-control" type="text" placeholder="Enter Attention Of">
+                                                        <input id="attention" v-model="attention" class="form-control" type="text" placeholder="Enter Attention Of">
                                                     </div>
                                                     <div class="col-3">
                                                         <label for="quotation">Quotation Of</label>
-                                                        <input id="quotation" class="form-control" type="text" placeholder="Enter Quotation Of">
+                                                        <input id="quotation" v-model="quotation" class="form-control" type="text" placeholder="Enter Quotation Of">
                                                     </div>
                                                     <div class="col-3">
                                                         <label>Invoice To</label>
-                                                        <select class="form-select">
+                                                        <select class="form-select" v-model="invoice">
                                                             <option selected disabled>Select an Option</option>
                                                             <option value="LLS">Marubeni-Itochu Tubulars Middle East Pipes L.L.S (MITME)</option>
                                                             <option value="PLC">Marubeni-Itochu Tubulars Europe Plc (MITME)</option>
@@ -74,7 +74,7 @@
 
                                                     <div class="col-12">
                                                         <label>Vendor Address</label>
-                                                        <select class="form-select">
+                                                        <select class="form-select" v-model="address">
                                                             <option selected disabled>Enter Vendor Address</option>
                                                             <option value="address">Sesetan, Denpasar, Bali, Indonesia</option>
                                                         </select>
@@ -84,7 +84,7 @@
                                             <div class="col-2">
                                                 <div class="col-12">
                                                     <label>Customer - Contract</label>
-                                                    <select class="form-select">
+                                                    <select class="form-select" v-model="contract">
                                                         <option selected disabled>Select Customer</option>
                                                         <option value="Hail & Ghasha">Hail & Ghasha</option>
                                                         <option value="OFFSHORE">OFFSHORE</option>
@@ -94,7 +94,7 @@
                                                 </div>
                                                 <div class="col-12">
                                                     <label for="po">Customer PO No.</label>
-                                                    <input id="po" class="form-control" type="text" placeholder="Enter Customer PO">
+                                                    <input id="po" class="form-control" v-model="poNo" type="text" placeholder="Enter Customer PO">
                                                 </div>
                                             </div>
                                         </div>
@@ -120,7 +120,7 @@
                                                     UOM
                                                 </div>
                                             </th>
-                                            <th width="11%">
+                                            <th width="12%">
                                                 <div class="d-inline-flex">
                                                     Unit Price
                                                 </div>
@@ -245,12 +245,12 @@
                                                     <div class="fas fa-paperclip"/>
                                                 </div>
                                             </div>
-                                            <div class="col-8 ">
+                                            <div class="col-8">
                                                 <div class="text-info h5 mb-0 text-left">{{file.name}}</div>
                                                 <div class="text-black pt-0 text-left">by Admin on {{currentDateTime()}}</div>
                                             </div>
                                             <div class="col-2">
-                                                <button @click="deleteTask(index)" class="text-danger btn fas fa-trash"/>
+                                                <button @click="deleteFile(index)" class="text-danger btn fas fa-trash"/>
                                             </div>
                                         </div>
                                     </div>
@@ -265,7 +265,7 @@
                                 <div class="col-1"/>
                                 <div class="col-7">
                                     <div class="h4">Notes</div>
-                                    <textarea id="notes" class="form-control" ></textarea>
+                                    <textarea id="notes" v-model="notes" class="form-control" ></textarea>
                                 </div>
                             </div>
                         </div>
@@ -294,7 +294,9 @@
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <custom-button class="icon-center" btn_class="btn fas py-2" label="Cancel"/>
                                     <custom-button class="icon-center" btn_class="btn border fas py-2" label="Save As Draft"/>
-                                    <custom-button class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
+                                    <router-link :to="{name: 'DetailInstruction'}" class="dropdown">
+                                        <custom-button class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -333,13 +335,24 @@ export default {
                     to: "Home",
                 },
             ],
+            instruction: "Service Instruction",
+            vendor: "Enter Vendor",
+            attention: "",
+            quotation: "",
+            invoice: "Select an Option",
+            address: "Enter Vendor Address",
+            contract: "Select Customer",
+            poNo: "",
+
             qty: 0,
-            unitPrice: 0,
+            unitPrice: "",
             discount: 0,
             currency: "",
             amount: 0,
             rate: "",
+
             files: [],
+            notes: "",
             linked: "Select Item",
             GST: 0,
         };
@@ -363,10 +376,14 @@ export default {
                 return date+" "+time+" AM";
             }
         },
-        deleteTask(index) {
+        deleteFile(index) {
             this.files = Array.prototype.slice.call(this.files)
             this.files.splice(index, 1);
         },
+        deleteDetail(index){
+            this.details = Array.prototype.slice.call(this.details)
+            this.details.splice(index, 1);
+        }
     },
     computed:{
         getTotal(){
