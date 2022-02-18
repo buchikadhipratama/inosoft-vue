@@ -9,25 +9,27 @@ class VendorRepository{
     {
         try {
             $newvendor = new Vendor();
+            $newvendor->instruction_id = $vendor['instruction_id'];
             $newvendor->assign_vendor = $vendor['assign_vendor'];  
             $newvendor->attention = $vendor['attention'];
-            $newvendor->quotation = $request->get('quotation');
-            $newvendor->invoice = $request->get('invoice');
-            $newvendor->customer_contract = $request->get('customer_contract');  
-            $newvendor->vendor_address = $request->get('vendor_address');    
-            $newvendor->customer_po = $request->get('customer_po');
-            $newvendor->description = $request->get('description');  
-            $newvendor->qty = $request->get('qty');  
-            $newvendor->uom = $request->get('uom');  
-            $newvendor->unit_price = $request->get('unit_price');  
-            $newvendor->discount = $request->get('discount');  
-            $newvendor->gst_vat = $request->get('gst_vat');  
-            $newvendor->currency = $request->get('currency');  
-            $newvendor->change = $request->get('change');
-            $newvendor->attachment = $request->get('attachment');  
-            $newvendor->notes = $request->get('notes');  
-            $newvendor->link_to = $request->get('link_to');
-            $newvendor->status = 1;           
+            $newvendor->quotation = $vendor['quotation'];
+            $newvendor->invoice = $vendor['invoice'];
+            $newvendor->customer_contract = $vendor['customer_contract'];  
+            $newvendor->vendor_address = $vendor['vendor_address'];    
+            $newvendor->customer_po = $vendor['customer_po'];
+            $newvendor->description = $vendor['description'];  
+            $newvendor->qty = $vendor['qty'];  
+            $newvendor->uom = $vendor['uom'];  
+            $newvendor->unit_price = $vendor['unit_price'];  
+            $newvendor->discount = $vendor['discount'];  
+            $newvendor->gst_vat = $vendor['gst_vat'];  
+            $newvendor->currency = $vendor['currency'];  
+            $newvendor->change = $vendor['change'];
+            $newvendor->attachment = $vendor['attachment'];  
+            $newvendor->notes = $vendor['notes'];  
+            $newvendor->link_to = $vendor['link_to'];
+            $newvendor->status = 1;    
+            $newvendor->$type = $vendor['type'];       
             $newvendor->save();
 
             return 0;

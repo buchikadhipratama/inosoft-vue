@@ -26,7 +26,7 @@ class VendorService{
 
     public function updateVendorFromArray(array $vendor)
     {
-        $error = (new VendorRepository)-> updateVendorFromArray($vendor);
+        $error = (new VendorRepository)->updateVendorFromArray($vendor);
         if ($error){
             return [
                 'error' => 1

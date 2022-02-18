@@ -19887,7 +19887,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "sort": () => (/* binding */ sort),
 /* harmony export */   "fetchOpenInstruction": () => (/* binding */ fetchOpenInstruction),
-/* harmony export */   "fetchCompletedInstruction": () => (/* binding */ fetchCompletedInstruction)
+/* harmony export */   "fetchCompletedInstruction": () => (/* binding */ fetchCompletedInstruction),
+/* harmony export */   "storeInstruction": () => (/* binding */ storeInstruction)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -19974,6 +19975,27 @@ var fetchCompletedInstruction = /*#__PURE__*/function () {
   };
 }();
 
+var storeInstruction = /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(context, payload) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            context.commit("STOREINSTRUCTION", payload);
+
+          case 1:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+
+  return function storeInstruction(_x5, _x6) {
+    return _ref6.apply(this, arguments);
+  };
+}();
+
 
 
 /***/ }),
@@ -20046,8 +20068,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SORT": () => (/* binding */ SORT),
 /* harmony export */   "SETOPENINSTRUCTION": () => (/* binding */ SETOPENINSTRUCTION),
-/* harmony export */   "SETCOMPLETEDINSTRUCTION": () => (/* binding */ SETCOMPLETEDINSTRUCTION)
+/* harmony export */   "SETCOMPLETEDINSTRUCTION": () => (/* binding */ SETCOMPLETEDINSTRUCTION),
+/* harmony export */   "STOREINSTRUCTION": () => (/* binding */ STOREINSTRUCTION)
 /* harmony export */ });
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/store/modules/third-party-instruction/state.js");
+
+
 var SORT = function SORT(state, payload) {
   var sorted = state.instructions.message.sort(function (a, b) {
     if (payload.direction === 'asc') {
@@ -20065,6 +20091,10 @@ var SETOPENINSTRUCTION = function SETOPENINSTRUCTION(state, data) {
 
 var SETCOMPLETEDINSTRUCTION = function SETCOMPLETEDINSTRUCTION(state, data) {
   state.completed_instruction = data;
+};
+
+var STOREINSTRUCTION = function STOREINSTRUCTION(payload) {
+  axios.post("/api/store", [payload]);
 };
 
 

@@ -1,5 +1,5 @@
 const sort = async (context, payload) => {
-    context.commit('SORT', payload)
+  context.commit('SORT', payload)
 }
 
 // const fetchAllInstruction = async (context) => {
@@ -12,10 +12,10 @@ const sort = async (context, payload) => {
 //   }
 
 const fetchOpenInstruction = async (context) => {
-    return axios.get('api/')
-    .then(({data}) => {
-      context.commit("SETOPENINSTRUCTION", data);
-    })
+  return axios.get('api/')
+  .then(({data}) => {
+    context.commit("SETOPENINSTRUCTION", data);
+  })
 }
 
 const fetchCompletedInstruction = async (context) => {
@@ -25,8 +25,13 @@ const fetchCompletedInstruction = async (context) => {
   })
 }
 
+const storeInstruction = async (context, payload) => {
+  context.commit("STOREINSTRUCTION", payload)
+}
+
 export {
     sort,
     fetchOpenInstruction,
-    fetchCompletedInstruction
+    fetchCompletedInstruction,
+    storeInstruction
 }

@@ -1,3 +1,5 @@
+import { state } from "./state"
+
 const SORT = (state, payload) => {
     const sorted = state.instructions.message.sort((a, b) => {
         if(payload.direction === 'asc'){
@@ -17,8 +19,13 @@ const SETCOMPLETEDINSTRUCTION = (state, data) => {
     state.completed_instruction = data;
 }
 
+const STOREINSTRUCTION = (payload) => {
+    axios.post("/api/store", [payload])
+}
+
 export {
     SORT,
     SETOPENINSTRUCTION,
-    SETCOMPLETEDINSTRUCTION
+    SETCOMPLETEDINSTRUCTION,
+    STOREINSTRUCTION
 }
