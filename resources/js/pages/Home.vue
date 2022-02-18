@@ -1,199 +1,198 @@
 <template>
+  <!-- <div> -->
   <div>
     <header-component />
-    <div class="d-flex">
-      <div class="p-0 sidebar">
-        <sidebar-component />
-      </div>
-      <div class="ms-5 ps-3 w-100">
-        <div class="row">
-          <div class="col-12 p-3">
-            <page-title-component :datas="data" class="ms-3" />
-            <div class="p-0 mx-3">
-              <div class="card border-0 shadow-sm d-flex">
-                <div class="card-header bg-white p-0">
-                  <ul class="nav mx-3 border-0 d-flex">
-                    <li class="nav-item mt-3">
-                      <router-link class="nav-link text-muted active" :to="{name: 'Home'}">Open</router-link>
-                    </li>
-                    <li class="nav-item mt-3">
-                      <router-link class="nav-link text-muted" :to="{name: 'CompletedInstruction'}">Completed</router-link>
-                    </li>
-                    <div class="flex-fill d-flex justify-content-end align-item-center float-end py-2">
-                      <input type="text" class="form-control w-25 h-auto mx-1 bg-light" placeholder="Search..." v-if="showSearch" v-model="search">
-                      <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" :icon_class="searchClass" @btnClick="searchData()" />
-                      <export-excel class="btn btn-light h-auto fas m-1 border py-2" :data="dashboards" worksheet="Dashboard" name="Dashboard.xls">
-                        <i class="fas fa-file-export">Export</i>
-                      </export-excel>
-                      <!-- <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-file-export" label="Export" /> -->
-                    </div>
-                  </ul>
+    <div class="p-0 sidebar">
+      <sidebar-component />
+    </div>
+    <div class="ms-5 ps-3 w-100">
+      <div class="row">
+        <div class="col-12 p-3">
+          <page-title-component :datas="data" class="ms-3" />
+          <div class="p-0 mx-3">
+            <div class="card border-0 shadow-sm d-flex">
+              <div class="card-header bg-white p-0">
+                <ul class="nav mx-3 border-0 d-flex">
+                  <li class="nav-item mt-3">
+                    <router-link class="nav-link text-muted active" :to="{name: 'Home'}">Open</router-link>
+                  </li>
+                  <li class="nav-item mt-3">
+                    <router-link class="nav-link text-muted" :to="{name: 'CompletedInstruction'}">Completed</router-link>
+                  </li>
+                  <div class="flex-fill d-flex justify-content-end align-item-center float-end py-2">
+                    <input type="text" class="form-control w-25 h-auto mx-1 bg-light" placeholder="Search..." v-if="showSearch" v-model="search">
+                    <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" :icon_class="searchClass" @btnClick="searchData()" />
+                    <export-excel class="btn btn-light h-auto fas m-1 border py-2" :data="dashboards" worksheet="Dashboard" name="Dashboard.xls">
+                      <i class="fas fa-file-export">Export</i>
+                    </export-excel>
+                    <!-- <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-file-export" label="Export" /> -->
+                  </div>
+                </ul>
+              </div>
+              <div>
+                <div class="float-end">
+                  <custom-dropdown />
                 </div>
-                <div>
-                  <div class="float-end">
-                    <custom-dropdown />
-                  </div>
-                  <div class="mx-3">
-                    <table class="table">
-                      <thead class="table-head text-light">
-                        <tr>
-                          <th>
-                            <div class="d-inline-flex">
-                              <span>
-                                Instruction ID
-                              </span>
-                              <div class="px-2">
-                                <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
-                                <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
-                                <div v-else class=" d-flex flex-column mt-1">
-                                  <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
-                                  <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
-                                </div>
-                              </div>
-                            </div>
-                          </th>
-                          <th>
-                            <div class="d-inline-flex">
-                              <span>
-                                Link To
-                              </span>
-                              <div class="px-2">
-                                <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
-                                <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
-                                <div v-else class=" d-flex flex-column mt-1">
-                                  <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
-                                  <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
-                                </div>
-                              </div>
-                            </div>
-                          </th>
-                          <th>
-                            <div class="d-inline-flex">
-                              <span>
-                                Instruction Type
-                              </span>
-                              <div class="px-2">
-                                <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
-                                <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
-                                <div v-else class=" d-flex flex-column mt-1">
-                                  <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
-                                  <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
-                                </div>
-                              </div>
-                            </div>
-                          </th>
-                          <th>
-                            <div class="d-inline-flex">
-                              <span>
-                                Assigned Vendor
-                              </span>
-                              <div class="px-2">
-                                <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
-                                <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
-                                <div v-else class=" d-flex flex-column mt-1">
-                                  <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
-                                  <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
-                                </div>
-                              </div>
-                            </div>
-                          </th>
-                          <th>
-                            <div class="d-inline-flex">
-                              <span>
-                                Attention Of
-                              </span>
-                              <div class="px-2">
-                                <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
-                                <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
-                                <div v-else class=" d-flex flex-column mt-1">
-                                  <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
-                                  <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
-                                </div>
-                              </div>
-                            </div>
-                          </th>
-                          <th>
-                            <div class="d-inline-flex">
-                              <span>
-                                Quotation No.
-                              </span>
-                              <div class="px-2">
-                                <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
-                                <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
-                                <div v-else class=" d-flex flex-column mt-1">
-                                  <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
-                                  <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
-                                </div>
-                              </div>
-                            </div>
-                          </th>
-                          <th>
-                            <div class="d-inline-flex">
-                              <span>
-                                Customer PO
-                              </span>
-                              <div class="px-2">
-                                <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
-                                <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
-                                <div v-else class=" d-flex flex-column mt-1">
-                                  <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
-                                  <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
-                                </div>
-                              </div>
-                            </div>
-                          </th>
-                          <th>
-                            <div class="d-inline-flex">
-                              <span>
-                                Status
-                              </span>
-                              <div class="px-2">
-                                <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
-                                <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
-                                <div v-else class=" d-flex flex-column mt-1">
-                                  <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
-                                  <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
-                                </div>
-                              </div>
-                            </div>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr v-for="(dashboard , index) in filteredData" :key="index">
-                          <td>{{ dashboard.id }}</td>
-                          <td class="text-left">
-                            <span v-if="dashboard.link == ''">
-                              -
-                            </span>
+                <div class="mx-3">
+                  <table class="table">
+                    <thead class="table-head text-light">
+                      <tr>
+                        <th>
+                          <div class="d-inline-flex">
                             <span>
-                              {{ dashboard.link }}
+                              Instruction ID
                             </span>
-                          </td>
-                          <td class="text-center">
-                            <i class="fas fa-truck" v-if="dashboard.type == 'LI'"></i>
-                            <i class="fas fa-wrench" v-else></i>
-                            {{dashboard.type}}
-                          </td>
-                          <td>{{ dashboard.vendor }}</td>
-                          <td>{{ dashboard.attention }}</td>
-                          <td>{{ dashboard.quotation }}</td>
-                          <td>{{ dashboard.customerPO }}</td>
-                          <td>
-                            <span v-if="dashboard.status == 'Completed'" class="badge badge-completed rounded-pill instruction-badge">
-                              {{ dashboard.status }}
+                            <div class="px-2">
+                              <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
+                              <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
+                              <div v-else class=" d-flex flex-column mt-1">
+                                <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
+                                <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
+                              </div>
+                            </div>
+                          </div>
+                        </th>
+                        <th>
+                          <div class="d-inline-flex">
+                            <span>
+                              Link To
                             </span>
-                            <span v-if="dashboard.status == 'In Progress'" class="badge badge-progress rounded-pill instruction-badge">
-                              {{ dashboard.status }}
+                            <div class="px-2">
+                              <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
+                              <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
+                              <div v-else class=" d-flex flex-column mt-1">
+                                <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
+                                <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
+                              </div>
+                            </div>
+                          </div>
+                        </th>
+                        <th>
+                          <div class="d-inline-flex">
+                            <span>
+                              Instruction Type
                             </span>
-                            <span v-if="dashboard.status == 'Completed'" class="badge badge-completed rounded-pill instruction-badge">
-                              {{ dashboard.status }}
+                            <div class="px-2">
+                              <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
+                              <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
+                              <div v-else class=" d-flex flex-column mt-1">
+                                <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
+                                <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
+                              </div>
+                            </div>
+                          </div>
+                        </th>
+                        <th>
+                          <div class="d-inline-flex">
+                            <span>
+                              Assigned Vendor
                             </span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                            <div class="px-2">
+                              <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
+                              <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
+                              <div v-else class=" d-flex flex-column mt-1">
+                                <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
+                                <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
+                              </div>
+                            </div>
+                          </div>
+                        </th>
+                        <th>
+                          <div class="d-inline-flex">
+                            <span>
+                              Attention Of
+                            </span>
+                            <div class="px-2">
+                              <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
+                              <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
+                              <div v-else class=" d-flex flex-column mt-1">
+                                <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
+                                <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
+                              </div>
+                            </div>
+                          </div>
+                        </th>
+                        <th>
+                          <div class="d-inline-flex">
+                            <span>
+                              Quotation No.
+                            </span>
+                            <div class="px-2">
+                              <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
+                              <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
+                              <div v-else class=" d-flex flex-column mt-1">
+                                <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
+                                <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
+                              </div>
+                            </div>
+                          </div>
+                        </th>
+                        <th>
+                          <div class="d-inline-flex">
+                            <span>
+                              Customer PO
+                            </span>
+                            <div class="px-2">
+                              <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
+                              <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
+                              <div v-else class=" d-flex flex-column mt-1">
+                                <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
+                                <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
+                              </div>
+                            </div>
+                          </div>
+                        </th>
+                        <th>
+                          <div class="d-inline-flex">
+                            <span>
+                              Status
+                            </span>
+                            <div class="px-2">
+                              <font-awesome-icon icon="fa-caret-up" v-if="sortData.direction === 'desc' && sortData.type === 'id'" class="pointer" @click="sort('asc', 'id')" />
+                              <font-awesome-icon icon="fa-caret-down" v-else-if="sortData.direction === 'asc' && sortData.type === 'id'" class="pointer" @click="sort('desc', 'id')" />
+                              <div v-else class=" d-flex flex-column mt-1">
+                                <i class="fas fa-sort-up pointer" @click="sort('asc', 'id')" />
+                                <i class="fas fa-sort-down pointer" @click="sort('desc', 'id')" />
+                              </div>
+                            </div>
+                          </div>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="(dashboard , index) in filteredData" :key="index">
+                        <td>{{ dashboard.id }}</td>
+                        <td class="text-left">
+                          <span v-if="dashboard.link == ''">
+                            -
+                          </span>
+                          <span>
+                            {{ dashboard.link }}
+                          </span>
+                        </td>
+                        <td class="text-center">
+                          <i class="fas fa-truck" v-if="dashboard.type == 'LI'"></i>
+                          <i class="fas fa-wrench" v-else></i>
+                          {{dashboard.type}}
+                        </td>
+                        <td>{{ dashboard.vendor }}</td>
+                        <td>{{ dashboard.attention }}</td>
+                        <td>{{ dashboard.quotation }}</td>
+                        <td>{{ dashboard.customerPO }}</td>
+                        <td>
+                          <span v-if="dashboard.status == 'Completed'" class="badge badge-completed rounded-pill instruction-badge">
+                            {{ dashboard.status }}
+                          </span>
+                          <span v-if="dashboard.status == 'In Progress'" class="badge badge-progress rounded-pill instruction-badge">
+                            {{ dashboard.status }}
+                          </span>
+                          <span v-if="dashboard.status == 'Completed'" class="badge badge-completed rounded-pill instruction-badge">
+                            {{ dashboard.status }}
+                          </span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -202,6 +201,7 @@
       </div>
     </div>
   </div>
+  <!-- </div> -->
 </template>
 
 <script>
