@@ -19224,16 +19224,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_sub_components_PageTitleComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/sub-components/PageTitleComponent.vue */ "./resources/js/components/sub-components/PageTitleComponent.vue");
 /* harmony import */ var _components_sub_components_SidebarComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/sub-components/SidebarComponent.vue */ "./resources/js/components/sub-components/SidebarComponent.vue");
 /* harmony import */ var _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/vue-fontawesome */ "./node_modules/@fortawesome/vue-fontawesome/index.es.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var vue_excel_export_VueComment_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-excel-export/VueComment.vue */ "./node_modules/vue-excel-export/VueComment.vue");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
 //
 //
 //
@@ -19443,7 +19434,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
+ // import { mapGetters } from "vuex";
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -19459,14 +19450,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      // vendors :{},
-      data: [{
-        name: "Vendor Management",
-        to: "Home"
-      }, {
-        name: "3rd Party Instruction",
-        to: "Home"
-      }],
+      vendors: {},
+      //   data: [
+      //     {
+      //       name: "Vendor Management",
+      //       to: "Home",
+      //     },
+      //     {
+      //       name: "3rd Party Instruction",
+      //       to: "Home",
+      //     },
+      //   ],
       showSearch: false,
       searchClass: "fas fa-search",
       search: "",
@@ -19477,43 +19471,60 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   methods: {
-    searchData: function searchData() {
-      if (this.showSearch === false) {
-        this.showSearch = true;
-        this.searchClass = "fas fa-times";
-      } else {
-        this.showSearch = false;
-        this.searchClass = "fas fa-search";
-      }
-    },
-    sort: function sort(direction, data) {
-      this.sortData.direction = direction;
-      this.sortData.type = data;
-      var payload = {
-        direction: direction,
-        data: data
-      };
-      this.$store.dispatch("home/sort", payload);
-    }
-  },
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)({
-    dashboards: "home/getDashboards"
-  })), {}, {
-    filteredData: function filteredData() {
-      var search = this.search.toLowerCase();
-      return this.dashboards.filter(function (dashboard) {
-        var id = dashboard.id.toString().toLowerCase();
-        var link = dashboard.link.toString().toLowerCase();
-        var type = dashboard.type.toString().toLowerCase();
-        var vendor = dashboard.vendor.toString().toLowerCase();
-        var attention = dashboard.attention.toString().toLowerCase();
-        var quotation = dashboard.quotation.toString().toLowerCase();
-        var customerPO = dashboard.customerPO.toString().toLowerCase();
-        var status = dashboard.status.toString().toLowerCase();
-        return id.includes(search) || link.includes(search) || type.includes(search) || vendor.includes(search) || attention.includes(search) || quotation.includes(search) || customerPO.includes(search) || status.includes(search);
+    loadData: function loadData() {
+      var _this = this;
+
+      axios.get("api/").then(function (_ref) {
+        var data = _ref.data;
+        return _this.vendors = data;
       });
-    }
-  })
+    } // searchData() {
+    //   if (this.showSearch === false) {
+    //     this.showSearch = true;
+    //     this.searchClass = "fas fa-times";
+    //   } else {
+    //     this.showSearch = false;
+    //     this.searchClass = "fas fa-search";
+    //   }
+    // },
+    // sort(direction, data) {
+    //   this.sortData.direction = direction;
+    //   this.sortData.type = data;
+    //   const payload = { direction, data };
+    //   this.$store.dispatch("home/sort", payload);
+    // },
+
+  },
+  created: function created() {
+    this.loadData();
+  },
+  computed: {// ...mapGetters({
+    //   dashboards: "home/getDashboards",
+    // }),
+    // filteredData() {
+    //   const search = this.search.toLowerCase();
+    //   return this.dashboards.filter((dashboard) => {
+    //     const id = dashboard.id.toString().toLowerCase();
+    //     const link = dashboard.link.toString().toLowerCase();
+    //     const type = dashboard.type.toString().toLowerCase();
+    //     const vendor = dashboard.vendor.toString().toLowerCase();
+    //     const attention = dashboard.attention.toString().toLowerCase();
+    //     const quotation = dashboard.quotation.toString().toLowerCase();
+    //     const customerPO = dashboard.customerPO.toString().toLowerCase();
+    //     const status = dashboard.status.toString().toLowerCase();
+    //     return (
+    //       id.includes(search) ||
+    //       link.includes(search) ||
+    //       type.includes(search) ||
+    //       vendor.includes(search) ||
+    //       attention.includes(search) ||
+    //       quotation.includes(search) ||
+    //       customerPO.includes(search) ||
+    //       status.includes(search)
+    //     );
+    //   });
+    // },
+  }
 });
 
 /***/ }),
@@ -48115,7 +48126,7 @@ var render = function () {
                               staticClass:
                                 "btn btn-light h-auto fas m-1 border py-2",
                               attrs: {
-                                data: _vm.dashboards,
+                                data: _vm.vendors,
                                 worksheet: "Dashboard",
                                 name: "Dashboard.xls",
                               },
@@ -48692,12 +48703,12 @@ var render = function () {
                         _vm._v(" "),
                         _c(
                           "tbody",
-                          _vm._l(_vm.filteredData, function (dashboard, index) {
-                            return _c("tr", { key: index }, [
-                              _c("td", [_vm._v(_vm._s(dashboard.id))]),
+                          _vm._l(_vm.vendors, function (vendor) {
+                            return _c("tr", { key: vendor.message }, [
+                              _c("td", [_vm._v(_vm._s(vendor.id))]),
                               _vm._v(" "),
                               _c("td", { staticClass: "text-left" }, [
-                                dashboard.link == ""
+                                vendor.link_to == ""
                                   ? _c("span", [
                                       _vm._v(
                                         "\n                          -\n                        "
@@ -48708,33 +48719,33 @@ var render = function () {
                                 _c("span", [
                                   _vm._v(
                                     "\n                          " +
-                                      _vm._s(dashboard.link) +
+                                      _vm._s(vendor.link_to) +
                                       "\n                        "
                                   ),
                                 ]),
                               ]),
                               _vm._v(" "),
                               _c("td", { staticClass: "text-center" }, [
-                                dashboard.type == "LI"
+                                vendor.type == "LI"
                                   ? _c("i", { staticClass: "fas fa-truck" })
                                   : _c("i", { staticClass: "fas fa-wrench" }),
                                 _vm._v(
                                   "\n                        " +
-                                    _vm._s(dashboard.type) +
+                                    _vm._s(vendor.type) +
                                     "\n                      "
                                 ),
                               ]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(dashboard.vendor))]),
+                              _c("td", [_vm._v(_vm._s(vendor.vendor_address))]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(dashboard.attention))]),
+                              _c("td", [_vm._v(_vm._s(vendor.attention))]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(dashboard.quotation))]),
+                              _c("td", [_vm._v(_vm._s(vendor.quotation))]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(dashboard.customerPO))]),
+                              _c("td", [_vm._v(_vm._s(vendor.customer_po))]),
                               _vm._v(" "),
                               _c("td", [
-                                dashboard.status == "Completed"
+                                vendor.status == "0"
                                   ? _c(
                                       "span",
                                       {
@@ -48743,15 +48754,13 @@ var render = function () {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                          " +
-                                            _vm._s(dashboard.status) +
-                                            "\n                        "
+                                          "\n                          completed\n                        "
                                         ),
                                       ]
                                     )
                                   : _vm._e(),
                                 _vm._v(" "),
-                                dashboard.status == "In Progress"
+                                vendor.status == "1"
                                   ? _c(
                                       "span",
                                       {
@@ -48760,26 +48769,7 @@ var render = function () {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                          " +
-                                            _vm._s(dashboard.status) +
-                                            "\n                        "
-                                        ),
-                                      ]
-                                    )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                dashboard.status == "Completed"
-                                  ? _c(
-                                      "span",
-                                      {
-                                        staticClass:
-                                          "badge badge-completed rounded-pill instruction-badge",
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                          " +
-                                            _vm._s(dashboard.status) +
-                                            "\n                        "
+                                          "\n                          in progress\n                        "
                                         ),
                                       ]
                                     )

@@ -22,7 +22,7 @@
                   <div class="flex-fill d-flex justify-content-end align-item-center float-end py-2">
                     <input type="text" class="form-control w-25 h-auto mx-1 bg-light" placeholder="Search..." v-if="showSearch" v-model="search">
                     <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" :icon_class="searchClass" @btnClick="searchData()" />
-                    <export-excel class="btn btn-light h-auto fas m-1 border py-2" :data="dashboards" worksheet="Dashboard" name="Dashboard.xls">
+                    <export-excel class="btn btn-light h-auto fas m-1 border py-2" :data="vendors" worksheet="Dashboard" name="Dashboard.xls">
                       <i class="fas fa-file-export">Export</i>
                     </export-excel>
                     <!-- <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-file-export" label="Export" /> -->
@@ -160,34 +160,32 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="(dashboard , index) in filteredData" :key="index">
-                        <td>{{ dashboard.id }}</td>
+                      <!-- <tr v-for="(dashboard , index) in filteredData" :key="index"> // buchik awal-->
+                      <tr v-for="vendor in vendors" :key="vendor.message">
+                        <td>{{ vendor.id }}</td>
                         <td class="text-left">
-                          <span v-if="dashboard.link == ''">
+                          <span v-if="vendor.link_to == ''">
                             -
                           </span>
                           <span>
-                            {{ dashboard.link }}
+                            {{ vendor.link_to }}
                           </span>
                         </td>
                         <td class="text-center">
-                          <i class="fas fa-truck" v-if="dashboard.type == 'LI'"></i>
+                          <i class="fas fa-truck" v-if="vendor.type == 'LI'"></i>
                           <i class="fas fa-wrench" v-else></i>
-                          {{dashboard.type}}
+                          {{vendor.type}}
                         </td>
-                        <td>{{ dashboard.vendor }}</td>
-                        <td>{{ dashboard.attention }}</td>
-                        <td>{{ dashboard.quotation }}</td>
-                        <td>{{ dashboard.customerPO }}</td>
+                        <td>{{ vendor.vendor_address }}</td>
+                        <td>{{ vendor.attention }}</td>
+                        <td>{{ vendor.quotation }}</td>
+                        <td>{{ vendor.customer_po }}</td>
                         <td>
-                          <span v-if="dashboard.status == 'Completed'" class="badge badge-completed rounded-pill instruction-badge">
-                            {{ dashboard.status }}
+                          <span v-if="vendor.status == '0'" class="badge badge-completed rounded-pill instruction-badge">
+                            completed
                           </span>
-                          <span v-if="dashboard.status == 'In Progress'" class="badge badge-progress rounded-pill instruction-badge">
-                            {{ dashboard.status }}
-                          </span>
-                          <span v-if="dashboard.status == 'Completed'" class="badge badge-completed rounded-pill instruction-badge">
-                            {{ dashboard.status }}
+                          <span v-if="vendor.status == '1'" class="badge badge-progress rounded-pill instruction-badge">
+                            in progress
                           </span>
                         </td>
                       </tr>
@@ -211,7 +209,7 @@ import HeaderComponent from "../components/sub-components/HeaderComponent.vue";
 import PageTitleComponent from "../components/sub-components/PageTitleComponent.vue";
 import SidebarComponent from "../components/sub-components/SidebarComponent.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { mapGetters } from "vuex";
+// import { mapGetters } from "vuex";
 import ExportExcel from "vue-excel-export/VueComment.vue";
 
 export default {
@@ -227,17 +225,17 @@ export default {
   },
   data() {
     return {
-      // vendors :{},
-      data: [
-        {
-          name: "Vendor Management",
-          to: "Home",
-        },
-        {
-          name: "3rd Party Instruction",
-          to: "Home",
-        },
-      ],
+      vendors: {},
+      //   data: [
+      //     {
+      //       name: "Vendor Management",
+      //       to: "Home",
+      //     },
+      //     {
+      //       name: "3rd Party Instruction",
+      //       to: "Home",
+      //     },
+      //   ],
       showSearch: false,
       searchClass: "fas fa-search",
       search: "",
@@ -248,49 +246,55 @@ export default {
     };
   },
   methods: {
-    searchData() {
-      if (this.showSearch === false) {
-        this.showSearch = true;
-        this.searchClass = "fas fa-times";
-      } else {
-        this.showSearch = false;
-        this.searchClass = "fas fa-search";
-      }
+    loadData() {
+      axios.get("api/").then(({ data }) => (this.vendors = data));
     },
-    sort(direction, data) {
-      this.sortData.direction = direction;
-      this.sortData.type = data;
-      const payload = { direction, data };
-      this.$store.dispatch("home/sort", payload);
-    },
+    // searchData() {
+    //   if (this.showSearch === false) {
+    //     this.showSearch = true;
+    //     this.searchClass = "fas fa-times";
+    //   } else {
+    //     this.showSearch = false;
+    //     this.searchClass = "fas fa-search";
+    //   }
+    // },
+    // sort(direction, data) {
+    //   this.sortData.direction = direction;
+    //   this.sortData.type = data;
+    //   const payload = { direction, data };
+    //   this.$store.dispatch("home/sort", payload);
+    // },
+  },
+  created() {
+    this.loadData();
   },
   computed: {
-    ...mapGetters({
-      dashboards: "home/getDashboards",
-    }),
-    filteredData() {
-      const search = this.search.toLowerCase();
-      return this.dashboards.filter((dashboard) => {
-        const id = dashboard.id.toString().toLowerCase();
-        const link = dashboard.link.toString().toLowerCase();
-        const type = dashboard.type.toString().toLowerCase();
-        const vendor = dashboard.vendor.toString().toLowerCase();
-        const attention = dashboard.attention.toString().toLowerCase();
-        const quotation = dashboard.quotation.toString().toLowerCase();
-        const customerPO = dashboard.customerPO.toString().toLowerCase();
-        const status = dashboard.status.toString().toLowerCase();
-        return (
-          id.includes(search) ||
-          link.includes(search) ||
-          type.includes(search) ||
-          vendor.includes(search) ||
-          attention.includes(search) ||
-          quotation.includes(search) ||
-          customerPO.includes(search) ||
-          status.includes(search)
-        );
-      });
-    },
+    // ...mapGetters({
+    //   dashboards: "home/getDashboards",
+    // }),
+    // filteredData() {
+    //   const search = this.search.toLowerCase();
+    //   return this.dashboards.filter((dashboard) => {
+    //     const id = dashboard.id.toString().toLowerCase();
+    //     const link = dashboard.link.toString().toLowerCase();
+    //     const type = dashboard.type.toString().toLowerCase();
+    //     const vendor = dashboard.vendor.toString().toLowerCase();
+    //     const attention = dashboard.attention.toString().toLowerCase();
+    //     const quotation = dashboard.quotation.toString().toLowerCase();
+    //     const customerPO = dashboard.customerPO.toString().toLowerCase();
+    //     const status = dashboard.status.toString().toLowerCase();
+    //     return (
+    //       id.includes(search) ||
+    //       link.includes(search) ||
+    //       type.includes(search) ||
+    //       vendor.includes(search) ||
+    //       attention.includes(search) ||
+    //       quotation.includes(search) ||
+    //       customerPO.includes(search) ||
+    //       status.includes(search)
+    //     );
+    //   });
+    // },
   },
 };
 </script>
