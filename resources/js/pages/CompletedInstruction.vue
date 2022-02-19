@@ -162,19 +162,19 @@
                         </th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="pointer">
                       <tr v-for="(instruction) in filteredData" :key="instruction._id">
-                        <td>{{instruction.instruction_id}}</td>
-                        <td>{{instruction.link_to}}</td>
-                        <td class="text-center">
+                        <td @click="toDetail(instruction._id)">{{instruction.instruction_id}}</td>
+                        <td @click="toDetail(instruction._id)">{{instruction.link_to}}</td>
+                        <td class="text-center" @click="toDetail(instruction._id)">
                           <i class="fas fa-truck" v-if="instruction.type == 'LI'"></i>
                           <i class="fas fa-wrench" v-else></i>
                           {{instruction.type}}
                         </td>
-                        <td>{{instruction.assign_vendor}}</td>
-                        <td>{{instruction.attention}}</td>
-                        <td>{{instruction.quotation}}</td>
-                        <td class="">
+                        <td @click="toDetail(instruction._id)">{{instruction.assign_vendor}}</td>
+                        <td @click="toDetail(instruction._id)">{{instruction.attention}}</td>
+                        <td @click="toDetail(instruction._id)">{{instruction.quotation}}</td>
+                        <td>
                           <div class="d-flex text-center">
                             <span class="badge inventory-badge rounded-circle">
                               {{instruction.invoice.length}}
@@ -187,8 +187,8 @@
                             </div>
                           </div>
                         </td>
-                        <td>{{instruction.customer_po}}</td>
-                        <td>
+                        <td @click="toDetail(instruction._id)">{{instruction.customer_po}}</td>
+                        <td @click="toDetail(instruction._id)">
                           <span v-if="instruction.status == '2'" class="badge badge-completed rounded-pill instruction-badge">
                             Completed
                           </span>
@@ -268,6 +268,9 @@ export default {
         this.searchClass = "fas fa-search";
       }
     },
+    toDetail(id){
+      this.$router.push({name: 'DetailInstruction', params: {id: id}})
+    }
   },
   computed: {
     ...mapGetters({
@@ -324,6 +327,10 @@ tbody {
 
 .pointer {
   cursor: pointer;
+}
+
+.pointer :hover {
+  color: cadetblue;
 }
 
 .instruction-badge {

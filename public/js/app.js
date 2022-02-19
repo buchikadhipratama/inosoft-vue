@@ -18895,6 +18895,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.showSearch = false;
         this.searchClass = "fas fa-search";
       }
+    },
+    toDetail: function toDetail(id) {
+      this.$router.push({
+        name: 'DetailInstruction',
+        params: {
+          id: id
+        }
+      });
     }
   }),
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)({
@@ -19828,7 +19836,7 @@ var routes = [{
   name: 'CreateInstruction',
   component: _pages_CreateInstruction_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
 }, {
-  path: '/det',
+  path: '/det/:id',
   name: 'DetailInstruction',
   component: _pages_DetailInstruction__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
@@ -25460,7 +25468,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nth[data-v-05e1a0cc] {\n  padding: 0.25rem;\n}\n.table-head[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\ntbody[data-v-05e1a0cc] {\n  border-top: none !important;\n}\n.nav-item .active[data-v-05e1a0cc] {\n  border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.pointer[data-v-05e1a0cc] {\n  cursor: pointer;\n}\n.instruction-badge[data-v-05e1a0cc] {\n  width: 6rem;\n}\n.inventory-badge[data-v-05e1a0cc] {\n  background-color: rgb(0, 171, 185);\n  height: 100%;\n  width: 45%;\n}\n.badge-completed[data-v-05e1a0cc] {\n  background-color: rgb(0, 176, 111);\n}\n.badge-canceled[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nth[data-v-05e1a0cc] {\n  padding: 0.25rem;\n}\n.table-head[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\ntbody[data-v-05e1a0cc] {\n  border-top: none !important;\n}\n.nav-item .active[data-v-05e1a0cc] {\n  border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.pointer[data-v-05e1a0cc] {\n  cursor: pointer;\n}\n.pointer[data-v-05e1a0cc] :hover {\n  color: cadetblue;\n}\n.instruction-badge[data-v-05e1a0cc] {\n  width: 6rem;\n}\n.inventory-badge[data-v-05e1a0cc] {\n  background-color: rgb(0, 171, 185);\n  height: 100%;\n  width: 45%;\n}\n.badge-completed[data-v-05e1a0cc] {\n  background-color: rgb(0, 176, 111);\n}\n.badge-canceled[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -47183,34 +47191,92 @@ var render = function () {
                         _vm._v(" "),
                         _c(
                           "tbody",
+                          { staticClass: "pointer" },
                           _vm._l(_vm.filteredData, function (instruction) {
                             return _c("tr", { key: instruction._id }, [
+                              _c(
+                                "td",
+                                {
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [_vm._v(_vm._s(instruction.instruction_id))]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [_vm._v(_vm._s(instruction.link_to))]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  staticClass: "text-center",
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [
+                                  instruction.type == "LI"
+                                    ? _c("i", { staticClass: "fas fa-truck" })
+                                    : _c("i", { staticClass: "fas fa-wrench" }),
+                                  _vm._v(
+                                    "\n                         " +
+                                      _vm._s(instruction.type) +
+                                      "\n                       "
+                                  ),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [_vm._v(_vm._s(instruction.assign_vendor))]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [_vm._v(_vm._s(instruction.attention))]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [_vm._v(_vm._s(instruction.quotation))]
+                              ),
+                              _vm._v(" "),
                               _c("td", [
-                                _vm._v(_vm._s(instruction.instruction_id)),
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(instruction.link_to))]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-center" }, [
-                                instruction.type == "LI"
-                                  ? _c("i", { staticClass: "fas fa-truck" })
-                                  : _c("i", { staticClass: "fas fa-wrench" }),
-                                _vm._v(
-                                  "\n                         " +
-                                    _vm._s(instruction.type) +
-                                    "\n                       "
-                                ),
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(instruction.assign_vendor)),
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(instruction.attention))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(instruction.quotation))]),
-                              _vm._v(" "),
-                              _c("td", {}, [
                                 _c(
                                   "div",
                                   { staticClass: "d-flex text-center" },
@@ -47292,39 +47358,57 @@ var render = function () {
                                 ),
                               ]),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(instruction.customer_po)),
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [_vm._v(_vm._s(instruction.customer_po))]
+                              ),
                               _vm._v(" "),
-                              _c("td", [
-                                instruction.status == "2"
-                                  ? _c(
-                                      "span",
-                                      {
-                                        staticClass:
-                                          "badge badge-completed rounded-pill instruction-badge",
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                           Completed\n                         "
-                                        ),
-                                      ]
-                                    )
-                                  : instruction.status == "0"
-                                  ? _c(
-                                      "span",
-                                      {
-                                        staticClass:
-                                          "badge badge-canceled rounded-pill instruction-badge",
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                           Canceled\n                         "
-                                        ),
-                                      ]
-                                    )
-                                  : _vm._e(),
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [
+                                  instruction.status == "2"
+                                    ? _c(
+                                        "span",
+                                        {
+                                          staticClass:
+                                            "badge badge-completed rounded-pill instruction-badge",
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                           Completed\n                         "
+                                          ),
+                                        ]
+                                      )
+                                    : instruction.status == "0"
+                                    ? _c(
+                                        "span",
+                                        {
+                                          staticClass:
+                                            "badge badge-canceled rounded-pill instruction-badge",
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                           Canceled\n                         "
+                                          ),
+                                        ]
+                                      )
+                                    : _vm._e(),
+                                ]
+                              ),
                             ])
                           }),
                           0
