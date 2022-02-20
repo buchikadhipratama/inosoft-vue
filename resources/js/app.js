@@ -2,11 +2,12 @@ require('./bootstrap');
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import excel from 'vue-excel-export'
 
 import router from './router/index';
 import store from './store/index';
 import App from './App.vue';
-import excel from 'vue-excel-export';
+
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -42,7 +43,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
 Vue.use(VueRouter);
-Vue.use(excel)
+Vue.use(excel);
 
 const app = new Vue({
     el: '#app',
