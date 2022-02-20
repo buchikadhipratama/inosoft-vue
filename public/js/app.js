@@ -21010,7 +21010,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _modules_vendors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/vendors */ "./resources/js/store/modules/vendors.js");
 /* harmony import */ var _modules_third_party_instruction_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/third-party-instruction/index.js */ "./resources/js/store/modules/third-party-instruction/index.js");
-/* harmony import */ var _modules_home_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/home/index.js */ "./resources/js/store/modules/home/index.js");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module './modules/home/index.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
 
 
@@ -21019,279 +21019,12 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_3__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_4__["default"]);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_4__["default"].Store({
   modules: {
-    home: _modules_home_index_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+    home: Object(function webpackMissingModule() { var e = new Error("Cannot find module './modules/home/index.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
     thirdPartyInstruction: _modules_third_party_instruction_index_js__WEBPACK_IMPORTED_MODULE_1__["default"],
     vendors: _modules_vendors__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   strict: true
 }));
-
-/***/ }),
-
-/***/ "./resources/js/store/modules/home/actions.js":
-/*!****************************************************!*\
-  !*** ./resources/js/store/modules/home/actions.js ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "sort": () => (/* binding */ sort)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-var sort = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(context, payload) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            context.commit('SORT', payload);
-
-          case 1:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function sort(_x, _x2) {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-
-
-/***/ }),
-
-/***/ "./resources/js/store/modules/home/const.js":
-/*!**************************************************!*\
-  !*** ./resources/js/store/modules/home/const.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default_state": () => (/* binding */ default_state)
-/* harmony export */ });
-var getDefaultState = function getDefaultState() {
-  return {
-    dashboards: [{
-      id: "LI-2021-0199 R02",
-      link: "",
-      type: "LI",
-      vendor: "AGILITY (ABU DHABI) PJSC",
-      attention: "Priyesh Thattarath",
-      quotation: "MITME-AGL-01 (Appendix 1)",
-      customerPO: "",
-      status: "In Progress"
-    }, {
-      id: "LI-2021-0203",
-      link: "MR-2021-0134",
-      type: "LI",
-      vendor: "AGILITY (ABU DHABI) PJSC",
-      attention: "Priyesh Thattarath",
-      quotation: "MITME-AGL-01 (Appendix 1)",
-      customerPO: "",
-      status: "In Progress"
-    }, {
-      id: "LI-2021-0213",
-      link: "RRIN-2021-0054",
-      type: "LI",
-      vendor: "AGILITY (ABU DHABI) PJSC",
-      attention: "Priyesh Thattarath",
-      quotation: "MITME-AGL-01 (Appendix 1)",
-      customerPO: "",
-      status: "In Progress"
-    }, {
-      id: "LI-2021-0218",
-      link: "",
-      type: "LI",
-      vendor: "AGILITY (ABU DHABI) PJSC",
-      attention: "Priyesh Thattarath",
-      quotation: "MITME-AGL-01 (Appendix 1)",
-      customerPO: "",
-      status: "In Progress"
-    }, {
-      id: "LI-2021-0219",
-      link: "TRF-2021-0021",
-      type: "LI",
-      vendor: "AGILITY (ABU DHABI) PJSC",
-      attention: "Priyesh Thattarath",
-      quotation: "MITME-AGL-01 (Appendix 1)",
-      customerPO: "",
-      status: "In Progress"
-    }, {
-      id: "LI-2021-0241",
-      link: "RRIN-2021-0062",
-      type: "LI",
-      vendor: "AGILITY (ABU DHABI) PJSC",
-      attention: "Priyesh Thattarath",
-      quotation: "MITME-AGL-01 (Appendix 1)",
-      customerPO: "",
-      status: "In Progress"
-    }, {
-      id: "LI-2021-0263",
-      link: "",
-      type: "LI",
-      vendor: "AGILITY (ABU DHABI) PJSC",
-      attention: "Priyesh Thattarath",
-      quotation: "MITME-AGL-01 (Appendix 1)",
-      customerPO: "",
-      status: "In Progress"
-    }, {
-      id: "LI-2021-0265 R01",
-      link: "MR-2021-0171",
-      type: "LI",
-      vendor: "AGILITY (ABU DHABI) PJSC",
-      attention: "Priyesh Thattarath",
-      quotation: "MITME-AGL-01 (Appendix 1)",
-      customerPO: "",
-      status: "In Progress"
-    }, {
-      id: "LI-2021-0266 R01",
-      link: "MR-2021-0172",
-      type: "LI",
-      vendor: "AGILITY (ABU DHABI) PJSC",
-      attention: "Priyesh Thattarath",
-      quotation: "MITME-AGL-01 (Appendix 1)",
-      customerPO: "",
-      status: "In Progress"
-    }, {
-      id: "LI-2021-0267 R01",
-      link: "MR-2021-0173",
-      type: "LI",
-      vendor: "AGILITY (ABU DHABI) PJSC",
-      attention: "Priyesh Thattarath",
-      quotation: "MITME-AGL-01 (Appendix 1)",
-      customerPO: "",
-      status: "In Progress"
-    }, {
-      id: "LI-2021-0268 R01",
-      link: "",
-      type: "LI",
-      vendor: "AGILITY (ABU DHABI) PJSC",
-      attention: "Priyesh Thattarath",
-      quotation: "MITME-AGL-01 (Appendix 1)",
-      customerPO: "",
-      status: "In Progress"
-    }, {
-      id: "LI-2021-0269",
-      link: "",
-      type: "LI",
-      vendor: "AGILITY (ABU DHABI) PJSC",
-      attention: "Priyesh Thattarath",
-      quotation: "MITME-AGL-01 (Appendix 1)",
-      customerPO: "",
-      status: "In Progress"
-    }]
-  };
-};
-
-var default_state = getDefaultState();
-
-
-/***/ }),
-
-/***/ "./resources/js/store/modules/home/getters.js":
-/*!****************************************************!*\
-  !*** ./resources/js/store/modules/home/getters.js ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getDashboards": () => (/* binding */ getDashboards)
-/* harmony export */ });
-var getDashboards = function getDashboards(state) {
-  return state.dashboards;
-};
-
-
-
-/***/ }),
-
-/***/ "./resources/js/store/modules/home/index.js":
-/*!**************************************************!*\
-  !*** ./resources/js/store/modules/home/index.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/store/modules/home/state.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actions */ "./resources/js/store/modules/home/actions.js");
-/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getters */ "./resources/js/store/modules/home/getters.js");
-/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/js/store/modules/home/mutations.js");
-
-
-
-
-var namespaced = true;
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  namespaced: namespaced,
-  state: _state__WEBPACK_IMPORTED_MODULE_0__.state,
-  actions: _actions__WEBPACK_IMPORTED_MODULE_1__,
-  getters: _getters__WEBPACK_IMPORTED_MODULE_2__,
-  mutations: _mutations__WEBPACK_IMPORTED_MODULE_3__
-});
-
-/***/ }),
-
-/***/ "./resources/js/store/modules/home/mutations.js":
-/*!******************************************************!*\
-  !*** ./resources/js/store/modules/home/mutations.js ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SORT": () => (/* binding */ SORT)
-/* harmony export */ });
-var SORT = function SORT(state, payload) {
-  var sorted = state.dashboards.sort(function (a, b) {
-    if (payload.direction === 'asc') {
-      return a[payload.data] > b[payload.data];
-    }
-
-    return a[payload.data] < b[payload.data];
-  });
-  state.dashboards = sorted;
-};
-
-
-
-/***/ }),
-
-/***/ "./resources/js/store/modules/home/state.js":
-/*!**************************************************!*\
-  !*** ./resources/js/store/modules/home/state.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "state": () => (/* binding */ state)
-/* harmony export */ });
-/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./const */ "./resources/js/store/modules/home/const.js");
-
-var state = JSON.parse(JSON.stringify(_const__WEBPACK_IMPORTED_MODULE_0__.default_state));
-
 
 /***/ }),
 
@@ -21335,58 +21068,6 @@ var sort = /*#__PURE__*/function () {
   };
 }();
 
-
-
-/***/ }),
-
-/***/ "./resources/js/store/modules/third-party-instruction/const.js":
-/*!*********************************************************************!*\
-  !*** ./resources/js/store/modules/third-party-instruction/const.js ***!
-  \*********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default_state": () => (/* binding */ default_state)
-/* harmony export */ });
-var getDefaultState = function getDefaultState() {
-  return {
-    instructions: [{
-      id: "SI-2022-0002",
-      link: "-",
-      type: "SI",
-      vendor: "Amarit & Associates Co Ltd",
-      attention: "Rigsite Transportation",
-      quotation: "MITME-AGL-001",
-      invoice: ['Invoice1', 'Invoice2', 'Invoice3'],
-      customerPo: "PO003",
-      status: "Completed"
-    }, {
-      id: "SI-2022-0001 R01",
-      link: "INSP-2020-0001",
-      type: "SI",
-      vendor: "Amarit & Associates Co Ltd",
-      attention: "Rigprep Transportation from Agility Kizad",
-      quotation: "MITME-AGL-001",
-      invoice: ['Invoice1'],
-      customerPo: "PO01",
-      status: "Canceled"
-    }, {
-      id: "SI-2021-0116 R01",
-      link: "-",
-      type: "SI",
-      vendor: "ALMANSOORI INSPECTION SERVICE COMPANY LLC",
-      attention: "ALMANSOORI INSPECTION SERVICE COMPANY LLC",
-      quotation: "MITME-AGL-001 (Appendix 1)",
-      invoice: ['Invoice1', 'Invoice2'],
-      customerPo: "",
-      status: "Completed"
-    }]
-  };
-};
-
-var default_state = getDefaultState();
 
 
 /***/ }),
@@ -21477,9 +21158,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "state": () => (/* binding */ state)
 /* harmony export */ });
-/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./const */ "./resources/js/store/modules/third-party-instruction/const.js");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module './const'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
-var state = JSON.parse(JSON.stringify(_const__WEBPACK_IMPORTED_MODULE_0__.default_state));
+var state = JSON.parse(JSON.stringify(Object(function webpackMissingModule() { var e = new Error("Cannot find module './const'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())));
 
 
 /***/ }),
