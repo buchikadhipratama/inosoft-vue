@@ -2,16 +2,15 @@
 
 namespace App\Models;
 
-// use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Vendor extends Eloquent
+class Item extends Eloquent
 {
     protected $connection = 'mongodb';
-    protected $collection = 'vendors';
+    protected $collection = 'items';
 
     protected $fillable = [
-        'instruction_id',
         'assign_vendor',
         'attention',
         'quotation',
@@ -26,13 +25,9 @@ class Vendor extends Eloquent
         'discount',
         'gst_vat',
         'currency',
-        'charge',
+        'change',
         'attachment',
         'notes',
-        'link_to',
-        'status',
-        'type',
-        'cancel_description',
-        'cancel_attachment'
+        'link_to'
     ];
 }

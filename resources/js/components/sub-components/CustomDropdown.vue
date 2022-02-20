@@ -4,12 +4,12 @@
     <ul class="dropdown-menu w-100 " aria-labelledby="btnGroupDrop1">
       <li>
         <router-link :to="{name: 'LogisticInstruction'}" class="dropdown-item">
-          <custom-button btn_class="btn" data-bs-toggle="dropdown" aria-expanded="false" icon_class="fas fa-truck" label=" Logistic Instruction" />
+          <custom-button btn_class="btn" aria-expanded="false" icon_class="fas fa-truck" label=" Logistic Instruction" />
         </router-link>
       </li>
       <li>
         <router-link :to="{name: 'ServiceInstruction'}" class="dropdown-item">
-          <custom-button btn_class="btn" data-bs-toggle="dropdown" aria-expanded="false" icon_class="fas fa-wrench" label=" Service Instruction" />
+          <custom-button btn_class="btn" icon_class="fas fa-wrench" label=" Service Instruction" />
         </router-link>
 
       </li>
