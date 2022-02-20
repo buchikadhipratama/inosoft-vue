@@ -14,7 +14,7 @@ class VendorController extends Controller
     {
         $vendorData = $request->all();
 
-        $response = (new VendorService)-> createVendorFromArray($vendorData);
+        $response = (new VendorService())->createVendorFromArray($vendorData);
 
         if ($response['error']) {
             return response()->json(['status'=>500, 'message'=>'something wrong with the server'],500);
@@ -28,7 +28,9 @@ class VendorController extends Controller
     {
         $response = (new VendorService)->getAllVendor();
 
-        return $response;
+        return response()->json(['status'=>200, 'message'=>$response],200);
+
+        // return view('welcome');
     }
 
     public function edit($id)

@@ -26,7 +26,7 @@ const routes = [
       component: CreateInstruction
   },
   {
-      path: '/det',
+      path: '/det/:id',
       name: 'DetailInstruction',
       component: DetailInstruction
   },

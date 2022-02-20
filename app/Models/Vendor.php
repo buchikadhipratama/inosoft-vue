@@ -11,6 +11,7 @@ class Vendor extends Eloquent
     protected $collection = 'vendors';
 
     protected $fillable = [
+        'instruction_id',
         'assign_vendor',
         'attention',
         'quotation',
@@ -25,10 +26,12 @@ class Vendor extends Eloquent
         'discount',
         'gst_vat',
         'currency',
-        'change',
+        'charge',
         'attachment',
         'notes',
         'link_to',
+        'status',
+        'type',
         'cancel_description',
         'cancel_attachment'
     ];
