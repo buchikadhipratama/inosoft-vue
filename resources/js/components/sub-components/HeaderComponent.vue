@@ -1,26 +1,22 @@
 <template>
-  <div>
-    <header class="bg-dark text-white">
-
-      <nav class="navbar">
-        <div class="container-fluid">
-          <div class="row m-2">
-            <a class="navbar-brand" href="#">
-              <img src="/inosoft-logo.png" alt="/public/inosoft-logo.png" width="100" height="30">
-            </a>
-          </div>
-          <div class="row">
-            <span>Good Afternoon, inosoft bootcamp</span>
-          </div>
-          <div class="row m-2">
-            <div class="d-flex">
-              <custom-button btn_class="btn btn-outline-light h-auto fas m-3 py-2" icon_class="fas fa-user" />
-            </div>
+  <div class="header">
+    <nav class="navbar bg-dark fixed-top text-white">
+      <div class="container-fluid">
+        <div class="row m-2">
+          <a class="navbar-brand" href="#">
+             <img src="/inosoft-logo.png" alt="/public/inosoft-logo.png" width="100" height="30">
+          </a>
+        </div>
+        <div class="row">
+          <span>Good Afternoon, inosoft bootcamp</span>
+        </div>
+        <div class="row m-2">
+          <div class="d-flex">
+            <custom-button btn_class="btn btn-outline-light h-auto fas m-3 py-2" icon_class="fas fa-user" />
           </div>
         </div>
-      </nav>
-
-    </header>
+      </div>
+    </nav>
   </div>
 </template>
 
@@ -42,8 +38,9 @@ export default {
 </script>
 
 <style scoped>
-#header {
-  position: fixed;
+
+.header {
+  margin-bottom: 97px;
 }
 </style>
 
