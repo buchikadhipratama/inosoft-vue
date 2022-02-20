@@ -1,11 +1,10 @@
 <template>
-  <!-- <div> -->
-  <header class="bg-dark text-white" id="head">
-    <nav class="navbar">
+  <div class="header">
+    <nav class="navbar bg-dark fixed-top text-white">
       <div class="container-fluid">
         <div class="row m-2">
           <a class="navbar-brand" href="#">
-            <img src="/inosoft-logo.png" alt="/public/inosoft-logo.png" width="100" height="30">
+             <img src="/inosoft-logo.png" alt="/public/inosoft-logo.png" width="100" height="30">
           </a>
         </div>
         <div class="row">
@@ -18,8 +17,7 @@
         </div>
       </div>
     </nav>
-  </header>
-  <!-- </div> -->
+  </div>
 </template>
 
 <script>
@@ -40,8 +38,9 @@ export default {
 </script>
 
 <style scoped>
-#header {
-  position: fixed;
+
+.header {
+  margin-bottom: 97px;
 }
 </style>
 

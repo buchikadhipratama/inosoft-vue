@@ -18494,8 +18494,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "HeaderComponent",
@@ -18840,6 +18838,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -18876,7 +18876,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       search: ""
     };
   },
-  methods: {
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)({
+    fetchCompletedInstruction: 'thirdPartyInstruction/fetchCompletedInstruction'
+  })), {}, {
     sort: function sort(direction, data) {
       this.sortData.direction = direction;
       this.sortData.type = data;
@@ -18894,26 +18896,37 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.showSearch = false;
         this.searchClass = "fas fa-search";
       }
+    },
+    toDetail: function toDetail(id) {
+      this.$router.push({
+        name: 'DetailInstruction',
+        params: {
+          id: id
+        }
+      });
     }
-  },
+  }),
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)({
-    instructions: "thirdPartyInstruction/getInstructions"
+    instructions: "thirdPartyInstruction/getCompletedInstruction"
   })), {}, {
     filteredData: function filteredData() {
       var search = this.search.toLowerCase();
-      return this.instructions.filter(function (instruction) {
-        var id = instruction.id.toString().toLowerCase();
-        var link = instruction.link.toString().toLowerCase();
+      return this.instructions.message.filter(function (instruction) {
+        var id = instruction.instruction_id.toString().toLowerCase();
+        var link = instruction.link_to.toString().toLowerCase();
         var type = instruction.type.toString().toLowerCase();
-        var vendor = instruction.vendor.toString().toLowerCase();
+        var vendor = instruction.assign_vendor.toString().toLowerCase();
         var attention = instruction.attention.toString().toLowerCase();
         var quotation = instruction.quotation.toString().toLowerCase();
-        var customerPo = instruction.customerPo.toString().toLowerCase();
+        var customerPo = instruction.customer_po.toString().toLowerCase();
         var status = instruction.status.toString().toLowerCase();
         return id.includes(search) || link.includes(search) || type.includes(search) || vendor.includes(search) || attention.includes(search) || quotation.includes(search) || customerPo.includes(search) || status.includes(search);
       });
     }
-  })
+  }),
+  created: function created() {
+    this.fetchCompletedInstruction();
+  }
 });
 
 /***/ }),
@@ -20974,7 +20987,7 @@ var routes = [{
   name: 'CreateInstruction',
   component: _pages_CreateInstruction_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
 }, {
-  path: '/det',
+  path: '/det/:id',
   name: 'DetailInstruction',
   component: _pages_DetailInstruction__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
@@ -21304,7 +21317,10 @@ var state = JSON.parse(JSON.stringify(_const__WEBPACK_IMPORTED_MODULE_0__.defaul
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "sort": () => (/* binding */ sort)
+/* harmony export */   "sort": () => (/* binding */ sort),
+/* harmony export */   "fetchOpenInstruction": () => (/* binding */ fetchOpenInstruction),
+/* harmony export */   "fetchCompletedInstruction": () => (/* binding */ fetchCompletedInstruction),
+/* harmony export */   "storeInstruction": () => (/* binding */ storeInstruction)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -21333,60 +21349,85 @@ var sort = /*#__PURE__*/function () {
   return function sort(_x, _x2) {
     return _ref.apply(this, arguments);
   };
+}(); // const fetchAllInstruction = async (context) => {
+//     return fetch("http://127.0.0.1:8000/api/")
+//       .then((response) => response.json())
+//       .then((data) => {
+//         context.commit("SETINSTRUCTION", data);
+//       })
+//       .catch((err) => console.error(err));
+//   }
+
+
+var fetchOpenInstruction = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(context) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            return _context2.abrupt("return", axios.get('api/').then(function (_ref3) {
+              var data = _ref3.data;
+              context.commit("SETOPENINSTRUCTION", data);
+            }));
+
+          case 1:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+
+  return function fetchOpenInstruction(_x3) {
+    return _ref2.apply(this, arguments);
+  };
 }();
 
+var fetchCompletedInstruction = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(context) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            return _context3.abrupt("return", axios.get('api/1').then(function (_ref5) {
+              var data = _ref5.data;
+              context.commit("SETCOMPLETEDINSTRUCTION", data);
+            }));
 
+          case 1:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  }));
 
-/***/ }),
-
-/***/ "./resources/js/store/modules/third-party-instruction/const.js":
-/*!*********************************************************************!*\
-  !*** ./resources/js/store/modules/third-party-instruction/const.js ***!
-  \*********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default_state": () => (/* binding */ default_state)
-/* harmony export */ });
-var getDefaultState = function getDefaultState() {
-  return {
-    instructions: [{
-      id: "SI-2022-0002",
-      link: "-",
-      type: "SI",
-      vendor: "Amarit & Associates Co Ltd",
-      attention: "Rigsite Transportation",
-      quotation: "MITME-AGL-001",
-      invoice: ['Invoice1', 'Invoice2', 'Invoice3'],
-      customerPo: "PO003",
-      status: "Completed"
-    }, {
-      id: "SI-2022-0001 R01",
-      link: "INSP-2020-0001",
-      type: "SI",
-      vendor: "Amarit & Associates Co Ltd",
-      attention: "Rigprep Transportation from Agility Kizad",
-      quotation: "MITME-AGL-001",
-      invoice: ['Invoice1'],
-      customerPo: "PO01",
-      status: "Canceled"
-    }, {
-      id: "SI-2021-0116 R01",
-      link: "-",
-      type: "SI",
-      vendor: "ALMANSOORI INSPECTION SERVICE COMPANY LLC",
-      attention: "ALMANSOORI INSPECTION SERVICE COMPANY LLC",
-      quotation: "MITME-AGL-001 (Appendix 1)",
-      invoice: ['Invoice1', 'Invoice2'],
-      customerPo: "",
-      status: "Completed"
-    }]
+  return function fetchCompletedInstruction(_x4) {
+    return _ref4.apply(this, arguments);
   };
-};
+}();
 
-var default_state = getDefaultState();
+var storeInstruction = /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(context, payload) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            context.commit("STOREINSTRUCTION", payload);
+
+          case 1:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+
+  return function storeInstruction(_x5, _x6) {
+    return _ref6.apply(this, arguments);
+  };
+}();
+
 
 
 /***/ }),
@@ -21400,10 +21441,18 @@ var default_state = getDefaultState();
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getInstructions": () => (/* binding */ getInstructions)
+/* harmony export */   "getOpenInstruction": () => (/* binding */ getOpenInstruction),
+/* harmony export */   "getCompletedInstruction": () => (/* binding */ getCompletedInstruction)
 /* harmony export */ });
-var getInstructions = function getInstructions(state) {
-  return state.instructions;
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/store/modules/third-party-instruction/state.js");
+
+
+var getOpenInstruction = function getOpenInstruction(state) {
+  return state.open_instructions;
+};
+
+var getCompletedInstruction = function getCompletedInstruction(data) {
+  return _state__WEBPACK_IMPORTED_MODULE_0__.state.completed_instruction;
 };
 
 
@@ -21449,17 +21498,35 @@ var namespaced = true;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SORT": () => (/* binding */ SORT)
+/* harmony export */   "SORT": () => (/* binding */ SORT),
+/* harmony export */   "SETOPENINSTRUCTION": () => (/* binding */ SETOPENINSTRUCTION),
+/* harmony export */   "SETCOMPLETEDINSTRUCTION": () => (/* binding */ SETCOMPLETEDINSTRUCTION),
+/* harmony export */   "STOREINSTRUCTION": () => (/* binding */ STOREINSTRUCTION)
 /* harmony export */ });
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/store/modules/third-party-instruction/state.js");
+
+
 var SORT = function SORT(state, payload) {
-  var sorted = state.instructions.sort(function (a, b) {
+  var sorted = state.instructions.message.sort(function (a, b) {
     if (payload.direction === 'asc') {
       return a[payload.data] > b[payload.data];
     }
 
     return a[payload.data] < b[payload.data];
   });
-  state.instructions = sorted;
+  state.instructions.message = sorted;
+};
+
+var SETOPENINSTRUCTION = function SETOPENINSTRUCTION(state, data) {
+  state.open_instructions = data;
+};
+
+var SETCOMPLETEDINSTRUCTION = function SETCOMPLETEDINSTRUCTION(state, data) {
+  state.completed_instruction = data;
+};
+
+var STOREINSTRUCTION = function STOREINSTRUCTION(payload) {
+  axios.post("/api/store", [payload]);
 };
 
 
@@ -21477,9 +21544,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "state": () => (/* binding */ state)
 /* harmony export */ });
-/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./const */ "./resources/js/store/modules/third-party-instruction/const.js");
-
-var state = JSON.parse(JSON.stringify(_const__WEBPACK_IMPORTED_MODULE_0__.default_state));
+var state = {
+  open_instructions: [],
+  completed_instruction: []
+};
 
 
 /***/ }),
@@ -26823,7 +26891,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#header[data-v-017d72e2] {\n  position: fixed;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.header[data-v-017d72e2] {\n  margin-bottom: 97px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -26871,7 +26939,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nth[data-v-05e1a0cc] {\n  padding: 0.25rem;\n}\n.table-head[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\ntbody[data-v-05e1a0cc] {\n  border-top: none !important;\n}\n.nav-item .active[data-v-05e1a0cc] {\n  border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.pointer[data-v-05e1a0cc] {\n  cursor: pointer;\n}\n.instruction-badge[data-v-05e1a0cc] {\n  width: 6rem;\n}\n.inventory-badge[data-v-05e1a0cc] {\n  background-color: rgb(0, 171, 185);\n  height: 100%;\n  width: 45%;\n}\n.badge-completed[data-v-05e1a0cc] {\n  background-color: rgb(0, 176, 111);\n}\n.badge-canceled[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nth[data-v-05e1a0cc] {\n  padding: 0.25rem;\n}\n.table-head[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\ntbody[data-v-05e1a0cc] {\n  border-top: none !important;\n}\n.nav-item .active[data-v-05e1a0cc] {\n  border-bottom: 4px solid rgb(0, 171, 185) !important;\n}\n.pointer[data-v-05e1a0cc] {\n  cursor: pointer;\n}\n.pointer[data-v-05e1a0cc] :hover {\n  color: cadetblue;\n}\n.instruction-badge[data-v-05e1a0cc] {\n  width: 6rem;\n}\n.inventory-badge[data-v-05e1a0cc] {\n  background-color: rgb(0, 171, 185);\n  height: 100%;\n  width: 45%;\n}\n.badge-completed[data-v-05e1a0cc] {\n  background-color: rgb(0, 176, 111);\n}\n.badge-canceled[data-v-05e1a0cc] {\n  background-color: rgb(193, 199, 206);\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -47688,35 +47756,31 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "header",
-    { staticClass: "bg-dark text-white", attrs: { id: "head" } },
-    [
-      _c("nav", { staticClass: "navbar" }, [
-        _c("div", { staticClass: "container-fluid" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _c("div", { staticClass: "row m-2" }, [
-            _c(
-              "div",
-              { staticClass: "d-flex" },
-              [
-                _c("custom-button", {
-                  attrs: {
-                    btn_class: "btn btn-outline-light h-auto fas m-3 py-2",
-                    icon_class: "fas fa-user",
-                  },
-                }),
-              ],
-              1
-            ),
-          ]),
+  return _c("div", { staticClass: "header" }, [
+    _c("nav", { staticClass: "navbar bg-dark fixed-top text-white" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "row m-2" }, [
+          _c(
+            "div",
+            { staticClass: "d-flex" },
+            [
+              _c("custom-button", {
+                attrs: {
+                  btn_class: "btn btn-outline-light h-auto fas m-3 py-2",
+                  icon_class: "fas fa-user",
+                },
+              }),
+            ],
+            1
+          ),
         ]),
       ]),
-    ]
-  )
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
@@ -48009,7 +48073,7 @@ var render = function () {
                                 staticClass:
                                   "btn btn-light h-auto m-1 border py-1",
                                 attrs: {
-                                  data: _vm.instructions,
+                                  data: _vm.instructions.message,
                                   worksheet: "Completed Instruction",
                                   name: "Completed_Instruction.xls",
                                 },
@@ -48771,15 +48835,44 @@ var render = function () {
                         _vm._v(" "),
                         _c(
                           "tbody",
-                          _vm._l(
-                            _vm.filteredData,
-                            function (instruction, index) {
-                              return _c("tr", { key: index }, [
-                                _c("td", [_vm._v(_vm._s(instruction.id))]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(instruction.link))]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
+                          { staticClass: "pointer" },
+                          _vm._l(_vm.filteredData, function (instruction) {
+                            return _c("tr", { key: instruction._id }, [
+                              _c(
+                                "td",
+                                {
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [_vm._v(_vm._s(instruction.instruction_id))]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [_vm._v(_vm._s(instruction.link_to))]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  staticClass: "text-center",
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [
                                   instruction.type == "LI"
                                     ? _c("i", { staticClass: "fas fa-truck" })
                                     : _c("i", { staticClass: "fas fa-wrench" }),
@@ -48788,21 +48881,49 @@ var render = function () {
                                       _vm._s(instruction.type) +
                                       "\n                       "
                                   ),
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(instruction.vendor))]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(_vm._s(instruction.attention)),
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(_vm._s(instruction.quotation)),
-                                ]),
-                                _vm._v(" "),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [_vm._v(_vm._s(instruction.assign_vendor))]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [_vm._v(_vm._s(instruction.attention))]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [_vm._v(_vm._s(instruction.quotation))]
+                              ),
+                              _vm._v(" "),
+                              _c("td", [
                                 _c(
-                                  "td",
-                                  { staticClass: "text-center d-flex" },
+                                  "div",
+                                  { staticClass: "d-flex text-center" },
                                   [
                                     _c(
                                       "span",
@@ -48812,9 +48933,9 @@ var render = function () {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                           " +
+                                          "\n                             " +
                                             _vm._s(instruction.invoice.length) +
-                                            "\n                         "
+                                            "\n                           "
                                         ),
                                       ]
                                     ),
@@ -48879,13 +49000,31 @@ var render = function () {
                                     ),
                                   ]
                                 ),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(_vm._s(instruction.customerPo)),
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  instruction.status == "Completed"
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [_vm._v(_vm._s(instruction.customer_po))]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                {
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.toDetail(instruction._id)
+                                    },
+                                  },
+                                },
+                                [
+                                  instruction.status == "2"
                                     ? _c(
                                         "span",
                                         {
@@ -48894,13 +49033,11 @@ var render = function () {
                                         },
                                         [
                                           _vm._v(
-                                            "\n                           " +
-                                              _vm._s(instruction.status) +
-                                              "\n                         "
+                                            "\n                           Completed\n                         "
                                           ),
                                         ]
                                       )
-                                    : instruction.status == "Canceled"
+                                    : instruction.status == "0"
                                     ? _c(
                                         "span",
                                         {
@@ -48909,17 +49046,15 @@ var render = function () {
                                         },
                                         [
                                           _vm._v(
-                                            "\n                           " +
-                                              _vm._s(instruction.status) +
-                                              "\n                         "
+                                            "\n                           Canceled\n                         "
                                           ),
                                         ]
                                       )
                                     : _vm._e(),
-                                ]),
-                              ])
-                            }
-                          ),
+                                ]
+                              ),
+                            ])
+                          }),
                           0
                         ),
                       ]),

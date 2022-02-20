@@ -4,30 +4,33 @@ namespace App\Repository;
 
 use App\Models\Vendor;
 
-class VendorRepository{
+class VendorRepository
+{
     public function createVendorFromArray(array $vendor)
     {
         try {
             $newvendor = new Vendor();
-            $newvendor->assign_vendor = $vendor['assign_vendor'];
+            $newvendor->instruction_id = $vendor['instruction_id'];
+            $newvendor->assign_vendor = $vendor['assign_vendor'];  
             $newvendor->attention = $vendor['attention'];
             $newvendor->quotation = $vendor['quotation'];
             $newvendor->invoice = $vendor['invoice'];
-            $newvendor->customer_contract = $vendor['customer_contract'];
-            $newvendor->vendor_address = $vendor['vendor_address'];
+            $newvendor->customer_contract = $vendor['customer_contract'];  
+            $newvendor->vendor_address = $vendor['vendor_address'];    
             $newvendor->customer_po = $vendor['customer_po'];
-            $newvendor->description = $vendor['description'];
-            $newvendor->qty = $vendor['qty'];
-            $newvendor->uom = $vendor['uom'];
-            $newvendor->unit_price = $vendor['unit_price'];
-            $newvendor->discount = $vendor['discount'];
-            $newvendor->gst_vat = $vendor['gst_vat'];
-            $newvendor->currency = $vendor['currency'];
-            $newvendor->change = $vendor['change'];
-            $newvendor->attachment = $vendor['attachment'];
-            $newvendor->notes = $vendor['notes'];
+            $newvendor->description = $vendor['description'];  
+            $newvendor->qty = $vendor['qty'];  
+            $newvendor->uom = $vendor['uom'];  
+            $newvendor->unit_price = $vendor['unit_price'];  
+            $newvendor->discount = $vendor['discount'];  
+            $newvendor->gst_vat = $vendor['gst_vat'];  
+            $newvendor->currency = $vendor['currency'];  
+            $newvendor->charge = $vendor['charge'];
+            $newvendor->attachment = $vendor['attachment'];  
+            $newvendor->notes = $vendor['notes'];  
             $newvendor->link_to = $vendor['link_to'];
-            $newvendor->status = 1;
+            $newvendor->status = 1;    
+            $newvendor->type = $vendor['type'];       
             $newvendor->save();
 
             return 0;
@@ -38,9 +41,7 @@ class VendorRepository{
 
     public function getAll()
     {
-        // return Vendor::where('status',1)->get(); //1 artinya status in progress
-        return Vendor::all(); //buchik - home
-
+        return Vendor::where('status', 1)->get() ?? [];
     }
 
     public function updateVendorFromArray(array $vendor)
@@ -77,8 +78,8 @@ class VendorRepository{
     public function getAllCompleted()
     {
         return Vendor::where(function ($query) {
-            $query->where('status', 2) //completed
-                ->orwhere('status', 3); //canceled
+            $query->where('status', 2)
+                ->orwhere('status', 0);
          })->get(); //0 untuk saat ini artinya completed
     }
 
