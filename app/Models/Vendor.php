@@ -26,7 +26,7 @@ class Vendor extends Eloquent
         'discount',
         'gst_vat',
         'currency',
-        'change',
+        'charge',
         'attachment',
         'notes',
         'link_to',

@@ -59,7 +59,7 @@ class VendorService{
 
     public function changeVendorStatus(array $vendor)
     {
-        $error = (new VendorRepository)-> changeVendorStatus($vendor);
+        $error = (new VendorRepository())->changeVendorStatus($vendor);
         if ($error){
             return [
                 'error' => 1

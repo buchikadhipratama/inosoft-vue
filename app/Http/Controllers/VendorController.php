@@ -18,7 +18,7 @@ class VendorController extends Controller
     {
         $vendorData = $request->all();
 
-        $response = (new VendorService)->createVendorFromArray($vendorData);
+        $response = (new VendorService())->createVendorFromArray($vendorData);
 
         if ($response['error']) {
             return response()->json(['status'=>500, 'message'=>'something wrong with the server'],500);

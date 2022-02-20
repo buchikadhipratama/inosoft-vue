@@ -4,11 +4,34 @@ namespace App\Repository;
 
 use App\Models\Vendor;
 
-class VendorRepository{
+class VendorRepository
+{
     public function createVendorFromArray(array $vendor)
     {
         try {
             $newvendor = new Vendor();
+            // $newvendor->instruction_id = "uu";
+            // $newvendor->assign_vendor = "uu";
+            // $newvendor->attention = "uu";
+            // $newvendor->quotation = "uu";
+            // $newvendor->invoice = "uu";
+            // $newvendor->customer_contract = "uu";
+            // $newvendor->vendor_address = "uu";   
+            // $newvendor->customer_po = "uu";
+            // $newvendor->description = "uu";
+            // $newvendor->qty = "uu";
+            // $newvendor->uom = "uu";
+            // $newvendor->unit_price = "uu"; 
+            // $newvendor->discount = "uu"; 
+            // $newvendor->gst_vat = "uu";
+            // $newvendor->currency ="uu"; 
+            // $newvendor->charge = "uu";
+            // $newvendor->attachment = "uu";
+            // $newvendor->notes = "uu";
+            // $newvendor->link_to = "uu";
+            // $newvendor->status = 1;    
+            // $newvendor->$type = "uu";
+
             $newvendor->instruction_id = $vendor['instruction_id'];
             $newvendor->assign_vendor = $vendor['assign_vendor'];  
             $newvendor->attention = $vendor['attention'];
@@ -24,12 +47,12 @@ class VendorRepository{
             $newvendor->discount = $vendor['discount'];  
             $newvendor->gst_vat = $vendor['gst_vat'];  
             $newvendor->currency = $vendor['currency'];  
-            $newvendor->change = $vendor['change'];
+            $newvendor->charge = $vendor['charge'];
             $newvendor->attachment = $vendor['attachment'];  
             $newvendor->notes = $vendor['notes'];  
             $newvendor->link_to = $vendor['link_to'];
             $newvendor->status = 1;    
-            $newvendor->$type = $vendor['type'];       
+            $newvendor->type = $vendor['type'];       
             $newvendor->save();
 
             return 0;
