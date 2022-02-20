@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class Vendor extends Eloquent
@@ -31,6 +31,8 @@ class Vendor extends Eloquent
         'notes',
         'link_to',
         'status',
-        'type'
+        'type',
+        'cancel_description',
+        'cancel_attachment'
     ];
 }
