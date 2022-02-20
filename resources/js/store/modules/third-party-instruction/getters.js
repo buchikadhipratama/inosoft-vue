@@ -4,7 +4,7 @@ const getOpenInstruction = (state) => {
     return state.open_instructions;
 };
 
-const getCompletedInstruction = (data) => {
+const getCompletedInstruction = (state) => {
     return state.completed_instruction;
 }
 
