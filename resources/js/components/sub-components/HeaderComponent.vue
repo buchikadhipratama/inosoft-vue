@@ -39,3 +39,9 @@ export default {
 };
 </script>
 
+<style scoped>
+#header {
+  position: fixed;
+}
+</style>
+

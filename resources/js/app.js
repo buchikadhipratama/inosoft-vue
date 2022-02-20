@@ -7,6 +7,7 @@ import excel from 'vue-excel-export'
 import router from './router/index';
 import store from './store/index';
 import App from './App.vue';
+import excel from 'vue-excel-export';
 
 
 /* import the fontawesome core */

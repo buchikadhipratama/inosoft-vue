@@ -38,8 +38,8 @@ export default {
 
 <style scoped>
 #sidebar-wrapper {
-  height: 150vh;
-  /* bottom: 0; */
-  position: absolute;
+  height: 100vh;
+  position: fixed;
 }
 </style>
+

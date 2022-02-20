@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="mt-4">
+  <div class="mx-3 mt-3">
+    <div>
       <h2>{{title}}</h2>
     </div>
     <div>
