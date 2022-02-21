@@ -334,22 +334,10 @@ tbody {
   color: cadetblue;
 }
 
-.instruction-badge {
-  width: 6rem;
-}
-
 .inventory-badge {
   background-color: rgb(0, 171, 185);
   height: 100%;
   width: 45%;
-}
-
-.badge-completed {
-  background-color: rgb(0, 176, 111);
-}
-
-.badge-canceled {
-  background-color: rgb(193, 199, 206);
 }
 
 </style>

@@ -23,7 +23,7 @@ const STOREINSTRUCTION = (payload) => {
     axios.post("/api/store", [payload])
 }
 
-const STOREDETAILINSTRUCTION = (payload) => {
+const SETDETAILINSTRUCTION = (state, data) => {
     state.detail_instruction = data;
 }
 export {
@@ -31,5 +31,5 @@ export {
     SETOPENINSTRUCTION,
     SETCOMPLETEDINSTRUCTION,
     STOREINSTRUCTION,
-    STOREDETAILINSTRUCTION
+    SETDETAILINSTRUCTION
 }

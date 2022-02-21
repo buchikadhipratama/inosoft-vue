@@ -4,7 +4,7 @@
             <page-title-component :datas="data"/>
         </div>
         <div class="col-12 p-0">
-            <div class="card border-0 shadow-sm d-flex">
+            <div class="card border-0 shadow-sm d-flex" v-if="this.instructions[0]">
                 <div class="card-header bg-white p-0">
                     <ul class="nav mx-3 border-0 d-flex">
                         <li class="nav-item mt-3">
@@ -28,16 +28,23 @@
                         <div class="grid-item item">Customer PO</div>
                         <div class="grid-item item">Status</div>
 
-                        <div class="grid-item1 item1">Service Instruction</div>
-                        <div class="grid-item1 item1">SI-2022-0001</div>
+                        <div class="grid-item1 item1" v-if="this.instructions[0].type === 'SI'">Service Instruction</div>
+                        <div class="grid-item1 item1" v-if="this.instructions[0].type === 'LI'">Logistics Instruction</div>
+                        <div class="grid-item1 item1">{{this.instructions[0].instruction_id}}</div>
                         <div class="grid-item1 item1">
-                        <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-link" label="INSP-2020-0001"/>
+                        <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-link" :label="this.instructions[0].link_to"/>
                         </div>
-                        <div class="grid-item1 item1">ADNOC - Hail & Ghasha</div>
-                        <div class="grid-item1 item1">PO01</div>
+                        <div class="grid-item1 item1">{{this.instructions[0].customer_contract}}</div>
+                        <div class="grid-item1 item1">{{this.instructions[0].customer_po}}</div>
                         <div class="grid-item1 item1">
-                            <span class="badge bg-secondary rounded-pill instruction-badge">
+                            <span v-if="this.instructions[0].status === 1" class="badge rounded-pill instruction-badge ">
                                 In Progress
+                            </span>
+                            <span v-else-if="this.instructions[0].status === 2" class="badge rounded-pill instruction-badge badge-completed">
+                                Completed
+                            </span>
+                            <span v-else-if="this.instructions[0].status === 0" class="badge rounded-pill instruction-badge badge-canceled">
+                                Canceled
                             </span>
                         </div>
 
@@ -46,10 +53,10 @@
                         <div class="grid-item2 item2">Vendor Quotation No.</div>
                         <div class="grid-item2 item3">Vendro Address</div>
 
-                        <div class="grid-item1 item4">Rigrep Transportation</div>
-                        <div class="grid-item1 item4">Amarit & Associates Logisitics Co Ltd</div>
-                        <div class="grid-item1 item4">MITME-ADL-001</div>
-                        <div class="grid-item1 item5">1 SOI PRIDI PHANOMYONG 28 (THANIPATTANA) SUKHUMVIT 71 ROAD, KWAENG KLONGTON NUA, KHET WATTANA,</div>
+                        <div class="grid-item1 item4">{{this.instructions[0].attention}}</div>
+                        <div class="grid-item1 item4">{{this.instructions[0].assign_vendor}}</div>
+                        <div class="grid-item1 item4">{{this.instructions[0].quotation}}</div>
+                        <div class="grid-item1 item5">{{this.instructions[0].vendor_address}}</div>
                     </div>
                 </div>
                 <div class="mt-5 mx-3 p-4">
@@ -139,20 +146,20 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Rigprep Transportation</td>
+                                    <td>{{this.instructions[0].description}}</td>
                                     <td class="align-right">5</td>
-                                    <td>SHP</td>
-                                    <td class="align-right">100.00</td>
-                                    <td class="align-right">5</td>
+                                    <td>{{this.instructions[0].uom}}</td>
+                                    <td class="align-right">{{this.instructions[0].price}}</td>
+                                    <td class="align-right">{{this.instructions[0].discount}}</td>
                                     <td class="align-right">
-                                        0
+                                        {{this.instructions[0].gst_vat}}
                                         <i class="fas fa-arrow-right"></i>
                                     </td>
-                                    <td>USD</td>
-                                    <td class="align-right">0.00</td>
+                                    <td>{{this.instructions[0].currency}}</td>
+                                    <td class="align-right">{{this.instructions[0].gst_vat}}</td>
                                     <td class="align-right">475.00</td>
                                     <td class="align-right">475.00</td>
-                                    <td>MITME</td>
+                                    <td>{{this.instructions[0].charge}}</td>
                                 </tr>
 
                                 <tr class="white-border">
@@ -182,7 +189,7 @@
                                     <td>
                                         <span class="color-used">
                                             <i class="icon-center fas fa-paperclip fa-sm"></i>
-                                            Certificate.jpg
+                                            {{this.instructions[0].attachment}}
                                         </span>
                                         <br>
                                         by Winata Admin on 11/jan/22 09:47 AM
@@ -191,7 +198,7 @@
                                         <i class="fas fa-trash fa-sm "></i>
                                     </td>
                                     <td class="white-border" colspan="3"></td>
-                                    <td class="white-border">Rigprep Transportation</td>
+                                    <td class="white-border">{{this.instructions[0].notes}}</td>
                                 </tr>
 
                                 <tr>
@@ -237,6 +244,7 @@
 <script>
 import PageTitleComponent from "../components/sub-components/PageTitleComponent";
 import CustomButton from "../components/sub-components/CustomButton";
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
     name: "DetailInstruction",
@@ -257,6 +265,19 @@ export default {
                 }
             ]
         }
+    },
+    methods: {
+        ...mapActions({
+            fetchOneInstruction: "thirdPartyInstruction/fetchOneInstruction" 
+        })
+    },
+    created() {
+        this.fetchOneInstruction(this.$route.params.id);
+    },
+    computed: {
+        ...mapGetters({
+            instructions: "thirdPartyInstruction/getDetailInstruction"
+        })
     }
 }
 </script>

@@ -111,8 +111,8 @@ class VendorRepository
         }
     }
 
-    public function getSingleData($id)
+    public function getSingleData(object $id)
     {
-        return Vendor::where('_id', ObjectId($id))->get() ?? [];
+        return Vendor::where('_id', $id)->get() ?? ["dssd"];
     }
 }

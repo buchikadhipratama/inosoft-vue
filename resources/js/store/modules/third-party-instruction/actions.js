@@ -32,7 +32,7 @@ const storeInstruction = async (context, payload) => {
 const fetchOneInstruction = async (context, payload) => {
   return axios.get('api/det/' + payload)
   .then(({data}) => {
-    context.commit("STOREDETAILINSTRUCTION", data)
+    context.commit("SETDETAILINSTRUCTION", data)
   })
 }
 
