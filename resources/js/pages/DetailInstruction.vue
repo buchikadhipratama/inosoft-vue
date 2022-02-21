@@ -497,7 +497,6 @@ import CustomButton from "../components/sub-components/CustomButton";
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
-<<<<<<< HEAD
     name: "DetailInstruction",
     components: {
         PageTitleComponent,
@@ -531,28 +530,6 @@ export default {
         })
     }
 }
-=======
-  name: "DetailInstruction",
-  components: {
-    PageTitleComponent,
-    CustomButton,
-  },
-  data() {
-    return {
-      data: [
-        {
-          name: "Vendor Management",
-          to: "Home",
-        },
-        {
-          name: "3rd Party Instruction",
-          to: "Home",
-        },
-      ],
-    };
-  },
-};
->>>>>>> master
 </script>
 
 <style scoped>
