@@ -14,4 +14,4 @@ yarn-error.log
 /.idea
 /.vscode
 .DS_Store
-/public/js/app.js
+public/js/app.js
