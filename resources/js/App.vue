@@ -19,6 +19,11 @@ export default {
   background-color: rgb(193, 199, 206);
 }
 
+.badge-inprogress {
+  background-color: rgb(230, 238, 247);
+  color: gray;
+}
+
 .instruction-badge {
   width: 6rem;
 }

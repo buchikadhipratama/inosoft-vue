@@ -28,8 +28,14 @@
                         <div class="grid-item item">Customer PO</div>
                         <div class="grid-item item">Status</div>
 
-                        <div class="grid-item1 item1" v-if="this.instructions[0].type === 'SI'">Service Instruction</div>
-                        <div class="grid-item1 item1" v-if="this.instructions[0].type === 'LI'">Logistics Instruction</div>
+                        <div class="grid-item1 item1" v-if="this.instructions[0].type === 'SI'">
+                            <i class="fas fa-wrench"></i>
+                            Service Instruction
+                            </div>
+                        <div class="grid-item1 item1" v-if="this.instructions[0].type === 'LI'">
+                            <i class="fas fa-truck"></i>
+                            Logistics Instruction
+                            </div>
                         <div class="grid-item1 item1">{{this.instructions[0].instruction_id}}</div>
                         <div class="grid-item1 item1">
                         <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-link" :label="this.instructions[0].link_to"/>
