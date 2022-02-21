@@ -28,7 +28,9 @@ class VendorController extends Controller
     {
         $response = (new VendorService)->getAllVendor();
 
-        return response()->json(['status'=>200, 'message'=>$response],200);
+        return $response;
+
+        // return response()->json(['status'=>200, 'message'=>$response],200);
 
         // return view('welcome');
     }
