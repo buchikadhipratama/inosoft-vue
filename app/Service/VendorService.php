@@ -84,4 +84,18 @@ class VendorService{
             ];
         }
     }
+
+    public function getSingleData($id)
+    {
+        $error = (new VendorRepository())->getSingleData($id);
+        if($error){
+            return [
+                'error' => 1
+            ];
+        }
+
+        return [
+            'error' => 0
+        ];
+    }
 }

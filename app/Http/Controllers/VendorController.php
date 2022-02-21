@@ -94,6 +94,17 @@ class VendorController extends Controller
         return $response;
 
     }
+
+    public function getDetail($id)
+    {       
+        $response = (new VendorService())->getSingleData($id);
+
+        if($response['error']){
+            return response()->json(['status' => 500, 'message' => 'Something wrong with the server'], 500);
+        }
+
+        return $response;
+    }
 }
 
 

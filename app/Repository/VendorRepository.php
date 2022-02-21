@@ -110,4 +110,9 @@ class VendorRepository
             return 1;
         }
     }
+
+    public function getSingleData($id)
+    {
+        return Vendor::where('_id', ObjectId($id))->get() ?? [];
+    }
 }
