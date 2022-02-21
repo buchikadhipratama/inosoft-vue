@@ -22,7 +22,7 @@
                     <div class="flex-fill d-flex justify-content-end align-items-center float-end py-2">
                       <input type="text" class="form-control w-25 h-75 mx-1 bg-light" placeholder="Search"  v-if="showSearch" v-model="search">
                       <custom-button btn_class="btn btn-light h-auto m-1 border py-1" :icon_class="searchClass" @btnClick="searchData()" />
-                      <export-excel class="btn btn-light h-auto m-1 border py-1" :data="instructions.message" worksheet="Completed Instruction" name="Completed_Instruction.xls">
+                      <export-excel class="btn btn-light h-auto m-1 border py-1" :data="instructions" worksheet="Completed Instruction" name="Completed_Instruction.xls">
                         <i class="fas fa-file-export"></i>
                         Export
                       </export-excel>
@@ -279,7 +279,7 @@ export default {
     }),
     filteredData() {
       const search = this.search.toLowerCase();
-      return this.instructions.message.filter((instruction) => {
+      return this.instructions.filter((instruction) => {
         const id = instruction.instruction_id.toString().toLowerCase();
         const link = instruction.link_to.toString().toLowerCase();
         const type = instruction.type.toString().toLowerCase();
@@ -291,7 +291,7 @@ export default {
 
         return (
           id.includes(search) ||
-          link.includes(search) ||
+          link.includes(search) || 
           type.includes(search) ||
           vendor.includes(search) ||
           attention.includes(search) ||
