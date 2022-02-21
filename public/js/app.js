@@ -18486,6 +18486,10 @@ __webpack_require__.r(__webpack_exports__);
     label: {
       type: String,
       "default": ''
+    },
+    btn_type: {
+      type: String,
+      "default": 'button'
     }
   },
   methods: {
@@ -47723,7 +47727,7 @@ var render = function () {
         staticClass: "btn",
         class: _vm.btn_class,
         style: _vm.styles,
-        attrs: { type: "button" },
+        attrs: { type: "btn_type" },
         on: { click: _vm.handleClick },
       },
       [
