@@ -1,8 +1,8 @@
 <template>
- <div>
-  <header-component />
+  <div>
+    <header-component />
     <div class="d-flex">
-      <div class="p-0 sidebar"> 
+      <div class="p-0 sidebar">
         <sidebar-component />
       </div>
       <div class="ms-5 ps-3 w-100">
@@ -22,7 +22,7 @@
                     <div class="flex-fill d-flex justify-content-end align-items-center float-end py-2">
                       <input type="text" class="form-control w-25 h-75 mx-1 bg-light" placeholder="Search" v-if="showSearch" v-model="search">
                       <custom-button btn_class="btn btn-light h-auto m-1 border py-1" :icon_class="searchClass" @btnClick="searchData()" />
-                      <export-excel class="btn btn-light h-auto m-1 border py-1" :data="instructions" worksheet="Completed Instruction" name="Completed_Instruction.xls">
+                      <export-excel class="btn btn-light h-auto m-1 border py-1" :data="instructions.message" worksheet="Completed Instruction" name="Completed_Instruction.xls">
                         <i class="fas fa-file-export"></i>
                         Export
                       </export-excel>
@@ -162,36 +162,38 @@
                         </th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr v-for="(instruction, index) in filteredData" :key="index">
-                        <td>{{instruction.id}}</td>
-                        <td>{{instruction.link}}</td>
-                        <td class="text-center">
+                    <tbody class="pointer">
+                      <tr v-for="instruction in filteredData" :key="instruction._id">
+                        <td @click="toDetail(instruction._id)">{{instruction.instruction_id}}</td>
+                        <td @click="toDetail(instruction._id)">{{instruction.link_to}}</td>
+                        <td class="text-center" @click="toDetail(instruction._id)">
                           <i class="fas fa-truck" v-if="instruction.type == 'LI'"></i>
                           <i class="fas fa-wrench" v-else></i>
                           {{instruction.type}}
                         </td>
-                        <td>{{instruction.vendor}}</td>
-                        <td>{{instruction.attention}}</td>
-                        <td>{{instruction.quotation}}</td>
-                        <td class="text-center d-flex">
-                          <span class="badge inventory-badge rounded-circle">
-                            {{instruction.invoice.length}}
-                          </span>
-                          <div class="dropdown ms-1">
-                            <i v-if="instruction.invoice != ''" class="fas fa-chevron-down pointer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                              <li v-for="(invoice, index) in instruction.invoice" :key="'invoice' + index"><a class="dropdown-item" href="#">{{instruction.invoice[index]}}</a></li>
-                            </ul>
+                        <td @click="toDetail(instruction._id)">{{instruction.assign_vendor}}</td>
+                        <td @click="toDetail(instruction._id)">{{instruction.attention}}</td>
+                        <td @click="toDetail(instruction._id)">{{instruction.quotation}}</td>
+                        <td>
+                          <div class="d-flex text-center">
+                            <span class="badge inventory-badge rounded-circle">
+                              {{instruction.invoice.length}}
+                            </span>
+                            <div class="dropdown ms-1">
+                              <i v-if="instruction.invoice != ''" class="fas fa-chevron-down pointer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li v-for="(invoice, index) in instruction.invoice" :key="'invoice' + index"><a class="dropdown-item" href="#">{{instruction.invoice[index]}}</a></li>
+                              </ul>
+                            </div>
                           </div>
                         </td>
-                        <td>{{instruction.customerPo}}</td>
-                        <td>
-                          <span v-if="instruction.status == 'Completed'" class="badge badge-completed rounded-pill instruction-badge">
-                            {{instruction.status}}
+                        <td @click="toDetail(instruction._id)">{{instruction.customer_po}}</td>
+                        <td @click="toDetail(instruction._id)">
+                          <span v-if="instruction.status == '2'" class="badge badge-completed rounded-pill instruction-badge">
+                            Completed
                           </span>
-                          <span v-else-if="instruction.status == 'Canceled'" class="badge badge-canceled rounded-pill instruction-badge">
-                            {{instruction.status}}
+                          <span v-else-if="instruction.status == '0'" class="badge badge-canceled rounded-pill instruction-badge">
+                            Canceled
                           </span>
                         </td>
                       </tr>
@@ -208,7 +210,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import CustomButton from "../components/sub-components/CustomButton.vue";
 import PageTitleComponent from "../components/sub-components/PageTitleComponent.vue";
 import SidebarComponent from "../components/sub-components/SidebarComponent.vue";
@@ -224,10 +226,11 @@ export default {
     SidebarComponent,
     HeaderComponent,
     FontAwesomeIcon,
-    ExportExcel
+    ExportExcel,
   },
   data() {
     return {
+      // vendors :{},
       data: [
         {
           name: "Vendor Management",
@@ -248,6 +251,10 @@ export default {
     };
   },
   methods: {
+    ...mapActions({
+      fetchCompletedInstruction:
+        "thirdPartyInstruction/fetchCompletedInstruction",
+    }),
     sort(direction, data) {
       this.sortData.direction = direction;
       this.sortData.type = data;
@@ -263,21 +270,24 @@ export default {
         this.searchClass = "fas fa-search";
       }
     },
+    toDetail(id) {
+      this.$router.push({ name: "DetailInstruction", params: { id: id } });
+    },
   },
   computed: {
     ...mapGetters({
-      instructions: "thirdPartyInstruction/getInstructions",
+      instructions: "thirdPartyInstruction/getCompletedInstruction",
     }),
     filteredData() {
       const search = this.search.toLowerCase();
       return this.instructions.filter((instruction) => {
-        const id = instruction.id.toString().toLowerCase();
-        const link = instruction.link.toString().toLowerCase();
+        const id = instruction.instruction_id.toString().toLowerCase();
+        const link = instruction.link_to.toString().toLowerCase();
         const type = instruction.type.toString().toLowerCase();
-        const vendor = instruction.vendor.toString().toLowerCase();
+        const vendor = instruction.assign_vendor.toString().toLowerCase();
         const attention = instruction.attention.toString().toLowerCase();
         const quotation = instruction.quotation.toString().toLowerCase();
-        const customerPo = instruction.customerPo.toString().toLowerCase();
+        const customerPo = instruction.customer_po.toString().toLowerCase();
         const status = instruction.status.toString().toLowerCase();
 
         return (
@@ -291,9 +301,13 @@ export default {
           status.includes(search)
         );
       });
-    }
-  }
-}
+    },
+  },
+  created() {
+    this.fetchCompletedInstruction();
+    console.log(this.instructions);
+  },
+};
 </script>
 
 <style scoped>
@@ -315,6 +329,10 @@ tbody {
 
 .pointer {
   cursor: pointer;
+}
+
+.pointer :hover {
+  color: cadetblue;
 }
 
 .instruction-badge {
