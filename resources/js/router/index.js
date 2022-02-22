@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../pages/Home.vue'
 import CompletedInstruction from '../pages/CompletedInstruction.vue'
 import DetailInstruction from "../pages/DetailInstruction";
+import EditInstruction from "../pages/EditInstruction.vue";
 import CreateInstruction from "../pages/CreateInstruction.vue";
 import ServiceInstruction from "../pages/ServiceInstruction.vue"
 import LogisticInstruction from "../pages/LogisticInstruction.vue"
@@ -29,6 +30,11 @@ const routes = [
       path: '/det/:id',
       name: 'DetailInstruction',
       component: DetailInstruction
+  },
+  {
+      path: '/edit/:id',
+      name: 'EditInstruction',
+      component: EditInstruction
   },
   {
     path: '/service-instruction',

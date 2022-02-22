@@ -29,7 +29,7 @@
               <i class="fas fa-ban"></i>
               Terminate
             </router-link>
-            <router-link class="nav-link text-muted" :to="{name: 'Home'}">
+            <router-link class="nav-link text-muted" :to="{name: 'EditInstruction'}">
               <i class="fas fa-pencil"></i>
               Modify
             </router-link>
