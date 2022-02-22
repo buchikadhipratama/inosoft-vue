@@ -19,7 +19,23 @@
                         </div>
                     </ul>
                 </div>
-                <div class="mt-5 mx-3 border">
+                <div class="mt-3 mx-3 d-flex">
+                <router-link class="nav-link text-muted" :to="{name: 'Home'}">
+                    <i class="fas fa-angle-left"></i>
+                    Back
+                </router-link>
+                <div class="flex-fill d-flex justify-content-end float-end py-2">
+                    <router-link class="nav-link text-muted" :to="{name: 'Home'}">
+                    <i class="fas fa-ban"></i>
+                    Terminate
+                    </router-link>
+                    <router-link class="nav-link text-muted" :to="{name: 'EditInstruction', params: {id: this.$route.params.id}}">
+                    <i class="fas fa-pencil-alt"></i>
+                    Modify
+                    </router-link>
+                </div>
+                </div>
+                <div class="mt-2 mx-3 border">
                     <div class="grid-container">
                         <div class="grid-item item">Type</div>
                         <div class="grid-item item">SI No.</div>
@@ -43,7 +59,7 @@
                         <div class="grid-item1 item1">{{this.instructions[0].customer_contract}}</div>
                         <div class="grid-item1 item1">{{this.instructions[0].customer_po}}</div>
                         <div class="grid-item1 item1">
-                            <span v-if="this.instructions[0].status === 1" class="badge rounded-pill instruction-badge ">
+                            <span v-if="this.instructions[0].status === 1" class="badge rounded-pill instruction-badge badge-inprogress">
                                 In Progress
                             </span>
                             <span v-else-if="this.instructions[0].status === 2" class="badge rounded-pill instruction-badge badge-completed">
@@ -57,7 +73,7 @@
                         <div class="grid-item2 item2">Auttention Of</div>
                         <div class="grid-item2 item2">Assigned Vendor</div>
                         <div class="grid-item2 item2">Vendor Quotation No.</div>
-                        <div class="grid-item2 item3">Vendro Address</div>
+                        <div class="grid-item2 item3">Vendor Address</div>
 
                         <div class="grid-item1 item4">{{this.instructions[0].attention}}</div>
                         <div class="grid-item1 item4">{{this.instructions[0].assign_vendor}}</div>
