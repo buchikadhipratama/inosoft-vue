@@ -182,7 +182,7 @@
                                             </select></td>
                                             <td class="text-right text-middle">{{getVAT}}</td>
                                             <td class="text-right text-middle">{{getSubTotal}}</td>
-                                            <td class="text-right text-middle">{{getTotal}}</td>
+                                            <td class="text-right text-middle">{{getTotal(index)}}</td>
                                             <td><select class="form-select" v-model="cost.mitme">
                                                 <option selected disabled>Select an Option</option>
                                                 <option value="MITME">MITME</option>
@@ -400,10 +400,10 @@ export default {
         },
     },
     computed:{
-        getTotal(){
-            const discount = ((this.qty * (this.unitPrice))*this.discount/100)
-            const gst = ((((this.qty * (this.unitPrice)) - discount)*this.GST)/100)
-            return (((this.qty * (this.unitPrice)) - discount)+gst).toFixed(2)
+        getTotal(index){
+            const discount = ((this.costs[index].qty * (this.costs[index].unitPrice))*this.costs[index].discount/100)
+            const gst = ((((this.costs[index].qty * (this.costs[index].unitPrice)) - discount)*this.costs[index].GST)/100)
+            return (((this.costs[index].qty * (this.costs[index].unitPrice)) - discount)+gst).toFixed(2)
         },
         getSubTotal(){
             const discount = ((this.qty * (this.unitPrice))*this.discount/100)
