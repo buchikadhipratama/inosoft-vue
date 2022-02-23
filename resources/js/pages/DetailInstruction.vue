@@ -285,13 +285,14 @@ export default {
                     name: "3rd Party Instruction",
                     to: "Home"
                 }
-            ]
+            ],
+            vendors: {},
         }
     },
     methods: {
         ...mapActions({
             fetchOneInstruction: "thirdPartyInstruction/fetchOneInstruction" 
-        })
+        }),
     },
     created() {
         this.fetchOneInstruction(this.$route.params.id);

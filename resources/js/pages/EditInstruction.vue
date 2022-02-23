@@ -9,18 +9,18 @@
                 <div class="row">
                     <div class="col-12 p-3">
                         <page-title-component :datas="data" />
-                        <div class="card space-bottom" v-if="this.instructions[0]" v-on="setData">
+                        <div class="card space-bottom" v-if="instructions[0]"  v-on="setData">
                             <div class="card mx-3 my-3">
                                 <div class="card-header bg-white p-0">
                                     <div class="row">
                                         <div class="col-12 row">
                                             <div class="col-lg-11">
                                                 <div class="btn-group" role="group">
-                                                    <div v-if="this.instructions[0].type === 'SI'" class="m-2 px-2 py-1 border rounded">
+                                                    <div v-if="instruction === 'SI'" class="m-2 px-2 py-1 border rounded">
                                                         <i class="fas fa-wrench"></i>
                                                         Service Instruction
                                                     </div>
-                                                    <div v-else-if="this.instructions[0].type === 'LI'" class="m-2 px-2 py-1 border rounded">
+                                                    <div v-else-if="instruction === 'LI'" class="m-2 px-2 py-1 border rounded">
                                                         <i class="fas fa-truck"></i>
                                                         Logistics Instruction
                                                     </div>
@@ -43,16 +43,16 @@
                                                     <div class="col-3">
                                                         <label>Assigned Vendor</label>
                                                         <select class="form-select" v-model="vendor">
-                                                            <option selected disabled>Enter Vendor</option>
-                                                            <option value="Co Ltd">Amarit & Asociates Co ltd</option>
-                                                            <option value="Logistic">Amarit & Asociates Logistic Co ltd</option>
-                                                            <option value="Alphatrans">Alphatrans Pte Ltd</option>
+                                                            <option selected disabled>{{ vendor }}</option>
+                                                            <option value="Amarit & Asociates Co ltd">Amarit & Asociates Co ltd</option>
+                                                            <option value="Amarit & Asociates Logistic Co Ltd">Amarit & Asociates Logistic Co ltd</option>
+                                                            <option value="Alphatrans Pte Ltd">Alphatrans Pte Ltd</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="col-3">
                                                         <label for="attention">Attention Of</label>
-                                                        <input id="attention" v-model="attentionData" class="form-control" type="text" placeholder="Enter Attention Of">
+                                                        <input id="attention" v-model="attention" class="form-control" type="text" placeholder="Enter Attention Of" >
                                                     </div>
                                                     <div class="col-3">
                                                         <label for="quotation">Quotation Of</label>
@@ -61,7 +61,7 @@
                                                     <div class="col-3">
                                                         <label>Invoice To</label>
                                                         <select class="form-select" v-model="invoice">
-                                                            <option selected disabled>Select an Option</option>
+                                                            <option selected disabled>{{invoice}}</option>
                                                             <option value="LLS">Marubeni-Itochu Tubulars Middle East Pipes L.L.S (MITME)</option>
                                                             <option value="PLC">Marubeni-Itochu Tubulars Europe Plc (MITME)</option>
                                                         </select>
@@ -70,7 +70,7 @@
                                                     <div class="col-12">
                                                         <label>Vendor Address</label>
                                                         <select class="form-select" v-model="address">
-                                                            <option selected disabled>Enter Vendor Address</option>
+                                                            <option selected disabled>{{address}}</option>
                                                             <option value="address">Sesetan, Denpasar, Bali, Indonesia</option>
                                                         </select>
                                                     </div>
@@ -80,7 +80,7 @@
                                                 <div class="col-12">
                                                     <label>Customer - Contract</label>
                                                     <select class="form-select" v-model="contract">
-                                                        <option selected disabled>Select Customer</option>
+                                                        <option selected disabled>{{contract}}</option>
                                                         <option value="Hail & Ghasha">Hail & Ghasha</option>
                                                         <option value="OFFSHORE">OFFSHORE</option>
                                                         <option value="ONSHORE">ONSHORE</option>
@@ -160,10 +160,10 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr v-for="(cost, index) in costs" :key="index">
-                                            <td><input id="desc" class="form-control" type="text" v-model="cost.description" placeholder="Enter Description"></td>
-                                            <td><input id="qty" class="form-control" type="number" v-model="cost.qty" placeholder="Enter"></td>
-                                            <td><select v-model="cost.shp" class="form-select">
+                                        <tr>
+                                            <td><input id="desc" class="form-control" type="text" placeholder="Enter Description" v-model="description"></td>
+                                            <td><input id="qty" class="form-control" type="number" v-model="qty" placeholder="Enter"></td>
+                                            <td><select class="form-select">
                                                 <option selected>SHP</option>
                                             </select></td>
                                             <td><input id="unitPrice" class="form-control" type="text" v-model="cost.unitPrice" placeholder="Enter Unit Price"></td>
@@ -175,11 +175,11 @@
                                                 <option value="AED">AED</option>
                                                 <option value="USD">USD</option>
                                             </select></td>
-                                            <td class="text-right text-middle">{{getVAT(index)}}</td>
-                                            <td class="text-right text-middle">{{getSubTotal(index)}}</td>
-                                            <td class="text-right text-middle">{{getTotal(index)}}</td>
-                                            <td><select class="form-select" v-model="cost.mitme">
-                                                <option selected disabled>Select an Option</option>
+                                            <td class="text-right text-middle">{{getVAT}}</td>
+                                            <td class="text-right text-middle">{{getSubTotal}}</td>
+                                            <td class="text-right text-middle">{{getTotal}}</td>
+                                            <td><select class="form-select" v-model="charge">
+                                                <option selected disabled>{{charge}}</option>
                                                 <option value="MITME">MITME</option>
                                                 <option value="Customer">Customer</option>
                                             </select></td>
@@ -270,7 +270,7 @@
                                 <div class="h6">Link To</div>
                                 <div class="col-lg-6">
                                     <select class="form-select" v-model="linked">
-                                        <option selected>Select Item</option>
+                                        <option selected>{{linked}}</option>
                                         <option value="0001">INSP-2020-0001</option>
                                         <option value="0002">INSP-2020-0002</option>
                                         <option value="0003">INSP-2020-0003</option>
@@ -290,7 +290,7 @@
                                     <custom-button class="icon-center" btn_class="btn fas py-2" label="Cancel"/>
                                     <custom-button class="icon-center" btn_class="btn border fas py-2" label="Save As Draft"/>
                                     <router-link :to="{name: 'DetailInstruction'}" class="dropdown">
-                                        <custom-button class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
+                                        <button btn_type="submit" v-on:click="updateData" class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
                                     </router-link>
                                 </div>
                             </div>
@@ -330,24 +330,24 @@ export default {
                     to: "Home",
                 },
             ],
-            instruction: "Service Instruction",
-            vendor: '',
-            attention: "",
-            quotation: "",
+            instruction: '',
+            vendor: "",
+            attention: '',
+            quotation: '',
             invoice: "Select an Option",
             address: "Enter Vendor Address",
             contract: "Select Customer",
             poNo: "",
-            costs:[{
-                description: "",
-                qty: 0,
-                shp: "SHP",
-                unitPrice: "",
-                discount: 0,
-                currency: "",
-                GST: 0,
-                mitme: "Select an Option",
-            }],
+            description: "",
+
+            qty: 0,
+            unitPrice: "",
+            discount: 0,
+            currency: "",
+            amount: 0,
+            rate: "",
+            charge: "",
+
             files: [],
             notes: "",
             linked: "Select Item",
@@ -382,20 +382,39 @@ export default {
             this.costs = Array.prototype.slice.call(this.costs)
             this.costs.splice(index, 1);
         },
-        addCost() {
-            console.log(this.instructions)
-            this.costs.push({
-                description: "",
-                qty: 0,
-                shp: "SHP",
-                unitPrice: "",
-                discount: 0,
-                currency: "",
-                GST: 0,
-                mitme: "Select an Option",
-            });
-        },
-        
+        ...mapActions({
+            fetchOneInstruction: "thirdPartyInstruction/fetchOneInstruction" 
+        }),
+        updateData(){
+            
+            let updateVendor = {
+
+                id: this.id,
+                assign_vendor: this.vendor,
+                attention: this.attention,
+                quotation: this.quotation,
+                invoice: this.invoice,
+                customer_contract: this.contract,
+                vendor_address: this.address,
+                customer_po: this.poNo,
+                description: this.description,
+                qty: this.qty,
+                uom: this.uom,
+                unit_price: this.unitPrice,
+                discount: this.discount,
+                gst_vat: this.gst,
+                currency: this.currency,
+                charge: this.charge,
+                // attachment: this.files,
+                notes: this.notes,
+                link_to: this.linked,
+                type: this.instruction,
+            }
+            axios.put('api/update', updateVendor)
+            .then((response) => {
+                console.log(response)
+            })
+        },  
     },
     computed:{
         ...mapGetters({
@@ -426,42 +445,44 @@ export default {
         currencyVAT(){
             return (this.getVAT * 3.6725).toFixed(2);
         },
-        attentionData: {
-            get(){
-                return this.attention;
-            },
-            set(value){
-                this.attention = value
-            }
+        ...mapGetters({
+            instructions: "thirdPartyInstruction/getDetailInstruction"
+        }),
+        setData(){
+            this.id = this.instructions[0]._id
+            this.instruction = this.instructions[0].type
+            this.vendor = this.instructions[0].assign_vendor
+            this.attention = this.instructions[0].attention
+            this.quotation = this.instructions[0].quotation
+            this.invoice = this.instructions[0].invoice
+            this.address = this.instructions[0].vendor_address
+            this.contract = this.instructions[0].customer_contract
+            this.poNo = this.instructions[0].customer_po
+            this.qty = this.instructions[0].qty
+            this.unitPrice = this.instructions[0].unit_price
+            this.discount = this.instructions[0].discount
+            this.currency = this.instructions[0].currency
+            this.description = this.instructions[0].description
+            this.charge = this.instructions[0].charge
+            // this.files = this.instructions[0].attachment
+            this.notes = this.instructions[0].notes
+            this.linked = this.instructions[0].link_to
+            this.GST = this.instructions[0].gst_vat
         },
-        // setData(){
-        //     this.instruction = this.instructions[0].type
-        //     this.vendor = this.instructions[0].assign_vendor
-        //     this.attention  this. instructions[0].attention
-        //     this.quotation = 
-        //     invoice: "Select an Option",
-        //     address: "Enter Vendor Address",
-        //     contract: "Select Customer",
-        //     poNo: "",
-        //     costs:[{
-        //         description: "",
-        //         qty: 0,
-        //         shp: "SHP",
-        //         unitPrice: "",
-        //         discount: 0,
-        //         currency: "",
-        //         GST: 0,
-        //         mitme: "Select an Option",
-        //     }],
-        //     files: [],
-        //     notes: "",
-        //     linked: "Select Item",
-                        
-        // }        
     },
-    created(){
-        this.fetchOneInstruction(this.$route.params.id)
-    }
+    created() {
+        this.fetchOneInstruction(this.$route.params.id);
+        // this.updateData()
+    },
+    // computation(){
+    //     var qty = document.getElementById(qty).value;
+    //     var unitPrice = document.getElementById(unitPrice).value;
+    //     var discount = document.getElementById(discount).value;
+    //     discount = ((qty * (unitPrice * 0.1))*discount/100);
+    //     var total = ((qty * (unitPrice * 0.1)) - discount).toFixed(2);
+    //     total =total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    //     document.getElementById('total').innerHTML = total;
+    // }
 };
 </script>
 

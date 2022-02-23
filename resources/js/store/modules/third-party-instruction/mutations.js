@@ -26,10 +26,16 @@ const STOREINSTRUCTION = (payload) => {
 const SETDETAILINSTRUCTION = (state, data) => {
     state.detail_instruction = data;
 }
+
+const EDITINSTRUCTION = (payload) => {
+    axios.put("/api/update", [payload])
+}
+
 export {
     SORT,
     SETOPENINSTRUCTION,
     SETCOMPLETEDINSTRUCTION,
     STOREINSTRUCTION,
-    SETDETAILINSTRUCTION
+    SETDETAILINSTRUCTION,
+    EDITINSTRUCTION
 }

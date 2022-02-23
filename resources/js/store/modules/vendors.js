@@ -2,7 +2,7 @@ import axios from 'axios'
 const vendors = {
     namespaced: true,
     state: {
-        vendors: {}
+        vendors: []
     },
     mutations: {
         SET_POSTS(state, data){
@@ -14,7 +14,7 @@ const vendors = {
             axios.get('api/').then(res=> commit('SET_POSTS', res.data)).catch(error => console.log(error));
         },
         getCompleted({commit}){
-            axios.get('api/completed').then(res=> commit('SET_POSTS', res.data)).catch(error => console.log(error));
+            axios.get('api/1').then(res=> commit('SET_POSTS', res.data)).catch(error => console.log(error));
         }
     }
 }
