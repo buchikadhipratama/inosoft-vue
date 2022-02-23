@@ -87,7 +87,8 @@ class VendorRepository
     {
         try {
             $newvendor = Vendor::find($vendor['id']);
-            $newvendor->status = 2;
+            $newvendor->status = 0;
+            $newvendor->description = 2;
             $newvendor->save();
 
             return 0;

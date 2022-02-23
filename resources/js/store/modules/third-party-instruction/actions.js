@@ -29,6 +29,10 @@ const storeInstruction = async (context, payload) => {
   context.commit("STOREINSTRUCTION", payload)
 }
 
+const TerminateInstruction = async (context, payload) => {
+    context.commit("TERMINATEINSTRUCTION", payload)
+}
+
 const fetchOneInstruction = async (context, payload) => {
   return axios.get('api/det/' + payload)
   .then(({data}) => {
@@ -41,5 +45,6 @@ export {
     fetchOpenInstruction,
     fetchCompletedInstruction,
     storeInstruction,
-    fetchOneInstruction 
+    fetchOneInstruction,
+    TerminateInstruction
 }

@@ -25,6 +25,6 @@ Route::get('/1', [VendorController::class, 'completed']);
 Route::post('/store', [VendorController::class, 'store']);
 Route::put('/update/{id}', [VendorController::class, 'update']);  //ganti /update jadi path ntk halaman update
 Route::delete('/{id}', [VendorController::class, 'destroy']);  //sama kayak /update ganti jga
-Route::put('/change', [VendorController::class, 'changeStatus']);  //sama kayak /update ganti jga
+Route::put('/change/{id}', [VendorController::class, 'changeStatus']);  //sama kayak /update ganti jga
 Route::post('/cancel', [VendorController::class, 'cancel']);
 Route::get('/det/{id}', [VendorController::class, 'getDetail']);
