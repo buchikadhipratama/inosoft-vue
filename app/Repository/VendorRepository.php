@@ -66,6 +66,7 @@ class VendorRepository
             $newvendor->attachment = $vendor['attachment'] ?? $newvendor->attachment;
             $newvendor->notes = $vendor['notes'] ?? $newvendor->notes;
             $newvendor->link_to = $vendor['link_to'] ?? $newvendor->link_to;
+            
             $newvendor->save();
 
             return 0;

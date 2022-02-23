@@ -256,7 +256,7 @@
                                     </div>
                                     <label class="btn btn-info text-light">
                                         <i class="fa fa-plus"></i> Add Attachment
-                                        <input type="file" name="files[]" @change="onFileChange" multiple style="display: none;">
+                                        <input type="file" name="files" @change="onFileChange" multiple style="display: none;">
                                     </label>
 
                                     <!--                  <custom-button btn_class="btn btn-info text-light fas py-2" icon_class="fas fa-plus" label="Add Attachments"/>-->
