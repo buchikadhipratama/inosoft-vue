@@ -4,7 +4,7 @@
             <page-title-component :datas="data"/>
         </div>
         <div class="col-12 p-0">
-            <div class="card border-0 shadow-sm d-flex">
+            <div class="card border-0 shadow-sm d-flex" v-if="this.instructions[0]">
                 <div class="card-header bg-white p-0">
                     <ul class="nav mx-3 border-0 d-flex">
                         <li class="nav-item mt-3">
@@ -19,7 +19,23 @@
                         </div>
                     </ul>
                 </div>
-                <div class="mt-5 mx-3 border">
+                <div class="mt-3 mx-3 d-flex">
+                <router-link class="nav-link text-muted" :to="{name: 'Home'}">
+                    <i class="fas fa-angle-left"></i>
+                    Back
+                </router-link>
+                <div class="flex-fill d-flex justify-content-end float-end py-2">
+                    <router-link class="nav-link text-muted" :to="{name: 'Home'}">
+                    <i class="fas fa-ban"></i>
+                    Terminate
+                    </router-link>
+                    <router-link class="nav-link text-muted" :to="{name: 'EditInstruction', params: {id: this.$route.params.id}}">
+                    <i class="fas fa-pencil-alt"></i>
+                    Modify
+                    </router-link>
+                </div>
+                </div>
+                <div class="mt-2 mx-3 border">
                     <div class="grid-container">
                         <div class="grid-item item">Type</div>
                         <div class="grid-item item">SI No.</div>
@@ -28,28 +44,41 @@
                         <div class="grid-item item">Customer PO</div>
                         <div class="grid-item item">Status</div>
 
-                        <div class="grid-item1 item1" v-if="vendors.id">{{ vendors.id[0] }}</div>
-                        <div class="grid-item1 item1">SI-2022-0001</div>
+                        <div class="grid-item1 item1" v-if="this.instructions[0].type === 'SI'">
+                            <i class="fas fa-wrench"></i>
+                            Service Instruction
+                            </div>
+                        <div class="grid-item1 item1" v-if="this.instructions[0].type === 'LI'">
+                            <i class="fas fa-truck"></i>
+                            Logistics Instruction
+                            </div>
+                        <div class="grid-item1 item1">{{this.instructions[0].instruction_id}}</div>
                         <div class="grid-item1 item1">
-                        <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-link" label="INSP-2020-0001"/>
+                        <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-link" :label="this.instructions[0].link_to"/>
                         </div>
-                        <div class="grid-item1 item1">ADNOC - Hail & Ghasha</div>
-                        <div class="grid-item1 item1">PO01</div>
+                        <div class="grid-item1 item1">{{this.instructions[0].customer_contract}}</div>
+                        <div class="grid-item1 item1">{{this.instructions[0].customer_po}}</div>
                         <div class="grid-item1 item1">
-                            <span class="badge bg-secondary rounded-pill instruction-badge">
+                            <span v-if="this.instructions[0].status === 1" class="badge rounded-pill instruction-badge badge-inprogress">
                                 In Progress
+                            </span>
+                            <span v-else-if="this.instructions[0].status === 2" class="badge rounded-pill instruction-badge badge-completed">
+                                Completed
+                            </span>
+                            <span v-else-if="this.instructions[0].status === 0" class="badge rounded-pill instruction-badge badge-canceled">
+                                Canceled
                             </span>
                         </div>
 
                         <div class="grid-item2 item2">Auttention Of</div>
                         <div class="grid-item2 item2">Assigned Vendor</div>
                         <div class="grid-item2 item2">Vendor Quotation No.</div>
-                        <div class="grid-item2 item3">Vendro Address</div>
+                        <div class="grid-item2 item3">Vendor Address</div>
 
-                        <div class="grid-item1 item4">Rigrep Transportation</div>
-                        <div class="grid-item1 item4">Amarit & Associates Logisitics Co Ltd</div>
-                        <div class="grid-item1 item4">MITME-ADL-001</div>
-                        <div class="grid-item1 item5">1 SOI PRIDI PHANOMYONG 28 (THANIPATTANA) SUKHUMVIT 71 ROAD, KWAENG KLONGTON NUA, KHET WATTANA,</div>
+                        <div class="grid-item1 item4">{{this.instructions[0].attention}}</div>
+                        <div class="grid-item1 item4">{{this.instructions[0].assign_vendor}}</div>
+                        <div class="grid-item1 item4">{{this.instructions[0].quotation}}</div>
+                        <div class="grid-item1 item5">{{this.instructions[0].vendor_address}}</div>
                     </div>
                 </div>
                 <div class="mt-5 mx-3 p-4">
@@ -139,20 +168,20 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Rigprep Transportation</td>
+                                    <td>{{this.instructions[0].description}}</td>
                                     <td class="align-right">5</td>
-                                    <td>SHP</td>
-                                    <td class="align-right">100.00</td>
-                                    <td class="align-right">5</td>
+                                    <td>{{this.instructions[0].uom}}</td>
+                                    <td class="align-right">{{this.instructions[0].price}}</td>
+                                    <td class="align-right">{{this.instructions[0].discount}}</td>
                                     <td class="align-right">
-                                        0
+                                        {{this.instructions[0].gst_vat}}
                                         <i class="fas fa-arrow-right"></i>
                                     </td>
-                                    <td>USD</td>
-                                    <td class="align-right">0.00</td>
+                                    <td>{{this.instructions[0].currency}}</td>
+                                    <td class="align-right">{{this.instructions[0].gst_vat}}</td>
                                     <td class="align-right">475.00</td>
                                     <td class="align-right">475.00</td>
-                                    <td>MITME</td>
+                                    <td>{{this.instructions[0].charge}}</td>
                                 </tr>
 
                                 <tr class="white-border">
@@ -182,7 +211,7 @@
                                     <td>
                                         <span class="color-used">
                                             <i class="icon-center fas fa-paperclip fa-sm"></i>
-                                            Certificate.jpg
+                                            {{this.instructions[0].attachment}}
                                         </span>
                                         <br>
                                         by Winata Admin on 11/jan/22 09:47 AM
@@ -191,7 +220,7 @@
                                         <i class="fas fa-trash fa-sm "></i>
                                     </td>
                                     <td class="white-border" colspan="3"></td>
-                                    <td class="white-border">Rigprep Transportation</td>
+                                    <td class="white-border">{{this.instructions[0].notes}}</td>
                                 </tr>
 
                                 <tr>
@@ -237,6 +266,7 @@
 <script>
 import PageTitleComponent from "../components/sub-components/PageTitleComponent";
 import CustomButton from "../components/sub-components/CustomButton";
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
     name: "DetailInstruction",
@@ -260,157 +290,157 @@ export default {
         }
     },
     methods: {
-        getItem()
-            {
-            //   let uri = 'api/edit/{id}' 
-                axios.get(`api/det/${route.params.id}`).then((response) => {
-                    this.vendors = response.data
-                }, response.data);
-            },
+        ...mapActions({
+            fetchOneInstruction: "thirdPartyInstruction/fetchOneInstruction" 
+        }),
     },
     created() {
-        this.getItem()
+        this.fetchOneInstruction(this.$route.params.id);
+    },
+    computed: {
+        ...mapGetters({
+            instructions: "thirdPartyInstruction/getDetailInstruction"
+        })
     }
 }
 </script>
 
 <style scoped>
-
 table {
-    margin-bottom: 0rem;
+  margin-bottom: 0rem;
 }
 
 .header {
-    padding: 10px;
-    text-align: left;
-    background: #373b3e;
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
+  padding: 10px;
+  text-align: left;
+  background: #373b3e;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
 }
 
 .fa-trash {
-    color: red;
-    text-align: right;
+  color: red;
+  text-align: right;
 }
 
 .top-p {
-    padding-top: 10px;
+  padding-top: 10px;
 }
 
 .font-20 {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .color-used {
-    color: #0baccc;
+  color: #0baccc;
 }
 
 .icon-center {
-    text-align: center;
-    vertical-align: middle
+  text-align: center;
+  vertical-align: middle;
 }
 
 .white-border {
-    border-bottom: white
+  border-bottom: white;
 }
 
 .gray-border {
-    border-bottom: #dee2e6
+  border-bottom: #dee2e6;
 }
 
 .tab1 {
-    padding-right: 15px;
+  padding-right: 15px;
 }
 
 .table-head {
-    background-color: rgb(193, 199, 206);
+  background-color: rgb(193, 199, 206);
 }
 
 .nav-item .active {
-    border-bottom: 4px solid rgb(0, 171, 185) !important;
+  border-bottom: 4px solid rgb(0, 171, 185) !important;
 }
 
 .border {
-    border: #a0aec0 1px;
+  border: #a0aec0 1px;
 }
 
 .border-dot {
-    border-left: #a0aec0 2px solid;
-    border-left-style: dashed;
+  border-left: #a0aec0 2px solid;
+  border-left-style: dashed;
 }
 
 .grid-container {
-    display: grid;
-    grid-gap: 1px;
-    margin: 20px;
+  display: grid;
+  grid-gap: 1px;
+  margin: 20px;
 }
 
 .grid-container1 {
-    display: grid;
+  display: grid;
 }
 
 .grid-item {
-    text-align: left;
-    padding-right: 30px;
-    font-size: 12px;
+  text-align: left;
+  padding-right: 30px;
+  font-size: 12px;
 }
 
 .grid-item1 {
-    text-align: left;
-    padding-right: 30px;
-    font-size: 15px;
-    font-weight: bold;
+  text-align: left;
+  padding-right: 30px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .grid-item2 {
-    text-align: left;
-    padding-top: 20px;
-    padding-right: 30px;
-    font-size: 12px;
+  text-align: left;
+  padding-top: 20px;
+  padding-right: 30px;
+  font-size: 12px;
 }
 
 .grid-item3 {
-    text-align: left;
-    font-size: 20px;
-    font-weight: bold;
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .grid-item4 {
-    text-align: right;
-    font-size: 20px;
-    font-weight: bold;
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .grid-item5 {
-    text-align: left;
-    font-size: 15px;
-    font-weight: bold;
+  text-align: left;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .item {
-    grid-row: 1;
+  grid-row: 1;
 }
 
 .item1 {
-    grid-row: 2;
+  grid-row: 2;
 }
 
 .item2 {
-    grid-row: 3;
+  grid-row: 3;
 }
 
 .item3 {
-    grid-column: 4 / span 3;
-    grid-row: 3;
+  grid-column: 4 / span 3;
+  grid-row: 3;
 }
 
 .item4 {
-    grid-row: 4;
+  grid-row: 4;
 }
 
 .item5 {
-    grid-column: 4 / span 3;
-    grid-row: 4;
+  grid-column: 4 / span 3;
+  grid-row: 4;
 }
 </style>

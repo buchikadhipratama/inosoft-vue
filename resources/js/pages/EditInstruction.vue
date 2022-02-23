@@ -9,26 +9,21 @@
                 <div class="row">
                     <div class="col-12 p-3">
                         <page-title-component :datas="data" />
-                        <div class="card space-bottom">
+                        <div class="card space-bottom" v-if="instructions[0]"  v-on="setData">
                             <div class="card mx-3 my-3">
                                 <div class="card-header bg-white p-0">
                                     <div class="row">
                                         <div class="col-12 row">
                                             <div class="col-lg-11">
                                                 <div class="btn-group" role="group">
-                                                    <custom-button btn_class="btn btn-white h-auto border fas m-2 py-2" v-model="instruction" data-bs-toggle="dropdown" aria-expanded="false" icon_class="fas fa-wrench" label="Service Instruction" />
-                                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                        <li>
-                                                            <router-link :to="{name: 'LogisticInstruction'}" class="dropdown">
-                                                                <custom-button btn_class="btn" icon_class="fas fa-truck" label=" Logistic Instruction" />
-                                                            </router-link>
-                                                        </li>
-                                                        <li>
-                                                            <router-link :to="{name: 'ServiceInstruction'}" class="dropdown">
-                                                                <custom-button btn_class="btn" icon_class="fas fa-wrench" label="Service Instruction" />
-                                                            </router-link>
-                                                        </li>
-                                                    </ul>
+                                                    <div v-if="instruction === 'SI'" class="m-2 px-2 py-1 border rounded">
+                                                        <i class="fas fa-wrench"></i>
+                                                        Service Instruction
+                                                    </div>
+                                                    <div v-else-if="instruction === 'LI'" class="m-2 px-2 py-1 border rounded">
+                                                        <i class="fas fa-truck"></i>
+                                                        Logistics Instruction
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-1 icon-center mt-2">
@@ -48,16 +43,16 @@
                                                     <div class="col-3">
                                                         <label>Assigned Vendor</label>
                                                         <select class="form-select" v-model="vendor">
-                                                            <option selected disabled>Enter Vendor</option>
-                                                            <option value="Co Ltd">Amarit & Asociates Co ltd</option>
-                                                            <option value="Logistic">Amarit & Asociates Logistic Co ltd</option>
-                                                            <option value="Alphatrans">Alphatrans Pte Ltd</option>
+                                                            <option selected disabled>{{ vendor }}</option>
+                                                            <option value="Amarit & Asociates Co ltd">Amarit & Asociates Co ltd</option>
+                                                            <option value="Amarit & Asociates Logistic Co Ltd">Amarit & Asociates Logistic Co ltd</option>
+                                                            <option value="Alphatrans Pte Ltd">Alphatrans Pte Ltd</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="col-3">
                                                         <label for="attention">Attention Of</label>
-                                                        <input id="attention" v-model="attention" class="form-control" type="text" placeholder="Enter Attention Of">
+                                                        <input id="attention" v-model="attention" class="form-control" type="text" placeholder="Enter Attention Of" >
                                                     </div>
                                                     <div class="col-3">
                                                         <label for="quotation">Quotation Of</label>
@@ -66,7 +61,7 @@
                                                     <div class="col-3">
                                                         <label>Invoice To</label>
                                                         <select class="form-select" v-model="invoice">
-                                                            <option selected disabled>Select an Option</option>
+                                                            <option selected disabled>{{invoice}}</option>
                                                             <option value="LLS">Marubeni-Itochu Tubulars Middle East Pipes L.L.S (MITME)</option>
                                                             <option value="PLC">Marubeni-Itochu Tubulars Europe Plc (MITME)</option>
                                                         </select>
@@ -75,7 +70,7 @@
                                                     <div class="col-12">
                                                         <label>Vendor Address</label>
                                                         <select class="form-select" v-model="address">
-                                                            <option selected disabled>Enter Vendor Address</option>
+                                                            <option selected disabled>{{address}}</option>
                                                             <option value="address">Sesetan, Denpasar, Bali, Indonesia</option>
                                                         </select>
                                                     </div>
@@ -85,7 +80,7 @@
                                                 <div class="col-12">
                                                     <label>Customer - Contract</label>
                                                     <select class="form-select" v-model="contract">
-                                                        <option selected disabled>Select Customer</option>
+                                                        <option selected disabled>{{contract}}</option>
                                                         <option value="Hail & Ghasha">Hail & Ghasha</option>
                                                         <option value="OFFSHORE">OFFSHORE</option>
                                                         <option value="ONSHORE">ONSHORE</option>
@@ -168,12 +163,12 @@
                                         <tr>
                                             <td><input id="desc" class="form-control" type="text" placeholder="Enter Description" v-model="description"></td>
                                             <td><input id="qty" class="form-control" type="number" v-model="qty" placeholder="Enter"></td>
-                                            <td><select class="form-select" v-model="uom">
+                                            <td><select class="form-select">
                                                 <option selected>SHP</option>
                                             </select></td>
                                             <td><input id="unitPrice" class="form-control" type="text" v-model="unitPrice" placeholder="Enter Unit Price"></td>
                                             <td><input id="discount" class="form-control" type="number" v-model="discount" placeholder="0"></td>
-                                            <td><input id="gst" class="form-control" type="number" v-model="gst" placeholder="0"></td>
+                                            <td><input id="gst" class="form-control" type="number" v-model="GST" placeholder="0"></td>
                                             <td class="icon-center"><i class="fas fa-arrow-right"></i></td>
                                             <td><select class="form-select" id="currency" v-model="currency" >
                                                 <option selected disabled></option>
@@ -184,7 +179,7 @@
                                             <td class="text-right text-middle">{{getSubTotal}}</td>
                                             <td class="text-right text-middle">{{getTotal}}</td>
                                             <td><select class="form-select" v-model="charge">
-                                                <option selected disabled>Select an Option</option>
+                                                <option selected disabled>{{charge}}</option>
                                                 <option value="MITME">MITME</option>
                                                 <option value="Customer">Customer</option>
                                             </select></td>
@@ -275,7 +270,7 @@
                                 <div class="h6">Link To</div>
                                 <div class="col-lg-6">
                                     <select class="form-select" v-model="linked">
-                                        <option selected>Select Item</option>
+                                        <option selected>{{linked}}</option>
                                         <option value="0001">INSP-2020-0001</option>
                                         <option value="0002">INSP-2020-0002</option>
                                         <option value="0003">INSP-2020-0003</option>
@@ -295,7 +290,7 @@
                                     <custom-button class="icon-center" btn_class="btn fas py-2" label="Cancel"/>
                                     <custom-button class="icon-center" btn_class="btn border fas py-2" label="Save As Draft"/>
                                     <router-link :to="{name: 'DetailInstruction'}" class="dropdown">
-                                    <button @click="storeData" class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
+                                        <button btn_type="submit" v-on:click="updateData" class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
                                     </router-link>
                                 </div>
                             </div>
@@ -313,10 +308,10 @@ import CustomDropdown from "../components/sub-components/CustomDropdown";
 import PageTitleComponent from "../components/sub-components/PageTitleComponent.vue";
 import HeaderComponent from "../components/sub-components/HeaderComponent.vue";
 import SidebarComponent from "../components/sub-components/SidebarComponent.vue";
-import axios from 'axios';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
-    name: "CreateInstruction",
+    name: "EditInstruction",
     components: {
         PageTitleComponent,
         CustomButton,
@@ -336,16 +331,15 @@ export default {
                     to: "Home",
                 },
             ],
-            instruction: "Service Instruction",
-            vendor: "Enter Vendor",
-            attention: "",
-            quotation: "",
+            instruction: '',
+            vendor: "",
+            attention: '',
+            quotation: '',
             invoice: "Select an Option",
             address: "Enter Vendor Address",
             contract: "Select Customer",
             poNo: "",
             description: "",
-            uom: "",
 
             qty: 0,
             unitPrice: "",
@@ -358,7 +352,7 @@ export default {
             files: [],
             notes: "",
             linked: "Select Item",
-            gst: 0,
+            GST: 0,
         };
     },
     methods: {
@@ -388,10 +382,14 @@ export default {
             this.details = Array.prototype.slice.call(this.details)
             this.details.splice(index, 1);
         },
-        storeData(){
+        ...mapActions({
+            fetchOneInstruction: "thirdPartyInstruction/fetchOneInstruction" 
+        }),
+        updateData(){
             
-            let newVendor = {
+            let updateVendor = {
 
+                id: this.id,
                 assign_vendor: this.vendor,
                 attention: this.attention,
                 quotation: this.quotation,
@@ -407,16 +405,16 @@ export default {
                 gst_vat: this.gst,
                 currency: this.currency,
                 charge: this.charge,
-                attachment: this.files,
+                // attachment: this.files,
                 notes: this.notes,
                 link_to: this.linked,
                 type: this.instruction,
             }
-            axios.post('api/store', newVendor)
+            axios.put('api/update', updateVendor)
             .then((response) => {
                 console.log(response)
             })
-        },
+        },  
     },
     computed:{
         getTotal(){
@@ -446,17 +444,45 @@ export default {
         },
         currencyVAT(){
             return (this.getVAT * 3.6725).toFixed(2);
-        }
+        },
+        ...mapGetters({
+            instructions: "thirdPartyInstruction/getDetailInstruction"
+        }),
+        setData(){
+            this.id = this.instructions[0]._id
+            this.instruction = this.instructions[0].type
+            this.vendor = this.instructions[0].assign_vendor
+            this.attention = this.instructions[0].attention
+            this.quotation = this.instructions[0].quotation
+            this.invoice = this.instructions[0].invoice
+            this.address = this.instructions[0].vendor_address
+            this.contract = this.instructions[0].customer_contract
+            this.poNo = this.instructions[0].customer_po
+            this.qty = this.instructions[0].qty
+            this.unitPrice = this.instructions[0].unit_price
+            this.discount = this.instructions[0].discount
+            this.currency = this.instructions[0].currency
+            this.description = this.instructions[0].description
+            this.charge = this.instructions[0].charge
+            // this.files = this.instructions[0].attachment
+            this.notes = this.instructions[0].notes
+            this.linked = this.instructions[0].link_to
+            this.GST = this.instructions[0].gst_vat
+        },
     },
-    computation(){
-        var qty = document.getElementById(qty).value;
-        var unitPrice = document.getElementById(unitPrice).value;
-        var discount = document.getElementById(discount).value;
-        discount = ((qty * (unitPrice * 0.1))*discount/100);
-        var total = ((qty * (unitPrice * 0.1)) - discount).toFixed(2);
-        total =total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        document.getElementById('total').innerHTML = total;
-    }
+    created() {
+        this.fetchOneInstruction(this.$route.params.id);
+        // this.updateData()
+    },
+    // computation(){
+    //     var qty = document.getElementById(qty).value;
+    //     var unitPrice = document.getElementById(unitPrice).value;
+    //     var discount = document.getElementById(discount).value;
+    //     discount = ((qty * (unitPrice * 0.1))*discount/100);
+    //     var total = ((qty * (unitPrice * 0.1)) - discount).toFixed(2);
+    //     total =total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    //     document.getElementById('total').innerHTML = total;
+    // }
 };
 
 

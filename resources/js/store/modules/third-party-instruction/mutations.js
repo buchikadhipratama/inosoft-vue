@@ -23,9 +23,19 @@ const STOREINSTRUCTION = (payload) => {
     axios.post("/api/store", [payload])
 }
 
+const SETDETAILINSTRUCTION = (state, data) => {
+    state.detail_instruction = data;
+}
+
+const EDITINSTRUCTION = (payload) => {
+    axios.put("/api/update", [payload])
+}
+
 export {
     SORT,
     SETOPENINSTRUCTION,
     SETCOMPLETEDINSTRUCTION,
-    STOREINSTRUCTION
+    STOREINSTRUCTION,
+    SETDETAILINSTRUCTION,
+    EDITINSTRUCTION
 }

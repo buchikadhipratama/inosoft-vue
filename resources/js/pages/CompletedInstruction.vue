@@ -1,5 +1,5 @@
 <template>
- <div>
+  <div>
     <header-component />
     <div class="d-flex">
       <div class="p-0 sidebar">
@@ -20,7 +20,7 @@
                       <router-link class="nav-link text-muted active" :to="{name: 'CompletedInstruction'}">Completed</router-link>
                     </li>
                     <div class="flex-fill d-flex justify-content-end align-items-center float-end py-2">
-                      <input type="text" class="form-control w-25 h-75 mx-1 bg-light" placeholder="Search"  v-if="showSearch" v-model="search">
+                      <input type="text" class="form-control w-25 h-75 mx-1 bg-light" placeholder="Search" v-if="showSearch" v-model="search">
                       <custom-button btn_class="btn btn-light h-auto m-1 border py-1" :icon_class="searchClass" @btnClick="searchData()" />
                       <export-excel class="btn btn-light h-auto m-1 border py-1" :data="instructions" worksheet="Completed Instruction" name="Completed_Instruction.xls">
                         <i class="fas fa-file-export"></i>
@@ -163,8 +163,8 @@
                       </tr>
                     </thead>
                     <tbody class="pointer">
-                      <tr v-for="(instruction) in filteredData" :key="instruction._id">
-                        <!-- <td @click="toDetail(instruction._id)">{{instruction.instruction_id}}</td> -->
+                      <tr v-for="instruction in filteredData" :key="instruction._id">
+                        <td @click="toDetail(instruction._id)">{{instruction.instruction_id}}</td>
                         <td @click="toDetail(instruction._id)">{{instruction.link_to}}</td>
                         <td class="text-center" @click="toDetail(instruction._id)">
                           <i class="fas fa-truck" v-if="instruction.type == 'LI'"></i>
@@ -226,7 +226,7 @@ export default {
     SidebarComponent,
     HeaderComponent,
     FontAwesomeIcon,
-    ExportExcel
+    ExportExcel,
   },
   data() {
     return {
@@ -252,8 +252,9 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchCompletedInstruction: 'thirdPartyInstruction/fetchCompletedInstruction'
-      }),
+      fetchCompletedInstruction:
+        "thirdPartyInstruction/fetchCompletedInstruction",
+    }),
     sort(direction, data) {
       this.sortData.direction = direction;
       this.sortData.type = data;
@@ -269,9 +270,9 @@ export default {
         this.searchClass = "fas fa-search";
       }
     },
-    toDetail(id){
-      this.$router.push({name: 'DetailInstruction', params: {id: id}})
-    }
+    toDetail(id) {
+      this.$router.push({ name: "DetailInstruction", params: { id: id } });
+    },
   },
   computed: {
     ...mapGetters({
@@ -280,7 +281,7 @@ export default {
     filteredData() {
       const search = this.search.toLowerCase();
       return this.instructions.filter((instruction) => {
-        // const id = instruction.instruction_id.toString().toLowerCase();
+        const id = instruction.instruction_id.toString().toLowerCase();
         const link = instruction.link_to.toString().toLowerCase();
         const type = instruction.type.toString().toLowerCase();
         const vendor = instruction.assign_vendor.toString().toLowerCase();
@@ -290,8 +291,8 @@ export default {
         const status = instruction.status.toString().toLowerCase();
 
         return (
-          // id.includes(search) ||
-          link.includes(search) ||
+          id.includes(search) ||
+          link.includes(search) || 
           type.includes(search) ||
           vendor.includes(search) ||
           attention.includes(search) ||
@@ -300,13 +301,12 @@ export default {
           status.includes(search)
         );
       });
-    }
+    },
   },
   created() {
     this.fetchCompletedInstruction();
-  }
-}
-
+  },
+};
 </script>
 
 <style scoped>
@@ -334,22 +334,10 @@ tbody {
   color: cadetblue;
 }
 
-.instruction-badge {
-  width: 6rem;
-}
-
 .inventory-badge {
   background-color: rgb(0, 171, 185);
   height: 100%;
   width: 45%;
-}
-
-.badge-completed {
-  background-color: rgb(0, 176, 111);
-}
-
-.badge-canceled {
-  background-color: rgb(193, 199, 206);
 }
 
 </style>
