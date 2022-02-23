@@ -9,26 +9,21 @@
                 <div class="row">
                     <div class="col-12 p-3">
                         <page-title-component :datas="data" />
-                        <div class="card space-bottom">
+                        <div class="card space-bottom" v-if="instructions[0]">
                             <div class="card mx-3 my-3">
                                 <div class="card-header bg-white p-0">
                                     <div class="row">
                                         <div class="col-12 row">
                                             <div class="col-lg-11">
                                                 <div class="btn-group" role="group">
-                                                    <custom-button btn_class="btn btn-white h-auto border fas m-2 py-2" v-model="instruction" data-bs-toggle="dropdown" aria-expanded="false" icon_class="fas fa-wrench" label="Service Instruction" />
-                                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                        <li>
-                                                            <router-link :to="{name: 'LogisticInstruction'}" class="dropdown">
-                                                                <custom-button btn_class="btn" icon_class="fas fa-truck" label=" Logistic Instruction" />
-                                                            </router-link>
-                                                        </li>
-                                                        <li>
-                                                            <router-link :to="{name: 'ServiceInstruction'}" class="dropdown">
-                                                                <custom-button btn_class="btn" icon_class="fas fa-wrench" label="Service Instruction" />
-                                                            </router-link>
-                                                        </li>
-                                                    </ul>
+                                                    <div v-if="instructions[0].type === 'SI'" class="m-2 px-2 py-1 border rounded">
+                                                        <i class="fas fa-wrench"></i>
+                                                        Service Instruction
+                                                    </div>
+                                                    <div v-else-if="instructions[0].type === 'LI'" class="m-2 px-2 py-1 border rounded">
+                                                        <i class="fas fa-truck"></i>
+                                                        Logistics Instruction
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-1 icon-center mt-2">
@@ -49,9 +44,9 @@
                                                         <label>Assigned Vendor</label>
                                                         <select class="form-select" v-model="vendor">
                                                             <option selected disabled>Enter Vendor</option>
-                                                            <option value="Co Ltd">Amarit & Asociates Co ltd</option>
-                                                            <option value="Logistic">Amarit & Asociates Logistic Co ltd</option>
-                                                            <option value="Alphatrans">Alphatrans Pte Ltd</option>
+                                                            <option value="Amarit & Asociates Co ltd">Amarit & Asociates Co ltd</option>
+                                                            <option value="Amarit & Asociates Logistic Co Ltd">Amarit & Asociates Logistic Co ltd</option>
+                                                            <option value="Alphatrans Pte Ltd">Alphatrans Pte Ltd</option>
                                                         </select>
                                                     </div>
 
@@ -313,9 +308,10 @@ import CustomDropdown from "../components/sub-components/CustomDropdown";
 import PageTitleComponent from "../components/sub-components/PageTitleComponent.vue";
 import HeaderComponent from "../components/sub-components/HeaderComponent.vue";
 import SidebarComponent from "../components/sub-components/SidebarComponent.vue";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
-    name: "CreateInstruction",
+    name: "EditInstruction",
     components: {
         PageTitleComponent,
         CustomButton,
@@ -383,7 +379,10 @@ export default {
         deleteDetail(index){
             this.details = Array.prototype.slice.call(this.details)
             this.details.splice(index, 1);
-        }
+        },
+        ...mapActions({
+            fetchOneInstruction: "thirdPartyInstruction/fetchOneInstruction"
+        })
     },
     computed:{
         getTotal(){
@@ -413,7 +412,35 @@ export default {
         },
         currencyVAT(){
             return (this.getVAT * 3.6725).toFixed(2);
+        },
+        ...mapGetters({
+            instructions: "thirdPartyInstruction/getDetailInstruction"
+        }),
+        setData(){
+            this.instruction = this.instructions[0].type
+            this.vendor = this.instructions[0].assign_vendor
+            this.attention = this.instructions[0].attention
+            this.quotation = this.instructions[0].quotation
+            this.invoice = this.instructions[0].invoice
+            this.address = this.instructions[0].vendor_address
+            // contract: "Select Customer",
+            // poNo: "",
+
+            // qty: 0,
+            // unitPrice: "",
+            // discount: 0,
+            // currency: "",
+            // amount: 0,
+            // rate: "",
+
+            // files: [],
+            // notes: "",
+            // linked: "Select Item",
+            // GST: 0,
         }
+    },
+    created() {
+        this.fetchOneInstruction(this.$route.params.id);
     }
     // computation(){
     //     var qty = document.getElementById(qty).value;
