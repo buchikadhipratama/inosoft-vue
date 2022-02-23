@@ -313,6 +313,7 @@ import CustomDropdown from "../components/sub-components/CustomDropdown";
 import PageTitleComponent from "../components/sub-components/PageTitleComponent.vue";
 import HeaderComponent from "../components/sub-components/HeaderComponent.vue";
 import SidebarComponent from "../components/sub-components/SidebarComponent.vue";
+import { mapActions } from 'vuex';
 
 export default {
     name: "CreateInstruction",
@@ -363,6 +364,9 @@ export default {
         };
     },
     methods: {
+        ...mapActions({
+            storeInstruction: "thirdPartyInstruction/storeInstruction"
+        }),
         onFileSelected(event){
             console.log(event)
         },
@@ -413,10 +417,7 @@ export default {
                 link_to: this.linked,
                 type: this.instruction,
             }
-            axios.post('api/store', newVendor)
-            .then((response) => {
-                console.log(response)
-            })
+            this.storeInstruction(newVendor);
         },
     },
     computed:{
