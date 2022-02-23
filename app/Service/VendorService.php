@@ -4,6 +4,8 @@ namespace App\Service;
 
 use App\Repository\VendorRepository;
 
+use MongoDB\BSON\ObjectID;
+
 class VendorService{
     public function createVendorFromArray(array $vendor)
     {
@@ -83,5 +85,11 @@ class VendorService{
                 'error' => 0
             ];
         }
+    }
+
+    public function getSingleData(?string $id)
+    {
+        $parsedId = new ObjectID($id);
+        return (new VendorRepository())->getSingleData($parsedId);
     }
 }

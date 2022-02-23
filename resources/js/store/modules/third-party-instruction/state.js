@@ -1,7 +1,8 @@
 
 const state = {
     open_instructions: [],
-    completed_instruction: []
+    completed_instruction: [],
+    detail_instruction: []
 }
 
 export {
