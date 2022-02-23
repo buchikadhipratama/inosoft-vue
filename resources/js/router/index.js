@@ -32,11 +32,6 @@ const routes = [
     component: DetailInstruction
   },
   {
-    path: '/edit/:id',
-    name: 'EditInstruction',
-    component: EditInstruction
-  },
-  {
       path: '/edit/:id',
       name: 'EditInstruction',
       component: EditInstruction
