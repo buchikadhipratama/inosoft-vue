@@ -221,9 +221,7 @@
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
                                             <td>
-                                                <p class="text-right" v-if="costs.currency==='USD'">{{getTotal}}</p>
-                                                <p class="text-right" v-else-if="costs.currency==='AED'">{{currencyResult}}</p>
-                                                <p class="text-right" v-else>0.00</p>
+                                                <p class="text-right">{{getAllSubTotal}}</p>
                                             </td>
                                             <td>
                                                 <p class="text-right" v-if="costs.currency==='USD'">{{getTotal}}</p>
@@ -344,6 +342,8 @@ export default {
             contract: "Select Customer",
             poNo: "",
 
+            arrresult:[{res : 0}],
+
             costs:[{
                 description: "",
                 qty: 0,
@@ -355,6 +355,7 @@ export default {
                 mitme: "Select an Option",
             }],
 
+            result :0,
             files: [],
             notes: "",
             linked: "Select Item",
@@ -424,6 +425,28 @@ export default {
         },
         currencyVAT(){
             return (this.getVAT * 3.6725).toFixed(2);
+        },
+        getAllSubTotal(){
+            let reslt = 0
+            for (let i = 0; i < this.costs.length; i++) {
+                if(this.costs[i].currency === ""){
+                    reslt = 0
+                }
+                else if (this.costs[i].currency === "USD"){
+                    const discount = ((this.costs[i].qty * (this.costs[i].unitPrice)) * this.costs[i].discount / 100)
+                    reslt = ((this.costs[i].qty * (this.costs[i].unitPrice)) - discount)
+                }
+                else {
+                    const discount = ((this.costs[i].qty * (this.costs[i].unitPrice)) * this.costs[i].discount / 100)
+                    reslt = ((this.costs[i].qty * (this.costs[i].unitPrice)) - discount)
+                }
+            }
+            // for (let i = 0; i < this.arrresult.length; i++){
+            //     this.result = parseInt(this.result) + this.arrresult[i].res
+            // }
+            // console.log(this.arrresult)
+            this.result += reslt
+            return this.result.toFixed(2)
         }
     }
 };
