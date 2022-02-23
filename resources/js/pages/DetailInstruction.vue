@@ -28,7 +28,7 @@
                         <div class="grid-item item">Customer PO</div>
                         <div class="grid-item item">Status</div>
 
-                        <div class="grid-item1 item1">Service Instruction</div>
+                        <div class="grid-item1 item1" v-if="vendors.id">{{ vendors.id[0] }}</div>
                         <div class="grid-item1 item1">SI-2022-0001</div>
                         <div class="grid-item1 item1">
                         <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-link" label="INSP-2020-0001"/>
@@ -255,8 +255,21 @@ export default {
                     name: "3rd Party Instruction",
                     to: "Home"
                 }
-            ]
+            ],
+            vendors: {},
         }
+    },
+    methods: {
+        getItem()
+            {
+            //   let uri = 'api/edit/{id}' 
+                axios.get(`api/det/${route.params.id}`).then((response) => {
+                    this.vendors = response.data
+                }, response.data);
+            },
+    },
+    created() {
+        this.getItem()
     }
 }
 </script>

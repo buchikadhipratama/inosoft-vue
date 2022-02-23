@@ -209,8 +209,9 @@ import HeaderComponent from "../components/sub-components/HeaderComponent.vue";
 import PageTitleComponent from "../components/sub-components/PageTitleComponent.vue";
 import SidebarComponent from "../components/sub-components/SidebarComponent.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-// import { mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 import ExportExcel from "vue-excel-export/VueComment.vue";
+import { mapState } from 'vuex';
 
 export default {
   name: "Home",
@@ -225,17 +226,17 @@ export default {
   },
   data() {
     return {
-      vendors: {},
-      //   data: [
-      //     {
-      //       name: "Vendor Management",
-      //       to: "Home",
-      //     },
-      //     {
-      //       name: "3rd Party Instruction",
-      //       to: "Home",
-      //     },
-      //   ],
+      // vendors: {},
+        data: [
+          {
+            name: "Vendor Management",
+            to: "Home",
+          },
+          {
+            name: "3rd Party Instruction",
+            to: "Home",
+          },
+        ],
       showSearch: false,
       searchClass: "fas fa-search",
       search: "",
@@ -245,56 +246,11 @@ export default {
       },
     };
   },
-  methods: {
-    loadData() {
-      axios.get("api/").then(({ data }) => (this.vendors = data));
-    },
-    // searchData() {
-    //   if (this.showSearch === false) {
-    //     this.showSearch = true;
-    //     this.searchClass = "fas fa-times";
-    //   } else {
-    //     this.showSearch = false;
-    //     this.searchClass = "fas fa-search";
-    //   }
-    // },
-    // sort(direction, data) {
-    //   this.sortData.direction = direction;
-    //   this.sortData.type = data;
-    //   const payload = { direction, data };
-    //   this.$store.dispatch("home/sort", payload);
-    // },
-  },
   created() {
-    this.loadData();
+    this.$store.dispatch('vendors/loadData')
   },
   computed: {
-    // ...mapGetters({
-    //   dashboards: "home/getDashboards",
-    // }),
-    // filteredData() {
-    //   const search = this.search.toLowerCase();
-    //   return this.dashboards.filter((dashboard) => {
-    //     const id = dashboard.id.toString().toLowerCase();
-    //     const link = dashboard.link.toString().toLowerCase();
-    //     const type = dashboard.type.toString().toLowerCase();
-    //     const vendor = dashboard.vendor.toString().toLowerCase();
-    //     const attention = dashboard.attention.toString().toLowerCase();
-    //     const quotation = dashboard.quotation.toString().toLowerCase();
-    //     const customerPO = dashboard.customerPO.toString().toLowerCase();
-    //     const status = dashboard.status.toString().toLowerCase();
-    //     return (
-    //       id.includes(search) ||
-    //       link.includes(search) ||
-    //       type.includes(search) ||
-    //       vendor.includes(search) ||
-    //       attention.includes(search) ||
-    //       quotation.includes(search) ||
-    //       customerPO.includes(search) ||
-    //       status.includes(search)
-    //     );
-    //   });
-    // },
+    ...mapState('vendors', ['vendors'])
   },
 };
 </script>

@@ -166,14 +166,14 @@
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td><input id="desc" class="form-control" type="text" placeholder="Enter Description"></td>
+                                            <td><input id="desc" class="form-control" type="text" placeholder="Enter Description" v-model="description"></td>
                                             <td><input id="qty" class="form-control" type="number" v-model="qty" placeholder="Enter"></td>
-                                            <td><select class="form-select">
+                                            <td><select class="form-select" v-model="uom">
                                                 <option selected>SHP</option>
                                             </select></td>
                                             <td><input id="unitPrice" class="form-control" type="text" v-model="unitPrice" placeholder="Enter Unit Price"></td>
                                             <td><input id="discount" class="form-control" type="number" v-model="discount" placeholder="0"></td>
-                                            <td><input id="gst" class="form-control" type="number" v-model="GST" placeholder="0"></td>
+                                            <td><input id="gst" class="form-control" type="number" v-model="gst" placeholder="0"></td>
                                             <td class="icon-center"><i class="fas fa-arrow-right"></i></td>
                                             <td><select class="form-select" id="currency" v-model="currency" >
                                                 <option selected disabled></option>
@@ -183,7 +183,7 @@
                                             <td class="text-right text-middle">{{getVAT}}</td>
                                             <td class="text-right text-middle">{{getSubTotal}}</td>
                                             <td class="text-right text-middle">{{getTotal}}</td>
-                                            <td><select class="form-select">
+                                            <td><select class="form-select" v-model="charge">
                                                 <option selected disabled>Select an Option</option>
                                                 <option value="MITME">MITME</option>
                                                 <option value="Customer">Customer</option>
@@ -295,7 +295,7 @@
                                     <custom-button class="icon-center" btn_class="btn fas py-2" label="Cancel"/>
                                     <custom-button class="icon-center" btn_class="btn border fas py-2" label="Save As Draft"/>
                                     <router-link :to="{name: 'DetailInstruction'}" class="dropdown">
-                                        <custom-button class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
+                                    <button @click="storeData" class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
                                     </router-link>
                                 </div>
                             </div>
@@ -313,6 +313,7 @@ import CustomDropdown from "../components/sub-components/CustomDropdown";
 import PageTitleComponent from "../components/sub-components/PageTitleComponent.vue";
 import HeaderComponent from "../components/sub-components/HeaderComponent.vue";
 import SidebarComponent from "../components/sub-components/SidebarComponent.vue";
+import axios from 'axios';
 
 export default {
     name: "CreateInstruction",
@@ -343,6 +344,8 @@ export default {
             address: "Enter Vendor Address",
             contract: "Select Customer",
             poNo: "",
+            description: "",
+            uom: "",
 
             qty: 0,
             unitPrice: "",
@@ -350,11 +353,12 @@ export default {
             currency: "",
             amount: 0,
             rate: "",
+            charge: "",
 
             files: [],
             notes: "",
             linked: "Select Item",
-            GST: 0,
+            gst: 0,
         };
     },
     methods: {
@@ -383,7 +387,36 @@ export default {
         deleteDetail(index){
             this.details = Array.prototype.slice.call(this.details)
             this.details.splice(index, 1);
-        }
+        },
+        storeData(){
+            
+            let newVendor = {
+
+                assign_vendor: this.vendor,
+                attention: this.attention,
+                quotation: this.quotation,
+                invoice: this.invoice,
+                customer_contract: this.contract,
+                vendor_address: this.address,
+                customer_po: this.poNo,
+                description: this.description,
+                qty: this.qty,
+                uom: this.uom,
+                unit_price: this.unitPrice,
+                discount: this.discount,
+                gst_vat: this.gst,
+                currency: this.currency,
+                charge: this.charge,
+                attachment: this.files.name[1],
+                notes: this.notes,
+                link_to: this.linked,
+                type: this.instruction,
+            }
+            axios.post('api/store', newVendor)
+            .then((response) => {
+                console.log(response)
+            })
+        },
     },
     computed:{
         getTotal(){
@@ -414,16 +447,16 @@ export default {
         currencyVAT(){
             return (this.getVAT * 3.6725).toFixed(2);
         }
+    },
+    computation(){
+        var qty = document.getElementById(qty).value;
+        var unitPrice = document.getElementById(unitPrice).value;
+        var discount = document.getElementById(discount).value;
+        discount = ((qty * (unitPrice * 0.1))*discount/100);
+        var total = ((qty * (unitPrice * 0.1)) - discount).toFixed(2);
+        total =total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        document.getElementById('total').innerHTML = total;
     }
-    // computation(){
-    //     var qty = document.getElementById(qty).value;
-    //     var unitPrice = document.getElementById(unitPrice).value;
-    //     var discount = document.getElementById(discount).value;
-    //     discount = ((qty * (unitPrice * 0.1))*discount/100);
-    //     var total = ((qty * (unitPrice * 0.1)) - discount).toFixed(2);
-    //     total =total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    //     document.getElementById('total').innerHTML = total;
-    // }
 };
 
 

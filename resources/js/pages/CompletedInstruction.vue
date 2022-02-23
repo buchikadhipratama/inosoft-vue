@@ -22,7 +22,7 @@
                     <div class="flex-fill d-flex justify-content-end align-items-center float-end py-2">
                       <input type="text" class="form-control w-25 h-75 mx-1 bg-light" placeholder="Search"  v-if="showSearch" v-model="search">
                       <custom-button btn_class="btn btn-light h-auto m-1 border py-1" :icon_class="searchClass" @btnClick="searchData()" />
-                      <export-excel class="btn btn-light h-auto m-1 border py-1" :data="instructions.message" worksheet="Completed Instruction" name="Completed_Instruction.xls">
+                      <export-excel class="btn btn-light h-auto m-1 border py-1" :data="instructions" worksheet="Completed Instruction" name="Completed_Instruction.xls">
                         <i class="fas fa-file-export"></i>
                         Export
                       </export-excel>
@@ -164,7 +164,7 @@
                     </thead>
                     <tbody class="pointer">
                       <tr v-for="(instruction) in filteredData" :key="instruction._id">
-                        <td @click="toDetail(instruction._id)">{{instruction.instruction_id}}</td>
+                        <!-- <td @click="toDetail(instruction._id)">{{instruction.instruction_id}}</td> -->
                         <td @click="toDetail(instruction._id)">{{instruction.link_to}}</td>
                         <td class="text-center" @click="toDetail(instruction._id)">
                           <i class="fas fa-truck" v-if="instruction.type == 'LI'"></i>
@@ -279,8 +279,8 @@ export default {
     }),
     filteredData() {
       const search = this.search.toLowerCase();
-      return this.instructions.message.filter((instruction) => {
-        const id = instruction.instruction_id.toString().toLowerCase();
+      return this.instructions.filter((instruction) => {
+        // const id = instruction.instruction_id.toString().toLowerCase();
         const link = instruction.link_to.toString().toLowerCase();
         const type = instruction.type.toString().toLowerCase();
         const vendor = instruction.assign_vendor.toString().toLowerCase();
@@ -290,7 +290,7 @@ export default {
         const status = instruction.status.toString().toLowerCase();
 
         return (
-          id.includes(search) ||
+          // id.includes(search) ||
           link.includes(search) ||
           type.includes(search) ||
           vendor.includes(search) ||

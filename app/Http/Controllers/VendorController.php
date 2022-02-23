@@ -28,7 +28,7 @@ class VendorController extends Controller
     {
         $response = (new VendorService)->getAllVendor();
 
-        return response()->json(['status'=>200, 'message'=>$response],200);
+        return $response;
 
         // return view('welcome');
     }
@@ -36,7 +36,8 @@ class VendorController extends Controller
     public function edit($id)
     {
         $vendor = Vendor::find($id);
-        return view('edit',compact('vendor','id'));
+        return response()->json($vendor);
+
     }
 
     public function update(Request $request)
