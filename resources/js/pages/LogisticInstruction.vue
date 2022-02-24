@@ -180,9 +180,9 @@
                                                 <option value="AED">AED</option>
                                                 <option value="USD">USD</option>
                                             </select></td>
-                                            <td class="text-right text-middle">{{getVAT}}</td>
+                                            <td class="text-right text-middle" >{{getVAT}}</td>
                                             <td class="text-right text-middle">{{getSubTotal}}</td>
-                                            <td class="text-right text-middle">{{getTotal}}</td>
+                                            <td class="text-right text-middle" >{{getTotal}}</td>
                                             <td><select v-model="charge" class="form-select">
                                                 <option selected disabled>Select an Option</option>
                                                 <option value="MITME">MITME</option>
@@ -194,17 +194,17 @@
                                         <tr class="white-border">
                                             <td class="align-right" colspan="7" rowspan="2">Exchange Rate <b>1 USD = 3.6725 AED</b></td>
                                             <td><b>AED</b> (Total)</td>
-                                            <td class="text-right">
+                                            <td class="text-right" >
                                                 <p class="text-right" v-if="currency==='AED'">{{getVAT}}</p>
                                                 <p class="text-right" v-else-if="currency==='USD'">{{currencyVAT}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td>
+                                            <td >
                                                 <p class="text-right" v-if="currency==='AED'">{{getSubTotal}}</p>
                                                 <p class="text-right" v-else-if="currency==='USD'">{{currencySubTotal}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td>
+                                            <td >
                                                 <p class="text-right" v-if="currency==='AED'">{{getTotal}}</p>
                                                 <p class="text-right" v-else-if="currency==='USD'">{{currencyResult}}</p>
                                                 <p class="text-right" v-else>0.00</p>
@@ -215,17 +215,17 @@
 
                                         <tr class="white-border">
                                             <td><b>USD</b> (Total)</td>
-                                            <td class="text-right">
+                                            <td class="text-right" >
                                                 <p class="text-right" v-if="currency==='USD'">{{getVAT}}</p>
                                                 <p class="text-right" v-else-if="currency==='AED'">{{currencyVAT}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td>
+                                            <td >
                                                 <p class="text-right" v-if="currency==='USD'">{{getSubTotal}}</p>
                                                 <p class="text-right" v-else-if="currency==='AED'">{{currencySubTotal}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td>
+                                            <td >
                                                 <p class="text-right" v-if="currency==='USD'">{{getTotal}}</p>
                                                 <p class="text-right" v-else-if="currency==='AED'">{{currencyResult}}</p>
                                                 <p class="text-right" v-else>0.00</p>
@@ -246,8 +246,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-8">
-                                                <div class="text-info h5 mb-0 text-left">{{file.name}}</div>
-                                                <div class="text-black pt-0 text-left">by Admin on {{currentDateTime()}}</div>
+                                                <div class="text-info h5 mb-0 text-left" v-model="fileName">{{file.name}}</div>
+                                                <div class="text-black pt-0 text-left" v-model="userDate">by Admin on {{currentDateTime()}}</div>
                                             </div>
                                             <div class="col-2">
                                                 <button @click="deleteFile(index)" class="text-danger btn fas fa-trash"/>
@@ -294,9 +294,9 @@
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <custom-button class="icon-center" btn_class="btn fas py-2" label="Cancel"/>
                                     <custom-button class="icon-center" btn_class="btn border fas py-2" label="Save As Draft"/>
-                                    <!--                                    <router-link :to="{name: 'DetailInstruction'}" class="dropdown">-->
-                                    <button v-on:click="storeData" class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
-                                    <!--                                    </router-link>-->s
+                                    <router-link :to="{name: 'DetailInstruction'}" class="dropdown">
+                                        <button v-on:click="storeData" class="icon-center btn btn-info text-light fas py-2 font">Submit</button>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -357,6 +357,9 @@ export default {
             rate: "",
 
             files: [],
+            fileName: "",
+            userDate: "",
+
             notes: "",
             linked: "Select Item",
 
@@ -489,5 +492,8 @@ tbody {
 }
 .space-bottom{
     margin-bottom: 1%;
+}
+.font {
+    font-family: Nunito;
 }
 </style>
