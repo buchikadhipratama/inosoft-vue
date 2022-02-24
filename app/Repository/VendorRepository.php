@@ -8,9 +8,10 @@ class VendorRepository
 {
     public function createVendorFromArray(array $vendor)
     {
+        
         try {
             $newvendor = new Vendor();
-            // $newvendor->instruction_id = $vendor['instruction_id'];
+            $newvendor->instruction_id = 'xxx';
             $newvendor->assign_vendor = $vendor['assign_vendor'];  
             $newvendor->attention = $vendor['attention'];
             $newvendor->quotation = $vendor['quotation'];
@@ -87,7 +88,7 @@ class VendorRepository
     {
         try {
             $newvendor = Vendor::find($vendor['id']);
-            $newvendor->status = 0;
+            $newvendor->status = 2;
             $newvendor->save();
 
             return 0;
@@ -100,9 +101,9 @@ class VendorRepository
     {
         try {
             $cancelaion = Vendor::find($cancel['id']);
-            $cancelaion->cancel_description = $cancel['cancel_description'];
-            $cancelaion->cancel_attachment = $cancel['cancel_attachment'];
-            $cancelaion->status = 2;
+            // $cancelaion->cancel_description = $cancel['cancel_description'];
+            // $cancelaion->cancel_attachment = $cancel['cancel_attachment'];
+            $cancelaion->status = 0;
             $cancelaion->save();
 
             return 0;

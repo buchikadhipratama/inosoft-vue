@@ -27,7 +27,7 @@
                 <div class="flex-fill d-flex justify-content-end float-end py-2">
                     <router-link class="nav-link text-muted" :to="{name: 'Home'}">
                     <i class="fas fa-ban"></i>
-                    Terminate
+                    <span v-on:click="terminate">Terminate</span>
                     </router-link>
                     <router-link class="nav-link text-muted" :to="{name: 'EditInstruction', params: {id: this.$route.params.id}}">
                     <i class="fas fa-pencil-alt"></i>
@@ -293,6 +293,15 @@ export default {
         ...mapActions({
             fetchOneInstruction: "thirdPartyInstruction/fetchOneInstruction" 
         }),
+        terminate() {
+          let cancel = {
+            id: this.instructions[0]._id,
+          }
+          axios.put('api/cancel', cancel)
+            .then((response) => {
+                console.log(response)
+            })
+        }
     },
     created() {
         this.fetchOneInstruction(this.$route.params.id);
