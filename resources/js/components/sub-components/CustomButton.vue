@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button type="button" class="btn" :class="btn_class" @click="handleClick" :style="styles">
+        <button type="btn_type" class="btn" :class="btn_class" @click="handleClick" :style="styles">
             <i v-if="icon_class != ''" :class="icon_class"></i>
             <span>
                 {{label}}
@@ -28,6 +28,10 @@ export default {
         label: {
             type: String,
             default: ''
+        },
+        btn_type: {
+            type:String,
+            default: 'button'
         }
     },
     methods: {

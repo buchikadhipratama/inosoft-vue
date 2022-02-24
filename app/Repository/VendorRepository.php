@@ -110,4 +110,9 @@ class VendorRepository
             return 1;
         }
     }
+
+    public function getSingleData(object $id)
+    {
+        return Vendor::where('_id', $id)->get() ?? ["dssd"];
+    }
 }
