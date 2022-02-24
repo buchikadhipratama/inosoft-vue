@@ -10,7 +10,7 @@ class VendorRepository
     {
         try {
             $newvendor = new Vendor();
-            $newvendor->instruction_id = $vendor['instruction_id'];
+            // $newvendor->instruction_id = $vendor['instruction_id'];
             $newvendor->assign_vendor = $vendor['assign_vendor'];
             $newvendor->attention = $vendor['attention'];
             $newvendor->quotation = $vendor['quotation'];
@@ -41,7 +41,7 @@ class VendorRepository
 
     public function getAll()
     {
-        return Vendor::where('status', 1)->get() ?? [];
+        return Vendor::where('status', 1)->get();
     }
 
     public function updateVendorFromArray(array $vendor)
@@ -88,7 +88,6 @@ class VendorRepository
         try {
             $newvendor = Vendor::find($vendor['id']);
             $newvendor->status = 0;
-            $newvendor->description = 2;
             $newvendor->save();
 
             return 0;
@@ -103,7 +102,7 @@ class VendorRepository
             $cancelaion = Vendor::find($cancel['id']);
             $cancelaion->cancel_description = $cancel['cancel_description'];
             $cancelaion->cancel_attachment = $cancel['cancel_attachment'];
-            $cancelaion->status = 3;
+            $cancelaion->status = 2;
             $cancelaion->save();
 
             return 0;

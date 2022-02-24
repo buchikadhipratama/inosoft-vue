@@ -25,38 +25,16 @@
             Back
           </router-link>
           <div class="flex-fill d-flex justify-content-end float-end py-2">
-            <a v-b-modal.modal-center class="nav-link text-muted" variant="link">
-              <i class=" fas fa-ban"></i>
+            <router-link class="nav-link text-muted" :to="{name: 'Home'}">
+              <i class="fas fa-ban"></i>
               Terminate
-            </a>
-
-            <!-- modal -->
-            <b-modal id="modal-center" centered ok-variant="info outline-light" ok-title="Submit" cancel-variant="outline-secondary">
-              <template #modal-header=" { close }">
-                <!-- Emulate built in modal header close button action -->
-                <h5>Reason of Cancellation</h5>
-                <b-button size="sm" variant="outline-danger" @click="close()">
-                  x
-                </b-button>
-              </template>
-
-              <p class="m-0">Cancelled By</p>
-              <h4 class="mb-3">Winata Admin</h4>
-
-              <p class="m-0">Description</p>
-              <textarea class="form-control" id="cancelDesc" rows="3"></textarea>
-
-              <p class="mt-4 mb-0">Attachment</p>
-              <custom-button btn_class="btn btn-info h-auto fas text-light" icon_class="fas fa-plus" label="Add Attachments" />
-            </b-modal>
-
+            </router-link>
             <router-link class="nav-link text-muted" :to="{name: 'EditInstruction', params: {id: this.$route.params.id}}">
               <i class="fas fa-pencil-alt"></i>
               Modify
             </router-link>
           </div>
         </div>
-
         <div class="mt-2 mx-3 border">
           <div class="grid-container">
             <div class="grid-item item">Type</div>
@@ -308,15 +286,13 @@ export default {
           to: "Home",
         },
       ],
+      vendors: {},
     };
   },
   methods: {
     ...mapActions({
       fetchOneInstruction: "thirdPartyInstruction/fetchOneInstruction",
     }),
-    editData() {
-      console.log(first);
-    },
   },
   created() {
     this.fetchOneInstruction(this.$route.params.id);

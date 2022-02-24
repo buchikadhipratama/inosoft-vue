@@ -40,11 +40,16 @@ const fetchOneInstruction = async (context, payload) => {
   })
 }
 
+const editOneInstruction = async (context, payload) => {
+  context.commit("EDITINSTRUCTION", payload)
+}
+
 export {
     sort,
     fetchOpenInstruction,
     fetchCompletedInstruction,
     storeInstruction,
     fetchOneInstruction,
-    TerminateInstruction
+    TerminateInstruction,
+    editOneInstruction
 }
