@@ -9,26 +9,21 @@
                 <div class="row">
                     <div class="col-12 p-3">
                         <page-title-component :datas="data" />
-                        <div class="card space-bottom">
+                        <div class="card space-bottom" v-if="instructions[0]">
                             <div class="card mx-3 my-3">
                                 <div class="card-header bg-white p-0">
                                     <div class="row">
                                         <div class="col-12 row">
                                             <div class="col-lg-11">
                                                 <div class="btn-group" role="group">
-                                                    <custom-button btn_class="btn btn-white h-auto border fas m-2 py-2" v-model="instruction" data-bs-toggle="dropdown" aria-expanded="false" icon_class="fas fa-wrench" label="Logistic Instruction" />
-                                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                        <li>
-                                                            <router-link :to="{name: 'LogisticInstruction'}" class="dropdown">
-                                                                <custom-button btn_class="btn" icon_class="fas fa-truck" label=" Logistic Instruction" />
-                                                            </router-link>
-                                                        </li>
-                                                        <li>
-                                                            <router-link :to="{name: 'ServiceInstruction'}" class="dropdown">
-                                                                <custom-button btn_class="btn" icon_class="fas fa-wrench" label="Service Instruction" />
-                                                            </router-link>
-                                                        </li>
-                                                    </ul>
+                                                    <div v-if="instructions[0].type === 'SI'" class="m-2 px-2 py-1 border rounded">
+                                                        <i class="fas fa-wrench"></i>
+                                                        Service Instruction
+                                                    </div>
+                                                    <div v-else-if="instructions[0].type === 'LI'" class="m-2 px-2 py-1 border rounded">
+                                                        <i class="fas fa-truck"></i>
+                                                        Logistics Instruction
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-1 icon-center mt-2">
@@ -49,9 +44,9 @@
                                                         <label>Assigned Vendor</label>
                                                         <select class="form-select" v-model="vendor">
                                                             <option selected disabled>Enter Vendor</option>
-                                                            <option value="Co Ltd">Amarit & Asociates Co ltd</option>
-                                                            <option value="Logistic">Amarit & Asociates Logistic Co ltd</option>
-                                                            <option value="Alphatrans">Alphatrans Pte Ltd</option>
+                                                            <option value="Amarit & Asociates Co ltd">Amarit & Asociates Co ltd</option>
+                                                            <option value="Amarit & Asociates Logistic Co Ltd">Amarit & Asociates Logistic Co ltd</option>
+                                                            <option value="Alphatrans Pte Ltd">Alphatrans Pte Ltd</option>
                                                         </select>
                                                     </div>
 
@@ -166,9 +161,9 @@
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td><input id="desc" class="form-control" type="text" v-model="description" placeholder="Enter Description"></td>
+                                            <td><input id="desc" class="form-control" type="text" placeholder="Enter Description"></td>
                                             <td><input id="qty" class="form-control" type="number" v-model="qty" placeholder="Enter"></td>
-                                            <td><select v-model="uom" class="form-select">
+                                            <td><select class="form-select">
                                                 <option selected>SHP</option>
                                             </select></td>
                                             <td><input id="unitPrice" class="form-control" type="text" v-model="unitPrice" placeholder="Enter Unit Price"></td>
@@ -180,10 +175,10 @@
                                                 <option value="AED">AED</option>
                                                 <option value="USD">USD</option>
                                             </select></td>
-                                            <td class="text-right text-middle" >{{getVAT}}</td>
+                                            <td class="text-right text-middle">{{getVAT}}</td>
                                             <td class="text-right text-middle">{{getSubTotal}}</td>
-                                            <td class="text-right text-middle" >{{getTotal}}</td>
-                                            <td><select v-model="charge" class="form-select">
+                                            <td class="text-right text-middle">{{getTotal}}</td>
+                                            <td><select class="form-select">
                                                 <option selected disabled>Select an Option</option>
                                                 <option value="MITME">MITME</option>
                                                 <option value="Customer">Customer</option>
@@ -194,17 +189,17 @@
                                         <tr class="white-border">
                                             <td class="align-right" colspan="7" rowspan="2">Exchange Rate <b>1 USD = 3.6725 AED</b></td>
                                             <td><b>AED</b> (Total)</td>
-                                            <td class="text-right" >
+                                            <td class="text-right">
                                                 <p class="text-right" v-if="currency==='AED'">{{getVAT}}</p>
                                                 <p class="text-right" v-else-if="currency==='USD'">{{currencyVAT}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td >
-                                                <p class="text-right" v-if="currency==='AED'">{{getSubTotal}}</p>
-                                                <p class="text-right" v-else-if="currency==='USD'">{{currencySubTotal}}</p>
+                                            <td>
+                                                <p class="text-right" v-if="currency==='AED'">{{getTotal}}</p>
+                                                <p class="text-right" v-else-if="currency==='USD'">{{currencyResult}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td >
+                                            <td>
                                                 <p class="text-right" v-if="currency==='AED'">{{getTotal}}</p>
                                                 <p class="text-right" v-else-if="currency==='USD'">{{currencyResult}}</p>
                                                 <p class="text-right" v-else>0.00</p>
@@ -215,17 +210,17 @@
 
                                         <tr class="white-border">
                                             <td><b>USD</b> (Total)</td>
-                                            <td class="text-right" >
+                                            <td class="text-right">
                                                 <p class="text-right" v-if="currency==='USD'">{{getVAT}}</p>
                                                 <p class="text-right" v-else-if="currency==='AED'">{{currencyVAT}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td >
-                                                <p class="text-right" v-if="currency==='USD'">{{getSubTotal}}</p>
-                                                <p class="text-right" v-else-if="currency==='AED'">{{currencySubTotal}}</p>
+                                            <td>
+                                                <p class="text-right" v-if="currency==='USD'">{{getTotal}}</p>
+                                                <p class="text-right" v-else-if="currency==='AED'">{{currencyResult}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td >
+                                            <td>
                                                 <p class="text-right" v-if="currency==='USD'">{{getTotal}}</p>
                                                 <p class="text-right" v-else-if="currency==='AED'">{{currencyResult}}</p>
                                                 <p class="text-right" v-else>0.00</p>
@@ -246,8 +241,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-8">
-                                                <div class="text-info h5 mb-0 text-left" v-model="fileName">{{file.name}}</div>
-                                                <div class="text-black pt-0 text-left" v-model="userDate">by Admin on {{currentDateTime()}}</div>
+                                                <div class="text-info h5 mb-0 text-left">{{file.name}}</div>
+                                                <div class="text-black pt-0 text-left">by Admin on {{currentDateTime()}}</div>
                                             </div>
                                             <div class="col-2">
                                                 <button @click="deleteFile(index)" class="text-danger btn fas fa-trash"/>
@@ -295,7 +290,7 @@
                                     <custom-button class="icon-center" btn_class="btn fas py-2" label="Cancel"/>
                                     <custom-button class="icon-center" btn_class="btn border fas py-2" label="Save As Draft"/>
                                     <router-link :to="{name: 'DetailInstruction'}" class="dropdown">
-                                        <button v-on:click="storeData" class="icon-center btn btn-info text-light fas py-2 font">Submit</button>
+                                        <custom-button class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
                                     </router-link>
                                 </div>
                             </div>
@@ -313,10 +308,10 @@ import CustomDropdown from "../components/sub-components/CustomDropdown";
 import PageTitleComponent from "../components/sub-components/PageTitleComponent.vue";
 import HeaderComponent from "../components/sub-components/HeaderComponent.vue";
 import SidebarComponent from "../components/sub-components/SidebarComponent.vue";
-import axios from "axios";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
-    name: "CreateInstruction",
+    name: "EditInstruction",
     components: {
         PageTitleComponent,
         CustomButton,
@@ -336,7 +331,7 @@ export default {
                     to: "Home",
                 },
             ],
-            instruction: "Logistic Instruction",
+            instruction: "Service Instruction",
             vendor: "Enter Vendor",
             attention: "",
             quotation: "",
@@ -345,24 +340,17 @@ export default {
             contract: "Select Customer",
             poNo: "",
 
-            description: "",
             qty: 0,
-            uom: "SHP",
             unitPrice: "",
             discount: 0,
-            GST: 0,
             currency: "",
-            charge: "Select an Option",
             amount: 0,
             rate: "",
 
             files: [],
-            fileName: "",
-            userDate: "",
-
             notes: "",
             linked: "Select Item",
-
+            GST: 0,
         };
     },
     methods: {
@@ -392,38 +380,9 @@ export default {
             this.details = Array.prototype.slice.call(this.details)
             this.details.splice(index, 1);
         },
-
-        storeData(){
-
-            let newVendor = {
-
-                type: this.instruction,
-                assign_vendor: this.vendor,
-                attention: this.attention,
-                quotation: this.quotation,
-                invoice: this.invoice,
-                customer_contract: this.contract,
-                vendor_address: this.address,
-                customer_po: this.poNo,
-                description: this.description,
-                qty: this.qty,
-                uom: this.uom,
-                unit_price: this.unitPrice,
-                discount: this.discount,
-                gst_vat: this.GST,
-                currency: this.currency,
-                charge: this.charge,
-                attachment: this.files,
-                notes: this.notes,
-                link_to: this.linked,
-
-            }
-            axios.post('api/store', newVendor)
-                .then((response) => {
-                    console.log(response)
-                })
-        },
-
+        ...mapActions({
+            fetchOneInstruction: "thirdPartyInstruction/fetchOneInstruction" 
+        })
     },
     computed:{
         getTotal(){
@@ -439,15 +398,49 @@ export default {
             const discount = ((this.qty * (this.unitPrice))*this.discount/100)
             return ((((this.qty * (this.unitPrice)) - discount)*this.GST)/100).toFixed(2)
         },
-        currencySubTotal(){
-            return (this.getSubTotal * 3.6725).toFixed(2);
-        },
         currencyResult() {
+            // fetch(
+            //     `https://v6.exchangerate-api.com/v6/${"9809b1cec3fb53ce2b3f3f6a"}/latest/${this.currency}`
+            // )
+            //     .then((res) => res.json())
+            //     .then((data) => {
+            //         this.data = data;
+            //         this.rate = data.conversion_rates[this.currency];
+            //     });
             return (this.getTotal * 3.6725).toFixed(2);
+
         },
         currencyVAT(){
             return (this.getVAT * 3.6725).toFixed(2);
+        },
+        ...mapGetters({
+            instructions: "thirdPartyInstruction/getDetailInstruction"
+        }),
+        setData(){
+            this.instruction = this.instructions[0].type
+            this.vendor = this.instructions[0].assign_vendor
+            this.attention = this.instructions[0].attention
+            this.quotation = this.instructions[0].quotation
+            this.invoice = this.instructions[0].invoice
+            this.address = this.instructions[0].vendor_address
+            // contract: "Select Customer",
+            // poNo: "",
+
+            // qty: 0,
+            // unitPrice: "",
+            // discount: 0,
+            // currency: "",
+            // amount: 0,
+            // rate: "",
+
+            // files: [],
+            // notes: "",
+            // linked: "Select Item",
+            // GST: 0,
         }
+    },
+    created() {
+        this.fetchOneInstruction(this.$route.params.id);
     }
     // computation(){
     //     var qty = document.getElementById(qty).value;
@@ -492,8 +485,5 @@ tbody {
 }
 .space-bottom{
     margin-bottom: 1%;
-}
-.font {
-    font-family: Nunito;
 }
 </style>

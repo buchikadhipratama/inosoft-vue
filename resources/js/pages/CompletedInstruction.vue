@@ -22,7 +22,7 @@
                     <div class="flex-fill d-flex justify-content-end align-items-center float-end py-2">
                       <input type="text" class="form-control w-25 h-75 mx-1 bg-light" placeholder="Search" v-if="showSearch" v-model="search">
                       <custom-button btn_class="btn btn-light h-auto m-1 border py-1" :icon_class="searchClass" @btnClick="searchData()" />
-                      <export-excel class="btn btn-light h-auto m-1 border py-1" :data="instructions.message" worksheet="Completed Instruction" name="Completed_Instruction.xls">
+                      <export-excel class="btn btn-light h-auto m-1 border py-1" :data="instructions" worksheet="Completed Instruction" name="Completed_Instruction.xls">
                         <i class="fas fa-file-export"></i>
                         Export
                       </export-excel>
@@ -292,7 +292,7 @@ export default {
 
         return (
           id.includes(search) ||
-          link.includes(search) ||
+          link.includes(search) || 
           type.includes(search) ||
           vendor.includes(search) ||
           attention.includes(search) ||
@@ -305,7 +305,6 @@ export default {
   },
   created() {
     this.fetchCompletedInstruction();
-    console.log(this.instructions);
   },
 };
 </script>
@@ -335,21 +334,10 @@ tbody {
   color: cadetblue;
 }
 
-.instruction-badge {
-  width: 6rem;
-}
-
 .inventory-badge {
   background-color: rgb(0, 171, 185);
   height: 100%;
   width: 45%;
 }
 
-.badge-completed {
-  background-color: rgb(0, 176, 111);
-}
-
-.badge-canceled {
-  background-color: rgb(193, 199, 206);
-}
 </style>

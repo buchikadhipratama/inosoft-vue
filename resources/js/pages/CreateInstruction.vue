@@ -165,69 +165,67 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td><input id="desc" class="form-control" type="text" placeholder="Enter Description"></td>
-                                            <td><input id="qty" class="form-control" type="number" v-model="qty" placeholder="Enter"></td>
-                                            <td><select class="form-select">
+                                        <tr v-for="(cost, index) in costs" :key="index">
+                                            <td><input id="desc" class="form-control" type="text" v-model="cost.description" placeholder="Enter Description"></td>
+                                            <td><input id="qty" class="form-control" type="number" v-model="cost.qty" placeholder="Enter"></td>
+                                            <td><select v-model="cost.shp" class="form-select">
                                                 <option selected>SHP</option>
                                             </select></td>
-                                            <td><input id="unitPrice" class="form-control" type="text" v-model="unitPrice" placeholder="Enter Unit Price"></td>
-                                            <td><input id="discount" class="form-control" type="number" v-model="discount" placeholder="0"></td>
-                                            <td><input id="gst" class="form-control" type="number" v-model="GST" placeholder="0"></td>
+                                            <td><input id="unitPrice" class="form-control" type="text" v-model="cost.unitPrice" placeholder="Enter Unit Price"></td>
+                                            <td><input id="discount" class="form-control" type="number" v-model="cost.discount" placeholder="0"></td>
+                                            <td><input id="gst" class="form-control" type="number" v-model="cost.GST" placeholder="0"></td>
                                             <td class="icon-center"><i class="fas fa-arrow-right"></i></td>
-                                            <td><select class="form-select" id="currency" v-model="currency" >
+                                            <td><select class="form-select" id="currency" v-model="cost.currency" >
                                                 <option selected disabled></option>
                                                 <option value="AED">AED</option>
                                                 <option value="USD">USD</option>
                                             </select></td>
-                                            <td class="text-right text-middle">{{getVAT}}</td>
-                                            <td class="text-right text-middle">{{getSubTotal}}</td>
-                                            <td class="text-right text-middle">{{getTotal}}</td>
-                                            <td><select class="form-select">
+                                            <td class="text-right text-middle">{{getVAT(index)}}</td>
+                                            <td class="text-right text-middle">{{getSubTotal(index)}}</td>
+                                            <td class="text-right text-middle">{{getTotal(index)}}</td>
+                                            <td><select class="form-select" v-model="cost.mitme">
                                                 <option selected disabled>Select an Option</option>
                                                 <option value="MITME">MITME</option>
                                                 <option value="Customer">Customer</option>
                                             </select></td>
-                                            <td><custom-button btn_class="btn btn-secondary h-auto" icon_class="fas fa-minus"/></td>
+                                            <td><custom-button btn_class="btn btn-secondary h-auto" @btnClick="deleteCost(index, cost)" icon_class="fas fa-minus"/></td>
                                         </tr>
 
                                         <tr class="white-border">
                                             <td class="align-right" colspan="7" rowspan="2">Exchange Rate <b>1 USD = 3.6725 AED</b></td>
                                             <td><b>AED</b> (Total)</td>
                                             <td class="text-right">
-                                                <p class="text-right" v-if="currency==='AED'">{{getVAT}}</p>
-                                                <p class="text-right" v-else-if="currency==='USD'">{{currencyVAT}}</p>
+                                                <p class="text-right" v-if="costs.currency==='AED'">{{getVAT}}</p>
+                                                <p class="text-right" v-else-if="costs.currency==='USD'">{{currencyVAT}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
                                             <td>
-                                                <p class="text-right" v-if="currency==='AED'">{{getTotal}}</p>
-                                                <p class="text-right" v-else-if="currency==='USD'">{{currencyResult}}</p>
+                                                <p class="text-right" v-if="costs.currency==='AED'">{{getTotal}}</p>
+                                                <p class="text-right" v-else-if="costs.currency==='USD'">{{currencyResult}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
                                             <td>
-                                                <p class="text-right" v-if="currency==='AED'">{{getTotal}}</p>
-                                                <p class="text-right" v-else-if="currency==='USD'">{{currencyResult}}</p>
+                                                <p class="text-right" v-if="costs.currency==='AED'">{{getTotal}}</p>
+                                                <p class="text-right" v-else-if="costs.currency==='USD'">{{currencyResult}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
                                             <td rowspan="2"></td>
-                                            <td rowspan="2" class="icon-center"><custom-button btn_class="btn btn-info h-auto" icon_class="fas fa-plus"/></td>
+                                            <td rowspan="2" class="icon-center"><custom-button @btnClick="addCost" btn_class="btn btn-info h-auto" icon_class="fas fa-plus"/></td>
                                         </tr>
 
                                         <tr class="white-border">
                                             <td><b>USD</b> (Total)</td>
                                             <td class="text-right">
-                                                <p class="text-right" v-if="currency==='USD'">{{getVAT}}</p>
-                                                <p class="text-right" v-else-if="currency==='AED'">{{currencyVAT}}</p>
+                                                <p class="text-right" v-if="costs.currency==='USD'">{{getVAT}}</p>
+                                                <p class="text-right" v-else-if="costs.currency==='AED'">{{currencyVAT}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
                                             <td>
-                                                <p class="text-right" v-if="currency==='USD'">{{getTotal}}</p>
-                                                <p class="text-right" v-else-if="currency==='AED'">{{currencyResult}}</p>
-                                                <p class="text-right" v-else>0.00</p>
+                                                <p class="text-right">{{getAllSubTotal}}</p>
                                             </td>
                                             <td>
-                                                <p class="text-right" v-if="currency==='USD'">{{getTotal}}</p>
-                                                <p class="text-right" v-else-if="currency==='AED'">{{currencyResult}}</p>
+                                                <p class="text-right" v-if="costs.currency==='USD'">{{getTotal}}</p>
+                                                <p class="text-right" v-else-if="costs.currency==='AED'">{{currencyResult}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
                                         </tr>
@@ -344,86 +342,113 @@ export default {
             contract: "Select Customer",
             poNo: "",
 
-            qty: 0,
-            unitPrice: "",
-            discount: 0,
-            currency: "",
-            amount: 0,
-            rate: "",
+            arrresult:[{res : 0}],
 
+            costs:[{
+                description: "",
+                qty: 0,
+                shp: "SHP",
+                unitPrice: "",
+                discount: 0,
+                currency: "",
+                GST: 0,
+                mitme: "Select an Option",
+            }],
+
+            result :0,
             files: [],
             notes: "",
             linked: "Select Item",
-            GST: 0,
         };
     },
     methods: {
-        onFileSelected(event){
+        onFileSelected(event) {
             console.log(event)
         },
         onFileChange(e) {
             this.files = e.target.files;
             console.log(this.files);
         },
-        currentDateTime(){
+        currentDateTime() {
             const current = new Date();
-            const date = current.getDate()+'/'+(current.getMonth()+1)+'/'+current.getFullYear();
-            const time = current.getHours()+":"+current.getMinutes();
-            if (current.getHours()>=12){
-                return date+" "+time+" PM";
-            }
-            else {
-                return date+" "+time+" AM";
+            const date = current.getDate() + '/' + (current.getMonth() + 1) + '/' + current.getFullYear();
+            const time = current.getHours() + ":" + current.getMinutes();
+            if (current.getHours() >= 12) {
+                return date + " " + time + " PM";
+            } else {
+                return date + " " + time + " AM";
             }
         },
         deleteFile(index) {
             this.files = Array.prototype.slice.call(this.files)
             this.files.splice(index, 1);
         },
-        deleteDetail(index){
-            this.details = Array.prototype.slice.call(this.details)
-            this.details.splice(index, 1);
-        }
+        deleteCost(index) {
+            this.costs = Array.prototype.slice.call(this.costs)
+            this.costs.splice(index, 1);
+        },
+        addCost() {
+            this.costs.push({
+                description: "",
+                qty: 0,
+                shp: "SHP",
+                unitPrice: "",
+                discount: 0,
+                currency: "",
+                GST: 0,
+                mitme: "Select an Option",
+            });
+        },
     },
     computed:{
         getTotal(){
-            const discount = ((this.qty * (this.unitPrice))*this.discount/100)
-            const gst = ((((this.qty * (this.unitPrice)) - discount)*this.GST)/100)
-            return (((this.qty * (this.unitPrice)) - discount)+gst).toFixed(2)
+            return index => {
+                const discount = ((this.costs[index].qty * (this.costs[index].unitPrice))*this.costs[index].discount/100)
+                const gst = ((((this.costs[index].qty * (this.costs[index].unitPrice)) - discount)*this.costs[index].GST)/100)
+                return (((this.costs[index].qty * (this.costs[index].unitPrice)) - discount)+gst).toFixed(2)
+            }
         },
         getSubTotal(){
-            const discount = ((this.qty * (this.unitPrice))*this.discount/100)
-            return ((this.qty * (this.unitPrice)) - discount).toFixed(2)
+            return index => {
+                const discount = ((this.costs[index].qty * (this.costs[index].unitPrice))*this.costs[index].discount/100)
+                return ((this.costs[index].qty * (this.costs[index].unitPrice)) - discount).toFixed(2)
+            }
         },
         getVAT(){
-            const discount = ((this.qty * (this.unitPrice))*this.discount/100)
-            return ((((this.qty * (this.unitPrice)) - discount)*this.GST)/100).toFixed(2)
+            return index => {
+                const discount = ((this.costs[index].qty * (this.costs[index].unitPrice))*this.costs[index].discount/100)
+                return ((((this.costs[index].qty * (this.costs[index].unitPrice)) - discount)*this.costs[index].GST)/100).toFixed(2)
+            }
         },
         currencyResult() {
-            // fetch(
-            //     `https://v6.exchangerate-api.com/v6/${"9809b1cec3fb53ce2b3f3f6a"}/latest/${this.currency}`
-            // )
-            //     .then((res) => res.json())
-            //     .then((data) => {
-            //         this.data = data;
-            //         this.rate = data.conversion_rates[this.currency];
-            //     });
             return (this.getTotal * 3.6725).toFixed(2);
-
         },
         currencyVAT(){
             return (this.getVAT * 3.6725).toFixed(2);
+        },
+        getAllSubTotal(){
+            let reslt = 0
+            for (let i = 0; i < this.costs.length; i++) {
+                if(this.costs[i].currency === ""){
+                    reslt = 0
+                }
+                else if (this.costs[i].currency === "USD"){
+                    const discount = ((this.costs[i].qty * (this.costs[i].unitPrice)) * this.costs[i].discount / 100)
+                    reslt = ((this.costs[i].qty * (this.costs[i].unitPrice)) - discount)
+                }
+                else {
+                    const discount = ((this.costs[i].qty * (this.costs[i].unitPrice)) * this.costs[i].discount / 100)
+                    reslt = ((this.costs[i].qty * (this.costs[i].unitPrice)) - discount)
+                }
+            }
+            // for (let i = 0; i < this.arrresult.length; i++){
+            //     this.result = parseInt(this.result) + this.arrresult[i].res
+            // }
+            // console.log(this.arrresult)
+            this.result += reslt
+            return this.result.toFixed(2)
         }
     }
-    // computation(){
-    //     var qty = document.getElementById(qty).value;
-    //     var unitPrice = document.getElementById(unitPrice).value;
-    //     var discount = document.getElementById(discount).value;
-    //     discount = ((qty * (unitPrice * 0.1))*discount/100);
-    //     var total = ((qty * (unitPrice * 0.1)) - discount).toFixed(2);
-    //     total =total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    //     document.getElementById('total').innerHTML = total;
-    // }
 };
 
 

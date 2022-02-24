@@ -96,6 +96,12 @@ class VendorController extends Controller
         return $response;
 
     }
+
+    public function getDetail(string $id)
+    {       
+        $response = (new VendorService())->getSingleData($id);
+        return $response;
+    }
 }
 
 
