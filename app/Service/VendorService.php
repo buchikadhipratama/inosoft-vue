@@ -6,9 +6,10 @@ use App\Repository\VendorRepository;
 
 use MongoDB\BSON\ObjectID;
 
-class VendorService{
-    public function createVendorFromArray(array $vendor)
-    {
+class VendorService
+{
+    public function createVendorFromArray($vendor)
+    {   
         $error = (new VendorRepository)->createVendorFromArray($vendor);
         if ($error){
             return [

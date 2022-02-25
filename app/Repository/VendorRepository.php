@@ -8,28 +8,29 @@ class VendorRepository
 {
     public function createVendorFromArray(array $vendor)
     {
+        $response = array("data" => "", "error" => 0);
         try {
             $newvendor = new Vendor();
-            // $newvendor->instruction_id = $vendor['instruction_id'];
-            $newvendor->assign_vendor = $vendor['assign_vendor'];  
+//          $newvendor->instruction_id = $vendor['instruction_id'];
+            $newvendor->assign_vendor = $vendor['assign_vendor'];
             $newvendor->attention = $vendor['attention'];
             $newvendor->quotation = $vendor['quotation'];
             $newvendor->invoice = $vendor['invoice'];
-            $newvendor->customer_contract = $vendor['customer_contract'];  
-            $newvendor->vendor_address = $vendor['vendor_address'];    
+            $newvendor->customer_contract = $vendor['customer_contract'];
+            $newvendor->vendor_address = $vendor['vendor_address'];
             $newvendor->customer_po = $vendor['customer_po'];
-            $newvendor->description = $vendor['description'];  
-            $newvendor->qty = $vendor['qty'];  
-            $newvendor->uom = $vendor['uom'];  
-            $newvendor->unit_price = $vendor['unit_price'];  
-            $newvendor->discount = $vendor['discount'];  
-            $newvendor->gst_vat = $vendor['gst_vat'];  
-            $newvendor->currency = $vendor['currency'];  
+            $newvendor->description = $vendor['description'];
+            $newvendor->qty = $vendor['qty'];
+            $newvendor->uom = $vendor['uom'];
+            $newvendor->unit_price = $vendor['unit_price'];
+            $newvendor->discount = $vendor['discount'];
+            $newvendor->gst_vat = $vendor['gst_vat'];
+            $newvendor->currency = $vendor['currency'];
             $newvendor->charge = $vendor['charge'];
-            $newvendor->attachment = $vendor['attachment'];  
-            $newvendor->notes = $vendor['notes'];  
+            $newvendor->attachment = $vendor['attachment'];
+            $newvendor->notes = $vendor['notes'];
             $newvendor->link_to = $vendor['link_to'];
-            $newvendor->status = 1;    
+            $newvendor->status = 1;
             $newvendor->type = $vendor['type'];
             $newvendor->save();
 
@@ -66,7 +67,6 @@ class VendorRepository
             $newvendor->attachment = $vendor['attachment'] ?? $newvendor->attachment;
             $newvendor->notes = $vendor['notes'] ?? $newvendor->notes;
             $newvendor->link_to = $vendor['link_to'] ?? $newvendor->link_to;
-            
             $newvendor->save();
 
             return 0;
@@ -114,6 +114,6 @@ class VendorRepository
 
     public function getSingleData(object $id)
     {
-        return Vendor::where('_id', $id)->get() ?? ["dssd"];
+        return Vendor::where('_id', $id)->get() ?? [];
     }
 }

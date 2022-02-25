@@ -295,7 +295,7 @@
                                     <custom-button class="icon-center" btn_class="btn fas py-2" label="Cancel"/>
                                     <custom-button class="icon-center" btn_class="btn border fas py-2" label="Save As Draft"/>
                                     <!-- <router-link :to="{name: 'DetailInstruction'}" class="dropdown"> -->
-                                    <button @click="storeData" type="submit" class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
+                                    <button @click="storeData" type="submit" class="icon-center btn btn-info text-light p-0 px-2">Submit</button>
                                     <!-- </router-link> -->
                                 </div>
                             </div>
@@ -418,6 +418,7 @@ export default {
                 type: this.instruction,
             }
             this.storeInstruction(newVendor);
+
         },
     },
     computed:{
