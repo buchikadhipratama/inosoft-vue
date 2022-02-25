@@ -8,7 +8,6 @@ class VendorRepository
 {
     public function createVendorFromArray(array $vendor)
     {
-        $response = array("data" => "", "error" => 0);
         try {
             $newvendor = new Vendor();
 //          $newvendor->instruction_id = $vendor['instruction_id'];
