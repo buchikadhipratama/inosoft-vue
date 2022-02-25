@@ -191,55 +191,56 @@
                           <custom-button btn_class="btn btn-secondary h-auto" icon_class="fas fa-minus" />
                         </td>
                       </tr>
+                    </tbody>
+                  </table>
+                  <tr class="white-border">
+                    <td class="align-right" colspan="7" rowspan="2">Exchange Rate <b>1 USD = 3.6725 AED</b></td>
+                    <td><b>AED</b> (Total)</td>
+                    <td class="text-right">
+                      <p class="text-right" v-if="currency==='AED'">{{getVAT}}</p>
+                      <p class="text-right" v-else-if="currency==='USD'">{{currencyVAT}}</p>
+                      <p class="text-right" v-else>0.00</p>
+                    </td>
+                    <td>
+                      <p class="text-right" v-if="currency==='AED'">{{getTotal}}</p>
+                      <p class="text-right" v-else-if="currency==='USD'">{{currencyResult}}</p>
+                      <p class="text-right" v-else>0.00</p>
+                    </td>
+                    <td>
+                      <p class="text-right" v-if="currency==='AED'">{{getTotal}}</p>
+                      <p class="text-right" v-else-if="currency==='USD'">{{currencyResult}}</p>
+                      <p class="text-right" v-else>0.00</p>
+                    </td>
+                    <td rowspan="2"></td>
+                    <td rowspan="2" class="icon-center">
+                      <custom-button btn_class="btn btn-info h-auto" icon_class="fas fa-plus" />
+                    </td>
+                  </tr>
 
-                      <tr class="white-border">
-                        <td class="align-right" colspan="7" rowspan="2">Exchange Rate <b>1 USD = 3.6725 AED</b></td>
-                        <td><b>AED</b> (Total)</td>
-                        <td class="text-right">
-                          <p class="text-right" v-if="currency==='AED'">{{getVAT}}</p>
-                          <p class="text-right" v-else-if="currency==='USD'">{{currencyVAT}}</p>
-                          <p class="text-right" v-else>0.00</p>
-                        </td>
-                        <td>
-                          <p class="text-right" v-if="currency==='AED'">{{getTotal}}</p>
-                          <p class="text-right" v-else-if="currency==='USD'">{{currencyResult}}</p>
-                          <p class="text-right" v-else>0.00</p>
-                        </td>
-                        <td>
-                          <p class="text-right" v-if="currency==='AED'">{{getTotal}}</p>
-                          <p class="text-right" v-else-if="currency==='USD'">{{currencyResult}}</p>
-                          <p class="text-right" v-else>0.00</p>
-                        </td>
-                        <td rowspan="2"></td>
-                        <td rowspan="2" class="icon-center">
-                          <custom-button btn_class="btn btn-info h-auto" icon_class="fas fa-plus" />
-                        </td>
-                      </tr>
+                  <div class="col-3">
+                    <label for="attention">Attention Of</label>
+                    <input id="attention" v-model="attention" class="form-control" type="text" placeholder="Enter Attention Of">
+                  </div>
+                  <div class="col-3">
+                    <label for="quotation">Quotation Of</label>
+                    <input id="quotation" v-model="quotation" class="form-control" type="text" placeholder="Enter Quotation Of">
+                  </div>
+                  <div class="col-3">
+                    <label>Invoice To</label>
+                    <select class="form-select" v-model="invoice">
+                      <option selected disabled>Select an Option</option>
+                      <option value="LLS">Marubeni-Itochu Tubulars Middle East Pipes L.L.S (MITME)</option>
+                      <option value="PLC">Marubeni-Itochu Tubulars Europe Plc (MITME)</option>
+                    </select>
+                  </div>
 
-                      <div class="col-3">
-                        <label for="attention">Attention Of</label>
-                        <input id="attention" v-model="attention" class="form-control" type="text" placeholder="Enter Attention Of">
-                      </div>
-                      <div class="col-3">
-                        <label for="quotation">Quotation Of</label>
-                        <input id="quotation" v-model="quotation" class="form-control" type="text" placeholder="Enter Quotation Of">
-                      </div>
-                      <div class="col-3">
-                        <label>Invoice To</label>
-                        <select class="form-select" v-model="invoice">
-                          <option selected disabled>Select an Option</option>
-                          <option value="LLS">Marubeni-Itochu Tubulars Middle East Pipes L.L.S (MITME)</option>
-                          <option value="PLC">Marubeni-Itochu Tubulars Europe Plc (MITME)</option>
-                        </select>
-                      </div>
-
-                      <div class="col-12">
-                        <label>Vendor Address</label>
-                        <select class="form-select" v-model="address">
-                          <option selected disabled>Enter Vendor Address</option>
-                          <option value="address">Sesetan, Denpasar, Bali, Indonesia</option>
-                        </select>
-                      </div>
+                  <div class="col-12">
+                    <label>Vendor Address</label>
+                    <select class="form-select" v-model="address">
+                      <option selected disabled>Enter Vendor Address</option>
+                      <option value="address">Sesetan, Denpasar, Bali, Indonesia</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div class="card space-bottom">

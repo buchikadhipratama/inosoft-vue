@@ -24,6 +24,7 @@ import { faHelmetSafety } from '@fortawesome/free-solid-svg-icons';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
 import { faCubes } from '@fortawesome/free-solid-svg-icons';
 import { faGears } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 /* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -38,6 +39,7 @@ library.add(faHelmetSafety)
 library.add(faCoins)
 library.add(faCubes)
 library.add(faGears)
+library.add(faTrashCan)
 
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)
