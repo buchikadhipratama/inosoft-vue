@@ -292,9 +292,9 @@
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <custom-button class="icon-center" btn_class="btn fas py-2" label="Cancel"/>
                                     <custom-button class="icon-center" btn_class="btn border fas py-2" label="Save As Draft"/>
-                                    <router-link :to="{name: 'DetailInstruction'}" class="dropdown">
-                                        <custom-button class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
-                                    </router-link>
+                                    <!-- <router-link :to="{name: 'DetailInstruction'}" class="dropdown"> -->
+                                    <button @click="storeData" type="submit" class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
+                                    <!-- </router-link> -->
                                 </div>
                             </div>
                         </div>
@@ -333,6 +333,7 @@ export default {
                     to: "Home",
                 },
             ],
+            // form: {
             instruction: "Service Instruction",
             vendor: "Enter Vendor",
             attention: "",
@@ -341,9 +342,9 @@ export default {
             address: "Enter Vendor Address",
             contract: "Select Customer",
             poNo: "",
-
+            description: "",
+            uom: "",
             arrresult:[{res : 0}],
-
             costs:[{
                 description: "",
                 qty: 0,
@@ -448,7 +449,6 @@ export default {
             this.result += reslt
             return this.result.toFixed(2)
         }
-    }
 };
 
 
