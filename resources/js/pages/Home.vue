@@ -27,7 +27,6 @@
                         <i class="fas fa-file-export"></i>
                         Export
                       </export-excel>
-                      <!-- <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-file-export" label="Export" /> -->
                     </div>
                   </ul>
                 </div>
@@ -162,7 +161,6 @@
                         </tr>
                       </thead>
                       <tbody class="pointer">
-                        <!-- <tr v-for="(dashboard , index) in filteredData" :key="index"> // buchik awal-->
                         <tr @click="toDetail(dashboard._id)" v-for="dashboard in filteredData" :key="dashboard._id">
                           <td>{{ dashboard._id }}</td>
                           <td class="text-left">
@@ -282,7 +280,7 @@ export default {
     filteredData() {
       const search = this.search.toLowerCase();
       return this.dashboards.filter((dashboard) => {
-        const id = dashboard._id.toString().toLowerCase();
+        // const id = dashboard.instruction_id.toString().toLowerCase();
         const link = dashboard.link_to.toString().toLowerCase();
         const type = dashboard.type.toString().toLowerCase();
         const vendor = dashboard.assign_vendor.toString().toLowerCase();
@@ -291,7 +289,7 @@ export default {
         const customerPO = dashboard.customer_po.toString().toLowerCase();
         const status = dashboard.status.toString().toLowerCase();
         return (
-          id.includes(search) ||
+          //   id.includes(search) ||
           link.includes(search) ||
           type.includes(search) ||
           vendor.includes(search) ||
@@ -306,7 +304,7 @@ export default {
 
   created() {
     this.fetchOpenInstruction();
-    console.log(this.dashboards);
+    // console.log(this.dashboards);
   },
 };
 </script>

@@ -42,7 +42,9 @@ class VendorRepository
 
     public function getAll()
     {
-        return Vendor::where('status', 1)->get();
+        return Vendor::where(function ($query) {
+            $query->where('status', 1);
+         })->get();
     }
 
     public function updateVendorFromArray(array $vendor)
@@ -88,7 +90,7 @@ class VendorRepository
     {
         try {
             $newvendor = Vendor::find($vendor['id']);
-            $newvendor->status = 0;
+            $newvendor->status = 2;
             $newvendor->save();
 
             return 0;
@@ -102,8 +104,9 @@ class VendorRepository
         try {
             $cancelaion = Vendor::find($cancel['id']);
             $cancelaion->cancel_description = $cancel['cancel_description'];
-            $cancelaion->cancel_attachment = $cancel['cancel_attachment'];
-            $cancelaion->status = 2;
+            // $cancelaion->cancel_attachment = $cancel['cancel_attachment'];
+            // $cancelaion->status = 2;
+            $cancelaion->status = 0;
             $cancelaion->save();
 
             return 0;

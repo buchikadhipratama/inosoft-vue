@@ -166,9 +166,9 @@
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td><input id="desc" class="form-control" type="text" placeholder="Enter Description" v-model="description"></td>
+                                            <td><input id="desc" class="form-control" type="text" v-model="description" placeholder="Enter Description"></td>
                                             <td><input id="qty" class="form-control" type="number" v-model="qty" placeholder="Enter"></td>
-                                            <td><select class="form-select" v-model="uom">
+                                            <td><select v-model="uom" class="form-select">
                                                 <option selected>SHP</option>
                                             </select></td>
                                             <td><input id="unitPrice" class="form-control" type="text" v-model="unitPrice" placeholder="Enter Unit Price"></td>
@@ -180,10 +180,10 @@
                                                 <option value="AED">AED</option>
                                                 <option value="USD">USD</option>
                                             </select></td>
-                                            <td class="text-right text-middle">{{getVAT}}</td>
+                                            <td class="text-right text-middle" >{{getVAT}}</td>
                                             <td class="text-right text-middle">{{getSubTotal}}</td>
-                                            <td class="text-right text-middle">{{getTotal}}</td>
-                                            <td><select class="form-select" v-model="charge">
+                                            <td class="text-right text-middle" >{{getTotal}}</td>
+                                            <td><select v-model="charge" class="form-select">
                                                 <option selected disabled>Select an Option</option>
                                                 <option value="MITME">MITME</option>
                                                 <option value="Customer">Customer</option>
@@ -194,17 +194,17 @@
                                         <tr class="white-border">
                                             <td class="align-right" colspan="7" rowspan="2">Exchange Rate <b>1 USD = 3.6725 AED</b></td>
                                             <td><b>AED</b> (Total)</td>
-                                            <td class="text-right">
+                                            <td class="text-right" >
                                                 <p class="text-right" v-if="currency==='AED'">{{getVAT}}</p>
                                                 <p class="text-right" v-else-if="currency==='USD'">{{currencyVAT}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td>
-                                                <p class="text-right" v-if="currency==='AED'">{{getTotal}}</p>
-                                                <p class="text-right" v-else-if="currency==='USD'">{{currencyResult}}</p>
+                                            <td >
+                                                <p class="text-right" v-if="currency==='AED'">{{getSubTotal}}</p>
+                                                <p class="text-right" v-else-if="currency==='USD'">{{currencySubTotal}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td>
+                                            <td >
                                                 <p class="text-right" v-if="currency==='AED'">{{getTotal}}</p>
                                                 <p class="text-right" v-else-if="currency==='USD'">{{currencyResult}}</p>
                                                 <p class="text-right" v-else>0.00</p>
@@ -215,17 +215,17 @@
 
                                         <tr class="white-border">
                                             <td><b>USD</b> (Total)</td>
-                                            <td class="text-right">
+                                            <td class="text-right" >
                                                 <p class="text-right" v-if="currency==='USD'">{{getVAT}}</p>
                                                 <p class="text-right" v-else-if="currency==='AED'">{{currencyVAT}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td>
-                                                <p class="text-right" v-if="currency==='USD'">{{getTotal}}</p>
-                                                <p class="text-right" v-else-if="currency==='AED'">{{currencyResult}}</p>
+                                            <td >
+                                                <p class="text-right" v-if="currency==='USD'">{{getSubTotal}}</p>
+                                                <p class="text-right" v-else-if="currency==='AED'">{{currencySubTotal}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td>
+                                            <td >
                                                 <p class="text-right" v-if="currency==='USD'">{{getTotal}}</p>
                                                 <p class="text-right" v-else-if="currency==='AED'">{{currencyResult}}</p>
                                                 <p class="text-right" v-else>0.00</p>
@@ -246,8 +246,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-8">
-                                                <div class="text-info h5 mb-0 text-left">{{file.name}}</div>
-                                                <div class="text-black pt-0 text-left">by Admin on {{currentDateTime()}}</div>
+                                                <div class="text-info h5 mb-0 text-left" v-model="fileName">{{file.name}}</div>
+                                                <div class="text-black pt-0 text-left" v-model="userDate">by Admin on {{currentDateTime()}}</div>
                                             </div>
                                             <div class="col-2">
                                                 <button @click="deleteFile(index)" class="text-danger btn fas fa-trash"/>
@@ -295,7 +295,7 @@
                                     <custom-button class="icon-center" btn_class="btn fas py-2" label="Cancel"/>
                                     <custom-button class="icon-center" btn_class="btn border fas py-2" label="Save As Draft"/>
                                     <router-link :to="{name: 'DetailInstruction'}" class="dropdown">
-                                    <button @click="storeData" class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
+                                        <button v-on:click="storeData" class="icon-center btn btn-info text-light fas py-2 font">Submit</button>
                                     </router-link>
                                 </div>
                             </div>
@@ -313,7 +313,7 @@ import CustomDropdown from "../components/sub-components/CustomDropdown";
 import PageTitleComponent from "../components/sub-components/PageTitleComponent.vue";
 import HeaderComponent from "../components/sub-components/HeaderComponent.vue";
 import SidebarComponent from "../components/sub-components/SidebarComponent.vue";
-import axios from 'axios';
+import axios from "axios";
 
 export default {
     name: "CreateInstruction",
@@ -347,18 +347,24 @@ export default {
             description: "",
             uom: "",
 
+            description: "",
             qty: 0,
+            uom: "SHP",
             unitPrice: "",
             discount: 0,
+            GST: 0,
             currency: "",
+            charge: "Select an Option",
             amount: 0,
             rate: "",
             charge: "",
 
             files: [],
+            fileName: "",
+            userDate: "",
+
             notes: "",
             linked: "Select Item",
-            gst: 0,
         };
     },
     methods: {
@@ -389,9 +395,8 @@ export default {
             this.details.splice(index, 1);
         },
         storeData(){
-            
             let newVendor = {
-
+                type: this.instruction,
                 assign_vendor: this.vendor,
                 attention: this.attention,
                 quotation: this.quotation,
@@ -404,19 +409,20 @@ export default {
                 uom: this.uom,
                 unit_price: this.unitPrice,
                 discount: this.discount,
-                gst_vat: this.gst,
+                gst_vat: this.GST,
                 currency: this.currency,
                 charge: this.charge,
                 attachment: this.files,
                 notes: this.notes,
                 link_to: this.linked,
-                type: this.instruction,
+
             }
             axios.post('api/store', newVendor)
-            .then((response) => {
-                console.log(response)
-            })
+                .then((response) => {
+                    console.log(response)
+                })
         },
+
     },
     computed:{
         getTotal(){
@@ -432,17 +438,11 @@ export default {
             const discount = ((this.qty * (this.unitPrice))*this.discount/100)
             return ((((this.qty * (this.unitPrice)) - discount)*this.GST)/100).toFixed(2)
         },
+        currencySubTotal(){
+            return (this.getSubTotal * 3.6725).toFixed(2);
+        },
         currencyResult() {
-            // fetch(
-            //     `https://v6.exchangerate-api.com/v6/${"9809b1cec3fb53ce2b3f3f6a"}/latest/${this.currency}`
-            // )
-            //     .then((res) => res.json())
-            //     .then((data) => {
-            //         this.data = data;
-            //         this.rate = data.conversion_rates[this.currency];
-            //     });
             return (this.getTotal * 3.6725).toFixed(2);
-
         },
         currencyVAT(){
             return (this.getVAT * 3.6725).toFixed(2);
@@ -491,5 +491,8 @@ tbody {
 }
 .space-bottom{
     margin-bottom: 1%;
+}
+.font {
+    font-family: Nunito;
 }
 </style>
