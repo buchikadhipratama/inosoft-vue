@@ -10,7 +10,7 @@ class VendorRepository
     {
         try {
             $newvendor = new Vendor();
-            // $newvendor->instruction_id = $vendor['instruction_id'];
+//          $newvendor->instruction_id = $vendor['instruction_id'];
             $newvendor->assign_vendor = $vendor['assign_vendor'];
             $newvendor->attention = $vendor['attention'];
             $newvendor->quotation = $vendor['quotation'];
