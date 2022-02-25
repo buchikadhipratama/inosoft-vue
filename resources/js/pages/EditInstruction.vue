@@ -661,7 +661,6 @@ export default {
 .table-head {
   background-color: rgb(193, 199, 206);
 }
-
 tbody {
   border-top: none !important;
 }

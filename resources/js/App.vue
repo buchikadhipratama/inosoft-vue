@@ -8,7 +8,7 @@
 export default {
   name: "app",
 };
-</script>
+</script> 
 
 <style>
 .badge-completed {

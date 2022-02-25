@@ -116,6 +116,6 @@ class VendorRepository
 
     public function getSingleData(object $id)
     {
-        return Vendor::where('_id', $id)->get() ?? ["dssd"];
+        return Vendor::where('_id', $id)->get() ?? [];
     }
 }

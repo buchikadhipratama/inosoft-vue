@@ -2,14 +2,14 @@ import axios from "axios"
 import { state } from "./state"
 
 const SORT = (state, payload) => {
-    const sorted = state.instructions.message.sort((a, b) => {
+    const sorted = state.completed_instruction.sort((a, b) => {
         if(payload.direction === 'asc'){
             return a[payload.data] > b[payload.data]
         }
         return a[payload.data] < b[payload.data]
     })
 
-    state.instructions.message = sorted
+    state.completed_instruction = sorted
 }
 
 const SETOPENINSTRUCTION = (state, data) => {
@@ -40,7 +40,6 @@ export {
     SORT,
     SETOPENINSTRUCTION,
     SETCOMPLETEDINSTRUCTION,
-    STOREINSTRUCTION,
     SETDETAILINSTRUCTION,
     TERMINATEINSTRUCTION,
     EDITINSTRUCTION
