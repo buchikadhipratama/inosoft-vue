@@ -25,8 +25,12 @@ const fetchCompletedInstruction = async (context) => {
   })
 }
 
-const storeInstruction = async (context, payload) => {
-  context.commit("STOREINSTRUCTION", payload)
+const storeInstruction = async (payload) => {
+  axios.post("api/store", payload)  
+}
+
+const TerminateInstruction = async (context, payload) => {
+    context.commit("TERMINATEINSTRUCTION", payload)
 }
 
 const fetchOneInstruction = async (context, payload) => {
@@ -36,10 +40,16 @@ const fetchOneInstruction = async (context, payload) => {
   })
 }
 
+const editOneInstruction = async (context, payload) => {
+  context.commit("EDITINSTRUCTION", payload)
+}
+
 export {
     sort,
     fetchOpenInstruction,
     fetchCompletedInstruction,
     storeInstruction,
-    fetchOneInstruction 
+    fetchOneInstruction,
+    TerminateInstruction,
+    editOneInstruction
 }

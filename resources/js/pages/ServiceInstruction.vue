@@ -173,16 +173,16 @@
                                             </select></td>
                                             <td><input id="unitPrice" class="form-control" type="text" v-model="unitPrice" placeholder="Enter Unit Price"></td>
                                             <td><input id="discount" class="form-control" type="number" v-model="discount" placeholder="0"></td>
-                                            <td><input id="gst" class="form-control" type="number" v-model="GST" placeholder="0"></td>
+                                            <td><input id="gst" class="form-control" type="number" v-model="gst" placeholder="0"></td>
                                             <td class="icon-center"><i class="fas fa-arrow-right"></i></td>
                                             <td><select class="form-select" id="currency" v-model="currency" >
                                                 <option selected disabled></option>
                                                 <option value="AED">AED</option>
                                                 <option value="USD">USD</option>
                                             </select></td>
-                                            <td class="text-right text-middle">{{getVAT}}</td>
+                                            <td class="text-right text-middle" >{{getVAT}}</td>
                                             <td class="text-right text-middle">{{getSubTotal}}</td>
-                                            <td class="text-right text-middle">{{getTotal}}</td>
+                                            <td class="text-right text-middle" >{{getTotal}}</td>
                                             <td><select v-model="charge" class="form-select">
                                                 <option selected disabled>Select an Option</option>
                                                 <option value="MITME">MITME</option>
@@ -194,17 +194,17 @@
                                         <tr class="white-border">
                                             <td class="align-right" colspan="7" rowspan="2">Exchange Rate <b>1 USD = 3.6725 AED</b></td>
                                             <td><b>AED</b> (Total)</td>
-                                            <td class="text-right">
+                                            <td class="text-right" >
                                                 <p class="text-right" v-if="currency==='AED'">{{getVAT}}</p>
                                                 <p class="text-right" v-else-if="currency==='USD'">{{currencyVAT}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td>
+                                            <td >
                                                 <p class="text-right" v-if="currency==='AED'">{{getSubTotal}}</p>
                                                 <p class="text-right" v-else-if="currency==='USD'">{{currencySubTotal}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td>
+                                            <td >
                                                 <p class="text-right" v-if="currency==='AED'">{{getTotal}}</p>
                                                 <p class="text-right" v-else-if="currency==='USD'">{{currencyResult}}</p>
                                                 <p class="text-right" v-else>0.00</p>
@@ -215,17 +215,17 @@
 
                                         <tr class="white-border">
                                             <td><b>USD</b> (Total)</td>
-                                            <td class="text-right">
+                                            <td class="text-right" >
                                                 <p class="text-right" v-if="currency==='USD'">{{getVAT}}</p>
                                                 <p class="text-right" v-else-if="currency==='AED'">{{currencyVAT}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td>
+                                            <td >
                                                 <p class="text-right" v-if="currency==='USD'">{{getSubTotal}}</p>
                                                 <p class="text-right" v-else-if="currency==='AED'">{{currencySubTotal}}</p>
                                                 <p class="text-right" v-else>0.00</p>
                                             </td>
-                                            <td>
+                                            <td >
                                                 <p class="text-right" v-if="currency==='USD'">{{getTotal}}</p>
                                                 <p class="text-right" v-else-if="currency==='AED'">{{currencyResult}}</p>
                                                 <p class="text-right" v-else>0.00</p>
@@ -246,8 +246,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-8">
-                                                <div class="text-info h5 mb-0 text-left">{{file.name}}</div>
-                                                <div class="text-black pt-0 text-left">by Admin on {{currentDateTime()}}</div>
+                                                <div class="text-info h5 mb-0 text-left" v-model="fileName">{{file.name}}</div>
+                                                <div class="text-black pt-0 text-left" v-model="userDate">by Admin on {{currentDateTime()}}</div>
                                             </div>
                                             <div class="col-2">
                                                 <button @click="deleteFile(index)" class="text-danger btn fas fa-trash"/>
@@ -294,9 +294,9 @@
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <custom-button class="icon-center" btn_class="btn fas py-2" label="Cancel"/>
                                     <custom-button class="icon-center" btn_class="btn border fas py-2" label="Save As Draft"/>
-<!--                                    <router-link :to="{name: 'DetailInstruction'}" class="dropdown">-->
-                                        <button v-on:click="storeData" class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
-<!--                                    </router-link>-->s
+                                    <router-link :to="{name: 'DetailInstruction'}" class="dropdown">
+                                        <button v-on:click="storeData" class="icon-center btn btn-info text-light fas py-2 font">Submit</button>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -344,6 +344,8 @@ export default {
             address: "Enter Vendor Address",
             contract: "Select Customer",
             poNo: "",
+            description: "",
+            uom: "",
 
             description: "",
             qty: 0,
@@ -355,11 +357,14 @@ export default {
             charge: "Select an Option",
             amount: 0,
             rate: "",
+            charge: "",
 
             files: [],
+            fileName: "",
+            userDate: "",
+
             notes: "",
             linked: "Select Item",
-
         };
     },
     methods: {
@@ -389,11 +394,8 @@ export default {
             this.details = Array.prototype.slice.call(this.details)
             this.details.splice(index, 1);
         },
-
         storeData(){
-
             let newVendor = {
-
                 type: this.instruction,
                 assign_vendor: this.vendor,
                 attention: this.attention,
@@ -445,16 +447,16 @@ export default {
         currencyVAT(){
             return (this.getVAT * 3.6725).toFixed(2);
         }
+    },
+    computation(){
+        var qty = document.getElementById(qty).value;
+        var unitPrice = document.getElementById(unitPrice).value;
+        var discount = document.getElementById(discount).value;
+        discount = ((qty * (unitPrice * 0.1))*discount/100);
+        var total = ((qty * (unitPrice * 0.1)) - discount).toFixed(2);
+        total =total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        document.getElementById('total').innerHTML = total;
     }
-    // computation(){
-    //     var qty = document.getElementById(qty).value;
-    //     var unitPrice = document.getElementById(unitPrice).value;
-    //     var discount = document.getElementById(discount).value;
-    //     discount = ((qty * (unitPrice * 0.1))*discount/100);
-    //     var total = ((qty * (unitPrice * 0.1)) - discount).toFixed(2);
-    //     total =total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    //     document.getElementById('total').innerHTML = total;
-    // }
 };
 
 
@@ -489,5 +491,8 @@ tbody {
 }
 .space-bottom{
     margin-bottom: 1%;
+}
+.font {
+    font-family: Nunito;
 }
 </style>

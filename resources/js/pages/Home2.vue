@@ -27,6 +27,7 @@
                         <i class="fas fa-file-export"></i>
                         Export
                       </export-excel>
+                      <!-- <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-file-export" label="Export" /> -->
                     </div>
                   </ul>
                 </div>
@@ -161,8 +162,9 @@
                         </tr>
                       </thead>
                       <tbody class="pointer">
+                        <!-- <tr v-for="(dashboard , index) in filteredData" :key="index"> // buchik awal-->
                         <tr @click="toDetail(dashboard._id)" v-for="dashboard in filteredData" :key="dashboard._id">
-                          <td>{{ dashboard._id }}</td>
+                          <td>{{ dashboard.instruction_id }}</td>
                           <td class="text-left">
                             <span v-if="dashboard.link_to == ''">
                               -
@@ -289,7 +291,7 @@ export default {
         const customerPO = dashboard.customer_po.toString().toLowerCase();
         const status = dashboard.status.toString().toLowerCase();
         return (
-          //   id.includes(search) ||
+          // id.includes(search) ||
           link.includes(search) ||
           type.includes(search) ||
           vendor.includes(search) ||
@@ -304,7 +306,7 @@ export default {
 
   created() {
     this.fetchOpenInstruction();
-    // console.log(this.dashboards);
+    console.log(this.dashboards);
   },
 };
 </script>

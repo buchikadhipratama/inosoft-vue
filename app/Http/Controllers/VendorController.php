@@ -38,7 +38,8 @@ class VendorController extends Controller
     public function edit($id)
     {
         $vendor = Vendor::find($id);
-        return view('edit',compact('vendor','id'));
+        return response()->json($vendor);
+
     }
 
     public function update(Request $request)

@@ -254,7 +254,7 @@
                                     </div>
                                     <label class="btn btn-info text-light">
                                         <i class="fa fa-plus"></i> Add Attachment
-                                        <input type="file" name="files[]" @change="onFileChange" multiple style="display: none;">
+                                        <input type="file" name="files" @change="onFileChange" multiple style="display: none;">
                                     </label>
 
                                     <!--                  <custom-button btn_class="btn btn-info text-light fas py-2" icon_class="fas fa-plus" label="Add Attachments"/>-->
@@ -292,9 +292,9 @@
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <custom-button class="icon-center" btn_class="btn fas py-2" label="Cancel"/>
                                     <custom-button class="icon-center" btn_class="btn border fas py-2" label="Save As Draft"/>
-                                    <router-link :to="{name: 'DetailInstruction'}" class="dropdown">
-                                        <custom-button class="icon-center" btn_class="btn btn-info text-light fas py-2" label="Submit"/>
-                                    </router-link>
+                                    <!-- <router-link :to="{name: 'DetailInstruction'}" class="dropdown"> -->
+                                    <button @click="storeData" type="submit" class="icon-center btn btn-info text-light p-0 px-2">Submit</button>
+                                    <!-- </router-link> -->
                                 </div>
                             </div>
                         </div>
@@ -311,6 +311,7 @@ import CustomDropdown from "../components/sub-components/CustomDropdown";
 import PageTitleComponent from "../components/sub-components/PageTitleComponent.vue";
 import HeaderComponent from "../components/sub-components/HeaderComponent.vue";
 import SidebarComponent from "../components/sub-components/SidebarComponent.vue";
+import { mapActions } from 'vuex';
 
 export default {
     name: "CreateInstruction",
@@ -333,6 +334,7 @@ export default {
                     to: "Home",
                 },
             ],
+            // form: {
             instruction: "Service Instruction",
             vendor: "Enter Vendor",
             attention: "",
@@ -341,9 +343,9 @@ export default {
             address: "Enter Vendor Address",
             contract: "Select Customer",
             poNo: "",
-
+            description: "",
+            uom: "",
             arrresult:[{res : 0}],
-
             costs:[{
                 description: "",
                 qty: 0,
@@ -362,7 +364,10 @@ export default {
         };
     },
     methods: {
-        onFileSelected(event) {
+        ...mapActions({
+            storeInstruction: "thirdPartyInstruction/storeInstruction"
+        }),
+        onFileSelected(event){
             console.log(event)
         },
         onFileChange(e) {
@@ -386,6 +391,32 @@ export default {
         deleteCost(index) {
             this.costs = Array.prototype.slice.call(this.costs)
             this.costs.splice(index, 1);
+        },
+        storeData(){
+            
+            let newVendor = {
+
+                assign_vendor: this.vendor,
+                attention: this.attention,
+                quotation: this.quotation,
+                invoice: this.invoice,
+                customer_contract: this.contract,
+                vendor_address: this.address,
+                customer_po: this.poNo,
+                description: this.description,
+                qty: this.qty,
+                uom: this.uom,
+                unit_price: this.unitPrice,
+                discount: this.discount,
+                gst_vat: this.gst,
+                currency: this.currency,
+                charge: this.charge,
+                attachment: this.files,
+                notes: this.notes,
+                link_to: this.linked,
+                type: this.instruction,
+            }
+            this.storeInstruction(newVendor);
         },
         addCost() {
             this.costs.push({
@@ -449,7 +480,7 @@ export default {
             return this.result.toFixed(2)
         }
     }
-};
+}
 
 
 </script>
