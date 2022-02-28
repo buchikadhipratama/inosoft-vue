@@ -25,8 +25,8 @@ const fetchCompletedInstruction = async (context) => {
   })
 }
 
-const storeInstruction = async (context, payload) => {
-  context.commit("STOREINSTRUCTION", payload)
+const storeInstruction = async (payload) => {
+  axios.post("api/store", payload)  
 }
 
 const TerminateInstruction = async (context, payload) => {
