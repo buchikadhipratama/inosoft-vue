@@ -249,9 +249,11 @@
                         <b>Vendor Invoice</b>
                       </div>
                       <div class="item grid-item4">
+                        <router-link :to="{name: 'CompletedInstruction'}" class="dropdown">
                         <span v-on:click="changeStatus">
                         <custom-button btn_class="btn btn-info fas py-2 text-light" icon_class="fas fa-plus" label="Add Vendor Invoice" />
                         </span>
+                        </router-link>
                       </div>
                     </div>
                   </div>
