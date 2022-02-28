@@ -82,7 +82,7 @@ class VendorRepository
         return Vendor::where(function ($query) {
             $query->where('status', 2)
                 ->orwhere('status', 0);
-         })->get(); //0 untuk saat ini artinya completed
+         })->get(); //2 untuk saat ini artinya completed
     }
 
     public function changeVendorStatus(array $vendor)
@@ -103,7 +103,7 @@ class VendorRepository
         try {
             $cancelaion = Vendor::find($cancel['id']);
             $cancelaion->cancel_description = $cancel['cancel_description'];
-            // $cancelaion->cancel_attachment = $cancel['cancel_attachment'];
+            $cancelaion->cancel_attachment = $cancel['cancel_attachment'];
             // $cancelaion->status = 2;
             $cancelaion->status = 0;
             $cancelaion->save();

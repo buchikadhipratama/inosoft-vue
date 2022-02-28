@@ -60,6 +60,10 @@
                       <i class="fas fa-truck"></i>
                       Logistics Instruction
                     </div>
+                    <div class="grid-item1 item1" v-else>
+                      <i class="fas fa-truck"></i>
+                      Service Instruction
+                    </div>
                     <div class="grid-item1 item1">{{this.instructions[0].instruction_id}}</div>
                     <div class="grid-item1 item1">
                       <custom-button btn_class="btn btn-light h-auto fas m-1 border py-2" icon_class="fas fa-link" :label="this.instructions[0].link_to" />
@@ -245,7 +249,9 @@
                         <b>Vendor Invoice</b>
                       </div>
                       <div class="item grid-item4">
+                        <span v-on:click="changeStatus">
                         <custom-button btn_class="btn btn-info fas py-2 text-light" icon_class="fas fa-plus" label="Add Vendor Invoice" />
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -309,13 +315,15 @@
                     </div>
                     <label class="btn btn-info text-light">
                       <i class="fa fa-plus"></i> Add Attachment
-                      <input type="file" name="files[]" @change="onFileChange" multiple style="display: none;">
+                      <input v-on="cancel_attachment" type="file" name="files[]" @change="onFileChange" multiple style="display: none;">
                     </label>
                   </div>
                 </div>
                 <div class="modal-footer">
                   <a type="button" class="btn " @click="closeModal">Close</a>
-                  <button type="submit" class="btn btn-info text-white" @click="terminate" style="width:200px">Submit</button>
+                  <router-link :to="{name: 'CompletedInstruction'}" class="dropdown">
+                    <button type="submit" class="btn btn-info text-white" @click="terminate" style="width:200px">Submit</button>
+                  </router-link>
                   <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                   <!-- <custom-button v-on:click="terminate" class="icon-center" btn-type="submit" btn_class="btn btn-info text-light fas py-2" label="Submit" /> -->
                 </div>
@@ -362,6 +370,8 @@ export default {
         },
       ],
       vendors: {},
+      cancel_description: "",
+      cancel_attachment: []
     };
   },
   methods: {
@@ -404,11 +414,20 @@ export default {
       let cancel = {
         id: this.instructions[0]._id,
         cancel_description: this.cancel_description,
+        cancel_attachment: this.cancel_attachment
       };
-      axios.put("api/cancel", cancel).then((response) => {
+      axios.post("api/cancel", cancel).then((response) => {
         console.log(response);
       });
     },
+    changeStatus() {
+      let complete = {
+        id: this.instructions[0]._id,
+      };
+      axios.post("api/change", complete).then((response) => {
+        console.log(response);
+      });
+    }
   },
   created() {
     this.fetchOneInstruction(this.$route.params.id);
