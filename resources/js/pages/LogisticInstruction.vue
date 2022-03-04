@@ -76,6 +76,7 @@
                                                         <label>Vendor Address</label>
                                                         <select class="form-select" v-model="address">
                                                             <option selected disabled>Enter Vendor Address</option>
+                                                            <option value="add">1 SOI PRIDI PHANOMYONG 28 (THANIPATTANA) SUKHUMVIT 71 ROAD, KWAENG KLONGTON NUA, KHET WATTANA,</option>
                                                             <option value="address">Sesetan, Denpasar, Bali, Indonesia</option>
                                                         </select>
                                                     </div>
@@ -305,7 +306,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>

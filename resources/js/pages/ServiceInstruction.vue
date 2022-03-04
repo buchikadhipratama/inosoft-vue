@@ -76,6 +76,7 @@
                                                         <label>Vendor Address</label>
                                                         <select class="form-select" v-model="address">
                                                             <option selected disabled>Enter Vendor Address</option>
+                                                            <option value="add">1 SOI PRIDI PHANOMYONG 28 (THANIPATTANA) SUKHUMVIT 71 ROAD, KWAENG KLONGTON NUA, KHET WATTANA,</option>
                                                             <option value="address">Sesetan, Denpasar, Bali, Indonesia</option>
                                                         </select>
                                                     </div>
@@ -173,7 +174,7 @@
                                             </select></td>
                                             <td><input id="unitPrice" class="form-control" type="text" v-model="unitPrice" placeholder="Enter Unit Price"></td>
                                             <td><input id="discount" class="form-control" type="number" v-model="discount" placeholder="0"></td>
-                                            <td><input id="gst" class="form-control" type="number" v-model="gst" placeholder="0"></td>
+                                            <td><input id="gst" class="form-control" type="number" v-model="GST" placeholder="0"></td>
                                             <td class="icon-center"><i class="fas fa-arrow-right"></i></td>
                                             <td><select class="form-select" id="currency" v-model="currency" >
                                                 <option selected disabled></option>
@@ -344,8 +345,6 @@ export default {
             address: "Enter Vendor Address",
             contract: "Select Customer",
             poNo: "",
-            description: "",
-            uom: "",
 
             description: "",
             qty: 0,
@@ -357,7 +356,6 @@ export default {
             charge: "Select an Option",
             amount: 0,
             rate: "",
-            charge: "",
 
             files: [],
             fileName: "",
@@ -365,6 +363,7 @@ export default {
 
             notes: "",
             linked: "Select Item",
+
         };
     },
     methods: {
@@ -394,8 +393,11 @@ export default {
             this.details = Array.prototype.slice.call(this.details)
             this.details.splice(index, 1);
         },
+
         storeData(){
+
             let newVendor = {
+
                 type: this.instruction,
                 assign_vendor: this.vendor,
                 attention: this.attention,
@@ -447,16 +449,16 @@ export default {
         currencyVAT(){
             return (this.getVAT * 3.6725).toFixed(2);
         }
-    },
-    computation(){
-        var qty = document.getElementById(qty).value;
-        var unitPrice = document.getElementById(unitPrice).value;
-        var discount = document.getElementById(discount).value;
-        discount = ((qty * (unitPrice * 0.1))*discount/100);
-        var total = ((qty * (unitPrice * 0.1)) - discount).toFixed(2);
-        total =total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        document.getElementById('total').innerHTML = total;
     }
+    // computation(){
+    //     var qty = document.getElementById(qty).value;
+    //     var unitPrice = document.getElementById(unitPrice).value;
+    //     var discount = document.getElementById(discount).value;
+    //     discount = ((qty * (unitPrice * 0.1))*discount/100);
+    //     var total = ((qty * (unitPrice * 0.1)) - discount).toFixed(2);
+    //     total =total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    //     document.getElementById('total').innerHTML = total;
+    // }
 };
 
 
