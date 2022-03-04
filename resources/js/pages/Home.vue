@@ -162,7 +162,7 @@
                       </thead>
                       <tbody class="pointer">
                         <tr @click="toDetail(dashboard._id)" v-for="dashboard in filteredData" :key="dashboard._id">
-                          <td>{{ dashboard._id }}</td>
+                          <td>{{ dashboard.instruction_id }}</td>
                           <td class="text-left">
                             <span v-if="dashboard.link_to == ''">
                               -

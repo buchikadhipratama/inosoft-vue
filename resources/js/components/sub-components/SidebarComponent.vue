@@ -40,6 +40,7 @@ export default {
 #sidebar-wrapper {
   height: 100vh;
   position: fixed;
+  margin-top: 10px;
 }
 </style>
 
